@@ -1,0 +1,19 @@
+{
+  "cadences": [
+    "daily", "weekly", "monthly", "quarterly", "halfyearly",
+    "monday", "tuesday", "wednesday", "thursday", "friday"
+  ],
+  "ceremonies": [
+    "checkin", "cleanup", "demo", "design_review", "documentation",
+    "estimation", "growth", "hackathon", "horizon", "insight", "planning",
+    "process", "retreat", "retrospective", "review", "roadmap", "social",
+    "solution", "spec", "standdown", "standup", "sync", "techdebt"
+  ],
+  "other": [
+    "blank", "title", "void"
+  ],
+  "roles": [
+    "actioner", "cheerleader", "conductor", "guardian",
+    "historian", "timekeeper", "wildcard"
+  ]
+}

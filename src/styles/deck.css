@@ -1,0 +1,8 @@
+.deck-title {
+  text-transform: capitalize;
+}
+
+.deck-cards {
+  display: flex;
+  flex-direction: row;
+}

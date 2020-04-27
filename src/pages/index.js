@@ -1,13 +1,13 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import Board from "../components/board"
+import Intro from "../components/intro"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Minimum Viable Ceremonies" />
-    <Board />
+    <Intro />
   </Layout>
 )
 

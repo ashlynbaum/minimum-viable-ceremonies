@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Deck from "../components/deck"
+import DraggableDeck from "../components/draggableDeck"
 import initialCardState from "../images/cards/cards.json"
 import "../styles/deck.css"
 
@@ -18,7 +18,7 @@ const AllCards = () => {
 
   return <div className="all-cards">
     {Object.entries(cards).map(([type, names]) => (
-      <Deck key={type} type={type} names={names} reorder={reorder} />
+      <DraggableDeck key={type} type={type} names={names} reorder={reorder} />
     ))}
   </div>
 }

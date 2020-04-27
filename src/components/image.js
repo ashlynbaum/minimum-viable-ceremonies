@@ -25,7 +25,7 @@ const Image = ({ alt, path, klass }) => (
        const image = data.images.edges.find(n => n.node.relativePath.includes(path))
        if (!image) { return null }
 
-       return <Img className={`image image-${klass}`} alt={alt} fluid={image.node.childImageSharp.fluid} />
+       return <Img className={`image ${klass}-image`} alt={alt} fluid={image.node.childImageSharp.fluid} />
      }}
    />
 )

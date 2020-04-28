@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Context from "../contexts/room"
 import { getRoom } from "../db/fauna"
 
-const RoomPage = ({ uuid }) => {
+const RoomPage = ({ location: { state: { uuid } } }) => {
   const [context, setContext] = useState()
 
   if (!context) {

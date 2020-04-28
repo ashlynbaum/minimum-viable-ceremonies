@@ -3,15 +3,20 @@ import phrase from "random-words"
 const db = new fauna.Client({
   secret: process.env.FAUNA_SECRET || 'fnADqcsiRcACCisk6ap3M_p4s1h0CZSOis2tSYX6'
 })
-const { Collection, Create, Get } = fauna.query
+const { Get, Match, Create, Index, Collection } = fauna.query
+
+const existingRoom = uuid => {
+  if (!uuid) { return }
+
+  return db.query(Get(Match(Index("rooms_by_uuid"), uuid)))
+}
 
 export const getRoom = uuid => (
-  uuid ? db.query(Get(Collection("rooms"), { data: { uuid } }))
-       : updateRoom({
-         uuid: phrase({ exactly: 3, join: '-' }),
-         placements: {},
-         players: {}
-       }).then(({ data }) => data)
+  (existingRoom(uuid) || updateRoom({
+    uuid: phrase({ exactly: 3, join: '-' }),
+    placements: {},
+    players: {}
+  })).then(({ data }) => data)
 )
 
 export const updateRoom = data => (

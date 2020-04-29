@@ -1,6 +1,7 @@
 import { firebase } from "@firebase/app"
 import "@firebase/database"
 import phrase from "random-words"
+import { ceremonies, roles } from "../images/cards/cards.json"
 
 firebase.initializeApp({
   apiKey: "AIzaSyBnCV1QH7tDOA0a8DvuDzFVlMwYVstfiSA",
@@ -17,8 +18,9 @@ const rooms = firebase.database().ref('rooms')
 const createRoom = () => {
   const uuid = phrase({ exactly: 3, join: '-' })
   return rooms.child(uuid).set({
-    participants: { test: 'wark' },
-    placements: { test: 'wark' }
+    participants: { ["somekey"]: { host: true } },
+    roles: { undecided: roles },
+    ceremonies: { undecided: ceremonies }
   }).then(() => uuid)
 }
 

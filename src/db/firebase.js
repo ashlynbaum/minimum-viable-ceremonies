@@ -3,13 +3,11 @@ import "@firebase/database"
 import phrase from "random-words"
 
 firebase.initializeApp({
-  apiKey: "AIzaSyBnCV1QH7tDOA0a8DvuDzFVlMwYVstfiSA",
-  authDomain: "minimum-viable-ceremonies.firebaseapp.com",
-  databaseURL: "https://minimum-viable-ceremonies.firebaseio.com",
-  projectId: "minimum-viable-ceremonies",
-  storageBucket: "minimum-viable-ceremonies.appspot.com",
-  messagingSenderId: "283274833571",
-  appId: "1:283274833571:web:2a88d39144012baf46d916"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: `${process.env.FIREBASE_DOMAIN}.firebaseapp.com`,
+  databaseURL: `https://${process.env.FIREBASE_DOMAIN}.firebaseio.com`,
+  projectId: `${process.env.FIREBASE_DOMAIN}`,
+  storageBucket: `${process.env.FIREBASE_DOMAIN}.appspot.com`,
 })
 
 const rooms = firebase.database().ref('rooms')

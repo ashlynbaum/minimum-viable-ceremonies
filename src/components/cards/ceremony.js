@@ -1,9 +1,9 @@
 import React from "react"
-import DraggableCard from "../components/draggableCard"
+import DraggableCard from "../basic/draggableCard"
 
-const Ceremony = ({ name, flip }) => (
-  <div class="ceremony">
-    <DraggableCard type="ceremonies" name={name} flip={flip} />
+const Ceremony = ({ name, index, flip }) => (
+  <div className="ceremony">
+    <DraggableCard type="ceremonies" name={name} index={index} flip={flip} />
   </div>
 )
 

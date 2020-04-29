@@ -10,6 +10,13 @@
 }
 
 .board-ceremonies {
+  margin-top: 20px;
+  display: flex;
+
+  .ceremony {
+    max-height: 100%;
+  }
+
   .card {
     margin: 0 -154px 0 5px;
   }

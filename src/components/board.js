@@ -1,8 +1,7 @@
 import React, { useContext } from "react"
-import Deck from "../components/basic/deck"
-import DraggableCard from "../components/basic/draggableCard"
 import Cadence from "../components/cards/cadence"
-import { DragDropContext } from "react-beautiful-dnd"
+import Ceremony from "../components/cards/ceremony"
+import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import Context from "../contexts/room"
 import { ceremonies } from "../images/cards/cards.json"
 import "../styles/board.scss"
@@ -28,9 +27,14 @@ const Board = ({ weekCount = 1 }) => {
           <div className="board-cadence">
             {OTHER.map(name => <Cadence key={name} name={name} value={name} />)}
           </div>
-          <div className="board-ceremonies">
-            <Deck type="ceremonies" names={ceremonies} />
-          </div>
+          <Droppable droppableId="ceremonies-deck">
+            {({ innerRef, droppableProps, placeholder }) => (
+              <div ref={innerRef} className="board-ceremonies">
+                {ceremonies.map((name, index) => <Ceremony key={name} name={name} index={index} />)}
+                {placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
       </div>
     </DragDropContext>

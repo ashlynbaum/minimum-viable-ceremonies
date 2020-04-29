@@ -2,7 +2,7 @@ import Image from "./image"
 import React from "react"
 import "../../styles/card.scss"
 
-const Card = ({ type, name, flip = false }) => (
+const Card = ({ type, name, flip }) => (
   <div className={flip ? "card card-flip" : "card"}>
     <div className="card-content">
       <div className="card-side front">

@@ -1,6 +1,6 @@
 import React from "react"
-import DraggableCard from "../components/draggableCard"
-import Deck from "../components/deck"
+import Deck from "./deck"
+import DraggableCard from "./draggableCard"
 import { DragDropContext, Droppable } from "react-beautiful-dnd"
 
 const DraggableDeck = ({ type, names, reorder }) => (

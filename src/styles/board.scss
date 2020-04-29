@@ -1,0 +1,16 @@
+.board-cadences {
+  display: flex;
+  flex-direction: column;
+}
+
+.board-cadence {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.board-ceremonies {
+  .card {
+    margin: 0 -154px 0 5px;
+  }
+}

@@ -1,6 +1,6 @@
 import Image from "./image"
 import React from "react"
-import "../styles/card.scss"
+import "../../styles/card.scss"
 
 const Card = ({ type, name, flip = false }) => (
   <div className={flip ? "card card-flip" : "card"}>

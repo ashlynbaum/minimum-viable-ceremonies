@@ -1,6 +1,6 @@
 import React from "react"
-import Card from "../components/card"
-import "../styles/deck.scss"
+import Card from "./card"
+import "../../styles/deck.scss"
 
 const Deck = ({ type, names, CardClass = Card }) => (
   <div className="deck">

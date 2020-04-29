@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "author": "James Kiesel <james.kiesel@gmail.com>",
   "dependencies": {
-    "faunadb": "^2.13.1",
+    "@firebase/app": "^0.6.2",
+    "@firebase/database": "^0.6.1",
     "gatsby": "^2.20.25",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-manifest": "^2.3.5",

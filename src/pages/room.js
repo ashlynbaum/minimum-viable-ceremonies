@@ -5,18 +5,18 @@ import Board from "../components/board"
 import Loading from "../components/loading"
 import SEO from "../components/seo"
 import Context from "../contexts/room"
-import { getRoom } from "../db/fauna"
+import { setupRoom } from "../db/firebase"
 
 const RoomPage = ({ location: { state: { uuid } } }) => {
-  const [context, setContext] = useState()
+  const [room, setRoom] = useState()
 
-  if (!context) {
-    getRoom(uuid).then(setContext)
+  if (!room) {
+    setupRoom(uuid, setRoom)
     return <Layout><Loading /></Layout>
   }
 
   return (
-    <Context.Provider value={context}>
+    <Context.Provider value={room}>
       <Layout>
         <SEO title="Minimum Viable Ceremonies" />
         <Board />

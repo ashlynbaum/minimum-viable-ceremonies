@@ -14,7 +14,6 @@ const Board = ({ weekCount = 1 }) => {
     ceremonies,
     moveCeremony,
   } = useContext(Context)
-  console.log(ceremonies)
 
   return (
     <DragDropContext onDragEnd={moveCeremony}>

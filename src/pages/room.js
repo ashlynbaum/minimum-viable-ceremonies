@@ -1,22 +1,21 @@
-import React, { useState } from "react"
-
+import React from "react"
 import Layout from "../components/layout"
 import Board from "../components/board"
 import Loading from "../components/loading"
 import SEO from "../components/seo"
 import Context from "../contexts/room"
-import { setupRoom } from "../db/firebase"
+import useRoomContext from "../hooks/useRoomContext"
 
 const RoomPage = ({ location: { state: { uuid } } }) => {
-  const [room, setRoom] = useState()
+  const context = useRoomContext(uuid)
 
-  if (!room) {
-    setupRoom(uuid, setRoom)
+  if (!context.ready) {
+    context.setup()
     return <Layout><Loading /></Layout>
   }
 
   return (
-    <Context.Provider value={room}>
+    <Context.Provider value={context}>
       <Layout>
         <SEO title="Minimum Viable Ceremonies" />
         <Board />

@@ -9,14 +9,15 @@ const DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 const OTHER = ["weekly", "monthly", "quarterly", "halfyearly", "void"]
 
 const Board = ({ weekCount = 1 }) => {
-  const { uuid, roles, ceremonies } = useContext(Context)
-
-  const drop = event => {
-    console.log(event)
-  }
+  const {
+    uuid,
+    ceremonies,
+    moveCeremony,
+  } = useContext(Context)
+  console.log(ceremonies)
 
   return (
-    <DragDropContext onDragEnd={drop}>
+    <DragDropContext onDragEnd={moveCeremony}>
       <div className="board">
         <h1>{uuid}</h1>
         <div className="board-cadences">
@@ -28,10 +29,12 @@ const Board = ({ weekCount = 1 }) => {
           <div className="board-cadence">
             {OTHER.map(name => <Cadence key={name} name={name} value={name} />)}
           </div>
-          <Droppable droppableId="ceremonies-deck">
+          <Droppable droppableId="undecided">
             {({ innerRef, droppableProps, placeholder }) => (
               <div ref={innerRef} className="board-ceremonies">
-                {ceremonies.undecided.map((name, index) => <Ceremony key={name} name={name} index={index} />)}
+                {ceremonies.undecided.map((name, index) => (
+                  <Ceremony key={name} name={name} index={index} />
+                ))}
                 {placeholder}
               </div>
             )}

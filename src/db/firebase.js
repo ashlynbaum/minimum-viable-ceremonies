@@ -1,7 +1,6 @@
 import { firebase } from "@firebase/app"
 import "@firebase/database"
 import phrase from "random-words"
-import { ceremonies, roles } from "../images/cards/cards.json"
 
 firebase.initializeApp({
   apiKey: "AIzaSyBnCV1QH7tDOA0a8DvuDzFVlMwYVstfiSA",
@@ -15,20 +14,16 @@ firebase.initializeApp({
 
 const rooms = firebase.database().ref('rooms')
 
-const createRoom = () => {
+const createRoom = state => {
   const uuid = phrase({ exactly: 3, join: '-' })
-  return rooms.child(uuid).set({
-    participants: { ["somekey"]: { host: true } },
-    roles: { undecided: roles },
-    ceremonies: { undecided: ceremonies }
-  }).then(() => uuid)
+  return rooms.child(uuid).set({ ...state, uuid }).then(() => ({ ...state, uuid }))
 }
 
-export const setupRoom = (uuid, setter) => {
-  if (!uuid) {
-    return createRoom().then(uuid => setupRoom(uuid, setter))
+export const setupRoom = state => {
+  if (!state.uuid) {
+    return createRoom(state).then(setupRoom)
   }
-  const room = rooms.child(uuid)
+  const room = rooms.child(state.uuid)
 
   room.child('participants').on('value', snapshot => (
     console.log('participants', snapshot)
@@ -37,9 +32,7 @@ export const setupRoom = (uuid, setter) => {
     console.log('participants', snapshot)
   ))
 
-  return room.once('value').then(snapshot => (
-    setter({ ...snapshot.val(), uuid: snapshot.key })
-  ))
+  return room.once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))
 }
 
 export const teardownRoom = uuid => {

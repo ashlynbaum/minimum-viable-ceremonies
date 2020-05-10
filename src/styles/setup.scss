@@ -1,0 +1,55 @@
+.setup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  background: rgba(255,255,255,0.5);
+  color: #555;
+  border-radius: 15px;
+  display: flex;
+  overflow: hidden;
+}
+
+.setup-slides {
+  padding: 24px;
+  transition: all ease-out 0.3s;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.setup-slide {
+  display: inline-block;
+  vertical-align: top;
+  min-height: 400px;
+  height: 100%;
+  width: 100%;
+  margin-right: 48px;
+
+  .btn {
+    border-radius: 0 5px 5px 0;
+  }
+
+  .btn-input {
+    padding: 8px;
+    border-radius: 5px 0 0 5px;
+    min-width: 300px;
+    background: rgba(255,255,255,0.8);
+    box-shadow: inset 0 0 2px #444;
+  }
+
+  h1 {
+    white-space: break-spaces;
+  }
+}
+
+.setup-controls {
+  display: flex;
+  flex-direction: row;
+  padding: 24px;
+}
+
+.setup-controls-divider {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

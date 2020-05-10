@@ -5,6 +5,8 @@ const useRoomContext = id => {
   const [uuid, setUuid] = useState(id)
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [user, loginAs] = useState()
+  const [weekCount, setWeekCount] = useState()
 
   const [ceremonies, setCeremonies] = useState({
     undecided: [
@@ -35,6 +37,7 @@ const useRoomContext = id => {
 
     setupRoom({ uuid, ceremonies, participants, roles }).then(state => {
       setUuid(state.uuid)
+      setWeekCount(state.weekCount)
       setCeremonies(state.ceremonies)
       setParticipants(state.participants)
       setRoles(state.roles)
@@ -53,6 +56,12 @@ const useRoomContext = id => {
   )
 
   return {
+    uuid,
+    setUuid,
+    weekCount,
+    setWeekCount,
+    user,
+    loginAs,
     participants,
     roles,
     ceremonies,

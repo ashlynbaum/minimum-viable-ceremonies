@@ -1,8 +1,12 @@
 import React, { useState, useRef } from "react"
-import Progress from "./basic/progress"
+import { navigate } from "gatsby"
+import { createRoom } from "../db/firebase"
 import phrase from "random-words"
+import useRoomContext from "../hooks/useRoomContext"
 
-import "../styles/setupRoom.scss"
+import Progress from "./basic/progress"
+
+import "../styles/setup.scss"
 
 const stepText = {
   next: ['Ok, got it!', 'Next →', 'Next →', 'Create room'],
@@ -12,53 +16,44 @@ const stepText = {
 const SetupRoom = () => {
   const linkRef = useRef()
   const [step, setStep] = useState(0)
-  const [{ name, cadence }, setRoom] = useState({
-    name: phrase({ exactly: 3, join: '-' })
-  })
+  const room = useRoomContext(phrase({ exactly: 3, join: '-' }))
   const next = () => setStep(step => step + 1)
   const back = () => setStep(step => step - 1)
-  const submit = () => console.log('wark!')
+  const submit = () => (
+    createRoom(room).then(() => navigate(`room`, { state: { uuid: room.uuid } }))
+  )
 
   return (
-    <div className="setup-room">
-      <div className="setup-room-slides" style={{ marginLeft: `-${100 * step}%`}}>
-        <div className="setup-room-slide setup-room-help">
+    <div className="setup-room setup">
+      <div className="setup-room-slides setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
+        <div className="setup-room-slide setup-slide setup-room-help">
           <h1>Welcome to Minimum Viable Ceremonies!</h1>
           <p>Here is some help to get you started</p>
         </div>
-        <div className="setup-room-slide setup-room-name">
+        <div className="setup-room-slide setup-slide setup-room-name">
           <h1>What would you like to call your room?</h1>
           <input
-            name="name"
+            name="uuid"
             placeholder="e.g. wealthy-dusty-llama"
-            value={name}
-            onChange={({ target: { value } }) => setRoom(room => ({ ...room, name: value }))}
+            value={room.uuid}
+            onChange={({ target: { value } }) => room.setUuid(value)}
           />
         </div>
-        <div className="setup-room-slide setup-room-cadence">
+        <div className="setup-room-slide setup-slide setup-room-week-count">
           <h1>How long are your sprints?</h1>
-          <label>
-            <input
-              type="radio"
-              name="cadence"
-              value={1}
-              onChange={({ target: { value } }) => setRoom(room => ({ ...room, cadence: value }))}
-              className="setup-room-cadence"
-            />
-            One week
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="cadence"
-              value={2}
-              onChange={({ target: { value } }) => setRoom(room => ({ ...room, cadence: value }))}
-              className="setup-room-cadence"
-            />
-            Two weeks
-          </label>
+          {[1,2].map(weekCount => (
+            <label>
+              <input
+                type="radio"
+                name="weekCount"
+                value={weekCount}
+                onChange={({ target: { value } }) => room.setWeekCount(value)}
+              />
+              {weekCount} week{weekCount == 1 ? '' : 's'}
+            </label>
+          ))}
         </div>
-        <div className="setup-room-slide setup-room-link">
+        <div className="setup-room-slide setup-slide setup-room-link">
           <h1>Ready to go!</h1>
           <p>Just share the following link with your team to get started</p>
           <input
@@ -66,7 +61,7 @@ const SetupRoom = () => {
             className="btn-input"
             name="link"
             readOnly={true}
-            value={`${document.location.origin}/room/${name}`}
+            value={`${document.location.origin}/room/${room.uuid}`}
           />
           <button className="btn btn-blue" onClick={() => {
             linkRef.current.select()
@@ -74,9 +69,9 @@ const SetupRoom = () => {
           }}>Copy</button>
         </div>
       </div>
-      <div className="setup-room-controls">
+      <div className="setup-room-controls setup-controls">
         {step > 0 && <button onClick={back} className="btn btn-blue">{stepText.back[step]}</button>}
-        <div className="setup-room-controls-divider">
+        <div className="setup-room-controls-divider setup-controls-divider">
           {step > 0 && <Progress step={step-1} max={3} />}
         </div>
         <button onClick={step < 3 ? next : submit} className="btn btn-blue">{stepText.next[step]}</button>

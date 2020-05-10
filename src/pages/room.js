@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import Board from "../components/board"
+import SetupUser from "../components/setupUser"
 import Loading from "../components/loading"
 import SEO from "../components/seo"
 import Context from "../contexts/room"
@@ -17,8 +18,8 @@ const RoomPage = ({ location: { state: { uuid } } }) => {
   return (
     <Context.Provider value={context}>
       <Layout>
-        <SEO title="Minimum Viable Ceremonies" />
-        <Board />
+        <SEO title={`Minimum Viable Ceremonies | ${context.name}`} />
+        {context.user ? <Board /> : <SetupUser />}
       </Layout>
     </Context.Provider>
   )

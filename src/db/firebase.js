@@ -1,6 +1,5 @@
 import { firebase } from "@firebase/app"
 import "@firebase/database"
-import phrase from "random-words"
 
 firebase.initializeApp({
   apiKey: process.env.FIREBASE_API_KEY,
@@ -12,16 +11,16 @@ firebase.initializeApp({
 
 const rooms = firebase.database().ref('rooms')
 
-const createRoom = state => {
-  const uuid = phrase({ exactly: 3, join: '-' })
-  return rooms.child(uuid).set({ ...state, uuid }).then(() => ({ ...state, uuid }))
-}
+export const createRoom = ({ uuid, weekCount, roles, ceremonies, participants }) => (
+  rooms.child(uuid).set({ uuid, weekCount, roles, ceremonies, participants })
+)
 
-export const setupRoom = state => {
-  if (!state.uuid) {
-    return createRoom(state).then(setupRoom)
+export const setupRoom = roomState => {
+  if (!roomState.uuid) {
+    console.log('tried to setup a room without a uuid!')
+    return
   }
-  const room = rooms.child(state.uuid)
+  const room = rooms.child(roomState.uuid)
 
   room.child('participants').on('value', snapshot => (
     console.log('participants', snapshot)
@@ -33,16 +32,16 @@ export const setupRoom = state => {
   return room.once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))
 }
 
-export const teardownRoom = uuid => {
+export const teardownRoom = ({ uuid }) => {
   const room = rooms.child(uuid)
 
   room.child('participants').off('value')
   room.child('placements').off('value')
 }
 
-export const setParticipant = (room, participants) => {
-  room.child('participants').set(participants)
-}
+export const setParticipant = ({ uuid }, participant) => (
+  rooms.child(`${uuid}/participants/${participant.id}`).set(participant)
+)
 
 export const setPlacement = (room, placement) => (
   room.child('placements').set(placement)

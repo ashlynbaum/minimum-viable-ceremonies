@@ -33,6 +33,7 @@ const SetupRoom = () => {
         <div className="setup-room-slide setup-slide setup-room-name">
           <h1>What would you like to call your room?</h1>
           <input
+            className="btn-input"
             name="uuid"
             placeholder="e.g. wealthy-dusty-llama"
             value={room.uuid}
@@ -42,7 +43,7 @@ const SetupRoom = () => {
         <div className="setup-room-slide setup-slide setup-room-week-count">
           <h1>How long are your sprints?</h1>
           {[1,2].map(weekCount => (
-            <label>
+            <label key={weekCount}>
               <input
                 type="radio"
                 name="weekCount"

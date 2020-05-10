@@ -38,6 +38,7 @@ const SetupUser = () => {
         <div className="setup-user-slide setup-slide setup-user-name">
           <h1>First, what's your name?</h1>
           <input
+            className="btn-input"
             name="name"
             placeholder="e.g. Sam Smooth"
             value={name}

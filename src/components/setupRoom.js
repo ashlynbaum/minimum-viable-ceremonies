@@ -50,7 +50,7 @@ const SetupRoom = () => {
                 value={weekCount}
                 onChange={({ target: { value } }) => room.setWeekCount(value)}
               />
-              {weekCount} week{weekCount == 1 ? '' : 's'}
+              {weekCount} week{weekCount === 1 ? '' : 's'}
             </label>
           ))}
         </div>

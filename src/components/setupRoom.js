@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react"
 import { navigate } from "gatsby"
 import { createRoom } from "../db/firebase"
+import { document } from "browser-monads"
 import phrase from "random-words"
 import useRoomContext from "../hooks/useRoomContext"
 
@@ -62,7 +63,7 @@ const SetupRoom = () => {
             className="btn-input"
             name="link"
             readOnly={true}
-            value={`${process.env.MVC_ORIGIN}/room/${room.uuid}`}
+            value={`${document.location.origin}/room/${room.uuid}`}
           />
           <button className="btn btn-blue" onClick={() => {
             linkRef.current.select()

@@ -1,0 +1,17 @@
+.progress {
+  display: flex;
+  flex-direction: row;
+}
+
+.progress-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  border: 1px solid grey;
+  margin: 0 4px;
+
+  &.active {
+    background: blue;
+    border: 0;
+  }
+}

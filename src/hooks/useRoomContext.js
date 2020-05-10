@@ -32,7 +32,7 @@ const useRoomContext = id => {
   })
 
   const setup = () => {
-    if (loading) { return }
+    if (loading || !uuid) { return }
     setLoading(true)
 
     setupRoom({ uuid, ceremonies, participants, roles }).then(state => {

@@ -62,7 +62,7 @@ const SetupRoom = () => {
             className="btn-input"
             name="link"
             readOnly={true}
-            value={`${document.location.origin}/room/${room.uuid}`}
+            value={`${process.env.MVC_ORIGIN}/room/${room.uuid}`}
           />
           <button className="btn btn-blue" onClick={() => {
             linkRef.current.select()

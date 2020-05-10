@@ -7,8 +7,8 @@ import SEO from "../components/seo"
 import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
 
-const RoomPage = ({ location: { state: { uuid } } }) => {
-  const context = useRoomContext(uuid)
+const RoomPage = ({ location: { state } }) => {
+  const context = useRoomContext((state || {}).uuid)
 
   if (!context.ready) {
     context.setup()

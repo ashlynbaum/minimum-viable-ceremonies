@@ -28,6 +28,18 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: process.env.MVC_FIREBASE_API_KEY,
+          authDomain: `${process.env.MVC_FIREBASE_DOMAIN}.firebaseapp.com`,
+          databaseURL: `https://${process.env.MVC_FIREBASE_DOMAIN}.firebaseio.com`,
+          projectId: `${process.env.MVC_FIREBASE_DOMAIN}`,
+          storageBucket: `${process.env.MVC_FIREBASE_DOMAIN}.appspot.com`,
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

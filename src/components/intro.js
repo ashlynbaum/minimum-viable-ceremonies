@@ -28,7 +28,7 @@ const Intro = () => {
               value={uuid}
               onChange={({ target: { value } }) => setUuid(value)}
             />
-            <button disabled={!uuid.length} onClick={() => navigate('room', { state: { uuid } })} className="btn btn-blue">
+            <button disabled={!uuid.length} onClick={() => navigate(`room/${uuid}`)} className="btn btn-blue">
               Go!
             </button>
           </div>

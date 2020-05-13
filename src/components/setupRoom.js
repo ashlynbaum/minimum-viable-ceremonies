@@ -88,7 +88,7 @@ const SetupRoom = () => {
           : () => {
             setSubmitting(true)
             createRoom(room).then(
-              () => navigate(`room`, { state: { uuid: room.uuid } }),
+              () => navigate(`room/${room.uuid}`),
               () => setSubmitting(false)
             )
           }

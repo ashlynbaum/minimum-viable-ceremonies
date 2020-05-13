@@ -56,21 +56,23 @@ const SetupUser = () => {
           />
         </div>
         <div className="setup-user-slide setup-slide setup-user-cadence">
-          <h1>What role will you play?</h1>
-          {allRoles.map(role => (
-            <div key={role}>
-              <label>
-                <input
-                  type="radio"
-                  name="role"
-                  value={role}
-                  onChange={({ target: { value } }) => setUser(room => ({ ...room, role: value }))}
-                  className="setup-user-role"
-                />
-                {role}
-              </label>
+          <div className="setup-panel">
+            <h1>What role will you play?</h1>
+            <div className="setup-radio-options">
+              {allRoles.map(role => (
+                <label key={role} className="setup-radio-option">
+                  <input
+                    type="radio"
+                    name="role"
+                    value={role}
+                    onChange={({ target: { value } }) => setUser(room => ({ ...room, role: value }))}
+                    className="setup-user-role"
+                  />
+                  <div className="setup-radio-option-label">{role}</div>
+                </label>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
         <div className="setup-user-slide setup-slide setup-user-link">
           <h1>Ready to go!</h1>

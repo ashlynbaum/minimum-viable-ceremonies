@@ -54,18 +54,24 @@ const SetupRoom = () => {
           />
         </div>
         <div className="setup-room-slide setup-slide setup-room-week-count">
-          <h1>How long are your sprints?</h1>
-          {[1,2].map(weekCount => (
-            <label key={weekCount}>
-              <input
-                type="radio"
-                name="weekCount"
-                value={weekCount}
-                onChange={({ target: { value } }) => room.setWeekCount(value)}
-              />
-              {weekCount} week{weekCount === 1 ? '' : 's'}
-            </label>
-          ))}
+          <div className="setup-panel">
+            <h1>How long are your sprints?</h1>
+            <div className="setup-radio-options">
+              {[1,2].map(weekCount => (
+                <label className="setup-radio-option" key={weekCount}>
+                  <input
+                    type="radio"
+                    name="weekCount"
+                    value={weekCount}
+                    onChange={({ target: { value } }) => room.setWeekCount(value)}
+                  />
+                  <div className="setup-radio-option-label">
+                    {weekCount} week{weekCount === 1 ? '' : 's'}
+                  </div>
+                </label>
+            ))}
+            </div>
+          </div>
         </div>
         <div className="setup-room-slide setup-slide setup-room-link">
           <h1>Ready to go!</h1>

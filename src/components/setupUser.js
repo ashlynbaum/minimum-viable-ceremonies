@@ -50,6 +50,9 @@ const SetupUser = () => {
             placeholder="e.g. Sam Smooth"
             value={name}
             onChange={({ target: { value } }) => setUser(user => ({ ...user, name: value }))}
+            onKeyPress={({ which }) => ( // next on enter
+              steps[1].canProceed() && which === 13 && setStep(step => step + 1)
+            )}
           />
         </div>
         <div className="setup-user-slide setup-slide setup-user-cadence">

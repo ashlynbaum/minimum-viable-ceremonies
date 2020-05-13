@@ -48,6 +48,9 @@ const SetupRoom = () => {
             placeholder="e.g. wealthy-dusty-llama"
             value={room.uuid}
             onChange={({ target: { value } }) => room.setUuid(value)}
+            onKeyPress={({ which }) => ( // next on enter
+              steps[1].canProceed() && which === 13 && setStep(step => step + 1)
+            )}
           />
         </div>
         <div className="setup-room-slide setup-slide setup-room-week-count">

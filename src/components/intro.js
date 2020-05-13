@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 
 import "../styles/intro.scss"
 import board from "../images/board.svg"
@@ -28,7 +28,9 @@ const Intro = () => {
               value={uuid}
               onChange={({ target: { value } }) => setUuid(value)}
             />
-            <Link className="btn btn-blue" to="room" state={{ uuid }}>Go!</Link>
+            <button disabled={!uuid.length} onClick={() => navigate('room', { state: { uuid } })} className="btn btn-blue">
+              Go!
+            </button>
           </div>
         </div>
         <div className="intro-right">

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useMemo, useRef } from "react"
 import { navigate } from "gatsby"
 import { createRoom } from "../db/firebase"
 import { document } from "browser-monads"
@@ -9,20 +9,37 @@ import Progress from "./basic/progress"
 
 import "../styles/setup.scss"
 
-const stepText = {
-  next: ['Ok, got it!', 'Next →', 'Next →', 'Create room'],
-  back: [null, '← Back', '← Back', '← Back']
-}
-
 const SetupRoom = () => {
   const linkRef = useRef()
   const [step, setStep] = useState(0)
   const room = useRoomContext(phrase({ exactly: 3, join: '-' }))
+  const uuidTaken = useMemo(() => (
+    false // TODO check to see if uuid is taken
+  ), [room.uuid])
+  const steps = [{
+    next: 'Ok, got it!',
+    back: null,
+    disableNext: () => false
+  }, {
+    next: 'Next →',
+    back: '← Back',
+    disableNext: () => room.uuid.length < 8 || uuidTaken
+  }, {
+    next: 'Next →',
+    back: '← Back',
+    disableNext: () => !room.weekCount
+  }, {
+    next: 'Create room',
+    back: '← Back',
+    disableNext: () => false
+  }]
+  const disableNext = useMemo(steps[step].disableNext, [step, room.uuid, room.weekCount])
   const next = () => setStep(step => step + 1)
   const back = () => setStep(step => step - 1)
   const submit = () => (
-    createRoom(room).then(() => navigate(`room`, { state: { uuid: room.uuid } }))
+    createRoom(room).then(() => navigate(`room`, { state: room }))
   )
+
 
   return (
     <div className="setup-room setup">
@@ -72,11 +89,11 @@ const SetupRoom = () => {
         </div>
       </div>
       <div className="setup-room-controls setup-controls">
-        {step > 0 && <button onClick={back} className="btn btn-blue">{stepText.back[step]}</button>}
+        {step > 0 && <button onClick={back} className="btn btn-blue">{steps[step].back}</button>}
         <div className="setup-room-controls-divider setup-controls-divider">
           {step > 0 && <Progress step={step-1} max={3} />}
         </div>
-        <button onClick={step < 3 ? next : submit} className="btn btn-blue">{stepText.next[step]}</button>
+        <button disabled={disableNext} onClick={step < 3 ? next : submit} className="btn btn-blue">{steps[step].next}</button>
       </div>
     </div>
   )

@@ -633,10 +633,17 @@ pre tt:after {
 
 .btn {
   @apply font-bold py-2 px-4 rounded;
+  &[disabled] {
+    @apply opacity-50;
+    &:hover {
+      cursor: not-allowed;
+      @apply bg-blue-500;
+    }
+  }
 }
 .btn-blue {
   @apply bg-blue-500 text-white;
-}
-.btn-blue:hover {
-  @apply bg-blue-700;
+  &:hover {
+    @apply bg-blue-700;
+  }
 }

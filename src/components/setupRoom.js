@@ -12,6 +12,7 @@ import "../styles/setup.scss"
 const SetupRoom = () => {
   const linkRef = useRef()
   const [step, setStep] = useState(0)
+  const [submitting, setSubmitting] = useState(false)
   const room = useRoomContext(phrase({ exactly: 3, join: '-' }))
   const steps = [{
     nextText: 'Ok, got it!',
@@ -28,7 +29,8 @@ const SetupRoom = () => {
   }, {
     nextText: 'Create room',
     backText: '← Back',
-    canProceed: () => true
+    canProceed: () => true,
+    submitting
   }]
 
   return (
@@ -83,9 +85,13 @@ const SetupRoom = () => {
         back: () => setStep(step => step - 1),
         next: step < steps.length -1
           ? () => setStep(step => step + 1)
-          : () => createRoom(room).then(() => (
-            navigate(`room`, { state: { uuid: room.uuid } })
-          ))
+          : () => {
+            setSubmitting(true)
+            createRoom(room).then(
+              () => navigate(`room`, { state: { uuid: room.uuid } }),
+              () => setSubmitting(false)
+            )
+          }
       }} />
     </div>
   )

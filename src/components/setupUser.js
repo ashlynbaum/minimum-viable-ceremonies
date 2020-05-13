@@ -11,6 +11,7 @@ const SetupUser = () => {
   const allRoles = Object.values(roles).flat()
 
   const [step, setStep] = useState(0)
+  const [submitting, setSubmitting] = useState(false)
   const [{ id, name, role }, setUser] = useState({
     id: phrase({ exactly: 3, join: '-' }),
     name: ''
@@ -30,7 +31,8 @@ const SetupUser = () => {
   }, {
     nextText: 'Enter room',
     backText: '← Back',
-    canProceed: () => true
+    canProceed: () => true,
+    submitting
   }]
 
   return (
@@ -77,9 +79,13 @@ const SetupUser = () => {
         back: () => setStep(step => step - 1),
         next: step < steps.length -1
           ? () => setStep(step => step + 1)
-          : () => setParticipant({ uuid }, { id, name, role }).then(() => (
-            loginAs({ id, name, role })
-          ))
+          : () => {
+            setSubmitting(true)
+            setParticipant({ uuid }, { id, name, role }).then(
+              () => loginAs({ id, name, role }),
+              () => setSubmitting(false)
+            )
+          }
       }} />
     </div>
   )

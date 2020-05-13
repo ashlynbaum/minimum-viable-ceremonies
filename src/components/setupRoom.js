@@ -33,8 +33,9 @@ const SetupRoom = () => {
   const disableNext = useMemo(steps[step].disableNext, [step, room.uuidValid, room.weekCountValid])
   const next = () => setStep(step => step + 1)
   const back = () => setStep(step => step - 1)
-  const submit = () => createRoom(room).then(() => navigate(`room`, { state: room }))
-
+  const submit = () => createRoom(room).then(
+    () => navigate(`room`, { state: { uuid: room.uuid } })
+  )
 
   return (
     <div className="setup-room setup">

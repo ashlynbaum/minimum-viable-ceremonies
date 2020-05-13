@@ -1,0 +1,12 @@
+.controls {
+  display: flex;
+  flex-direction: row;
+  padding: 24px;
+}
+
+.controls-divider {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

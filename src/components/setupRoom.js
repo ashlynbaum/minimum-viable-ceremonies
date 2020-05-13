@@ -1,11 +1,11 @@
-import React, { useState, useMemo, useRef } from "react"
+import React, { useState, useRef } from "react"
 import { navigate } from "gatsby"
 import { createRoom } from "../db/firebase"
 import { document } from "browser-monads"
 import phrase from "random-words"
 import useRoomContext from "../hooks/useRoomContext"
 
-import Progress from "./basic/progress"
+import Controls from "./basic/controls"
 
 import "../styles/setup.scss"
 
@@ -14,28 +14,22 @@ const SetupRoom = () => {
   const [step, setStep] = useState(0)
   const room = useRoomContext(phrase({ exactly: 3, join: '-' }))
   const steps = [{
-    next: 'Ok, got it!',
-    back: null,
-    disableNext: () => false
+    nextText: 'Ok, got it!',
+    backText: null,
+    canProceed: () => true
   }, {
-    next: 'Next →',
-    back: '← Back',
-    disableNext: () => !room.uuidValid
+    nextText: 'Next →',
+    backText: '← Back',
+    canProceed: () => room.uuidValid
   }, {
-    next: 'Next →',
-    back: '← Back',
-    disableNext: () => !room.weekCountValid
+    nextText: 'Next →',
+    backText: '← Back',
+    canProceed: () => room.weekCountValid
   }, {
-    next: 'Create room',
-    back: '← Back',
-    disableNext: () => false
+    nextText: 'Create room',
+    backText: '← Back',
+    canProceed: () => true
   }]
-  const disableNext = useMemo(steps[step].disableNext, [step, room.uuidValid, room.weekCountValid])
-  const next = () => setStep(step => step + 1)
-  const back = () => setStep(step => step - 1)
-  const submit = () => createRoom(room).then(
-    () => navigate(`room`, { state: { uuid: room.uuid } })
-  )
 
   return (
     <div className="setup-room setup">
@@ -84,13 +78,15 @@ const SetupRoom = () => {
           }}>Copy</button>
         </div>
       </div>
-      <div className="setup-room-controls setup-controls">
-        {step > 0 && <button onClick={back} className="btn btn-blue">{steps[step].back}</button>}
-        <div className="setup-room-controls-divider setup-controls-divider">
-          {step > 0 && <Progress step={step-1} max={3} />}
-        </div>
-        <button disabled={disableNext} onClick={step < 3 ? next : submit} className="btn btn-blue">{steps[step].next}</button>
-      </div>
+      <Controls index={step} max={steps.length-1} step={{
+        ...steps[step],
+        back: () => setStep(step => step - 1),
+        next: step < steps.length -1
+          ? () => setStep(step => step + 1)
+          : () => createRoom(room).then(() => (
+            navigate(`room`, { state: { uuid: room.uuid } })
+          ))
+      }} />
     </div>
   )
 }

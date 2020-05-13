@@ -1,15 +1,10 @@
 import React, { useState, useContext } from "react"
-import Progress from "./basic/progress"
+import Controls from "./basic/controls"
 import Context from "../contexts/room"
 import { setParticipant } from "../db/firebase"
 import phrase from "random-words"
 
 import "../styles/setup.scss"
-
-const stepText = {
-  next: ['Ok, got it!', 'Next →', 'Next →', 'Enter room'],
-  back: [null, '← Back', '← Back', '← Back']
-}
 
 const SetupUser = () => {
   const { uuid, roles, loginAs } = useContext(Context)
@@ -20,13 +15,23 @@ const SetupUser = () => {
     id: phrase({ exactly: 3, join: '-' }),
     name: ''
   })
-  const next = () => setStep(step => step + 1)
-  const back = () => setStep(step => step - 1)
-  const submit = () => (
-    setParticipant({ uuid }, { id, name, role }).then(() => (
-      loginAs({ id, name, role })
-    ))
-  )
+  const steps = [{
+    nextText: 'Ok, got it!',
+    backText: null,
+    canProceed: () => true
+  }, {
+    nextText: 'Next →',
+    backText: '← Back',
+    canProceed: () => !!name
+  }, {
+    nextText: 'Next →',
+    backText: '← Back',
+    canProceed: () => !!role
+  }, {
+    nextText: 'Enter room',
+    backText: '← Back',
+    canProceed: () => true
+  }]
 
   return (
     <div className="setup-user setup">
@@ -68,11 +73,15 @@ const SetupUser = () => {
         </div>
       </div>
       <div className="setup-user-controls setup-controls">
-        {step > 0 && <button onClick={back} className="btn btn-blue">{stepText.back[step]}</button>}
-        <div className="setup-user-controls-divider setup-controls-divider">
-          {step > 0 && <Progress step={step-1} max={3} />}
-        </div>
-        <button onClick={step < 3 ? next : submit} className="btn btn-blue">{stepText.next[step]}</button>
+        <Controls index={step} max={steps.length-1} step={{
+          ...steps[step],
+          back: () => setStep(step => step - 1),
+          next: step < steps.length -1
+            ? () => setStep(step => step + 1)
+            : () => setParticipant({ uuid }, { id, name, role }).then(() => (
+              loginAs({ id, name, role })
+            ))
+        }} />
       </div>
     </div>
   )

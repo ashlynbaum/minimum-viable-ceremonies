@@ -40,16 +40,3 @@
     white-space: break-spaces;
   }
 }
-
-.setup-controls {
-  display: flex;
-  flex-direction: row;
-  padding: 24px;
-}
-
-.setup-controls-divider {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

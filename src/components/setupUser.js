@@ -72,17 +72,15 @@ const SetupUser = () => {
           <p>You'll be entering room {uuid} as {name}, acting as the {role}</p>
         </div>
       </div>
-      <div className="setup-user-controls setup-controls">
-        <Controls index={step} max={steps.length-1} step={{
-          ...steps[step],
-          back: () => setStep(step => step - 1),
-          next: step < steps.length -1
-            ? () => setStep(step => step + 1)
-            : () => setParticipant({ uuid }, { id, name, role }).then(() => (
-              loginAs({ id, name, role })
-            ))
-        }} />
-      </div>
+      <Controls index={step} max={steps.length-1} step={{
+        ...steps[step],
+        back: () => setStep(step => step - 1),
+        next: step < steps.length -1
+          ? () => setStep(step => step + 1)
+          : () => setParticipant({ uuid }, { id, name, role }).then(() => (
+            loginAs({ id, name, role })
+          ))
+      }} />
     </div>
   )
 }

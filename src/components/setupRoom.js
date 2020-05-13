@@ -13,9 +13,6 @@ const SetupRoom = () => {
   const linkRef = useRef()
   const [step, setStep] = useState(0)
   const room = useRoomContext(phrase({ exactly: 3, join: '-' }))
-  const uuidTaken = useMemo(() => (
-    false // TODO check to see if uuid is taken
-  ), [room.uuid])
   const steps = [{
     next: 'Ok, got it!',
     back: null,
@@ -23,22 +20,20 @@ const SetupRoom = () => {
   }, {
     next: 'Next →',
     back: '← Back',
-    disableNext: () => room.uuid.length < 8 || uuidTaken
+    disableNext: () => !room.uuidValid
   }, {
     next: 'Next →',
     back: '← Back',
-    disableNext: () => !room.weekCount
+    disableNext: () => !room.weekCountValid
   }, {
     next: 'Create room',
     back: '← Back',
     disableNext: () => false
   }]
-  const disableNext = useMemo(steps[step].disableNext, [step, room.uuid, room.weekCount])
+  const disableNext = useMemo(steps[step].disableNext, [step, room.uuidValid, room.weekCountValid])
   const next = () => setStep(step => step + 1)
   const back = () => setStep(step => step - 1)
-  const submit = () => (
-    createRoom(room).then(() => navigate(`room`, { state: room }))
-  )
+  const submit = () => createRoom(room).then(() => navigate(`room`, { state: room }))
 
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { setupRoom } from "../db/firebase"
 
 const useRoomContext = id => {
@@ -55,11 +55,16 @@ const useRoomContext = id => {
     )
   )
 
+  const uuidValid = useMemo(() => (
+    uuid && uuid.length >= 8
+  ), [uuid])
+  const weekCountValid = useMemo(() => (
+    !!weekCount
+  ), [weekCount])
+
   return {
-    uuid,
-    setUuid,
-    weekCount,
-    setWeekCount,
+    uuid, uuidValid, setUuid,
+    weekCount, weekCountValid, setWeekCount,
     user,
     loginAs,
     participants,

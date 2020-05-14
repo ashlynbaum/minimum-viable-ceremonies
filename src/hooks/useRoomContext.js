@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react"
-import { setupRoom, setCeremony } from "../db/firebase"
+import { setupRoom, setCeremony, setParticipant } from "../db/firebase"
 
 const useRoomContext = id => {
   const allCeremonies = [
@@ -16,7 +16,7 @@ const useRoomContext = id => {
   const [uuid, setUuid] = useState(id)
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [user, loginAs] = useState()
+  const [user, setUser] = useState()
   const [weekCount, setWeekCount] = useState()
   const [participants, setParticipants] = useState({})
   const [ceremonies, setCeremonies] = useState(allCeremonies.reduce(
@@ -48,12 +48,18 @@ const useRoomContext = id => {
     uuid, uuidValid, setUuid,
     weekCount, weekCountValid, setWeekCount,
     user,
-    loginAs,
     participants,
     ceremonies,
     setup,
     ready,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
+    login: ({ id, name, role }) => {
+      const currentUser = { id, name, role, host: !participants }
+      return setParticipant({ uuid }, currentUser).then(() => {
+        setParticipants(current => ({ ...current, [currentUser.name]: currentUser }))
+        setUser(currentUser)
+      })
+    },
     place: (name, placement) => {
       const updated = { ...ceremonies[name], placement }
       setCeremony({ uuid }, updated)

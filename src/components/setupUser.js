@@ -1,13 +1,12 @@
 import React, { useState, useContext } from "react"
 import Controls from "./basic/controls"
 import Context from "../contexts/room"
-import { setParticipant } from "../db/firebase"
 import phrase from "random-words"
 
 import "../styles/setup.scss"
 
 const SetupUser = () => {
-  const { uuid, loginAs, participants, allRoles } = useContext(Context)
+  const { uuid, login, allRoles } = useContext(Context)
 
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
@@ -85,10 +84,7 @@ const SetupUser = () => {
           ? () => setStep(step => step + 1)
           : () => {
             setSubmitting(true)
-            setParticipant({ uuid }, { id, name, role, host: !participants }).then(
-              () => loginAs({ id, name, role }),
-              () => setSubmitting(false)
-            )
+            login({ id, name, role }).catch(() => setSubmitting(false))
           }
       }} />
     </div>

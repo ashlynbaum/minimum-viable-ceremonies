@@ -1,3 +1,17 @@
+.board-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+}
+
+.board-participants {
+  display: flex;
+  flex-direction: row;
+}
+
 .board-cadences {
   display: flex;
   flex-direction: column;

@@ -11,7 +11,7 @@ const Cadence = ({ name, value }) => {
     {({ innerRef, droppableProps, placeholder }) => (
       <div ref={innerRef} {...droppableProps}>
         <Card type="cadences" name={name} />
-        {placedOn(value).map((name, index) => (
+        {placedOn(value).map(({ name }, index) => (
           <Ceremony key={name} name={name} index={index} />
         ))}
       </div>

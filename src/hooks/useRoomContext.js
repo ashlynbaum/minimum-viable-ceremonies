@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react"
-import { setupRoom } from "../db/firebase"
+import { setupRoom, setCeremony } from "../db/firebase"
 
 const useRoomContext = id => {
   const allCeremonies = [
@@ -53,7 +53,12 @@ const useRoomContext = id => {
     ceremonies,
     setup,
     ready,
-    placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence)
+    placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
+    place: (name, placement) => {
+      const updated = { ...ceremonies[name], placement }
+      setCeremony({ uuid }, updated)
+      setCeremonies(current => ({ ...current, [name]: updated }))
+    }
   }
 }
 

@@ -10,14 +10,11 @@ const DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 const OTHER = ["weekly", "monthly", "quarterly", "halfyearly", "void"]
 
 const Board = ({ weekCount = 1 }) => {
-  const { uuid, ceremonies, placedOn } = useContext(Context)
+  const { uuid, placedOn, place } = useContext(Context)
 
   return (
     <DragDropContext onDragEnd={({ draggableId, destination }) => (
-      setCeremony({ uuid }, {
-        ...ceremonies[draggableId],
-        placement: destination.droppableId
-      })
+      place(draggableId, destination.droppableId)
     )}>
       <div className="board">
         <h1>{uuid}</h1>

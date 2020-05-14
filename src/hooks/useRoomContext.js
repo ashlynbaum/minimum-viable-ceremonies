@@ -20,7 +20,7 @@ const useRoomContext = id => {
   const [weekCount, setWeekCount] = useState()
   const [participants, setParticipants] = useState({})
   const [ceremonies, setCeremonies] = useState(allCeremonies.reduce(
-    (result, name) => ({ ...result, [name]: { name, placement: 'undecided' } })
+    (result, name) => ({ ...result, [name]: { name, placement: 'undecided', method: 'sync' } })
   , {}))
 
   const setup = () => {

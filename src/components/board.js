@@ -4,7 +4,6 @@ import Ceremony from "../components/cards/ceremony"
 import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import Context from "../contexts/room"
 import "../styles/board.scss"
-import { setCeremony } from "../db/firebase"
 
 const DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 const OTHER = ["weekly", "monthly", "quarterly", "halfyearly", "void"]

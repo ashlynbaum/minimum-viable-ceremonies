@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react"
+import { useCookies } from "react-cookie"
 import { setupRoom, setCeremony, setParticipant } from "../db/firebase"
 
 const useRoomContext = id => {
@@ -16,7 +17,7 @@ const useRoomContext = id => {
   const [uuid, setUuid] = useState(id)
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [user, setUser] = useState()
+  const [cookie, setCookie, removeCookie] = useCookies([uuid])
   const [weekCount, setWeekCount] = useState()
   const [participants, setParticipants] = useState({})
   const [ceremonies, setCeremonies] = useState(allCeremonies.reduce(
@@ -36,9 +37,14 @@ const useRoomContext = id => {
     })
   }
 
+  const currentUser = useMemo(() => (
+    Object.values(participants).find(p => p.id === cookie[uuid])
+  ), [participants, cookie, uuid])
+
   const uuidValid = useMemo(() => (
     uuid && uuid.length >= 8
   ), [uuid])
+
   const weekCountValid = useMemo(() => (
     !!weekCount
   ), [weekCount])
@@ -47,19 +53,20 @@ const useRoomContext = id => {
     allRoles, allCeremonies,
     uuid, uuidValid, setUuid,
     weekCount, weekCountValid, setWeekCount,
-    user,
+    currentUser,
     participants,
     ceremonies,
     setup,
     ready,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
     login: ({ id, name, role }) => {
-      const currentUser = { id, name, role, host: !participants }
-      return setParticipant({ uuid }, currentUser).then(() => {
-        setParticipants(current => ({ ...current, [currentUser.name]: currentUser }))
-        setUser(currentUser)
+      const user = { id, name, role, host: !participants }
+      return setParticipant({ uuid }, user).then(() => {
+        setParticipants(current => ({ ...current, [user.id]: user }))
+        setCookie(uuid, id)
       })
     },
+    logout: () => removeCookie(uuid),
     place: (name, placement) => {
       const updated = { ...ceremonies[name], placement }
       setCeremony({ uuid }, updated)

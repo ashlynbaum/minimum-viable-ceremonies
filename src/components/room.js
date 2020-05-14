@@ -13,7 +13,7 @@ const Room = ({ uuid }) => {
   if (!context.ready) {
     context.setup()
     DisplayComponent = Loading
-  } else if (!context.user) {
+  } else if (!context.currentUser) {
     DisplayComponent = SetupUser
   } else {
     DisplayComponent = Board

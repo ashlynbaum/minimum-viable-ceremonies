@@ -7,8 +7,7 @@ import phrase from "random-words"
 import "../styles/setup.scss"
 
 const SetupUser = () => {
-  const { uuid, roles, loginAs } = useContext(Context)
-  const allRoles = Object.values(roles).flat()
+  const { uuid, loginAs, participants, allRoles } = useContext(Context)
 
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
@@ -86,7 +85,7 @@ const SetupUser = () => {
           ? () => setStep(step => step + 1)
           : () => {
             setSubmitting(true)
-            setParticipant({ uuid }, { id, name, role }).then(
+            setParticipant({ uuid }, { id, name, role, host: !participants }).then(
               () => loginAs({ id, name, role }),
               () => setSubmitting(false)
             )

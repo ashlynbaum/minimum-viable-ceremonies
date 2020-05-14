@@ -4,19 +4,21 @@ import Ceremony from "../components/cards/ceremony"
 import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import Context from "../contexts/room"
 import "../styles/board.scss"
+import { setCeremony } from "../db/firebase"
 
 const DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 const OTHER = ["weekly", "monthly", "quarterly", "halfyearly", "void"]
 
 const Board = ({ weekCount = 1 }) => {
-  const {
-    uuid,
-    ceremonies,
-    moveCeremony,
-  } = useContext(Context)
+  const { uuid, ceremonies, placedOn } = useContext(Context)
 
   return (
-    <DragDropContext onDragEnd={moveCeremony}>
+    <DragDropContext onDragEnd={({ draggableId, destination }) => (
+      setCeremony({ uuid }, {
+        ...ceremonies[draggableId],
+        placement: destination.droppableId
+      })
+    )}>
       <div className="board">
         <h1>{uuid}</h1>
         <div className="board-cadences">
@@ -31,7 +33,7 @@ const Board = ({ weekCount = 1 }) => {
           <Droppable droppableId="undecided">
             {({ innerRef, droppableProps, placeholder }) => (
               <div ref={innerRef} className="board-ceremonies">
-                {ceremonies.undecided.map((name, index) => (
+                {placedOn('undecided').map(({ name }, index) => (
                   <Ceremony key={name} name={name} index={index} />
                 ))}
                 {placeholder}

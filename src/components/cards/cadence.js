@@ -5,13 +5,13 @@ import { Droppable } from "react-beautiful-dnd"
 import Context from "../../contexts/room"
 
 const Cadence = ({ name, value }) => {
-  const { ceremonies } = useContext(Context)
+  const { placedOn } = useContext(Context)
 
   return <Droppable key={value} droppableId={value}>
     {({ innerRef, droppableProps, placeholder }) => (
       <div ref={innerRef} {...droppableProps}>
         <Card type="cadences" name={name} />
-        {ceremonies[value] && ceremonies[value].map((name, index) => (
+        {placedOn(value).map((name, index) => (
           <Ceremony key={name} name={name} index={index} />
         ))}
       </div>

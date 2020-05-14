@@ -31,7 +31,7 @@ const useRoomContext = id => {
       setUuid(state.uuid)
       setWeekCount(state.weekCount)
       setCeremonies(state.ceremonies)
-      setParticipants(state.participants)
+      setParticipants(state.participants || {})
       setReady(true)
     })
   }

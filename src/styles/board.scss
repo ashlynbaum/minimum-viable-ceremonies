@@ -1,15 +1,55 @@
-.board-navbar {
+@import 'colors';
+
+.board {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+}
+
+.board-sidebar {
+  color: $grey-darkest;
+  display: flex;
+  flex-direction: column;
+  background: $grey-lightest;
+  box-shadow: 0 -1px 4px $grey-darkest;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  font-size: 14px;
+  min-width: 250px;
+  font-weight: bold;
+  z-index: 100;
+}
+
+.board-sidebar-name {
+  padding: 12px;
+  display: flex;
   align-items: center;
-  padding: 8px;
-  background: rgba(0,0,0,0.5);
-  color: white;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &:hover {
+    background: $grey-dark;
+  }
+}
+
+.board-sidebar-collapse {
+  font-weight: bold;
+}
+
+.board-participants-title {
+  font-size: 12px;
+  font-family: Inter;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 16px;
+  color: $grey;
+  margin: 0;
 }
 
 .board-participants {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .board-cadences {

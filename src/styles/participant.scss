@@ -1,12 +1,54 @@
+@import 'colors';
+
 .participant {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  width: 100%;
+  color: $grey-darkest;
+
+  &:hover {
+    background: $grey-dark;
+
+    .participant-actions {
+      opacity: 1;
+    }
+  }
+}
+
+.participant-icon {
   border-radius: 100%;
   background: #abcabc;
-  color: black;
   margin: 0 4px;
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.participant-roles {
+  margin-left: 36px;
+}
+
+.participant-role {
+  display: inline-block;
+}
+
+.participant-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.participant-name {
+  flex-grow: 1;
+}
+
+.participant-actions {
+  opacity: 0;
+  font-size: 20px;
+  font-weight: bold;
 }

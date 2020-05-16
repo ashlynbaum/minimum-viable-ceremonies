@@ -14,11 +14,13 @@ const Board = ({ weekCount = 1 }) => {
 
   return (
     <div className="board">
-      <div className="board-navbar">
-        <div className="board-name">
-          {uuid}
+      <div className="board-sidebar">
+        <div className="board-sidebar-name">
+          <div className="board-sidebar-name-title">{uuid}</div>
+          <button className="board-sidebar-collapse hover-state">{"<<"}</button>
         </div>
         <div className="board-participants">
+          <h3 className="board-participants-title">Team and roles</h3>
           {Object.values(participants).map(({ id, name, role }) => (
             <Participant key={id} name={name} role={role} />
           ))}

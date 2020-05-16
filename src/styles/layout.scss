@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import 'colors';
 
 html {
   font-family: sans-serif;
@@ -645,5 +646,16 @@ pre tt:after {
   @apply bg-blue-500 text-white;
   &:hover {
     @apply bg-blue-700;
+  }
+}
+
+.hover-state {
+  padding: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  color: $grey-darkest;
+  &:hover {
+    background: $grey-darker;
   }
 }

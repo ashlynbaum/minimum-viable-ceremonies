@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react"
 import { useCookies } from "react-cookie"
 import { setupRoom, setCeremony, setParticipant } from "../db/firebase"
+import { document } from "browser-monads"
 
 const useRoomContext = id => {
   const allCeremonies = [
@@ -49,10 +50,15 @@ const useRoomContext = id => {
     !!weekCount
   ), [weekCount])
 
+  const shareableLink = useMemo(() => (
+    `${document.location.origin}/room/${uuid}`
+  ), [uuid])
+
   return {
     allRoles, allCeremonies,
     uuid, uuidValid, setUuid,
     weekCount, weekCountValid, setWeekCount,
+    shareableLink,
     currentUser,
     participants,
     ceremonies,

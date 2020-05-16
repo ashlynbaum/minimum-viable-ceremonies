@@ -2,6 +2,8 @@ import React, { useContext } from "react"
 import Cadence from "../components/cards/cadence"
 import Ceremony from "../components/cards/ceremony"
 import Participant from "../components/participant"
+import Dropdown from "../components/basic/dropdown"
+import Sidebar from "../components/sidebar"
 import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import Context from "../contexts/room"
 import "../styles/board.scss"
@@ -14,18 +16,7 @@ const Board = ({ weekCount = 1 }) => {
 
   return (
     <div className="board">
-      <div className="board-sidebar">
-        <div className="board-sidebar-name">
-          <div className="board-sidebar-name-title">{uuid}</div>
-          <button className="board-sidebar-collapse hover-state">{"<<"}</button>
-        </div>
-        <div className="board-participants">
-          <h3 className="board-participants-title">Team and roles</h3>
-          {Object.values(participants).map(({ id, name, role }) => (
-            <Participant key={id} name={name} role={role} />
-          ))}
-        </div>
-      </div>
+      <Sidebar />
       <DragDropContext onDragEnd={({ draggableId, destination }) => (
         place(draggableId, destination.droppableId)
       )}>

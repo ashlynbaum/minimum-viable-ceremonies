@@ -1,0 +1,40 @@
+@import 'colors';
+
+.dropdown {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  cursor: pointer;
+
+  &:hover .dropdown-tooltip {
+    top: calc(100% + 4px);
+    opacity: 1;
+  }
+}
+
+.dropdown-tooltip {
+  transition: 0.2s ease-in-out;
+  position: absolute;
+  background: black;
+  color: $grey-lightest;
+  padding: 4px 8px;
+  text-align: left;
+  font-size: 12px;
+  border-radius: 4px;
+  top: 75%;
+  right: -50px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+
+  &:after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    background: black;
+    position: absolute;
+    left: 50%;
+    top: -4px;
+  }
+}

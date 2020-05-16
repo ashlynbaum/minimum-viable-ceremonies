@@ -81,7 +81,7 @@ const SetupRoom = () => {
             className="btn-input"
             name="link"
             readOnly={true}
-            value={`${document.location.origin}/room/${room.uuid}`}
+            value={room.shareableLink}
           />
           <button className="btn btn-blue" onClick={() => {
             linkRef.current.select()

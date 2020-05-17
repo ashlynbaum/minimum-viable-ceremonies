@@ -4,11 +4,13 @@ import Icon from "./icon"
 
 import "../../styles/dropdown.scss"
 
-const Dropdown = ({ klass, icon, size, text, tooltip, dropdown }) => (
+const Dropdown = ({ klass, position = 'right', icon, size, text, tooltip, dropdown, onClick }) => (
   <div className={`dropdown ${klass}`}>
-    {icon && <Icon icon={icon} size={size} />}
-    {text && <span>{text}</span>}
-    <div className="dropdown-tooltip">
+    <button className="dropdown-button hover-state" onClick={onClick}>
+      {icon && <Icon icon={icon} size={size} />}
+      {text && <span>{text}</span>}
+    </button>
+    <div className={`dropdown-tooltip ${position}`}>
       {tooltip}
     </div>
   </div>

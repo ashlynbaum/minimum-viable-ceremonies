@@ -39,9 +39,8 @@
 .sidebar-shareable-link {
   font-size: 12px;
   font-weight: normal;
-  padding: 0 4px;
-  display: flex;
   align-items: center;
+  margin-left: 12px;
   svg {
     margin-right: 4px;
     fill: $grey-darkest;

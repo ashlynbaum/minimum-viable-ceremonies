@@ -8,7 +8,7 @@ const Participant = ({ id, name, role }) => (
     <div className="participant-content">
       <div className="participant-icon">{name[0]}</div>
       <div className="participant-name">{name}</div>
-      <div className="participant-actions hover-state">
+      <div className="participant-actions">
         <Dropdown icon="basic/more-horizontal" size={16} tooltip="Edit profile" />
       </div>
     </div>

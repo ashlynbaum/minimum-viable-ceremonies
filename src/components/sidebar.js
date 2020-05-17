@@ -1,31 +1,36 @@
-import React, { useContext } from "react"
+import React, { useState, useContext } from "react"
 import Context from "../contexts/room"
 import Dropdown from "../components/basic/dropdown"
-import Icon from "../components/basic/icon"
 import Participant from "../components/participant"
 
 import "../styles/sidebar.scss"
 
 const Sidebar = () => {
   const { uuid, shareableLink, participants } = useContext(Context)
+  const [copied, setCopied] = useState(false)
 
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <div className="sidebar-title">
-          <span>Some name</span>
-          <Dropdown
-            klass="sidebar-shareable-link hover-state"
-            icon="basic/link"
-            size={16}
-            text={uuid}
-            tooltip="Click to copy shareable link"
-          />
-        </div>
+        <div className="sidebar-title">Some name</div>
         <Dropdown
-          klass="sidebar-collapse hover-state"
+          klass="sidebar-collapse"
           icon="arrows/chevrons-left"
           tooltip="Collapse the sidebar"
+        />
+      </div>
+      <div className="sidebar-actions">
+        <h3 className="sidebar-subtitle">Shareable link</h3>
+        <Dropdown
+          klass="sidebar-shareable-link"
+          icon="basic/link"
+          size={16}
+          text={uuid}
+          tooltip={copied ? "Copied to clipboard!" : "Click to copy shareable link"}
+          onClick={() => {
+            setCopied(true)
+            setTimeout(() => setCopied(false), 1000)
+          }}
         />
       </div>
       <div className="sidebar-participants">

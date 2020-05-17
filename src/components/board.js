@@ -1,8 +1,6 @@
 import React, { useContext } from "react"
 import Cadence from "../components/cards/cadence"
 import Ceremony from "../components/cards/ceremony"
-import Participant from "../components/participant"
-import Dropdown from "../components/basic/dropdown"
 import Sidebar from "../components/sidebar"
 import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import Context from "../contexts/room"
@@ -12,7 +10,7 @@ const DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 const OTHER = ["weekly", "monthly", "quarterly", "halfyearly", "void"]
 
 const Board = ({ weekCount = 1 }) => {
-  const { uuid, participants, placedOn, place } = useContext(Context)
+  const { placedOn, place } = useContext(Context)
 
   return (
     <div className="board">

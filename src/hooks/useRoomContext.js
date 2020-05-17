@@ -16,6 +16,7 @@ const useRoomContext = id => {
   ]
 
   const [uuid, setUuid] = useState(id)
+  const [name, setName] = useState("")
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
@@ -31,6 +32,7 @@ const useRoomContext = id => {
 
     setupRoom(uuid).then(state => {
       setUuid(state.uuid)
+      setName(state.name)
       setWeekCount(state.weekCount)
       setCeremonies(state.ceremonies)
       setParticipants(state.participants || {})
@@ -42,9 +44,9 @@ const useRoomContext = id => {
     Object.values(participants).find(p => p.id === cookie[uuid])
   ), [participants, cookie, uuid])
 
-  const uuidValid = useMemo(() => (
-    uuid && uuid.length >= 8
-  ), [uuid])
+  const nameValid = useMemo(() => (
+    name && name.length >= 8
+  ), [name])
 
   const weekCountValid = useMemo(() => (
     !!weekCount
@@ -55,8 +57,9 @@ const useRoomContext = id => {
   ), [uuid])
 
   return {
+    uuid,
     allRoles, allCeremonies,
-    uuid, uuidValid, setUuid,
+    name, nameValid, setName,
     weekCount, weekCountValid, setWeekCount,
     shareableLink,
     currentUser,
@@ -65,8 +68,8 @@ const useRoomContext = id => {
     setup,
     ready,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
-    login: ({ id, name, role }) => {
-      const user = { id, name, role, host: !participants }
+    login: ({ id, username, role }) => {
+      const user = { id, username, role, host: !participants }
       return setParticipant({ uuid }, user).then(() => {
         setParticipants(current => ({ ...current, [user.id]: user }))
         setCookie(uuid, id)

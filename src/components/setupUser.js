@@ -6,13 +6,13 @@ import phrase from "random-words"
 import "../styles/setup.scss"
 
 const SetupUser = () => {
-  const { uuid, login, allRoles } = useContext(Context)
+  const { name, login, allRoles } = useContext(Context)
 
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
-  const [{ id, name, role }, setUser] = useState({
+  const [{ id, username, role }, setUser] = useState({
     id: phrase({ exactly: 3, join: '-' }),
-    name: ''
+    username: ''
   })
   const steps = [{
     nextText: 'Ok, got it!',
@@ -21,7 +21,7 @@ const SetupUser = () => {
   }, {
     nextText: 'Next →',
     backText: '← Back',
-    canProceed: () => !!name
+    canProceed: () => !!username
   }, {
     nextText: 'Next →',
     backText: '← Back',
@@ -37,17 +37,17 @@ const SetupUser = () => {
     <div className="setup-user setup">
       <div className="setup-user-slidessetup-slide  setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
         <div className="setup-user-slide setup-slide setup-user-help">
-          <h1>Welcome to {uuid}!</h1>
+          <h1>Welcome to {name}!</h1>
           <p>Here is some help to get you started</p>
         </div>
         <div className="setup-user-slide setup-slide setup-user-name">
           <h1>First, what's your name?</h1>
           <input
             className="btn-input"
-            name="name"
+            name="username"
             placeholder="e.g. Sam Smooth"
-            value={name}
-            onChange={({ target: { value } }) => setUser(user => ({ ...user, name: value }))}
+            value={username}
+            onChange={({ target: { value } }) => setUser(user => ({ ...user, username: value }))}
             onKeyPress={({ which }) => ( // next on enter
               steps[1].canProceed() && which === 13 && setStep(step => step + 1)
             )}
@@ -74,7 +74,7 @@ const SetupUser = () => {
         </div>
         <div className="setup-user-slide setup-slide setup-user-link">
           <h1>Ready to go!</h1>
-          <p>You'll be entering room {uuid} as {name}, acting as the {role}</p>
+          <p>You'll be entering room {name} as {username}, acting as the {role}</p>
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{
@@ -84,7 +84,7 @@ const SetupUser = () => {
           ? () => setStep(step => step + 1)
           : () => {
             setSubmitting(true)
-            login({ id, name, role }).catch(() => setSubmitting(false))
+            login({ id, username, role }).catch(() => setSubmitting(false))
           }
       }} />
     </div>

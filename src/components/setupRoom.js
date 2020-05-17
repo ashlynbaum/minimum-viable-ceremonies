@@ -21,7 +21,7 @@ const SetupRoom = () => {
   }, {
     nextText: 'Next →',
     backText: '← Back',
-    canProceed: () => room.uuidValid
+    canProceed: () => room.nameValid
   }, {
     nextText: 'Next →',
     backText: '← Back',
@@ -45,9 +45,9 @@ const SetupRoom = () => {
           <input
             className="btn-input"
             name="uuid"
-            placeholder="e.g. wealthy-dusty-llama"
-            value={room.uuid}
-            onChange={({ target: { value } }) => room.setUuid(value)}
+            placeholder="e.g. Fun Zone"
+            value={room.name}
+            onChange={({ target: { value } }) => room.setName(value)}
             onKeyPress={({ which }) => ( // next on enter
               steps[1].canProceed() && which === 13 && setStep(step => step + 1)
             )}

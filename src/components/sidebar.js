@@ -6,13 +6,13 @@ import Participant from "../components/participant"
 import "../styles/sidebar.scss"
 
 const Sidebar = () => {
-  const { uuid, shareableLink, participants } = useContext(Context)
+  const { uuid, name, shareableLink, participants } = useContext(Context)
   const [copied, setCopied] = useState(false)
 
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <div className="sidebar-title">Some name</div>
+        <div className="sidebar-title">{name}</div>
         <Dropdown
           klass="sidebar-collapse"
           icon="arrows/chevrons-left"
@@ -35,8 +35,8 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-participants">
         <h3 className="sidebar-subtitle">Team and roles</h3>
-        {Object.values(participants).map(({ id, name, role }) => (
-          <Participant key={id} name={name} role={role} />
+        {Object.values(participants).map(({ id, username, role }) => (
+          <Participant key={id} username={username} role={role} />
         ))}
       </div>
     </div>

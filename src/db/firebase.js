@@ -2,8 +2,8 @@ import firebase from "gatsby-plugin-firebase"
 
 const rooms = () => firebase.database().ref('rooms')
 
-export const createRoom = ({ uuid, weekCount, ceremonies, participants }) => (
-  rooms().child(uuid).set({ uuid, weekCount, ceremonies, participants })
+export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) => (
+  rooms().child(uuid).set({ uuid, name, weekCount, ceremonies, participants })
 )
 
 export const setupRoom = uuid => {

@@ -3,11 +3,11 @@ import Dropdown from "../components/basic/dropdown"
 
 import "../styles/participant.scss"
 
-const Participant = ({ id, name, role }) => (
+const Participant = ({ id, username, role }) => (
   <div className="participant">
     <div className="participant-content">
-      <div className="participant-icon">{name[0]}</div>
-      <div className="participant-name">{name}</div>
+      <div className="participant-icon">{username[0]}</div>
+      <div className="participant-name">{username}</div>
       <div className="participant-actions">
         <Dropdown icon="basic/more-horizontal" size={16} tooltip="Edit profile" />
       </div>

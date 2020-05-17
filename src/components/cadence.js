@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from "react"
+import React, { useContext } from "react"
 import Context from "../contexts/room"
 import Ceremony from "../components/ceremony"
 import { Draggable, Droppable } from "react-beautiful-dnd"

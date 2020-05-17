@@ -1,6 +1,4 @@
 import React from "react"
-import Dropdown from "../components/basic/dropdown"
-import { Draggable } from "react-beautiful-dnd"
 
 import "../styles/ceremony.scss"
 

@@ -1,3 +1,49 @@
+board:
+  title: Minimum Viable Ceremonies
+  subtitle: Go through all ceremonies with the team and either add them to a cadence, a sprint, or the void.
+  ceremonies: Ceremonies
+  cadences: Cadences
+  void: The Void
+  sprint: Sprint week {{index}}
+common:
+  copy: Copy
 intro:
-  welcome: Welcome to Minimum Viable Ceremonies
+  welcome: Welcome to Minimum Viable Ceremonies!
   setupRoom: Start a new room
+participant:
+  edit: Edit info
+setup:
+  controls:
+    okGotIt: Ok, got it!
+    next: Next →
+    back: ← Back
+    createRoom: Create room
+    createUser: Enter room
+  room:
+    title: Welcome to Minimum Viable Ceremonies!
+    helptext: Here is some help to get you started
+    name: What would you like to call your room?
+    namePlaceholder: e.g. Fun Zone
+    weekCount: How long are your sprints?
+    weeksSingular: "{{weekCount}} week"
+    weeksPlural: "{{weekCount}} weeks"
+    ready: Ready to go!
+    linkHelptext: Just share the following link with your team to get started
+  user:
+    title: Welcome to {{name}}!
+    helptext: Here is some help to get you started
+    username: First, what's your name?
+    usernamePlaceholder: e.g. Sam Smooth
+    role: What role will you play?
+    ready: Ready to go!
+    summary: You'll be entering room {{name}} as {{username}}, acting as the {{role}}
+shareableLink:
+  copy: Click to copy shareable link
+  copied: Copied to clipboard!
+sidebar:
+  collapse: Collapse the sidebar
+  expand: Expand the sidebar
+  shareableLink: Shareable link
+  teamsAndRoles: Team and roles
+  setupRoom: New room
+  setupRoomTooltip: Create a new room

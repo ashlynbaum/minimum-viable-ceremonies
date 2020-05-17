@@ -1,11 +1,13 @@
 import React, { useState, useContext, useRef } from "react"
+import { document } from "browser-monads"
+import { useTranslation } from "react-i18next"
 import Dropdown from "../components/basic/dropdown"
 import Context from "../contexts/room"
-import { document } from "browser-monads"
 
 import "../styles/shareableLink.scss"
 
 const ShareableLink = ({ text }) => {
+  const { t } = useTranslation()
   const { shareableLink } = useContext(Context)
   const [copied, setCopied] = useState(false)
   const linkRef = useRef()
@@ -17,7 +19,7 @@ const ShareableLink = ({ text }) => {
         klass="light"
         text={text}
         size={16}
-        tooltip={copied ? "Copied to clipboard!" : "Click to copy shareable link"}
+        tooltip={t(`shareableLink.${copied ? 'copied' : 'copy'}`)}
         onClick={() => {
           setCopied(true)
           linkRef.current.select()

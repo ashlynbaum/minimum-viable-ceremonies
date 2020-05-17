@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react"
 import { navigate } from "gatsby"
+import { useTranslation } from "react-i18next"
 import Context from "../contexts/room"
 import Dropdown from "../components/basic/dropdown"
 import ShareableLink from "../components/shareableLink"
@@ -11,6 +12,7 @@ import "../styles/sidebar.scss"
 const Sidebar = () => {
   const { uuid, name, participants } = useContext(Context)
   const [expanded, setExpanded] = useState(true)
+  const { t } = useTranslation()
 
   return expanded ? (
     <div className="sidebar expanded">
@@ -19,18 +21,18 @@ const Sidebar = () => {
         <Dropdown
           klass="sidebar-collapse dark"
           icon="arrows/chevrons-left"
-          tooltip="Collapse the sidebar"
+          tooltip={t("sidebar.collapse")}
           onClick={() => setExpanded(false)}
         />
       </div>
       <div className="sidebar-actions">
-        <h3 className="sidebar-subtitle">Shareable link</h3>
+        <h3 className="sidebar-subtitle">{t("sidebar.shareableLink")}</h3>
         <div className="sidebar-option hover-state">
           <ShareableLink text={uuid} />
         </div>
       </div>
       <div className="sidebar-participants">
-        <h3 className="sidebar-subtitle">Team and roles</h3>
+        <h3 className="sidebar-subtitle">{t("sidebar.teamsAndRoles")}</h3>
         {Object.values(participants).map(({ id, username, role }) => (
           <div key={id} className="hover-state">
             <Participant username={username} role={role} />
@@ -42,8 +44,8 @@ const Sidebar = () => {
           klass="light"
           icon="basic/plus"
           size={16}
-          text="New room"
-          tooltip="Create a new room"
+          text={t("sidebar.setupRoom")}
+          tooltip={t("sidebar.setupRoomTooltip")}
           onClick={() => navigate("setupRoom")}
         />
       </div>
@@ -54,7 +56,7 @@ const Sidebar = () => {
         <Dropdown
           className="sidebar-expand"
           icon="arrows/chevrons-right"
-          tooltip="Expand the sidebar"
+          tooltip={t("sidebar.expand")}
           onClick={() => setExpanded(true)}
         />
       </div>
@@ -76,7 +78,7 @@ const Sidebar = () => {
         <Dropdown
           icon="basic/plus"
           size={16}
-          tooltip="Create a new room"
+          tooltip={t("sidebar.setupRoomTooltip")}
           onClick={() => navigate("setupRoom")}
         />
       </div>

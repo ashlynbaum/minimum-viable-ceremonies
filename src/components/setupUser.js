@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react"
+import { useTranslation } from "react-i18next"
 import Controls from "./basic/controls"
 import Context from "../contexts/room"
 import phrase from "random-words"
@@ -7,6 +8,7 @@ import "../styles/setup.scss"
 
 const SetupUser = () => {
   const { name, login, roles } = useContext(Context)
+  const { t } = useTranslation()
 
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
@@ -15,20 +17,20 @@ const SetupUser = () => {
     username: ''
   })
   const steps = [{
-    nextText: 'Ok, got it!',
+    nextText: "setup.controls.okGotIt",
     backText: null,
     canProceed: () => true
   }, {
-    nextText: 'Next →',
-    backText: '← Back',
+    nextText: "setup.controls.next",
+    backText: "setup.controls.back",
     canProceed: () => !!username
   }, {
-    nextText: 'Next →',
-    backText: '← Back',
+    nextText: "setup.controls.next",
+    backText: "setup.controls.back",
     canProceed: () => !!role
   }, {
-    nextText: 'Enter room',
-    backText: '← Back',
+    nextText: "setup.controls.createUser",
+    backText: "setup.controls.back",
     canProceed: () => true,
     submitting
   }]
@@ -37,15 +39,15 @@ const SetupUser = () => {
     <div className="setup-user setup">
       <div className="setup-user-slidessetup-slide  setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
         <div className="setup-user-slide setup-slide setup-user-help">
-          <h1>Welcome to {name}!</h1>
-          <p>Here is some help to get you started</p>
+          <h1>{t("setup.user.title", { name })}</h1>
+          <p>{t("setup.user.helptext")}</p>
         </div>
         <div className="setup-user-slide setup-slide setup-user-name">
-          <h1>First, what's your name?</h1>
+          <h1>{t("setup.user.username")}</h1>
           <input
             className="btn-input"
             name="username"
-            placeholder="e.g. Sam Smooth"
+            placeholder={t("setup.user.usernamePlaceholder")}
             value={username}
             onChange={({ target: { value } }) => setUser(user => ({ ...user, username: value }))}
             onKeyPress={({ which }) => ( // next on enter
@@ -55,7 +57,7 @@ const SetupUser = () => {
         </div>
         <div className="setup-user-slide setup-slide setup-user-cadence">
           <div className="setup-panel">
-            <h1>What role will you play?</h1>
+            <h1>{t("setup.user.role")}</h1>
             <div className="setup-radio-options">
               {Object.values(roles).map(({ id, name }) => (
                 <label key={id} className="setup-radio-option">
@@ -73,8 +75,8 @@ const SetupUser = () => {
           </div>
         </div>
         <div className="setup-user-slide setup-slide setup-user-link">
-          <h1>Ready to go!</h1>
-          <p>You'll be entering room {name} as {username}, acting as the {role}</p>
+          <h1>{t("setup.user.ready")}</h1>
+          <p>{t("setup.user.summary", { name, username, role })}</p>
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{

@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { useTranslation } from 'react-i18next'
 import Cadence from "../components/cadence"
 import Sidebar from "../components/sidebar"
 import { DragDropContext } from "react-beautiful-dnd"
@@ -8,6 +9,7 @@ import "../styles/board.scss"
 
 
 const Board = () => {
+  const { t } = useTranslation()
   const { place, weekCount } = useContext(Context)
 
   return (
@@ -18,18 +20,18 @@ const Board = () => {
       )}>
         <div className="flex flex-col board-content">
           <div className="board-title">
-            <h1>Minimum Viable Ceremonies</h1>
-            <p>Go through all ceremonies with the team and either add them to a cadence, a sprint, or the void.</p>
+            <h1>{t("board.title")}</h1>
+            <p>{t("board.subtitle")}</p>
           </div>
           <div className="flex flex-row justify-around">
             <div style={{flexBasis: "20%"}} className="flex flex-col">
-              <div className="sidebar-subtitle">Ceremonies</div>
+              <div className="sidebar-subtitle">{t("board.ceremonies")}</div>
               <Cadence className="flex-grow" id="undecided" />
             </div>
             <div style={{flexBasis: "80%"}} className="flex flex-col">
               <div className="flex flex-row">
                 <div style={{flexBasis: "60%"}} className="flex flex-col">
-                  <div className="sidebar-subtitle">Cadences</div>
+                  <div className="sidebar-subtitle">{t("board.cadences")}</div>
                   <div className="flex flex-row">
                     <div style={{flexBasis: "33.33%"}} className="flex flex-col">
                       <Cadence id="daily" />
@@ -46,13 +48,13 @@ const Board = () => {
                   </div>
                 </div>
                 <div style={{flexBasis: "40%"}} className="flex flex-col">
-                  <div className="sidebar-subtitle">The Void</div>
+                  <div className="sidebar-subtitle">{t("board.void")}</div>
                   <Cadence id="void" void={true} />
                 </div>
               </div>
               <div className="flex flex-col">
                 {[...Array(parseInt(weekCount))].map((_, index) => <div key={index}>
-                  <div className="sidebar-subtitle">Sprint week {index}</div>
+                  <div className="sidebar-subtitle">{t("board.sprint", { index: index+1 })}</div>
                   <div className="flex flex-row justify-around">
                     <Cadence basis={5} id={`monday-${index+1}`} />
                     <Cadence basis={5} id={`tuesday-${index+1}`} />

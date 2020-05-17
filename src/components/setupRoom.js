@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import { navigate } from "gatsby"
 import { createRoom } from "../db/firebase"
 import { document } from "browser-monads"
@@ -10,25 +11,26 @@ import Controls from "./basic/controls"
 import "../styles/setup.scss"
 
 const SetupRoom = () => {
+  const { t } = useTranslation()
   const linkRef = useRef()
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const room = useRoomContext(phrase({ exactly: 3, join: '-' }))
   const steps = [{
-    nextText: 'Ok, got it!',
+    nextText: "setup.controls.okGotIt",
     backText: null,
     canProceed: () => true
   }, {
-    nextText: 'Next →',
-    backText: '← Back',
+    nextText: "setup.controls.next",
+    backText: "setup.controls.back",
     canProceed: () => room.nameValid
   }, {
-    nextText: 'Next →',
-    backText: '← Back',
+    nextText: "setup.controls.next",
+    backText: "setup.controls.back",
     canProceed: () => room.weekCountValid
   }, {
-    nextText: 'Create room',
-    backText: '← Back',
+    nextText: "setup.controls.createRoom",
+    backText: "setup.controls.back",
     canProceed: () => true,
     submitting
   }]
@@ -37,15 +39,15 @@ const SetupRoom = () => {
     <div className="setup-room setup">
       <div className="setup-room-slides setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
         <div className="setup-room-slide setup-slide setup-room-help">
-          <h1>Welcome to Minimum Viable Ceremonies!</h1>
-          <p>Here is some help to get you started</p>
+          <h1>{t("setup.room.title", { name: room.name })}</h1>
+          <p>{t("setup.room.helptext")}</p>
         </div>
         <div className="setup-room-slide setup-slide setup-room-name">
-          <h1>What would you like to call your room?</h1>
+          <h1>{t("setup.room.name")}</h1>
           <input
             className="btn-input"
             name="name"
-            placeholder="e.g. Fun Zone"
+            placeholder={t("setup.room.namePlaceholder")}
             value={room.name}
             onChange={({ target: { value } }) => room.setName(value)}
             onKeyPress={({ which }) => ( // next on enter
@@ -55,7 +57,7 @@ const SetupRoom = () => {
         </div>
         <div className="setup-room-slide setup-slide setup-room-week-count">
           <div className="setup-panel">
-            <h1>How long are your sprints?</h1>
+            <h1>{t("setup.room.weekCount")}</h1>
             <div className="setup-radio-options">
               {[1,2].map(weekCount => (
                 <label className="setup-radio-option" key={weekCount}>
@@ -66,7 +68,7 @@ const SetupRoom = () => {
                     onChange={({ target: { value } }) => room.setWeekCount(value)}
                   />
                   <div className="setup-radio-option-label">
-                    {weekCount} week{weekCount === 1 ? '' : 's'}
+                    {t(weekCount === 1 ? "setup.room.weeksSingular" : "setup.room.weeksPlural", { weekCount })}
                   </div>
                 </label>
             ))}
@@ -74,8 +76,8 @@ const SetupRoom = () => {
           </div>
         </div>
         <div className="setup-room-slide setup-slide setup-room-link">
-          <h1>Ready to go!</h1>
-          <p>Just share the following link with your team to get started</p>
+          <h1>{t("setup.room.ready")}</h1>
+          <p>{t("setup.room.linkHelptext")}</p>
           <input
             ref={linkRef}
             className="btn-input"
@@ -86,7 +88,7 @@ const SetupRoom = () => {
           <button className="btn btn-blue" onClick={() => {
             linkRef.current.select()
             document.execCommand("copy")
-          }}>Copy</button>
+          }}>{t("common.copy")}</button>
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{

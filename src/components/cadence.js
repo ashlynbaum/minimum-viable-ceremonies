@@ -17,7 +17,7 @@ const Cadence = ({ id, basis, klass, showTitle }) => {
           className={`cadence flex-grow ${id} ${isDraggingOver ? 'highlight' : ''}`}
           {...droppableProps}
         >
-          <div>{cadences[id].name}</div>
+          {!['void', 'undecided'].includes(id) && <div>{cadences[id].name}</div>}
           {placedOn(id).map(({ id, icon, name, description }, index) => (
             <Draggable draggableId={id} index={index} key={id}>
               {({ innerRef, draggableProps, dragHandleProps }) => (

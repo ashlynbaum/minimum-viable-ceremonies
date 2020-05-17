@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return expanded ? (
     <div className="sidebar expanded">
-      <div className="sidebar-header">
+      <div className="sidebar-header hover-state">
         <div className="sidebar-title">{name}</div>
         <Dropdown
           klass="sidebar-collapse dark"

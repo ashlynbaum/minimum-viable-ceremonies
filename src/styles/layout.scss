@@ -638,9 +638,9 @@ pre tt:after {
   transition: 0.25s ease-in-out;
   color: $grey-darkest;
   &:hover {
-    background: $grey-dark;
+    background: $grey-lighter;
     &.dark {
-      background: $grey-darker;
+      background: $grey-light;
     }
   }
 }

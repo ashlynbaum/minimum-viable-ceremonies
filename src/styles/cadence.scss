@@ -10,11 +10,16 @@
   margin: 4px;
 
   &.highlight {
-    background: $grey-dark;
+    background: $grey-lighter;
   }
 
   &.void {
     background: $grey-darkest;
-    color: $grey-lightest;
+
+    .ceremony {
+      background: $grey-dark;
+      color: $grey-light;
+      opacity: 0.75;
+    }
   }
 }

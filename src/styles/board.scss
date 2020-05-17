@@ -1,6 +1,7 @@
 @import 'colors';
 
 .board {
+  color: $grey-darkest;
   min-height: 100%;
 
   .flex { width: 100%; }
@@ -15,7 +16,6 @@
 .board-title {
   h1 {
     font-size: 18px;
-    color: $grey-darkest;
     margin: 0;
     padding: 8px 0;
   }

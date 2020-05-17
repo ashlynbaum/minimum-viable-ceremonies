@@ -12,6 +12,9 @@
   padding: 16px;
   max-height: 100vh;
   overflow: auto;
+
+  .sidebar-subtitle { padding: 12px 4px; }
+
 }
 
 .board-title {
@@ -24,5 +27,6 @@
   p {
     color: $grey;
     font-size: 14px;
+    margin: 0;
   }
 }

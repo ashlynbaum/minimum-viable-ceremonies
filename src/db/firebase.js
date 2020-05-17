@@ -10,7 +10,7 @@ export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, set
   const room = rooms().child(uuid)
 
   room.child('participants').on('value', snapshot => (
-    Object.values(snapshot.toJSON())
+    Object.values(snapshot.toJSON() || [])
       .filter(({ id, username, role }) => {
         const participant = participants[id] || {}
         return username !== participant.username || role !== participant.role

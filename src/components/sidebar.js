@@ -33,7 +33,7 @@ const Sidebar = () => {
         <h3 className="sidebar-subtitle">Team and roles</h3>
         {Object.values(participants).map(({ id, username, role }) => (
           <div key={id} className="hover-state">
-            <Participant key={id} username={username} role={role} />
+            <Participant username={username} role={role} />
           </div>
         ))}
       </div>

@@ -6,14 +6,25 @@ export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) 
   rooms().child(uuid).set({ uuid, name, weekCount, ceremonies, participants })
 )
 
-export const setupRoom = uuid => {
+export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, setCeremonies }) => {
   const room = rooms().child(uuid)
 
   room.child('participants').on('value', snapshot => (
-    console.log('participants', snapshot)
+    Object.values(snapshot.toJSON())
+      .filter(({ id, username, role }) => {
+        const participant = participants[id] || {}
+        return username !== participant.username || role !== participant.role
+      }).map(({ id, username, role }) => setParticipants(current => ({
+        ...current, [id]: { ...current[id], username, role }
+      })))
   ))
-  room.child('placements').on('value', snapshot => (
-    console.log('participants', snapshot)
+
+  room.child('ceremonies').on('value', snapshot => (
+    Object.values(snapshot.toJSON())
+      .filter(({ id, placement }) => placement !== ceremonies[id].placement)
+      .map(({ id, placement }) => setCeremonies(current => ({
+        ...current, [id]: { ...current[id], placement }
+      })))
   ))
 
   return room.once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))

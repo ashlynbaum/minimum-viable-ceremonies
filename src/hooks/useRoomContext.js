@@ -29,7 +29,13 @@ const useRoomContext = id => {
     if (loading || !uuid) { return }
     setLoading(true)
 
-    setupRoom(uuid).then(state => {
+    setupRoom({
+      uuid,
+      ceremonies,
+      setCeremonies,
+      participants,
+      setParticipants,
+    }).then(state => {
       setUuid(state.uuid)
       setName(state.name)
       setWeekCount(state.weekCount)

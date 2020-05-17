@@ -63,7 +63,6 @@ const useRoomContext = id => {
     shareableLink,
     currentUser,
     participants,
-    ceremonies,
     setup,
     ready,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
@@ -75,10 +74,10 @@ const useRoomContext = id => {
       })
     },
     logout: () => removeCookie(uuid),
-    place: (name, placement) => {
-      const updated = { ...ceremonies[name], placement }
+    place: (id, placement) => {
+      const updated = { ...ceremonies[id], placement }
       setCeremony({ uuid }, updated)
-      setCeremonies(current => ({ ...current, [name]: updated }))
+      setCeremonies(current => ({ ...current, [id]: updated }))
     }
   }
 }

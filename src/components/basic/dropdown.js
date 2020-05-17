@@ -19,7 +19,7 @@ const Dropdown = ({
 
   return (
     <div className={`dropdown ${klass} ${open ? 'open' : 'closed'} hover-state`}>
-      <button
+      <div
         className="dropdown-button"
         onClick={clickToOpen ? () => setOpen(current => !current) : onClick}
         onMouseEnter={clickToOpen ? null : () => setOpen(true)}
@@ -27,7 +27,7 @@ const Dropdown = ({
       >
         {icon && <Icon icon={icon} size={size} />}
         {text && <span>{text}</span>}
-      </button>
+      </div>
       <div style={width ? {width} : {whiteSpace: 'nowrap'}} className={`dropdown-tooltip ${position}`}>
         {tooltip}
       </div>

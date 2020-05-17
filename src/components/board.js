@@ -8,12 +8,14 @@ import "../styles/board.scss"
 
 
 const Board = () => {
-  const { placedOn, place, weekCount } = useContext(Context)
+  const { place, weekCount } = useContext(Context)
 
   return (
     <div className="board flex flex-row">
       <Sidebar />
-      <DragDropContext onDragEnd={place}>
+      <DragDropContext onDragEnd={({ draggableId, destination }) => (
+        destination ? place(draggableId, destination.droppableId) : null
+      )}>
         <div className="flex flex-col board-content">
           <div className="board-title">
             <h1>Minimum Viable Ceremonies</h1>

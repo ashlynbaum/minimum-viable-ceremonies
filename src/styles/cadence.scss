@@ -9,6 +9,10 @@
   min-height: 120px;
   margin: 4px;
 
+  &.highlight {
+    background: #884444;
+  }
+
   &.void {
     background: $grey-darkest;
     color: $grey-lightest;

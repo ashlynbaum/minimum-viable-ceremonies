@@ -55,7 +55,6 @@ const useRoomContext = id => {
     `${document.location.origin}/room/${uuid}`
   ), [uuid])
 
-  console.log(ceremonies)
   return {
     uuid,
     roles, cadences, ceremonies,

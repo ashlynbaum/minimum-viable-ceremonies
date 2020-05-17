@@ -2,7 +2,7 @@
 
 .cadence {
   background: $grey-lightest;
-  box-shadow: 1px 1px 3px $grey-darkest;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
   border-radius: 4px;
   padding: 8px;
   font-size: 14px;
@@ -16,7 +16,7 @@
 }
 
 .cadence-ceremony {
-  box-shadow: 1px 1px 3px $grey-darkest;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
   margin: 4px 0;
   padding: 4px;
 }

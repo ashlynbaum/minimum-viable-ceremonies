@@ -33,8 +33,8 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-participants">
         <h3 className="sidebar-subtitle">{t("sidebar.teamsAndRoles")}</h3>
-        {Object.values(participants).map(({ id, username, role }) => (
-          <div key={id} className="hover-state">
+        {Object.values(participants).map(({ id, username, role }, index) => (
+          <div key={username} className="hover-state">
             <Participant username={username} role={role} />
           </div>
         ))}

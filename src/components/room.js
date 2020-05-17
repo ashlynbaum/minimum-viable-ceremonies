@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import Modal from "react-modal"
 import Loading from "../components/loading"
 import SEO from "../components/seo"
 import Board from "../components/board"
@@ -8,21 +9,38 @@ import useRoomContext from "../hooks/useRoomContext"
 
 const Room = ({ uuid }) => {
   const context = useRoomContext(uuid)
-  let DisplayComponent
+  const [creatingUser, setupUser] = useState()
+  if (!context.ready) { context.setup() }
 
-  if (!context.ready) {
-    context.setup()
-    DisplayComponent = Loading
-  } else if (!context.currentUser) {
-    DisplayComponent = SetupUser
-  } else {
-    DisplayComponent = Board
-  }
+  useEffect(() => {
+    if (context.ready && !context.currentUser) { setupUser(true) }
+  }, [context.ready, context.currentUser])
+
+  Modal.setAppElement("#___gatsby")
 
   return (
     <Context.Provider value={context}>
       <SEO title={`Minimum Viable Ceremonies | ${context.name}`} />
-      <DisplayComponent />
+      {!context.ready ? <Loading /> : <Board />}
+      <Modal
+        isOpen={creatingUser}
+        style={{
+          content: {
+            height: "auto",
+            top: "auto",
+            right: "20%",
+            left: "20%",
+            bottom: "auto",
+          },
+          overlay: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }
+        }}
+      >
+        <SetupUser onSubmit={() => setupUser(false)}/>
+      </Modal>
     </Context.Provider>
   )
 }

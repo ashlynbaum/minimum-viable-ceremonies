@@ -6,7 +6,7 @@ import phrase from "random-words"
 
 import "../styles/setup.scss"
 
-const SetupUser = () => {
+const SetupUser = ({ onSubmit }) => {
   const { name, login, roles } = useContext(Context)
   const { t } = useTranslation()
 
@@ -86,7 +86,9 @@ const SetupUser = () => {
           ? () => setStep(step => step + 1)
           : () => {
             setSubmitting(true)
-            login({ id, username, role }).catch(() => setSubmitting(false))
+            login({ id, username, role })
+              .then(onSubmit)
+              .catch(() => setSubmitting(false))
           }
       }} />
     </div>

@@ -11,3 +11,17 @@
   max-height: 100vh;
   overflow: auto;
 }
+
+.board-title {
+  h1 {
+    font-size: 18px;
+    color: $grey-darkest;
+    margin: 0;
+    padding: 8px 0;
+  }
+
+  p {
+    color: $grey;
+    font-size: 14px;
+  }
+}

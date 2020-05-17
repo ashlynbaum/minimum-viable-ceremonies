@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Icon from "./icon"
+import useScreenEnforcedRef from "../../hooks/useScreenEnforcedRef"
 
 import "../../styles/dropdown.scss"
 
@@ -16,6 +17,7 @@ const Dropdown = ({
   clickToOpen
 }) => {
   const [open, setOpen] = useState(false)
+  const tooltipRef = useScreenEnforcedRef()
 
   return (
     <div className={`dropdown ${klass} ${open ? 'open' : 'closed'} hover-state`}>
@@ -28,7 +30,7 @@ const Dropdown = ({
         {icon && <Icon icon={icon} size={size} />}
         {text && <span>{text}</span>}
       </div>
-      <div style={width ? {width} : {whiteSpace: 'nowrap'}} className={`dropdown-tooltip ${position}`}>
+      <div ref={tooltipRef} style={width ? {width} : {whiteSpace: 'nowrap'}} className={`dropdown-tooltip ${position}`}>
         {tooltip}
       </div>
     </div>

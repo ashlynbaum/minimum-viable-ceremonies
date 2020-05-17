@@ -627,12 +627,14 @@ pre tt:after {
 }
 
 .hover-state {
-  padding: 0 8px;
   border-radius: 4px;
   cursor: pointer;
   transition: 0.25s ease-in-out;
   color: $grey-darkest;
   &:hover {
+    &.light {
+      background: $grey-dark;
+    }
     background: $grey-darker;
   }
 }

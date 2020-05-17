@@ -2,6 +2,7 @@
 
 .sidebar {
   color: $grey-darkest;
+  position: relative;
   display: flex;
   flex-direction: column;
   background: $grey-lightest;
@@ -13,6 +14,47 @@
   font-size: 14px;
   min-width: 250px;
   z-index: 100;
+  transition: 0.5s ease-in-out;
+
+  &.expanded {
+    .sidebar-shareable-link {
+      padding-left: 12px;
+    }
+
+    .participant {
+      padding: 8px 0;
+    }
+  }
+
+  &.collapsed {
+    min-width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 0;
+  }
+}
+
+.sidebar-collapsed-item {
+  min-width: 44px;
+  min-height: 44px;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .participant { align-items: center; }
+  .participant-icon { margin: 0; }
+}
+
+.sidebar-expand {
+  position: absolute;
+  left: 100%;
+  top: 12px;
+  border-radius: 0 4px 4px 0;
+  background: $grey-lightest;
+  box-shadow: 0 -1px 4px $grey-darkest;
+  padding: 4px;
 }
 
 .sidebar-header {
@@ -40,7 +82,6 @@
   font-size: 12px;
   font-weight: normal;
   align-items: center;
-  margin-left: 12px;
   svg {
     margin-right: 4px;
     fill: $grey-darkest;
@@ -59,4 +100,8 @@
 .sidebar-participants {
   display: flex;
   flex-direction: column;
+
+  .hover-state {
+    padding: 0 8px;
+  }
 }

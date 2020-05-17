@@ -3,13 +3,10 @@
 .participant {
   display: flex;
   flex-direction: column;
-  padding: 12px;
   width: 100%;
   color: $grey-darkest;
 
   &:hover {
-    background: $grey-dark;
-
     .participant-actions {
       opacity: 1;
     }

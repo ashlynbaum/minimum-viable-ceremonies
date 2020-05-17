@@ -15,10 +15,11 @@
   min-width: 250px;
   z-index: 100;
   transition: 0.5s ease-in-out;
+  padding-bottom: 8px;
 
   &.expanded {
     .sidebar-shareable-link {
-      padding-left: 12px;
+      padding: 4px 12px;
     }
 
     .participant {
@@ -99,9 +100,27 @@
 
 .sidebar-participants {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
 
   .hover-state {
     padding: 0 8px;
+  }
+}
+
+.sidebar-collapsed-participants {
+  flex-grow: 1;
+}
+
+.sidebar-new-room {
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  padding: 4px;
+
+  svg {
+    margin-right: 4px;
   }
 }

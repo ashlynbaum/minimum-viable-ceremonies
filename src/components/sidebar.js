@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react"
+import { Link } from "gatsby"
 import Context from "../contexts/room"
+import Icon from "../components/basic/icon"
 import Dropdown from "../components/basic/dropdown"
 import ShareableLink from "../components/shareableLink"
 import Participant from "../components/participant"
@@ -35,6 +37,12 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
+      <div className="sidebar-new-room hover-state light">
+        <Link to="setupRoom">
+          <Icon icon="basic/plus" size={16} />
+          <span>New room</span>
+        </Link>
+      </div>
     </div>
   ) : (
     <div className="sidebar collapsed">
@@ -49,15 +57,23 @@ const Sidebar = () => {
       <div className="sidebar-collapsed-item hover-state">
         <ShareableLink />
       </div>
-      {Object.values(participants).map(({ id, username, role }) => (
-        <div className="sidebar-collapsed-item hover-state">
-          <Dropdown
-            klass="sidebar-collapsed-participant"
-            text={<ParticipantIcon key={id} username={username} role={role} />}
-            tooltip={`${username}: ${role}`}
-          />
-        </div>
-      ))}
+      <div className="sidebar-collapsed-participants">
+        {Object.values(participants).map(({ id, username, role }) => (
+          <div className="sidebar-collapsed-item hover-state">
+            <Dropdown
+              klass="sidebar-collapsed-participant"
+              text={<ParticipantIcon key={id} username={username} role={role} />}
+              tooltip={`${username}: ${role}`}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="sidebar-collapsed-item hover-state">
+        <Dropdown
+          text={<Link to="setupRoom"><Icon icon="basic/plus" size={16} /></Link>}
+          tooltip="Create a new room"
+        />
+      </div>
     </div>
   )
 }

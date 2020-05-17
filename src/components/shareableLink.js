@@ -25,7 +25,7 @@ const ShareableLink = ({ text }) => {
           setTimeout(() => setCopied(false), 1000)
         }}
       />
-      <textarea ref={linkRef} value={shareableLink} />
+      <textarea readOnly={true} ref={linkRef} value={shareableLink} />
     </div>
   )
 }

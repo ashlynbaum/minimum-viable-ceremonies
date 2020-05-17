@@ -34,7 +34,7 @@ const Sidebar = () => {
       <div className="sidebar-participants">
         <h3 className="sidebar-subtitle">Team and roles</h3>
         {Object.values(participants).map(({ id, username, role }) => (
-          <div className="hover-state">
+          <div key={id} className="hover-state">
             <Participant key={id} username={username} role={role} />
           </div>
         ))}
@@ -65,7 +65,7 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-collapsed-participants">
         {Object.values(participants).map(({ id, username, role }) => (
-          <div className="sidebar-collapsed-item hover-state">
+          <div key={id} className="sidebar-collapsed-item hover-state">
             <Dropdown
               klass="sidebar-collapsed-participant"
               text={<ParticipantIcon key={id} username={username} role={role} />}

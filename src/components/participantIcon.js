@@ -1,5 +1,4 @@
 import React from "react"
-import Dropdown from "../components/basic/dropdown"
 
 import "../styles/participant.scss"
 

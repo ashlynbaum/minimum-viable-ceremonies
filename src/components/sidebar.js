@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react"
 import { navigate } from "gatsby"
 import Context from "../contexts/room"
-import Icon from "../components/basic/icon"
 import Dropdown from "../components/basic/dropdown"
 import ShareableLink from "../components/shareableLink"
 import Participant from "../components/participant"
@@ -11,7 +10,6 @@ import "../styles/sidebar.scss"
 
 const Sidebar = () => {
   const { uuid, name, participants } = useContext(Context)
-  const [copied, setCopied] = useState(false)
   const [expanded, setExpanded] = useState(true)
 
   return expanded ? (

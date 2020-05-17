@@ -44,7 +44,7 @@ const SetupRoom = () => {
           <h1>What would you like to call your room?</h1>
           <input
             className="btn-input"
-            name="uuid"
+            name="name"
             placeholder="e.g. Fun Zone"
             value={room.name}
             onChange={({ target: { value } }) => room.setName(value)}

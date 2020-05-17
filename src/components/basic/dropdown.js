@@ -10,7 +10,7 @@ const Dropdown = ({ klass, position = 'right', icon, size, text, width, tooltip,
       {icon && <Icon icon={icon} size={size} />}
       {text && <span>{text}</span>}
     </button>
-    <div style={width ? {width} : {'white-space': 'nowrap'}} className={`dropdown-tooltip ${position}`}>
+    <div style={width ? {width} : {whiteSpace: 'nowrap'}} className={`dropdown-tooltip ${position}`}>
       {tooltip}
     </div>
   </div>

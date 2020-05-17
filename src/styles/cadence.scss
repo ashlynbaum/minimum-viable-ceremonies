@@ -1,0 +1,22 @@
+@import 'colors';
+
+.cadence {
+  background: $grey-lightest;
+  box-shadow: 1px 1px 3px $grey-darkest;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  min-height: 120px;
+  margin: 4px;
+
+  &.void {
+    background: $grey-darkest;
+    color: $grey-lightest;
+  }
+}
+
+.cadence-ceremony {
+  box-shadow: 1px 1px 3px $grey-darkest;
+  margin: 4px 0;
+  padding: 4px;
+}

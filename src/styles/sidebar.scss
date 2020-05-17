@@ -74,7 +74,6 @@
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
-  font-weight: bold;
 
   &:hover {
     background: $grey-dark;
@@ -97,6 +96,10 @@
     margin-right: 4px;
     fill: $grey-darkest;
   }
+}
+
+.sidebar-title {
+  font-weight: bold;
 }
 
 .sidebar-subtitle {

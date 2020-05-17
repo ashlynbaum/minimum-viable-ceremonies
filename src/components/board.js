@@ -28,7 +28,7 @@ const Board = () => {
             </div>
             <div style={{flexBasis: "80%"}} className="flex flex-col">
               <div className="flex flex-row">
-                <div className="flex flex-col">
+                <div style={{flexBasis: "60%"}} className="flex flex-col">
                   <div className="sidebar-subtitle">Cadences</div>
                   <div className="flex flex-row">
                     <div style={{flexBasis: "33.33%"}} className="flex flex-col">
@@ -45,7 +45,7 @@ const Board = () => {
                     </div>
                   </div>
                 </div>
-                <div style={{flexBasis: "20%"}} className="flex flex-col">
+                <div style={{flexBasis: "40%"}} className="flex flex-col">
                   <div className="sidebar-subtitle">The Void</div>
                   <Cadence id="void" void={true} />
                 </div>

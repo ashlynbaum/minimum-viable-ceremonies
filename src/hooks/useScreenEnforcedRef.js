@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react"
+import { useRef, useEffect } from "react"
 
 const useScreenEnforcedRef = () => {
   const ref = useRef()
@@ -7,7 +7,7 @@ const useScreenEnforcedRef = () => {
     console.log('wark!')
     if (!ref.current) { return }
 
-    const { top, height, left, width } = ref.current.getBoundingClientRect()
+    const { top, height } = ref.current.getBoundingClientRect()
     const topDiff = (top + height - window.innerHeight)
     if (topDiff > 0) {
       const matrix = getComputedStyle(ref.current).transform.match(/matrix\((.*)\)/)[1].split(',')

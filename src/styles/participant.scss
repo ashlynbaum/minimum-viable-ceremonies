@@ -34,6 +34,12 @@
   display: inline-block;
 }
 
+.participant-role-tooltip {
+  padding: 16px;
+  h3 { font-size: 20px; }
+  font-size: 14px;
+}
+
 .participant-content {
   display: flex;
   flex-direction: row;

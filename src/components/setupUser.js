@@ -6,7 +6,7 @@ import phrase from "random-words"
 import "../styles/setup.scss"
 
 const SetupUser = () => {
-  const { name, login, allRoles } = useContext(Context)
+  const { name, login, roles } = useContext(Context)
 
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
@@ -57,16 +57,16 @@ const SetupUser = () => {
           <div className="setup-panel">
             <h1>What role will you play?</h1>
             <div className="setup-radio-options">
-              {allRoles.map(role => (
-                <label key={role} className="setup-radio-option">
+              {Object.values(roles).map(({ id, name }) => (
+                <label key={id} className="setup-radio-option">
                   <input
                     type="radio"
                     name="role"
-                    value={role}
+                    value={id}
                     onChange={({ target: { value } }) => setUser(room => ({ ...room, role: value }))}
                     className="setup-user-role"
                   />
-                  <div className="setup-radio-option-label">{role}</div>
+                  <div className="setup-radio-option-label">{name}</div>
                 </label>
               ))}
             </div>

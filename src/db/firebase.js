@@ -31,5 +31,5 @@ export const setParticipant = ({ uuid }, participant) => (
 )
 
 export const setCeremony = ({ uuid }, ceremony) => (
-  rooms().child(`${uuid}/ceremonies/${ceremony.name}`).set(ceremony)
+  rooms().child(`${uuid}/ceremonies/${ceremony.id}`).set(ceremony)
 )

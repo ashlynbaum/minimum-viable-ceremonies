@@ -22,7 +22,7 @@ const useRoomContext = id => {
   const [weekCount, setWeekCount] = useState()
   const [participants, setParticipants] = useState({})
   const [ceremonies, setCeremonies] = useState(Object.values(ceremonyData).reduce(
-    (result, cadence) => ({ ...result, [cadence.id]: { ...cadence, placement: 'undecided' } })
+    (result, ceremony) => ({ ...result, [ceremony.id]: { ...ceremony, placement: 'undecided' } })
   , {}))
 
   const setup = () => {

@@ -18,8 +18,18 @@
   padding-bottom: 8px;
 
   &.expanded {
-    .sidebar-shareable-link {
+    .sidebar-option {
       padding: 4px 12px;
+
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      svg {
+        margin-right: 4px;
+      }
     }
 
     .participant {

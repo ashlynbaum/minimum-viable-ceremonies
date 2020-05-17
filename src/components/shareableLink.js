@@ -13,8 +13,8 @@ const ShareableLink = ({ text }) => {
   return (
     <div className="shareable-link">
       <Dropdown
-        klass="sidebar-shareable-link"
         icon="basic/link"
+        klass="light"
         text={text}
         size={16}
         tooltip={copied ? "Copied to clipboard!" : "Click to copy shareable link"}

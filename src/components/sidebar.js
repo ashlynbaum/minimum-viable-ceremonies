@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react"
-import { Link } from "gatsby"
+import { navigate } from "gatsby"
 import Context from "../contexts/room"
 import Icon from "../components/basic/icon"
 import Dropdown from "../components/basic/dropdown"
@@ -19,7 +19,7 @@ const Sidebar = () => {
       <div className="sidebar-header">
         <div className="sidebar-title">{name}</div>
         <Dropdown
-          klass="sidebar-collapse"
+          klass="sidebar-collapse dark"
           icon="arrows/chevrons-left"
           tooltip="Collapse the sidebar"
           onClick={() => setExpanded(false)}
@@ -27,21 +27,27 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-actions">
         <h3 className="sidebar-subtitle">Shareable link</h3>
-        <ShareableLink text={uuid} />
+        <div className="sidebar-option hover-state">
+          <ShareableLink text={uuid} />
+        </div>
       </div>
       <div className="sidebar-participants">
         <h3 className="sidebar-subtitle">Team and roles</h3>
         {Object.values(participants).map(({ id, username, role }) => (
-          <div className="hover-state light">
+          <div className="hover-state">
             <Participant key={id} username={username} role={role} />
           </div>
         ))}
       </div>
-      <div className="sidebar-new-room hover-state light">
-        <Link to="setupRoom">
-          <Icon icon="basic/plus" size={16} />
-          <span>New room</span>
-        </Link>
+      <div className="sidebar-option hover-state">
+        <Dropdown
+          klass="light"
+          icon="basic/plus"
+          size={16}
+          text="New room"
+          tooltip="Create a new room"
+          onClick={() => navigate("setupRoom")}
+        />
       </div>
     </div>
   ) : (
@@ -70,8 +76,10 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-collapsed-item hover-state">
         <Dropdown
-          text={<Link to="setupRoom"><Icon icon="basic/plus" size={16} /></Link>}
+          icon="basic/plus"
+          size={16}
           tooltip="Create a new room"
+          onClick={() => navigate("setupRoom")}
         />
       </div>
     </div>

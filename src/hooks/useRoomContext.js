@@ -3,17 +3,9 @@ import { useCookies } from "react-cookie"
 import { setupRoom, setCeremony, setParticipant } from "../db/firebase"
 import { document } from "browser-monads"
 import roles from "../data/roles"
-import cadences from "../data/cadences"
 import ceremonyData from "../data/ceremonies"
 
 const useRoomContext = id => {
-  // const allCeremonies = [
-  //   "checkin", "cleanup", "demo", "design_review", "documentation",
-  //   "estimation", "growth", "hackathon", "horizon", "insight", "planning",
-  //   "process", "retreat", "retrospective", "review", "roadmap", "social",
-  //   "solution", "spec", "standdown", "standup", "sync", "techdebt"
-  // ]
-
   const [uuid, setUuid] = useState(id)
   const [name, setName] = useState("")
   const [ready, setReady] = useState(false)
@@ -22,8 +14,8 @@ const useRoomContext = id => {
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
   const [weekCount, setWeekCount] = useState()
   const [participants, setParticipants] = useState({})
-  const [ceremonies, setCeremonies] = useState(Object.values(ceremonyData).reduce(
-    (result, ceremony) => ({ ...result, [ceremony.id]: { ...ceremony, placement: 'undecided' } })
+  const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
+    (result, id) => ({ ...result, [id]: { id, placement: 'undecided' } })
   , {}))
 
   const setup = () => {
@@ -64,7 +56,7 @@ const useRoomContext = id => {
 
   return {
     uuid,
-    roles, cadences, ceremonies,
+    roles, ceremonies,
     name, nameValid, setName,
     weekCount, weekCountValid, setWeekCount,
     shareableLink,

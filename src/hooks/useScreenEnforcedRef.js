@@ -4,7 +4,6 @@ const useScreenEnforcedRef = () => {
   const ref = useRef()
 
   const handleResize = () => {
-    console.log('wark!')
     if (!ref.current) { return }
 
     const { top, height } = ref.current.getBoundingClientRect()

@@ -18,6 +18,7 @@ const useRoomContext = id => {
   const [name, setName] = useState("")
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [creatingRoom, createRoom] = useState(false)
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
   const [weekCount, setWeekCount] = useState()
   const [participants, setParticipants] = useState({})
@@ -71,6 +72,7 @@ const useRoomContext = id => {
     participants,
     setup,
     ready,
+    creatingRoom, createRoom,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
     login: ({ id, username, role }) => {
       const user = { id, username, role, host: !participants }

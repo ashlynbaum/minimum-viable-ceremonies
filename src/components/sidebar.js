@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react"
-import { navigate } from "gatsby"
 import { useTranslation } from "react-i18next"
 import Context from "../contexts/room"
 import Dropdown from "../components/basic/dropdown"
@@ -10,7 +9,7 @@ import ParticipantIcon from "../components/participantIcon"
 import "../styles/sidebar.scss"
 
 const Sidebar = () => {
-  const { uuid, name, participants } = useContext(Context)
+  const { uuid, name, participants, createRoom } = useContext(Context)
   const [expanded, setExpanded] = useState(true)
   const { t } = useTranslation()
 
@@ -46,7 +45,7 @@ const Sidebar = () => {
           size={16}
           text={t("sidebar.setupRoom")}
           tooltip={t("sidebar.setupRoomTooltip")}
-          onClick={() => navigate("setupRoom")}
+          onClick={() => createRoom(true)}
         />
       </div>
     </div>
@@ -79,7 +78,7 @@ const Sidebar = () => {
           icon="basic/plus"
           size={16}
           tooltip={t("sidebar.setupRoomTooltip")}
-          onClick={() => navigate("setupRoom")}
+          onClick={() => createRoom(true)}
         />
       </div>
     </div>

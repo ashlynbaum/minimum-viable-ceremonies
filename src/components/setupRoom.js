@@ -10,7 +10,7 @@ import Controls from "./basic/controls"
 
 import "../styles/setup.scss"
 
-const SetupRoom = () => {
+const SetupRoom = ({ onSubmit }) => {
   const { t } = useTranslation()
   const linkRef = useRef()
   const [step, setStep] = useState(0)

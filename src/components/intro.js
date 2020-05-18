@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import SetupRoom from "../components/setupRoom"
 
 import "../styles/intro.scss"
-import board from "../images/board.svg"
+import BoardSvg from "../images/board.svg"
 
 const Intro = () => {
   const { t } = useTranslation()
@@ -24,7 +24,7 @@ const Intro = () => {
           </div>
         </div>
         <div className="intro-right">
-          <img src={board} alt="board" />
+          <BoardSvg />
         </div>
       </div>
       <Modal

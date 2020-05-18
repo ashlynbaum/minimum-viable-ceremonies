@@ -40,14 +40,7 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /images\/icons\/.*\/\.*svg/
-        }
-      }
-    },
+    `gatsby-plugin-react-svg`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

@@ -3,6 +3,8 @@ import { Router } from '@reach/router'
 import Layout from "../components/layout"
 import Room from "../components/room"
 
+import "../data/locales"
+
 const RoomPage = () => (
   <Layout>
     <Router>

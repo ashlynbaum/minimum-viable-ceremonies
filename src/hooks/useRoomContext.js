@@ -43,7 +43,7 @@ const useRoomContext = id => {
   ), [participants, cookie, uuid])
 
   const nameValid = useMemo(() => (
-    name && name.length >= 8
+    name && name.length >= 3
   ), [name])
 
   const weekCountValid = useMemo(() => (

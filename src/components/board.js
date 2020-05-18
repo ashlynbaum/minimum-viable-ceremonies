@@ -1,12 +1,11 @@
 import React, { useContext } from "react"
 import { useTranslation } from 'react-i18next'
-import Cadence from "../components/cadence"
-import Sidebar from "../components/sidebar"
 import { DragDropContext } from "react-beautiful-dnd"
+
+import Cadence from "./cadence"
+import Sidebar from "./sidebar"
 import Context from "../contexts/room"
-
 import "../styles/board.scss"
-
 
 const Board = () => {
   const { t } = useTranslation()

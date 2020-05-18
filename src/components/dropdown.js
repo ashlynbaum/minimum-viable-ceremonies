@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import Icon from "./icon"
-import useScreenEnforcedRef from "../../hooks/useScreenEnforcedRef"
 
-import "../../styles/dropdown.scss"
+import Icon from "./icon"
+import useScreenEnforcedRef from "../hooks/useScreenEnforcedRef"
+import "../styles/dropdown.scss"
 
 const Dropdown = ({
   klass,

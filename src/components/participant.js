@@ -1,7 +1,7 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import Dropdown from "../components/basic/dropdown"
 
+import Dropdown from "./dropdown"
 import "../styles/participant.scss"
 
 const Participant = ({ id, username, role }) => {

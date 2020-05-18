@@ -1,10 +1,11 @@
 import React from "react"
 import Modal from "react-modal"
-import Loading from "../components/loading"
-import SEO from "../components/seo"
-import Board from "../components/board"
-import SetupUser from "../components/setupUser"
-import SetupRoom from "../components/setupRoom"
+
+import Loading from "./loading"
+import SEO from "./seo"
+import Board from "./board"
+import SetupUser from "./setupUser"
+import SetupRoom from "./setupRoom"
 import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
 

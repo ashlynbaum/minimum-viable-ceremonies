@@ -1,8 +1,9 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+
 import Progress from "./progress"
-import Loading from "../loading"
-import "../../styles/controls.scss"
+import Loading from "./loading"
+import "../styles/controls.scss"
 
 const Controls = ({ step: { next, nextText, back, backText, canProceed, submitting }, index, max }) => {
   const { t } = useTranslation()

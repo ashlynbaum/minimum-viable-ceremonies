@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import Modal from "react-modal"
 import { useTranslation } from "react-i18next"
-import SetupRoom from "../components/setupRoom"
 
-import "../styles/intro.scss"
+import SetupRoom from "./setupRoom"
 import BoardSvg from "../images/board.svg"
+import "../styles/intro.scss"
 
 const Intro = () => {
   const { t } = useTranslation()

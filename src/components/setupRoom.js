@@ -1,13 +1,12 @@
 import React, { useState, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { navigate } from "gatsby"
-import { createRoom } from "../db/firebase"
 import { document } from "browser-monads"
 import phrase from "random-words"
-import useRoomContext from "../hooks/useRoomContext"
 
 import Controls from "./basic/controls"
-
+import { createRoom } from "../db/firebase"
+import useRoomContext from "../hooks/useRoomContext"
 import "../styles/setup.scss"
 
 const SetupRoom = ({ onSubmit }) => {

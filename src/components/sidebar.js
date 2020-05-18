@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
-import Context from "../contexts/room"
-import Dropdown from "../components/basic/dropdown"
-import ShareableLink from "../components/shareableLink"
-import Participant from "../components/participant"
-import ParticipantIcon from "../components/participantIcon"
 
+import Dropdown from "./basic/dropdown"
+import ShareableLink from "./shareableLink"
+import Participant from "./participant"
+import ParticipantIcon from "./participantIcon"
+import Context from "../contexts/room"
 import "../styles/sidebar.scss"
 
 const Sidebar = () => {

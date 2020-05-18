@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
-import Controls from "./basic/controls"
-import Context from "../contexts/room"
 import phrase from "random-words"
 
+import Controls from "./controls"
+import Context from "../contexts/room"
 import "../styles/setup.scss"
 
 const SetupUser = ({ onSubmit }) => {

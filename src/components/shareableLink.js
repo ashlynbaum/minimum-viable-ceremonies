@@ -1,9 +1,9 @@
 import React, { useState, useContext, useRef } from "react"
 import { document } from "browser-monads"
 import { useTranslation } from "react-i18next"
-import Dropdown from "../components/basic/dropdown"
-import Context from "../contexts/room"
 
+import Dropdown from "./dropdown"
+import Context from "../contexts/room"
 import "../styles/shareableLink.scss"
 
 const ShareableLink = ({ text }) => {

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { useTranslation } from "react-i18next"
 import { Draggable, Droppable } from "react-beautiful-dnd"
 
-import Ceremony from "../ceremony"
+import Ceremony from "./ceremony"
 import Context from "../contexts/room"
 import "../styles/cadence.scss"
 

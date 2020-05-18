@@ -6,23 +6,23 @@ It's written on the excellent [Gatsby](https://www.gatsbyjs.org/) framework.
 
 ###  🔧 **Developing.**
 
-    ```shell
-    gatsby develop
-    ```
+```shell
+gatsby develop
+```
 
 ###  🚀 **Building for production.**
 
-    ```shell
-    gatsby build
-    ```
+```shell
+gatsby build
+```
 
 ### 💫 **Deploying.**
 
 Pushing to the master branch of this repo will automatically publish to netlify:
 
-    ```
-    https://https://sleepy-bartik-fc7859.netlify.app/
-    ```
+```
+https://https://sleepy-bartik-fc7859.netlify.app/
+```
 
 ### 📖 **Translating**
 

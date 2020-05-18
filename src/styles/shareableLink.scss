@@ -1,4 +1,19 @@
+@import 'colors';
+
 .shareable-link {
+  font-weight: normal;
+  align-items: center;
+  cursor: pointer;
+
+  .hover-state {
+    padding: 4px;
+  }
+
+  svg {
+    margin-right: 4px;
+    fill: $grey-darkest;
+  }
+
   textarea {
     position: absolute;
     opacity: 0;

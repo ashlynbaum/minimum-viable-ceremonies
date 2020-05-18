@@ -9,7 +9,7 @@ import Context from "../contexts/room"
 import "../styles/sidebar.scss"
 
 const Sidebar = () => {
-  const { uuid, name, participants, createRoom } = useContext(Context)
+  const { uuid, shareableLink, name, participants, createRoom } = useContext(Context)
   const [expanded, setExpanded] = useState(true)
   const { t } = useTranslation()
 
@@ -27,7 +27,7 @@ const Sidebar = () => {
       <div className="sidebar-actions">
         <h3 className="sidebar-subtitle">{t("sidebar.shareableLink")}</h3>
         <div className="sidebar-option hover-state">
-          <ShareableLink text={uuid} />
+          <ShareableLink text={uuid} value={shareableLink} />
         </div>
       </div>
       <div className="sidebar-participants">
@@ -60,7 +60,7 @@ const Sidebar = () => {
         />
       </div>
       <div className="sidebar-collapsed-item hover-state">
-        <ShareableLink />
+        <ShareableLink text={uuid} value={shareableLink} direction="right" />
       </div>
       <div className="sidebar-collapsed-participants">
         {Object.values(participants).map(({ id, username, role }) => (

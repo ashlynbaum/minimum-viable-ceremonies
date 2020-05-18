@@ -1,14 +1,12 @@
-import React, { useState, useContext, useRef } from "react"
+import React, { useState, useRef } from "react"
 import { document } from "browser-monads"
 import { useTranslation } from "react-i18next"
 
 import Dropdown from "./dropdown"
-import Context from "../contexts/room"
 import "../styles/shareableLink.scss"
 
-const ShareableLink = ({ text }) => {
+const ShareableLink = ({ text, value, position }) => {
   const { t } = useTranslation()
-  const { shareableLink } = useContext(Context)
   const [copied, setCopied] = useState(false)
   const linkRef = useRef()
 
@@ -16,6 +14,7 @@ const ShareableLink = ({ text }) => {
     <div className="shareable-link">
       <Dropdown
         icon="basic/link"
+        position={position}
         klass="light"
         text={text}
         size={16}
@@ -27,7 +26,7 @@ const ShareableLink = ({ text }) => {
           setTimeout(() => setCopied(false), 1000)
         }}
       />
-      <textarea readOnly={true} ref={linkRef} value={shareableLink} />
+      <textarea readOnly={true} ref={linkRef} value={value} />
     </div>
   )
 }

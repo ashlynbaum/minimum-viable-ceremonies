@@ -644,3 +644,32 @@ pre tt:after {
     }
   }
 }
+
+.ReactModal {
+  &__Overlay {
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+
+    &--after-open {
+      opacity: 1;
+    }
+    &--before-close {
+      opacity: 0;
+    }
+  }
+
+  &__Content {
+    top: 15% !important;
+    transition: 0.2s ease-in-out;
+
+    &--after-open {
+      top: 20% !important;
+    }
+    &--before-close {
+      top: 15% !important;
+    }
+  }
+}
+
+.ReactModal__Overlay {
+}

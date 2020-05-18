@@ -1,17 +1,16 @@
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { navigate } from "gatsby"
-import { document } from "browser-monads"
 import phrase from "random-words"
 
 import Controls from "./controls"
+import ShareableLink from "./shareableLink"
 import { createRoom } from "../db/firebase"
 import useRoomContext from "../hooks/useRoomContext"
 import "../styles/setup.scss"
 
 const SetupRoom = ({ onSubmit }) => {
   const { t } = useTranslation()
-  const linkRef = useRef()
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const room = useRoomContext(phrase({ exactly: 3, join: '-' }))
@@ -77,17 +76,7 @@ const SetupRoom = ({ onSubmit }) => {
         <div className="setup-room-slide setup-slide setup-room-link">
           <h1>{t("setup.room.ready")}</h1>
           <p>{t("setup.room.linkHelptext")}</p>
-          <input
-            ref={linkRef}
-            className="btn-input"
-            name="link"
-            readOnly={true}
-            value={room.shareableLink}
-          />
-          <button className="btn btn-blue" onClick={() => {
-            linkRef.current.select()
-            document.execCommand("copy")
-          }}>{t("common.copy")}</button>
+          <ShareableLink text={room.shareableLink} value={room.shareableLink} position="bottom"/>
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{

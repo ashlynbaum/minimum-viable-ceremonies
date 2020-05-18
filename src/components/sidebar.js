@@ -27,7 +27,7 @@ const Sidebar = () => {
       <div className="sidebar-actions">
         <h3 className="sidebar-subtitle">{t("sidebar.shareableLink")}</h3>
         <div className="sidebar-option hover-state">
-          <ShareableLink text={uuid} value={shareableLink} />
+          <ShareableLink text={uuid} value={shareableLink} position="right" />
         </div>
       </div>
       <div className="sidebar-participants">
@@ -60,7 +60,7 @@ const Sidebar = () => {
         />
       </div>
       <div className="sidebar-collapsed-item hover-state">
-        <ShareableLink text={uuid} value={shareableLink} direction="right" />
+        <ShareableLink value={shareableLink} direction="right" />
       </div>
       <div className="sidebar-collapsed-participants">
         {Object.values(participants).map(({ id, username, role }) => (

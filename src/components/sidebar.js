@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
 
-import Dropdown from "./basic/dropdown"
+import Dropdown from "./dropdown"
 import ShareableLink from "./shareableLink"
 import Participant from "./participant"
 import ParticipantIcon from "./participantIcon"

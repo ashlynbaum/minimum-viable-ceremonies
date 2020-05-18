@@ -4,7 +4,7 @@ import { navigate } from "gatsby"
 import { document } from "browser-monads"
 import phrase from "random-words"
 
-import Controls from "./basic/controls"
+import Controls from "./controls"
 import { createRoom } from "../db/firebase"
 import useRoomContext from "../hooks/useRoomContext"
 import "../styles/setup.scss"

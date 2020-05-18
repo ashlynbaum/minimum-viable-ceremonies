@@ -13,10 +13,10 @@ const Intro = () => {
   Modal.setAppElement("#___gatsby")
 
   return (
-    <>
-      <div className="intro flex flex-row justify-center align-center">
+    <div className="intro flex flex-col justify-center align-center">
+      <div className="intro-content flex flex-row justify-center align-center">
         <div className="intro-left flex flex-col justify-center text-center align-center">
-          <h1>{t("intro.welcome")}</h1>
+          <h1 className="intro-title">{t("intro.welcome")}</h1>
           <div className="intro-new">
             <button className="btn btn-blue" onClick={() => setupRoom(true)}>
               {t("intro.setupRoom")}
@@ -47,7 +47,7 @@ const Intro = () => {
       >
         <SetupRoom />
       </Modal>
-    </>
+    </div>
   )
 }
 

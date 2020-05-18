@@ -1,13 +1,11 @@
-import React, { useContext } from "react"
-import {useTranslation } from "react-i18next"
+import React from "react"
+import { useTranslation } from "react-i18next"
 import Dropdown from "../components/basic/dropdown"
-import Context from "../contexts/room"
 
 import "../styles/participant.scss"
 
 const Participant = ({ id, username, role }) => {
   const { t } = useTranslation()
-  const { roles } = useContext(Context)
 
   return (
     <div className="participant">
@@ -28,11 +26,11 @@ const Participant = ({ id, username, role }) => {
           klass="dark"
           position="right-start"
           width={400}
-          text={`${roles[role].icon} ${roles[role].name}`}
+          text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
           tooltip={<div className="participant-role-tooltip">
-            <h3>{roles[role].icon} {roles[role].name}</h3>
+            <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
             <p>
-              {roles[role].description}
+              {t(`roles.${role}.description`)}
             </p>
           </div>}
         />

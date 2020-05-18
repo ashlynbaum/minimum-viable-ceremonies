@@ -5,6 +5,70 @@ board:
   cadences: Cadences
   void: The Void
   sprint: Sprint week {{index}}
+cadences:
+  undecided:
+    name: Ceremonies
+    description: Ceremonies which haven't been processed yet
+  daily:
+    name: Daily
+    description: Erry dang day
+  weekly:
+    name: Weekly
+    description: Once per week
+  monthly:
+    name: Monthly
+    description: Once per month
+  quarterly:
+    name: Quarterly
+    description: Once every three months
+  halfyearly:
+    name: Semi-annually
+    description: Once every six months
+  yearly:
+    name: Annually
+    description: Once per year
+  void:
+    name: The Void
+    description: Never
+  monday-1:
+    name: Monday
+    description: First monday of the sprint
+  tuesday-1:
+    name: Tuesday
+    description: First tuesday of the sprint
+  wednesday-1:
+    name: Wednesday
+    description: First wednesday of the sprint
+  thursday-1:
+    name: Thursday
+    description: First thursday of the sprint
+  friday-1:
+    name: Friday
+    description: First friday of the sprint
+  monday-2:
+    name: Monday
+    description: First monday of the sprint
+  tuesday-2:
+    name: Tuesday
+    description: First tuesday of the sprint
+  wednesday-2:
+    name: Wednesday
+    description: First wednesday of the sprint
+  thursday-2:
+    name: Thursday
+    description: First thursday of the sprint
+  friday-2:
+    name: Friday
+    description: First friday of the sprint
+ceremonies:
+  retrospective:
+    name: Retrospective
+    icon: 🤔
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+  demo:
+    name: Demo
+    icon: 🎉
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
 common:
   copy: Copy
 intro:
@@ -12,6 +76,35 @@ intro:
   setupRoom: Start a new room
 participant:
   edit: Edit info
+roles:
+  actioner:
+    name: Actioner
+    icon: 💪
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+  cheerleader:
+    name: Cheerleader
+    icon: 🎉
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+  conductor:
+    name: Conductor
+    icon: 🚄
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+  guardian:
+    name: Guardian
+    icon: 🛡️
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+  historian:
+    name: Historian
+    icon: 📚
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+  timekeeper:
+    name: Timekeeper
+    icon: ⏰
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+  wildcard:
+    name: Wildcard
+    icon: 🃏
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
 setup:
   controls:
     okGotIt: Ok, got it!

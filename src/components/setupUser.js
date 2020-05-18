@@ -59,7 +59,7 @@ const SetupUser = ({ onSubmit }) => {
           <div className="setup-panel">
             <h1>{t("setup.user.role")}</h1>
             <div className="setup-radio-options">
-              {Object.values(roles).map(({ id, name }) => (
+              {Object.values(roles).map(({ id }) => (
                 <label key={id} className="setup-radio-option">
                   <input
                     type="radio"
@@ -68,7 +68,7 @@ const SetupUser = ({ onSubmit }) => {
                     onChange={({ target: { value } }) => setUser(room => ({ ...room, role: value }))}
                     className="setup-user-role"
                   />
-                  <div className="setup-radio-option-label">{name}</div>
+                  <div className="setup-radio-option-label">{t(`roles.${id}.name`)}</div>
                 </label>
               ))}
             </div>

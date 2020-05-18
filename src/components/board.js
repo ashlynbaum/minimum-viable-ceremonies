@@ -31,18 +31,16 @@ const Board = () => {
               <div className="flex flex-row">
                 <div style={{flexBasis: "60%"}} className="flex flex-col">
                   <div className="sidebar-subtitle">{t("board.cadences")}</div>
-                  <div className="flex flex-row">
-                    <div style={{flexBasis: "33.33%"}} className="flex flex-col">
-                      <Cadence id="daily" />
-                      <Cadence id="quarterly" />
+                  <div className="flex flex-col">
+                    <div className="flex flex-row">
+                      <Cadence basis={3} id="daily" />
+                      <Cadence basis={3} id="weekly" />
+                      <Cadence basis={3} id="monthly" />
                     </div>
-                    <div style={{flexBasis: "33.33%"}} className="flex flex-col">
-                      <Cadence id="weekly" />
-                      <Cadence id="halfyearly" />
-                    </div>
-                    <div style={{flexBasis: "33.33%"}} className="flex flex-col">
-                      <Cadence id="monthly" />
-                      <Cadence id="yearly" />
+                    <div className="flex flex-row">
+                      <Cadence basis={3} id="quarterly" />
+                      <Cadence basis={3} id="halfyearly" />
+                      <Cadence basis={3} id="yearly" />
                     </div>
                   </div>
                 </div>

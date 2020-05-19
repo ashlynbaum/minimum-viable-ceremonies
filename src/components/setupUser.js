@@ -8,14 +8,15 @@ import Context from "../contexts/room"
 import "../styles/setup.scss"
 
 const SetupUser = ({ onSubmit }) => {
-  const { name, login, roles } = useContext(Context)
+  const { name, login, roleData } = useContext(Context)
   const { t } = useTranslation()
 
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
-  const [{ id, username, role }, setUser] = useState({
+  const [{ id, username, roles }, setUser] = useState({
     id: phrase({ exactly: 3, join: '-' }),
-    username: ''
+    username: '',
+    roles: [],
   })
   const steps = [{
     nextText: "setup.controls.okGotIt",
@@ -28,7 +29,7 @@ const SetupUser = ({ onSubmit }) => {
   }, {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
-    canProceed: () => !!role
+    canProceed: () => !!roles.length
   }, {
     nextText: "setup.controls.createUser",
     backText: "setup.controls.back",
@@ -59,13 +60,18 @@ const SetupUser = ({ onSubmit }) => {
           <div className="setup-panel">
             <h1>{t("setup.user.role")}</h1>
             <div className="mvc-radio-options justify-center">
-              {roles.map(role => (
+              {roleData.map(role => (
                 <label key={role} className="mvc-radio-option">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="role"
                     value={role}
-                    onChange={({ target: { value } }) => setUser(room => ({ ...room, role: value }))}
+                    onChange={({ target: { checked, value } }) => (
+                      setUser(current => ({
+                        ...current,
+                        roles: checked ? roles.concat(value) : roles.filter(r => r !== value)
+                      }))
+                    )}
                     className="setup-user-role"
                   />
                   <div className="mvc-radio-option-label">
@@ -88,7 +94,7 @@ const SetupUser = ({ onSubmit }) => {
         </div>
         <div className={`setup-user-slide setup-slide ${step === 3 ? 'active' : ''} setup-user-link`}>
           <h1>{t("setup.user.ready")}</h1>
-          <p>{t("setup.user.summary", { name, username, role })}</p>
+          <p>{t("setup.user.summary", { name, username, roles })}</p>
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{
@@ -98,7 +104,7 @@ const SetupUser = ({ onSubmit }) => {
           ? () => setStep(step => step + 1)
           : () => {
             setSubmitting(true)
-            login({ id, username, role }).catch(() => setSubmitting(false))
+            login({ id, username, roles }).catch(() => setSubmitting(false))
           }
       }} />
     </div>

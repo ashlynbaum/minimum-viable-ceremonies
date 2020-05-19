@@ -5,7 +5,7 @@ import Dropdown from "./dropdown"
 import Context from "../contexts/room"
 import "../styles/participant.scss"
 
-const Participant = ({ id, username, role }) => {
+const Participant = ({ id, username, roles }) => {
   const { t } = useTranslation()
   const { currentUser, setEditingUserId } = useContext(Context)
 
@@ -26,18 +26,21 @@ const Participant = ({ id, username, role }) => {
         </div>
       </div>
       <div className="participant-roles">
-        <Dropdown
-          klass="dark"
-          theme="light"
-          delay={750}
-          position="right-start"
-          width={400}
-          text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
-          tooltip={<div className="participant-role-tooltip">
-            <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
-            <p>{t(`roles.${role}.description`)}</p>
-          </div>}
-        />
+        {Object.values(roles).map(role => (
+          <Dropdown
+            key={role}
+            klass="dark"
+            theme="light"
+            delay={750}
+            position="right-start"
+            width={400}
+            text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
+            tooltip={<div className="participant-role-tooltip">
+              <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
+              <p>{t(`roles.${role}.description`)}</p>
+            </div>}
+          />
+        ))}
       </div>
     </div>
   )

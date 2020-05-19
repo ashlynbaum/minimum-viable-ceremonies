@@ -32,9 +32,9 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-participants">
         <h3 className="mvc-subtitle">{t("sidebar.teamsAndRoles")}</h3>
-        {Object.values(participants).map(({ id, username, role }, index) => (
+        {Object.values(participants).map(({ id, username, roles }, index) => (
           <div key={username} className="mvc-hover-state">
-            <Participant id={id} username={username} role={role} />
+            <Participant id={id} username={username} roles={roles} />
           </div>
         ))}
       </div>
@@ -63,12 +63,12 @@ const Sidebar = () => {
         <ShareableLink value={shareableLink} direction="right" />
       </div>
       <div className="sidebar-collapsed-participants">
-        {Object.values(participants).map(({ id, username, role }) => (
+        {Object.values(participants).map(({ id, username, roles }) => (
           <div key={id} className="sidebar-collapsed-item mvc-hover-state">
             <Dropdown
               klass="sidebar-collapsed-participant"
-              text={<ParticipantIcon key={id} id={id} username={username} role={role} />}
-              tooltip={`${username}: ${role}`}
+              text={<ParticipantIcon key={id} id={id} username={username} roles={roles} />}
+              tooltip={`${username}: ${roles.join(', ')}`}
             />
           </div>
         ))}

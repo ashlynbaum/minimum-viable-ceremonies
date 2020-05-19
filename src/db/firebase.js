@@ -11,11 +11,11 @@ export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, set
 
   room.child('participants').on('value', snapshot => (
     Object.values(snapshot.toJSON() || [])
-      .filter(({ id, username, role }) => {
+      .filter(({ id, username, roles }) => {
         const participant = participants[id] || {}
-        return username !== participant.username || role !== participant.role
-      }).map(({ id, username, role }) => setParticipants(current => ({
-        ...current, [id]: { ...current[id], id, username, role }
+        return username !== participant.username || roles !== participant.roles
+      }).map(({ id, username, roles }) => setParticipants(current => ({
+        ...current, [id]: { ...current[id], id, username, roles }
       })))
   ))
 

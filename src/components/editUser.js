@@ -7,7 +7,7 @@ import Context from "../contexts/room"
 import "../styles/editUser.scss"
 
 const EditUser = ({ onSubmit }) => {
-  const { editingUser, roles, login, setEditingUserId } = useContext(Context)
+  const { editingUser, roleData, login, setEditingUserId } = useContext(Context)
   const { t } = useTranslation()
   const [user, setUser] = useState(editingUser)
   const [submitting, setSubmitting] = useState(false)
@@ -24,14 +24,19 @@ const EditUser = ({ onSubmit }) => {
       />
       <h3 className="mvc-subtitle">{t("participant.roles")}</h3>
       <div className="justify-start mvc-radio-options edit-user-field">
-        {roles.map(role => (
+        {roleData.map(role => (
           <label key={role} className="mvc-radio-option">
             <input
-              type="radio"
+              type="checkbox"
               name="role"
               value={role}
-              checked={user.role === role}
-              onChange={({ target: { value } }) => setUser(current => ({ ...current, role: value }))}
+              checked={user.roles.includes(role)}
+              onChange={({ target: { value, checked } }) => (
+                setUser(current => ({
+                  ...current,
+                  roles: checked ? user.roles.concat(value) : user.roles.filter(r => r !== value)
+                }))
+              )}
               className="setup-user-role"
             />
             <div className="mvc-radio-option-label">

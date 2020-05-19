@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from "react"
 import { useCookies } from "react-cookie"
 import { setupRoom, setCeremony, setParticipant } from "../db/firebase"
 import { document } from "browser-monads"
-import roles from "../data/roles"
+import roleData from "../data/roles"
 import ceremonyData from "../data/ceremonies"
 
 const useRoomContext = (id, draft) => {
@@ -16,7 +16,6 @@ const useRoomContext = (id, draft) => {
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
     (result, id) => ({ ...result, [id]: { id, placement: 'undecided' } })
   , {}))
-  const [currentUserFlag, setCurrentUserFlag] = useState(false)
 
   useEffect(() => {
     if (draft || loading) { return }
@@ -42,7 +41,7 @@ const useRoomContext = (id, draft) => {
 
   const currentUser = useMemo(() => (
     Object.values(participants).find(p => p.id === cookie[uuid])
-  ), [participants, cookie, uuid, currentUserFlag])
+  ), [participants, cookie, uuid])
 
   const [editingRoomId, setEditingRoomId] = useState()
   const editingRoom = editingRoomId
@@ -67,7 +66,8 @@ const useRoomContext = (id, draft) => {
 
   return {
     uuid, setUuid,
-    roles, ceremonies,
+    roleData,
+    ceremonies,
     name, nameValid, setName,
     weekCount, weekCountValid, setWeekCount,
     shareableLink,
@@ -78,12 +78,11 @@ const useRoomContext = (id, draft) => {
     editingUser, setEditingUserId,
     editingCeremony, setEditingCeremonyId,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
-    login: ({ id, username, role }, cookie = true) => {
-      const user = { id, username, role, host: !participants }
+    login: ({ id, username, roles }, cookie = true) => {
+      const user = { id, username, roles, host: !participants }
       return setParticipant({ uuid }, user).then(() => {
         if (cookie) { setCookie(uuid, id) }
         setParticipants(current => ({ ...current, [user.id]: user }))
-        setCurrentUserFlag(current => !current)
       })
     },
     logout: () => removeCookie(uuid),

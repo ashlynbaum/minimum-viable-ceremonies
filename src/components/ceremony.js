@@ -29,7 +29,6 @@ const Ceremony = ({ id }) => {
         position="right-start"
         theme="light"
         delay={1000}
-        borderRadius="50px"
         tooltip={<>
           <div className={theme(t(`ceremonies.${id}.theme`))}>
             {t(`ceremonies.${id}.theme`)}

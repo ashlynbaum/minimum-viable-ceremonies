@@ -98,9 +98,7 @@ const SetupUser = ({ onSubmit }) => {
           ? () => setStep(step => step + 1)
           : () => {
             setSubmitting(true)
-            login({ id, username, role })
-              .then(onSubmit)
-              .catch(() => setSubmitting(false))
+            login({ id, username, role }).catch(() => setSubmitting(false))
           }
       }} />
     </div>

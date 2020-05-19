@@ -1,11 +1,11 @@
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { useCookies } from "react-cookie"
 import { setupRoom, setCeremony, setParticipant } from "../db/firebase"
 import { document } from "browser-monads"
 import roles from "../data/roles"
 import ceremonyData from "../data/ceremonies"
 
-const useRoomContext = id => {
+const useRoomContext = (id, draft) => {
   const [uuid, setUuid] = useState(id)
   const [name, setName] = useState("")
   const [ready, setReady] = useState(false)
@@ -16,9 +16,11 @@ const useRoomContext = id => {
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
     (result, id) => ({ ...result, [id]: { id, placement: 'undecided' } })
   , {}))
+  const [currentUserFlag, setCurrentUserFlag] = useState(false)
 
-  const setup = () => {
-    if (loading || !uuid) { return }
+  useEffect(() => {
+    if (draft || loading) { return }
+    setReady(false)
     setLoading(true)
 
     setupRoom({
@@ -31,15 +33,16 @@ const useRoomContext = id => {
       setUuid(state.uuid)
       setName(state.name)
       setWeekCount(state.weekCount)
-      setCeremonies(state.ceremonies)
+      setCeremonies(state.ceremonies || {})
       setParticipants(state.participants || {})
+      setLoading(false)
       setReady(true)
     })
-  }
+  }, [uuid])
 
   const currentUser = useMemo(() => (
     Object.values(participants).find(p => p.id === cookie[uuid])
-  ), [participants, cookie, uuid])
+  ), [participants, cookie, uuid, currentUserFlag])
 
   const [editingRoomId, setEditingRoomId] = useState()
   const editingRoom = editingRoomId
@@ -63,14 +66,13 @@ const useRoomContext = id => {
   ), [uuid])
 
   return {
-    uuid,
+    uuid, setUuid,
     roles, ceremonies,
     name, nameValid, setName,
     weekCount, weekCountValid, setWeekCount,
     shareableLink,
     currentUser,
     participants,
-    setup,
     ready,
     editingRoom, setEditingRoomId,
     editingUser, setEditingUserId,
@@ -79,8 +81,9 @@ const useRoomContext = id => {
     login: ({ id, username, role }, cookie = true) => {
       const user = { id, username, role, host: !participants }
       return setParticipant({ uuid }, user).then(() => {
-        setParticipants(current => ({ ...current, [user.id]: user }))
         if (cookie) { setCookie(uuid, id) }
+        setParticipants(current => ({ ...current, [user.id]: user }))
+        setCurrentUserFlag(current => !current)
       })
     },
     logout: () => removeCookie(uuid),

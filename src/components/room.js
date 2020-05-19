@@ -13,10 +13,9 @@ import useRoomContext from "../hooks/useRoomContext"
 
 const Room = ({ uuid }) => {
   const context = useRoomContext(uuid)
-  if (!context.ready) { context.setup() }
 
   Modal.setAppElement("#___gatsby")
-  const buildModal = (Content, open, close) => (
+  const buildModal = (Content, open, close = function() {}, props = {}) => (
     <Modal isOpen={!!open} onRequestClose={close ? () => close(null) : undefined} style={{
       content: {
         height: "auto",
@@ -31,7 +30,7 @@ const Room = ({ uuid }) => {
         justifyContent: "center",
         alignItems: "center"
       }
-    }}><Content /></Modal>
+    }}><Content onSubmit={close} {...props} /></Modal>
   )
 
   return (
@@ -40,11 +39,11 @@ const Room = ({ uuid }) => {
       {context.ready ? <>
         <Board />
         {buildModal(SetupUser, !context.currentUser)}
-        {buildModal(SetupRoom, context.editingRoom, context.setEditingRoomId)}
-        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId)}
-        {buildModal(EditUser, context.editingUser, context.setEditingUserId, {
-          content: { overflow: "visible" },
+        {buildModal(SetupRoom, context.editingRoom, context.setEditingRoomId, {
+          onSubmit: uuid => context.setUuid(uuid) || context.setEditingRoomId(null)
         })}
+        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId)}
+        {buildModal(EditUser, context.editingUser, context.setEditingUserId)}
       </> : <Loading />}
     </Context.Provider>
   )

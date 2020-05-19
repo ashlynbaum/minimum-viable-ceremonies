@@ -1,4 +1,5 @@
 import React from "react"
+import Markdown from "react-markdown"
 import { useTranslation } from "react-i18next"
 
 import Dropdown from "./dropdown"
@@ -42,9 +43,9 @@ const Ceremony = ({ id }) => {
           <div className="ceremony-subheading">
             {t(`ceremonies.${id}.sub-heading`)}
           </div>
-          <p className="ceremony-description">
-            {t(`ceremonies.${id}.description`)}
-          </p>
+          <div className="ceremony-description">
+            <Markdown source={t(`ceremonies.${id}.description`)} />
+          </div>
         </>}
         text={[t(`ceremonies.${id}.icon`), t(`ceremonies.${id}.name`)].join(" ")}
       />

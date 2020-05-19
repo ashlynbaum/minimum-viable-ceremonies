@@ -68,6 +68,7 @@ ceremonies:
     sub-heading: What's up with you right now?
     description: |
       Often used to begin another ceremony, Personal Check-ins are a way to increase empathy and understanding between team members.
+
       For example, if someone says, "I had trouble sleeping last night." They may need more time to think and solve problems that day.
       Personal check-ins shouldn't be longer than a few minutes per person. Possible prompts may include, "What's on top?" or "Would you like to check-in?"
   cleanup:
@@ -77,6 +78,7 @@ ceremonies:
     sub-heading: Get rid of those stale tickets
     description: |
       A backlog should be representative of work that a team is going to get done in the near to medium term.
+
       Is there work in your backlog that your team is just not going to do? Use this ceremony to go through the backlog and close any tickets that are stale or that the team agrees are such low priority they are unlikely to get done.
   demo:
     name: Demo
@@ -84,7 +86,9 @@ ceremonies:
     theme: Coordination
     sub-heading: Celebrate how awesome your team is
     description: |
-      A Demo is an opportunity for people to share what they have accomplished recently with the team. It gives people a chance to receive acknowledgement for their work and to share learnings. Each person can share a small presentation, a video clip of what they've been working on, or just give a status update.
+      A Demo is an opportunity for people to share what they have accomplished recently with the team. It gives people a chance to receive acknowledgement for their work and to share learnings.
+
+      Each person can share a small presentation, a video clip of what they've been working on, or just give a status update.
   designReview:
     name: Design review
     icon: 🖍
@@ -92,6 +96,7 @@ ceremonies:
     sub-heading: Get designs ready for dev
     description: |
       Design Reviews bring developers, managers, and other team members together have to review the in-progress designs before they go into the build pipeline. Designs are often checked for technical considerations like component libraries, technical debt, completeness of design, or application architecture.
+
       Typically, a designer presents a solution to a problem to be built and gathers feedback from other technical members of the team. Design reviews tend to happen when solutions are fully formed into a high-fidelity mockup.
   documentation:
     name: Documentation
@@ -101,8 +106,11 @@ ceremonies:
     description: |
       Documentation has a reputation for being difficult and manual to maintain. It may require an extra effort to make sure it stays current. How does your team check the current state of the documentation and take steps to keep it up-to-date?
       Typical agenda items may include:
-      • review the current documentation, 
+
+      • review the current documentation
+
       • identify what is out-of-date, or
+
       • assign any changes to be made to the relevant team member.
   estimation:
     name: Estimation
@@ -111,6 +119,7 @@ ceremonies:
     sub-heading: How long will this take?
     description: |
       Estimation is a ceremony where team members put timeframes or a sizing on backlog tickets. Some teams like to use estimates to help project how much work a team can do in a given period of time and to assist in prioritization.
+
       In lieu of Estimation, some teams focus instead on creating consistently sized tickets and minimizing work in progress.
   growth:
     name: Professional Growth
@@ -118,10 +127,11 @@ ceremonies:
     theme: Innovation
     sub-heading: Always be learning
     description: |
-      In order for team members to improve their skills, they need dedicated learning time. 
+      In order for team members to improve their skills, they need dedicated learning time.
+
       This may look like:
-      • conferences or training courses, 
-      • open-source contributions, 
+      • conferences or training courses,
+      • open-source contributions,
       • mentorship and coaching, or
       • dedicated learning time (e.g. 10% time).
       Professional growth may look different to different team members. How does your team make sure that every person has the opportunity to grow in their career?
@@ -132,9 +142,13 @@ ceremonies:
     sub-heading: It's work. With pizza!
     description: |
       The people who build the product have excellent ideas for ways to improve it.  Giving team members time to explore those ideas can result in:
-      • a quick-win feature, 
-      • a prototype for a future direction that hasn't been considered yet, or 
+
+      • a quick-win feature,
+
+      • a prototype for a future direction that hasn't been considered yet, or
+
       • an excellent learning opportunity.
+
       Hackathons can range from 1 day to 2 weeks. Short Hackathons are good for gathering ideas, longer Hackathons are more likely to produce functionality.
   horizon:
     name: Horizon Planning
@@ -142,7 +156,8 @@ ceremonies:
     theme: Coordination
     sub-heading: What does the future look like?
     description: |
-      Horizon Planning is a ceremony to discuss and agree upon the long-term section of your roadmap. Horizon Planning includes defining the overarching strategy and long-term goals of the organization. 
+      Horizon Planning is a ceremony to discuss and agree upon the long-term section of your roadmap. Horizon Planning includes defining the overarching strategy and long-term goals of the organization.
+
       Horizon Planning can be a part of your Roadmap Update or Team Retreat ceremony, or it can be a standalone ceremony.
   insight:
     name: Insight Sharing
@@ -151,9 +166,12 @@ ceremonies:
     sub-heading: Expose people to customer insights
     description: |
       If your organization does user research, it's important to have a mechanism to share the research with the team so that people have a clear understanding of the customer.
+
       Ways to share research include:
       • have team members sit in on or take notes for research sessions,
+
       • hold ceremonies to share important pieces of research with the team, or
+
       • create a research library, and notify people when new research is published.
   planning:
     name: Sprint Planning
@@ -162,7 +180,9 @@ ceremonies:
     sub-heading: Figure out what to do next
     description: |
       Retrospectives are a facilitated conversation between the members of your team to reflect on the past sprint's work and identify risks. Everyone should have the chance to name what's gone well, what's been hard, and what changes could be made to optimize delivery, communication, or happiness going forward. Typical agenda items may include:
+
       • Good, Bad, Delta - What went well? What didn't go well? What changes should we make? or
+
       • Sailboat - What is moving us forward, the wind in our sails? What is holding us back, our anchors? What are our current risks, the rocks that we see ahead?
   process:
     name: Process definition
@@ -178,9 +198,13 @@ ceremonies:
     sub-heading: Bond as a team away from the office
     description: |
       A Team Retreat is an all-day or multi-day, off-site activity which creates the space for the team to connect and strategize.
+
       Agenda items may include:
+
       • Horizon planning - layout a 5-year roadmap, and signpost expected long-term business accomplishments,
+
       • Assumptions Mapping - make a list of strategic assumptions and come up with a plan to adjust the strategy or validate them, or
+
       • Team Building - activities to help the team get to know each other better.
   retrospective:
     name: Retrospective
@@ -189,8 +213,11 @@ ceremonies:
     sub-heading: Get better at being a team
     description: |
       Retrospectives are a facilitated conversation between the members of your team to reflect on the past sprint's work and identify risks. Everyone should have the chance to name what's gone well, what's been hard, and what changes could be made to optimize delivery, communication, or happiness going forward.
+
       Typical agenda items may include:
+
       • Good, Bad, Delta - What went well? What didn't go well? What changes should we make? or
+
       • Sailboat - What is moving us forward, the wind in our sails? What is holding us back, our anchors? What are our current risks, the rocks that we see ahead?
   review:
     name: Code review
@@ -199,6 +226,7 @@ ceremonies:
     sub-heading: Review other peoples code
     description: |
       Code Review is a great way to share knowledge across the team about code that's going into the repo, as well as reducing technical debt and defects.
+
       Code Review's ceremonies can happen online on an as-needed basis or can get scheduled into a cadence, where developers perform review tasks that have collected into a Code Review backlog.
   roadmap:
     name: Roadmap Update
@@ -206,9 +234,12 @@ ceremonies:
     theme: Delivery
     sub-heading: Review and update the roadmap
     description: |
-      Product roadmaps should reflect the near to long-term strategy and should be updated regularly to reflect present work-streams. A roadmap is a prioritised list of problems that need to be solved or outcomes expected to be achieved. 
-      Roadmap Update ceremonies have two parts: 
-      1. Gathering feedback to update the roadmap, and 
+      Product roadmaps should reflect the near to long-term strategy and should be updated regularly to reflect present work-streams. A roadmap is a prioritised list of problems that need to be solved or outcomes expected to be achieved.
+
+      Roadmap Update ceremonies have two parts:
+
+      1. Gathering feedback to update the roadmap, and
+
       2. Communicating changes to stakeholders.
 
   social:
@@ -217,11 +248,16 @@ ceremonies:
     theme: Culture
     sub-heading: The 'play hard' part of 'work hard, play hard'
     description: |
-      To be happy at work, you need to like the people you work with, and the best way to like people is to spend time with them socially. 
+      To be happy at work, you need to like the people you work with, and the best way to like people is to spend time with them socially.
+
       Social activities should either take place on company time or at company expense. It's important to invest in your culture!
+
       Activities may look like:
+
       • going out for lunch or grabbing a drink,
+
       • playing video games or board games, or
+
       • other activities like bowling, karaoke, or axe throwing.
   solution:
     name: Solution Design
@@ -242,7 +278,8 @@ ceremonies:
     icon: 🌙
     theme: Coordination
     sub-heading: What did you work on?
-    description: "The opposite of stand-up, a Stand-down is for reporting on the goals at the end of a work period, while everything is still fresh in your mind."
+    description: |
+      The opposite of stand-up, a Stand-down is for reporting on the goals at the end of a work period, while everything is still fresh in your mind.
   standup:
     name: Stand-up
     icon: 👋
@@ -250,9 +287,13 @@ ceremonies:
     sub-heading: What are you going to work on?
     description: |
       Stand-ups are used to give status updates about current work-in-progress.
+
       Team members can answer these questions:
+
       • What have you worked on since the last stand-up?
+
       • What do you plan to work on next?
+
       • Do you have any work that can't be progressed forwards and why?
   sync:
     name: Cross-Team Sync
@@ -260,11 +301,16 @@ ceremonies:
     theme: Coordination
     sub-heading: Collaborate with other teams in your organization
     description: |
-      For organizations that have more than one team, inter-team communication reduces the risk of conflicting priorities. 
+      For organizations that have more than one team, inter-team communication reduces the risk of conflicting priorities.
+
       Cross-team Syncs are great for:
-      • preventing siloed communication, 
-      • rolling-out new ideas or processes, and 
-      • creating a shared context. 
+
+      • preventing siloed communication,
+
+      • rolling-out new ideas or processes, and
+
+      • creating a shared context.
+
       Have a conversation to think about what scenarios should trigger the need for a Cross-team Sync."
   techdebt:
     name: Tech Debt Removal
@@ -272,7 +318,8 @@ ceremonies:
     theme: Delivery
     sub-heading: Make existing code better
     description: |
-      Improving old code can be a difficult thing to prioritize, but if not handled correctly, it can bring the entire organization to a halt. 
+      Improving old code can be a difficult thing to prioritize, but if not handled correctly, it can bring the entire organization to a halt.
+
       Some teams dedicate a certain amount of time in their cadence to completing tasks that make existing code more maintainable. How does your team plan to minimize or reduce technical debt?
 common:
   copy: Copy
@@ -318,7 +365,7 @@ roles:
     icon: 📚
     sub-heading: Get things written down
     description: |
-      These notes should be shared with the team after playing Minimum Viable Ceremonies. 
+      These notes should be shared with the team after playing Minimum Viable Ceremonies.
   timekeeper:
     name: Timekeeper
     icon: ⏰

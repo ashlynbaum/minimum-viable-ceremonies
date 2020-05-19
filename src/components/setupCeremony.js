@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { useTranslation } from "react-i18next"
-import moment from "moment"
-import TimePicker from "rc-time-picker"
+// import moment from "moment"
+// import TimePicker from "rc-time-picker"
 
 import Icon from "./icon"
 import Context from "../contexts/room"
@@ -55,15 +55,7 @@ const SetupCeremony = ({ onSubmit }) => {
             </div>
             <div>{t("setup.ceremony.time")}</div>
             <div>
-              <TimePicker
-                showSecond={false}
-                defaultValue={editingCeremony.time || moment().hour(16).minute(0)}
-                onChange={console.log}
-                format="h:mm a"
-                minuteStep={15}
-                use12Hours
-                inputReadOnly
-              />
+              TIME PICKER
             </div>
           </div>
           <div className="flex flex-col setup-ceremony-notes">

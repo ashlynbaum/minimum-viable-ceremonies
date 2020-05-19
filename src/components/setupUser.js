@@ -94,7 +94,7 @@ const SetupUser = ({ onSubmit }) => {
         </div>
         <div className={`setup-user-slide setup-slide ${step === 3 ? 'active' : ''} setup-user-link`}>
           <h1>{t("setup.user.ready")}</h1>
-          <p>{t("setup.user.summary", { name, username, roles })}</p>
+          <p>{t("setup.user.summary", { name, username })}</p>
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{

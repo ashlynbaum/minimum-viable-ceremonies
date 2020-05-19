@@ -411,7 +411,7 @@ setup:
     usernamePlaceholder: e.g. Sam Smooth
     role: What role will you play?
     ready: Ready to go!
-    summary: You'll be entering room {{name}} as {{username}}, acting as the {{role}}
+    summary: You'll be entering room {{name}} as {{username}}
 shareableLink:
   copy: Click to copy shareable link
   copied: Copied to clipboard!

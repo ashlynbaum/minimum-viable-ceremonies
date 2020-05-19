@@ -1,5 +1,21 @@
+@import 'colors';
+
 .ceremony {
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   margin: 8px 0;
   padding: 4px 8px;
+  width: 100%;
+
+  .dropdown-tooltip {
+    background: $grey-lightest;
+    color: $grey-darker;
+    padding: 20px;
+    box-shadow: 0 0 4px $grey-darker;
+  }
+}
+
+.ceremony-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }

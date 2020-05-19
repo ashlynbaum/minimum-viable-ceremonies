@@ -56,16 +56,16 @@ const SetupRoom = ({ onSubmit }) => {
         <div className="setup-room-slide setup-slide setup-room-week-count">
           <div className="setup-panel">
             <h1>{t("setup.room.weekCount")}</h1>
-            <div className="setup-radio-options">
+            <div className="mvc-radio-options">
               {[1,2].map(weekCount => (
-                <label className="setup-radio-option" key={weekCount}>
+                <label className="mvc-radio-option" key={weekCount}>
                   <input
                     type="radio"
                     name="weekCount"
                     value={weekCount}
                     onChange={({ target: { value } }) => room.setWeekCount(value)}
                   />
-                  <div className="setup-radio-option-label">
+                  <div className="mvc-radio-option-label">
                     {t(weekCount === 1 ? "setup.room.weeksSingular" : "setup.room.weeksPlural", { weekCount })}
                   </div>
                 </label>

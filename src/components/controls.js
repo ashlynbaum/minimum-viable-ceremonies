@@ -10,11 +10,11 @@ const Controls = ({ step: { next, nextText, back, backText, canProceed, submitti
 
   return (
     <div className="controls">
-      {index > 0 && <button onClick={back} className="btn btn-blue">{t(backText)}</button>}
+      {index > 0 && <button onClick={back} className="mvc-btn">{t(backText)}</button>}
       <div className="controls-divider">
         {index > 0 && <Progress step={index-1} max={max} />}
       </div>
-      <button disabled={!canProceed()} onClick={next} className="btn btn-blue">
+      <button disabled={!canProceed()} onClick={next} className="mvc-btn">
         {submitting && <Loading size={25} />}
         <span style={{ visibility: submitting ? 'hidden' : 'auto' }}>{t(nextText)}</span>
       </button>

@@ -18,7 +18,7 @@ const Intro = () => {
         <div className="intro-left flex flex-col justify-center text-center align-center">
           <h1 className="intro-title">{t("intro.welcome")}</h1>
           <div className="intro-new">
-            <button className="btn btn-blue" onClick={() => setupRoom(true)}>
+            <button className="mvc-btn" onClick={() => setupRoom(true)}>
               {t("intro.setupRoom")}
             </button>
           </div>

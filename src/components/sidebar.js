@@ -15,7 +15,7 @@ const Sidebar = () => {
 
   return expanded ? (
     <div className="sidebar expanded">
-      <div className="sidebar-header hover-state">
+      <div className="sidebar-header mvc-hover-state">
         <div className="sidebar-title">{name}</div>
         <Dropdown
           klass="sidebar-collapse dark"
@@ -25,20 +25,20 @@ const Sidebar = () => {
         />
       </div>
       <div className="sidebar-actions">
-        <h3 className="sidebar-subtitle">{t("sidebar.shareableLink")}</h3>
-        <div className="sidebar-option hover-state">
+        <h3 className="mvc-subtitle">{t("sidebar.shareableLink")}</h3>
+        <div className="sidebar-option mvc-hover-state">
           <ShareableLink text={uuid} value={shareableLink} position="right" />
         </div>
       </div>
       <div className="sidebar-participants">
-        <h3 className="sidebar-subtitle">{t("sidebar.teamsAndRoles")}</h3>
+        <h3 className="mvc-subtitle">{t("sidebar.teamsAndRoles")}</h3>
         {Object.values(participants).map(({ id, username, role }, index) => (
-          <div key={username} className="hover-state">
+          <div key={username} className="mvc-hover-state">
             <Participant username={username} role={role} />
           </div>
         ))}
       </div>
-      <div className="sidebar-option hover-state">
+      <div className="sidebar-option mvc-hover-state">
         <Dropdown
           klass="light"
           icon="basic/plus"
@@ -51,7 +51,7 @@ const Sidebar = () => {
     </div>
   ) : (
     <div className="sidebar collapsed">
-      <div className="sidebar-collapsed-item hover-state">
+      <div className="sidebar-collapsed-item mvc-hover-state">
         <Dropdown
           className="sidebar-expand"
           icon="arrows/chevrons-right"
@@ -59,12 +59,12 @@ const Sidebar = () => {
           onClick={() => setExpanded(true)}
         />
       </div>
-      <div className="sidebar-collapsed-item hover-state">
+      <div className="sidebar-collapsed-item mvc-hover-state">
         <ShareableLink value={shareableLink} direction="right" />
       </div>
       <div className="sidebar-collapsed-participants">
         {Object.values(participants).map(({ id, username, role }) => (
-          <div key={id} className="sidebar-collapsed-item hover-state">
+          <div key={id} className="sidebar-collapsed-item mvc-hover-state">
             <Dropdown
               klass="sidebar-collapsed-participant"
               text={<ParticipantIcon key={id} username={username} role={role} />}
@@ -73,7 +73,7 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
-      <div className="sidebar-collapsed-item hover-state">
+      <div className="sidebar-collapsed-item mvc-hover-state">
         <Dropdown
           icon="basic/plus"
           size={16}

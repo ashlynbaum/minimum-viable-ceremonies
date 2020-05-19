@@ -1,9 +1,7 @@
 .setup {
   display: flex;
   flex-direction: column;
-  background: rgba(255,255,255,0.5);
-  color: #555;
-  border-radius: 15px;
+  border-radius: 16px;
   display: flex;
   overflow: hidden;
 
@@ -27,46 +25,8 @@
   margin-right: 48px;
   white-space: break-spaces;
 
-  .btn {
-    border-radius: 0 5px 5px 0;
-  }
-
-  .btn-input {
-    padding: 8px;
-    border-radius: 5px 0 0 5px;
-    min-width: 300px;
-    background: rgba(255,255,255,0.8);
-    box-shadow: inset 0 0 2px #444;
-  }
-
   .setup-panel {
     display: flex;
     flex-direction: column;
-  }
-
-  .setup-radio-options {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .setup-radio-option {
-    .setup-radio-option-label {
-      cursor: pointer;
-      padding: 8px;
-      margin: 8px;
-      border: 2px solid black;
-      border-radius: 4px;
-    }
-
-    > input {
-      display: none;
-
-      &:checked + .setup-radio-option-label {
-        border: 2px solid blue;
-        background: rgba(0,0,200, 0.05);
-      }
-    }
   }
 }

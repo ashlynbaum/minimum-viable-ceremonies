@@ -131,6 +131,11 @@ textarea {
   font: inherit;
   margin: 0;
 }
+input[placeholder], textarea, select {
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 2px $grey-darker;
+}
 optgroup {
   font-weight: 700;
 }
@@ -615,8 +620,11 @@ pre tt:after {
   }
 }
 
-.btn {
-  @apply font-bold py-2 px-4 rounded;
+.mvc-btn {
+  @apply font-bold py-2 px-4 rounded bg-blue-500 text-white;
+  &:hover {
+    @apply bg-blue-700;
+  }
   &[disabled] {
     @apply opacity-50;
     &:hover {
@@ -625,14 +633,8 @@ pre tt:after {
     }
   }
 }
-.btn-blue {
-  @apply bg-blue-500 text-white;
-  &:hover {
-    @apply bg-blue-700;
-  }
-}
 
-.hover-state {
+.mvc-hover-state {
   border-radius: 4px;
   cursor: pointer;
   transition: 0.25s ease-in-out;
@@ -644,6 +646,42 @@ pre tt:after {
     }
   }
 }
+
+.mvc-subtitle {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 16px;
+  color: $grey;
+  margin: 0;
+}
+
+.mvc-radio-options {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mvc-radio-option {
+  .mvc-radio-option-label {
+    cursor: pointer;
+    padding: 8px;
+    margin: 8px;
+    border: 2px solid black;
+    border-radius: 4px;
+  }
+
+  > input {
+    display: none;
+
+    &:checked + .mvc-radio-option-label {
+      border: 2px solid blue;
+      background: rgba(0,0,200, 0.05);
+    }
+  }
+}
+
 
 .ReactModal {
   &__Overlay {
@@ -669,7 +707,4 @@ pre tt:after {
       top: 15% !important;
     }
   }
-}
-
-.ReactModal__Overlay {
 }

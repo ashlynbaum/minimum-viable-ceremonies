@@ -7,7 +7,7 @@ const useScreenEnforcedRef = () => {
     if (!ref.current) { return }
 
     const { top, height } = ref.current.getBoundingClientRect()
-    const topDiff = (top + height - window.innerHeight)
+    const topDiff = (top + height - document.querySelector('.board-content').innerHeight)
     if (topDiff > 0) {
       const matrix = getComputedStyle(ref.current).transform.match(/matrix\((.*)\)/)[1].split(',')
       matrix[5] = parseInt(matrix[5]) - topDiff - 25

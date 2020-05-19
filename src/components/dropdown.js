@@ -20,8 +20,8 @@ const Dropdown = ({
   const tooltipRef = useScreenEnforcedRef()
 
   return (
-    <div className={`dropdown ${klass} ${open ? 'open' : 'closed'} hover-state`}>
-      <button
+    <div className={`dropdown ${klass} ${open ? 'open' : 'closed'} mvc-hover-state`}>
+      <div
         className="dropdown-button"
         onClick={clickToOpen ? () => setOpen(current => !current) : onClick}
         onMouseEnter={clickToOpen ? null : () => setOpen(true)}
@@ -29,7 +29,7 @@ const Dropdown = ({
       >
         {icon && <Icon icon={icon} size={size} />}
         {text && <span>{text}</span>}
-      </button>
+      </div>
       <div ref={tooltipRef} style={width ? {width} : {whiteSpace: 'nowrap'}} className={`dropdown-tooltip ${position}`}>
         {tooltip}
       </div>

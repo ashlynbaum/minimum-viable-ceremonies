@@ -36,11 +36,11 @@ const SetupRoom = ({ onSubmit }) => {
   return (
     <div className="setup-room setup">
       <div className="setup-room-slides setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
-        <div className="setup-room-slide setup-slide setup-room-help">
+        <div className={`setup-room-slide ${step === 0 ? 'active' : ''} setup-slide setup-room-help`}>
           <h1>{t("setup.room.title", { name: room.name })}</h1>
           <p>{t("setup.room.helptext")}</p>
         </div>
-        <div className="setup-room-slide setup-slide setup-room-name">
+        <div className={`setup-room-slide ${step === 1 ? 'active' : ''} setup-slide setup-room-name`}>
           <h1>{t("setup.room.name")}</h1>
           <input
             name="name"
@@ -52,7 +52,7 @@ const SetupRoom = ({ onSubmit }) => {
             )}
           />
         </div>
-        <div className="setup-room-slide setup-slide setup-room-week-count">
+        <div className={`setup-room-slide ${step === 2 ? 'active' : ''} setup-slide setup-room-week-count`}>
           <div className="setup-panel">
             <h1>{t("setup.room.weekCount")}</h1>
             <div className="mvc-radio-options justify-center">
@@ -64,7 +64,7 @@ const SetupRoom = ({ onSubmit }) => {
                     value={weekCount}
                     onChange={({ target: { value } }) => room.setWeekCount(value)}
                   />
-                  <div className="mvc-radio-option-label">
+                  <div className="mvc-radio-option-label" style={{padding: '8px'}}>
                     {t(weekCount === 1 ? "setup.room.weeksSingular" : "setup.room.weeksPlural", { weekCount })}
                   </div>
                 </label>
@@ -72,7 +72,7 @@ const SetupRoom = ({ onSubmit }) => {
             </div>
           </div>
         </div>
-        <div className="setup-room-slide setup-slide setup-room-link">
+        <div className={`setup-room-slide ${step === 3 ? 'active' : ''} setup-slide setup-room-link`}>
           <h1>{t("setup.room.ready")}</h1>
           <p>{t("setup.room.linkHelptext")}</p>
           <ShareableLink text={room.uuid} value={room.shareableLink} position="bottom"/>

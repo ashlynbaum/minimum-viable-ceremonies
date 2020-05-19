@@ -14,8 +14,49 @@
   }
 }
 
+.ceremony-icon {
+  font-size: 36px;
+  margin-top: 26px;
+}
+
 .ceremony-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.ceremony-subheading {
+  font-size: 14px;
+  font-weight: semi-bold;
+  line-height: 127%;
+}
+
+.ceremony-description {
+  font-size: 14px;
+  line-height: 127%;
+  font-weight: normal;
+}
+
+.ceremony-theme {
+  float: right;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 4px 5px;
+  &.coordination{
+    color: #DE4E72;
+    background-color: #FBE5E5;
+  }
+  &.delivery {
+    color: #2F80ED;
+    background-color: #DCEFF9;
+  }
+  &.innovation {
+    color: #329569;
+    background-color: #DFFEEA;
+
+  }
+  &.culture {
+    color: #9668EB;
+    background-color: #F1E5FF;
+  }
 }

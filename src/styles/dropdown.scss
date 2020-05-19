@@ -34,15 +34,25 @@
 .dropdown-tooltip {
   transition: 0.2s ease-in-out;
   position: absolute;
-  background: $grey-darkest;
-  color: $grey-lightest;
   padding: 4px 8px;
   text-align: left;
   font-size: 12px;
   border-radius: 4px;
   opacity: 0;
+  z-index: 1;
   pointer-events: none;
   position: absolute;
+
+  &.dark {
+    background: $grey-darkest;
+    color: $grey-lightest;
+  }
+
+  &.light {
+    background: $grey-lightest;
+    color: $grey-dark;
+    box-shadow: 0 0 4px $grey-dark;
+  }
 
   &.bottom {
     top: 100%;

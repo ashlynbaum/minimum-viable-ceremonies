@@ -15,6 +15,7 @@ const Participant = ({ id, username, role }) => {
         <div className="participant-actions">
           <Dropdown
             klass="dark"
+            theme="dark"
             icon="basic/more-horizontal"
             size={16}
             tooltip={t("participant.edit")}
@@ -24,14 +25,14 @@ const Participant = ({ id, username, role }) => {
       <div className="participant-roles">
         <Dropdown
           klass="dark"
+          theme="light"
+          delay={750}
           position="right-start"
           width={400}
           text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
           tooltip={<div className="participant-role-tooltip">
             <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
-            <p>
-              {t(`roles.${role}.description`)}
-            </p>
+            <p>{t(`roles.${role}.description`)}</p>
           </div>}
         />
       </div>

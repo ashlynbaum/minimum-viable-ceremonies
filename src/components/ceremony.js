@@ -14,7 +14,8 @@ const Ceremony = ({ id }) => {
       <Dropdown
         width={400}
         position="right-start"
-        clickToOpen={true}
+        theme="light"
+        delay={1000}
         tooltip={<>
           <div className="ceremony-title">
             {[t(`ceremonies.${id}.icon`), t(`ceremonies.${id}.name`)].join(" ")}

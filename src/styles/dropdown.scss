@@ -21,6 +21,10 @@
     }
   }
   position: relative;
+
+  &.mvc-hover-state {
+    padding: 8px;
+  }
 }
 
 .dropdown-button {

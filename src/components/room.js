@@ -24,6 +24,7 @@ const Room = ({ uuid }) => {
         right: "20%",
         left: "20%",
         bottom: "auto",
+        overflow: "visible",
       },
       overlay: {
         display: "flex",
@@ -39,9 +40,11 @@ const Room = ({ uuid }) => {
       {context.ready ? <>
         <Board />
         {buildModal(SetupUser, !context.currentUser)}
-        {buildModal(EditUser, context.editingUser, context.setEditingUserId)}
         {buildModal(SetupRoom, context.editingRoom, context.setEditingRoomId)}
         {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId)}
+        {buildModal(EditUser, context.editingUser, context.setEditingUserId, {
+          content: { overflow: "visible" },
+        })}
       </> : <Loading />}
     </Context.Provider>
   )

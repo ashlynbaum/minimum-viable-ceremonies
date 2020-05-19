@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
 
 import Controls from "./controls"
+import Dropdown from "./dropdown"
 import Context from "../contexts/room"
 import "../styles/editUser.scss"
 
@@ -33,7 +34,19 @@ const EditUser = ({ onSubmit }) => {
               onChange={({ target: { value } }) => setUser(current => ({ ...current, role: value }))}
               className="setup-user-role"
             />
-            <div className="mvc-radio-option-label">{t(`roles.${role}.name`)}</div>
+            <div className="mvc-radio-option-label">
+              <Dropdown
+                theme="light"
+                position="bottom"
+                text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
+                tooltip={<div className="participant-role-tooltip">
+                  <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
+                  <p>{t(`roles.${role}.description`)}</p>
+                </div>}
+                width={600}
+                delay={1000}
+              />
+            </div>
           </label>
         ))}
       </div>

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import phrase from "random-words"
 
 import Controls from "./controls"
+import Dropdown from "./dropdown"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
 
@@ -37,12 +38,12 @@ const SetupUser = ({ onSubmit }) => {
 
   return (
     <div className="setup-user setup">
-      <div className="setup-user-slidessetup-slide  setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
-        <div className="setup-user-slide setup-slide setup-user-help">
+      <div className="setup-user-slidessetup-slide setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
+        <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-help`}>
           <h1>{t("setup.user.title", { name })}</h1>
           <p>{t("setup.user.helptext")}</p>
         </div>
-        <div className="setup-user-slide setup-slide setup-user-name">
+        <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-name`}>
           <h1>{t("setup.user.username")}</h1>
           <input
             name="username"
@@ -54,26 +55,38 @@ const SetupUser = ({ onSubmit }) => {
             )}
           />
         </div>
-        <div className="setup-user-slide setup-slide setup-user-cadence">
+        <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-cadence`}>
           <div className="setup-panel">
             <h1>{t("setup.user.role")}</h1>
             <div className="mvc-radio-options justify-center">
-              {roles.map(id => (
-                <label key={id} className="mvc-radio-option">
+              {roles.map(role => (
+                <label key={role} className="mvc-radio-option">
                   <input
                     type="radio"
                     name="role"
-                    value={id}
+                    value={role}
                     onChange={({ target: { value } }) => setUser(room => ({ ...room, role: value }))}
                     className="setup-user-role"
                   />
-                  <div className="mvc-radio-option-label">{t(`roles.${id}.name`)}</div>
+                  <div className="mvc-radio-option-label">
+                    <Dropdown
+                      theme="light"
+                      position="bottom"
+                      text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
+                      tooltip={<div className="participant-role-tooltip">
+                        <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
+                        <p>{t(`roles.${role}.description`)}</p>
+                      </div>}
+                      width={600}
+                      delay={1000}
+                    />
+                  </div>
                 </label>
               ))}
             </div>
           </div>
         </div>
-        <div className="setup-user-slide setup-slide setup-user-link">
+        <div className={`setup-user-slide setup-slide ${step === 3 ? 'active' : ''} setup-user-link`}>
           <h1>{t("setup.user.ready")}</h1>
           <p>{t("setup.user.summary", { name, username, role })}</p>
         </div>

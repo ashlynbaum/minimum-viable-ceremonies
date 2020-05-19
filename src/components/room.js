@@ -21,6 +21,7 @@ const Room = ({ uuid }) => {
         height: "auto",
         bottom: "auto",
         margin: "auto",
+        overflow: "visible",
       },
       overlay: {
         display: "flex",

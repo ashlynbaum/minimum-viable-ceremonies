@@ -7,7 +7,7 @@ import Icon from "./icon"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
 import "../styles/setupCeremony.scss"
-import "rc-time-picker/assets/index.css"
+// import "rc-time-picker/assets/index.css"
 
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()

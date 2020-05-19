@@ -42,19 +42,13 @@ const useRoomContext = id => {
   ), [participants, cookie, uuid])
 
   const [editingRoomId, setEditingRoomId] = useState()
-  const editingRoom = useMemo(() => (
-    editingRoomId
-  ), [editingRoomId])
+  const editingRoom = editingRoomId
 
   const [editingUserId, setEditingUserId] = useState()
-  const editingUser = useMemo(() => (
-    participants[editingUserId]
-  ), [participants[editingUserId]])
+  const editingUser = participants[editingUserId]
 
   const [editingCeremonyId, setEditingCeremonyId] = useState()
-  const editingCeremony = useMemo(() => (
-    ceremonies[editingCeremonyId]
-  ), [ceremonies[editingCeremonyId]])
+  const editingCeremony = ceremonies[editingCeremonyId]
 
   const nameValid = useMemo(() => (
     name && name.length >= 3

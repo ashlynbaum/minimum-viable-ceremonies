@@ -1,13 +1,11 @@
-import React, { useContext } from "react"
+import React from "react"
 import { useTranslation } from "react-i18next"
 
 import Dropdown from "./dropdown"
-import Context from "../contexts/room"
 import "../styles/ceremony.scss"
 
 const Ceremony = ({ id }) => {
   const { t } = useTranslation()
-  const { setCeremonyId } = useContext(Context)
 
   return (
     <div className="ceremony mvc-hover-state">

@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import { useTranslation } from "react-i18next"
-import phrase from "random-words"
 import moment from "moment"
 import TimePicker from "rc-time-picker"
 
@@ -12,9 +11,9 @@ import "rc-time-picker/assets/index.css"
 
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
-  const { place, currentCeremony } = useContext(Context)
+  const { place, editingCeremony } = useContext(Context)
 
-  if (!currentCeremony) { return null }
+  if (!editingCeremony) { return null }
 
   return (
     <div className="setup-ceremony flex flex-row">
@@ -24,7 +23,7 @@ const SetupCeremony = ({ onSubmit }) => {
             {t("setup.ceremony.schedule")}
           </div>
           <div className="flex flex-row items-center setup-ceremony-placement">
-            {currentCeremony.placement ? <>
+            {editingCeremony.placement ? <>
               <Icon icon="time/calendar-checked" />
             </> : <>
               <Icon icon="time/calendar-checked" />
@@ -42,9 +41,9 @@ const SetupCeremony = ({ onSubmit }) => {
                     type="radio"
                     name="sync"
                     value={value}
-                    checked={currentCeremony.sync === !!value}
-                    onChange={({ target: { value } }) => place(currentCeremony.id, {
-                      ...currentCeremony,
+                    checked={editingCeremony.sync === !!value}
+                    onChange={({ target: { value } }) => place(editingCeremony.id, {
+                      ...editingCeremony,
                       sync: !!parseInt(value)
                     })}
                   />
@@ -58,7 +57,7 @@ const SetupCeremony = ({ onSubmit }) => {
             <div>
               <TimePicker
                 showSecond={false}
-                defaultValue={currentCeremony.time || moment().hour(16).minute(0)}
+                defaultValue={editingCeremony.time || moment().hour(16).minute(0)}
                 onChange={console.log}
                 format="h:mm a"
                 minuteStep={15}

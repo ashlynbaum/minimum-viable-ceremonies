@@ -697,6 +697,7 @@ pre tt:after {
   }
 
   &__Content {
+    max-width: 600px;
     top: 15% !important;
     transition: 0.2s ease-in-out;
 

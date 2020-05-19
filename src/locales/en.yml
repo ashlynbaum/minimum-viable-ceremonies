@@ -62,9 +62,13 @@ cadences:
     description: First friday of the sprint
 ceremonies:
   checkin:
-    name: Check-in
+    name: Personal Check-in
     icon: 🔗
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Culture
+    sub-heading: What's up with you right now?
+    description: "Often used to begin another ceremony, Personal Check-ins are a way to increase empathy and understanding between team members.
+    For example, if someone says, "I had trouble sleeping last night." They may need more time to think and solve problems that day.
+    Personal check-ins shouldn't be longer than a few minutes per person. Possible prompts may include, "What's on top?" or "Would you like to check-in?""
   cleanup:
     name: Clean-up
     icon: 🛁
@@ -72,15 +76,26 @@ ceremonies:
   demo:
     name: Demo
     icon: 🎉
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Coordination
+    sub-heading: Celebrate how awesome your team is
+    description: "A Demo is an opportunity for people to share what they have accomplished recently with the team. It gives people a chance to receive acknowledgement for their work and to share learnings. Each person can share a small presentation, a video clip of what they've been working on, or just give a status update."
   designReview:
     name: Design review
     icon: 🖍
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Delivery
+    sub-heading: Get designs ready for dev
+    description: "Design Reviews bring developers, managers, and other team members together have to review the in-progress designs before they go into the build pipeline. Designs are often checked for technical considerations like component libraries, technical debt, completeness of design, or application architecture.
+    Typically, a designer presents a solution to a problem to be built and gathers feedback from other technical members of the team. Design reviews tend to happen when solutions are fully formed into a high-fidelity mockup."
   documentation:
     name: Documentation
     icon: 📒
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Delivery
+    sub-heading: Keeping the wiki, documentation, and designs up to date and accessible to all
+    description: "Documentation has a reputation for being difficult and manual to maintain. It may require an extra effort to make sure it stays current. How does your team check the current state of the documentation and take steps to keep it up-to-date?
+    Typical agenda items may include:
+    • review the current documentation, 
+    • identify what is out-of-date, or
+    • assign any changes to be made to the relevant team member."
   estimation:
     name: Estimation
     icon: 🤑
@@ -104,7 +119,11 @@ ceremonies:
   planning:
     name: Sprint Planning
     icon: 👓
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Coordination
+    sub-heading: Figure out what to do next
+    description: "Retrospectives are a facilitated conversation between the members of your team to reflect on the past sprint's work and identify risks. Everyone should have the chance to name what's gone well, what's been hard, and what changes could be made to optimize delivery, communication, or happiness going forward. Typical agenda items may include:
+    • Good, Bad, Delta - What went well? What didn't go well? What changes should we make? or
+    • Sailboat - What is moving us forward, the wind in our sails? What is holding us back, our anchors? What are our current risks, the rocks that we see ahead?"
   process:
     name: Process definition
     icon: 🙃
@@ -112,11 +131,21 @@ ceremonies:
   retreat:
     name: Team retreat
     icon: 🏝
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Culture
+    sub-heading: Bond as a team away from the office
+    description: "A Team Retreat is an all-day or multi-day, off-site activity which creates the space for the team to connect and strategize.
+    Agenda items may include:
+    • Horizon planning - layout a 5-year roadmap, and signpost expected long-term business accomplishments,
+    • Assumptions Mapping - make a list of strategic assumptions and come up with a plan to adjust the strategy or validate them, or
+    • Team Building - activities to help the team get to know each other better."
   retrospective:
     name: Retrospective
     icon: 🤔
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Coordination
+    sub-heading: Get better at being a team
+    description: "Retrospectives are a facilitated conversation between the members of your team to reflect on the past sprint's work and identify risks. Everyone should have the chance to name what's gone well, what's been hard, and what changes could be made to optimize delivery, communication, or happiness going forward.Typical agenda items may include:
+    • Good, Bad, Delta - What went well? What didn't go well? What changes should we make? or
+    • Sailboat - What is moving us forward, the wind in our sails? What is holding us back, our anchors? What are our current risks, the rocks that we see ahead?"
   review:
     name: Code review
     icon: 🤖
@@ -140,15 +169,29 @@ ceremonies:
   standdown:
     name: Stand-down
     icon: 🌙
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Coordination
+    sub-heading: What did you work on?
+    description: "The opposite of stand-up, a Stand-down is for reporting on the goals at the end of a work period, while everything is still fresh in your mind."
   standup:
     name: Stand-up
     icon: 👋
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Coordination
+    sub-heading: What are you going to work on?
+    description: "Stand-ups are used to give status updates about current work-in-progress.
+    Team members can answer these questions:
+    • What have you worked on since the last stand-up?
+    • What do you plan to work on next?
+    • Do you have any work that can't be progressed forwards and why?"
   sync:
     name: Cross-Team Sync
     icon: 🎡
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut euismod est. Suspendisse sagittis a urna nec pretium. Fusce consequat urna sed mi vestibulum aliquam. Vestibulum et mi et quam auctor fringilla eget sed neque. Duis rhoncus enim a libero sollicitudin cursus. Sed varius mattis malesuada. Integer enim magna, feugiat at felis sit amet, porttitor posuere ligula. Sed iaculis ornare nibh, sit amet consectetur turpis aliquam id. Nulla dignissim purus quis vehicula sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi accumsan metus sapien, eget hendrerit est placerat quis. Praesent elit diam, vehicula ac feugiat vitae, maximus sit amet est. Integer efficitur ipsum sem, id accumsan ligula rhoncus iaculis. Phasellus malesuada elementum malesuada. Duis tempor erat non neque placerat consequat.
+    theme: Coordination
+    sub-heading: Collaborate with other teams in your organization
+    description: "For organizations that have more than one team, inter-team communication reduces the risk of conflicting priorities. Cross-team Syncs are great for:
+    • preventing siloed communication, 
+    • rolling-out new ideas or processes, and 
+    • creating a shared context. 
+    Have a conversation to think about what scenarios should trigger the need for a Cross-team Sync."
   techdebt:
     name: Tech Debt Removal
     icon: 🚧

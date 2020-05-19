@@ -82,11 +82,11 @@ const useRoomContext = id => {
     editingUser, setEditingUserId,
     editingCeremony, setEditingCeremonyId,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
-    login: ({ id, username, role }) => {
+    login: ({ id, username, role }, cookie = true) => {
       const user = { id, username, role, host: !participants }
       return setParticipant({ uuid }, user).then(() => {
         setParticipants(current => ({ ...current, [user.id]: user }))
-        setCookie(uuid, id)
+        if (cookie) { setCookie(uuid, id) }
       })
     },
     logout: () => removeCookie(uuid),

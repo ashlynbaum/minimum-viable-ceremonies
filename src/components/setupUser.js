@@ -45,7 +45,6 @@ const SetupUser = ({ onSubmit }) => {
         <div className="setup-user-slide setup-slide setup-user-name">
           <h1>{t("setup.user.username")}</h1>
           <input
-            className="btn-input"
             name="username"
             placeholder={t("setup.user.usernamePlaceholder")}
             value={username}
@@ -58,7 +57,7 @@ const SetupUser = ({ onSubmit }) => {
         <div className="setup-user-slide setup-slide setup-user-cadence">
           <div className="setup-panel">
             <h1>{t("setup.user.role")}</h1>
-            <div className="mvc-radio-options">
+            <div className="mvc-radio-options justify-center">
               {roles.map(id => (
                 <label key={id} className="mvc-radio-option">
                   <input

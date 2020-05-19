@@ -7,7 +7,7 @@ import "../styles/participant.scss"
 
 const Participant = ({ id, username, role }) => {
   const { t } = useTranslation()
-  const { setEditingUserId } = useContext(Context)
+  const { currentUser, setEditingUserId } = useContext(Context)
 
   return (
     <div className="participant">
@@ -15,14 +15,14 @@ const Participant = ({ id, username, role }) => {
         <div className="participant-icon">{username[0]}</div>
         <div className="participant-name">{username}</div>
         <div className="participant-actions">
-          <Dropdown
+          {currentUser && currentUser.id === id && <Dropdown
             klass="dark"
             theme="dark"
             icon="basic/more-horizontal"
             size={16}
             tooltip={t("participant.edit")}
             onClick={() => setEditingUserId(id)}
-          />
+          />}
         </div>
       </div>
       <div className="participant-roles">

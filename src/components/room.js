@@ -5,6 +5,7 @@ import Loading from "./loading"
 import SEO from "./seo"
 import Board from "./board"
 import SetupUser from "./setupUser"
+import EditUser from "./editUser"
 import SetupRoom from "./setupRoom"
 import SetupCeremony from "./setupCeremony"
 import Context from "../contexts/room"
@@ -38,7 +39,7 @@ const Room = ({ uuid }) => {
       {context.ready ? <>
         <Board />
         {buildModal(SetupUser, !context.currentUser)}
-        {buildModal(SetupUser, context.editingUser, context.setEditingUserId)}
+        {buildModal(EditUser, context.editingUser, context.setEditingUserId)}
         {buildModal(SetupRoom, context.editingRoom, context.setEditingRoomId)}
         {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId)}
       </> : <Loading />}

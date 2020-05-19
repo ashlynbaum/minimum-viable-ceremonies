@@ -35,7 +35,7 @@ const SetupCeremony = ({ onSubmit }) => {
             <div>{t("setup.ceremony.cadence")}</div>
             <div>DROPDOWN</div>
             <div>{t("setup.ceremony.sync")}</div>
-            <div className="mvc-radio-options">
+            <div className="mvc-radio-options justify-center">
               {[1, 0].map(value => (
                 <label className="mvc-radio-option" key={value}>
                   <input

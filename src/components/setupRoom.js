@@ -43,7 +43,6 @@ const SetupRoom = ({ onSubmit }) => {
         <div className="setup-room-slide setup-slide setup-room-name">
           <h1>{t("setup.room.name")}</h1>
           <input
-            className="btn-input"
             name="name"
             placeholder={t("setup.room.namePlaceholder")}
             value={room.name}
@@ -56,7 +55,7 @@ const SetupRoom = ({ onSubmit }) => {
         <div className="setup-room-slide setup-slide setup-room-week-count">
           <div className="setup-panel">
             <h1>{t("setup.room.weekCount")}</h1>
-            <div className="mvc-radio-options">
+            <div className="mvc-radio-options justify-center">
               {[1,2].map(weekCount => (
                 <label className="mvc-radio-option" key={weekCount}>
                   <input

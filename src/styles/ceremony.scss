@@ -16,18 +16,21 @@
 
 .ceremony-icon {
   font-size: 36px;
-  margin-top: 26px;
+  margin-top: 36px;
+  margin-bottom: 26px;
 }
 
 .ceremony-title {
   font-size: 24px;
   font-weight: normal;
+  margin-bottom: 12px;
 }
 
 .ceremony-subheading {
   font-size: 14px;
-  font-weight: semi-bold;
-  line-height: 127%;
+  font-weight: 600;
+  line-height: 147%;
+  margin-bottom: 6px;
 }
 
 .ceremony-description {
@@ -51,8 +54,8 @@
     background-color: #DCEFF9;
   }
   &.innovation {
-    color: #329569;
-    background-color: #DFFEEA;
+    color: #2A7657;
+    background-color: #CAEAC5;
 
   }
   &.culture {

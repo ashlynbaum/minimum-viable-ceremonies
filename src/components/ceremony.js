@@ -14,6 +14,9 @@ function theme(input) {
   if (input === "Culture") {
     return "ceremony-theme culture";
   }
+  if (input === "Innovation") {
+    return "ceremony-theme innovation";
+  }
 }
 
 const Ceremony = ({ id }) => {
@@ -22,23 +25,24 @@ const Ceremony = ({ id }) => {
   return (
     <div className="ceremony mvc-hover-state">
       <Dropdown
-        width={400}
+        width={340}
         position="right-start"
         theme="light"
         delay={1000}
+        borderRadius="50px"
         tooltip={<>
           <div className={theme(t(`ceremonies.${id}.theme`))}>
             {t(`ceremonies.${id}.theme`)}
           </div>
-          <h1 className="ceremony-icon">
+          <div className="ceremony-icon">
             {t(`ceremonies.${id}.icon`)}
-          </h1>
-          <h1 className="ceremony-title">
+          </div>
+          <div className="ceremony-title">
             {t(`ceremonies.${id}.name`)}
-          </h1>
-          <h3 className="ceremony-subheading">
+          </div>
+          <div className="ceremony-subheading">
             {t(`ceremonies.${id}.sub-heading`)}
-          </h3>
+          </div>
           <p className="ceremony-description">
             {t(`ceremonies.${id}.description`)}
           </p>

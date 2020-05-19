@@ -19,7 +19,8 @@ const Room = ({ uuid }) => {
     <Modal isOpen={!!open} onRequestClose={close ? () => close(null) : undefined} style={{
       content: {
         height: "auto",
-        overflow: "visible",
+        bottom: "auto",
+        margin: "auto",
       },
       overlay: {
         display: "flex",

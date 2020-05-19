@@ -34,6 +34,7 @@ const Intro = () => {
           content: {
             height: "auto",
             bottom: "auto",
+            margin: "auto",
           },
           overlay: {
             display: "flex",

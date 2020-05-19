@@ -5,13 +5,13 @@ import { useTranslation } from "react-i18next"
 import Dropdown from "./dropdown"
 import "../styles/shareableLink.scss"
 
-const ShareableLink = ({ text, value, position }) => {
+const ShareableLink = ({ text, value, position, inline }) => {
   const { t } = useTranslation()
   const [copied, setCopied] = useState(false)
   const linkRef = useRef()
 
   return (
-    <div className="shareable-link">
+    <div className={`shareable-link ${inline ? 'inline' : ''}`}>
       <Dropdown
         icon="basic/link"
         position={position}

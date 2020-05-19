@@ -75,7 +75,7 @@ const SetupRoom = ({ onSubmit }) => {
         <div className={`setup-room-slide ${step === 3 ? 'active' : ''} setup-slide setup-room-link`}>
           <h1>{t("setup.room.ready")}</h1>
           <p>{t("setup.room.linkHelptext")}</p>
-          <ShareableLink text={room.uuid} value={room.shareableLink} position="bottom"/>
+          <ShareableLink text={room.uuid} value={room.shareableLink} position="bottom" inline={true} />
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{

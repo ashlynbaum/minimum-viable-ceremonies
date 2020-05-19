@@ -666,8 +666,9 @@ pre tt:after {
 .mvc-radio-option {
   .mvc-radio-option-label {
     cursor: pointer;
-    margin: 8px;
-    border: 2px solid black;
+    margin: 4px 8px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    font-size: 14px;
     border-radius: 4px;
   }
 

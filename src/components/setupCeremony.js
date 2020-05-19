@@ -13,7 +13,6 @@ import "rc-time-picker/assets/index.css"
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
   const { place, currentCeremony } = useContext(Context)
-  console.log(currentCeremony)
 
   if (!currentCeremony) { return null }
 

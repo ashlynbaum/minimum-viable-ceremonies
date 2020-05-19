@@ -10,7 +10,6 @@ const useRoomContext = id => {
   const [name, setName] = useState("")
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [creatingRoom, createRoom] = useState(false)
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
   const [weekCount, setWeekCount] = useState()
   const [participants, setParticipants] = useState({})
@@ -42,6 +41,21 @@ const useRoomContext = id => {
     Object.values(participants).find(p => p.id === cookie[uuid])
   ), [participants, cookie, uuid])
 
+  const [editingRoomId, setEditingRoomId] = useState()
+  const editingRoom = useMemo(() => (
+    editingRoomId
+  ), [editingRoomId])
+
+  const [editingUserId, setEditingUserId] = useState()
+  const editingUser = useMemo(() => (
+    participants[editingUserId]
+  ), [participants[editingUserId]])
+
+  const [editingCeremonyId, setEditingCeremonyId] = useState()
+  const editingCeremony = useMemo(() => (
+    ceremonies[editingCeremonyId]
+  ), [ceremonies[editingCeremonyId]])
+
   const nameValid = useMemo(() => (
     name && name.length >= 3
   ), [name])
@@ -64,7 +78,9 @@ const useRoomContext = id => {
     participants,
     setup,
     ready,
-    creatingRoom, createRoom,
+    editingRoom, setEditingRoomId,
+    editingUser, setEditingUserId,
+    editingCeremony, setEditingCeremonyId,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
     login: ({ id, username, role }) => {
       const user = { id, username, role, host: !participants }

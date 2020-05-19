@@ -6,6 +6,7 @@ import SEO from "./seo"
 import Board from "./board"
 import SetupUser from "./setupUser"
 import SetupRoom from "./setupRoom"
+import SetupCeremony from "./setupCeremony"
 import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
 
@@ -14,32 +15,32 @@ const Room = ({ uuid }) => {
   if (!context.ready) { context.setup() }
 
   Modal.setAppElement("#___gatsby")
-  const modalStyle = {
-    content: {
-      height: "auto",
-      top: "auto",
-      right: "20%",
-      left: "20%",
-      bottom: "auto",
-    },
-    overlay: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    }
-  }
+  const buildModal = (Content, open, close) => (
+    <Modal isOpen={!!open} onRequestClose={close ? () => close(null) : undefined} style={{
+      content: {
+        height: "auto",
+        top: "auto",
+        right: "20%",
+        left: "20%",
+        bottom: "auto",
+      },
+      overlay: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }
+    }}><Content /></Modal>
+  )
 
   return (
     <Context.Provider value={context}>
       <SEO title={`Minimum Viable Ceremonies | ${context.name}`} />
       {context.ready ? <>
         <Board />
-        <Modal isOpen={!context.currentUser} style={modalStyle}>
-          <SetupUser />
-        </Modal>
-        <Modal isOpen={context.creatingRoom} style={modalStyle} onRequestClose={() => context.createRoom(false)}>
-          <SetupRoom />
-        </Modal>
+        {buildModal(SetupUser, !context.currentUser)}
+        {buildModal(SetupUser, context.editingUser, context.setEditingUserId)}
+        {buildModal(SetupRoom, context.editingRoom, context.setEditingRoomId)}
+        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId)}
       </> : <Loading />}
     </Context.Provider>
   )

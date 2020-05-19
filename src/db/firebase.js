@@ -15,7 +15,7 @@ export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, set
         const participant = participants[id] || {}
         return username !== participant.username || role !== participant.role
       }).map(({ id, username, role }) => setParticipants(current => ({
-        ...current, [id]: { ...current[id], username, role }
+        ...current, [id]: { ...current[id], id, username, role }
       })))
   ))
 

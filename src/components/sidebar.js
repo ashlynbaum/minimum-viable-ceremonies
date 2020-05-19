@@ -9,7 +9,7 @@ import Context from "../contexts/room"
 import "../styles/sidebar.scss"
 
 const Sidebar = () => {
-  const { uuid, shareableLink, name, participants, createRoom } = useContext(Context)
+  const { uuid, shareableLink, name, participants, setEditingRoomId } = useContext(Context)
   const [expanded, setExpanded] = useState(true)
   const { t } = useTranslation()
 
@@ -34,7 +34,7 @@ const Sidebar = () => {
         <h3 className="mvc-subtitle">{t("sidebar.teamsAndRoles")}</h3>
         {Object.values(participants).map(({ id, username, role }, index) => (
           <div key={username} className="mvc-hover-state">
-            <Participant username={username} role={role} />
+            <Participant id={id} username={username} role={role} />
           </div>
         ))}
       </div>
@@ -45,7 +45,7 @@ const Sidebar = () => {
           size={16}
           text={t("sidebar.setupRoom")}
           tooltip={t("sidebar.setupRoomTooltip")}
-          onClick={() => createRoom(true)}
+          onClick={() => setEditingRoomId(true)}
         />
       </div>
     </div>
@@ -67,7 +67,7 @@ const Sidebar = () => {
           <div key={id} className="sidebar-collapsed-item mvc-hover-state">
             <Dropdown
               klass="sidebar-collapsed-participant"
-              text={<ParticipantIcon key={id} username={username} role={role} />}
+              text={<ParticipantIcon key={id} id={id} username={username} role={role} />}
               tooltip={`${username}: ${role}`}
             />
           </div>
@@ -78,7 +78,7 @@ const Sidebar = () => {
           icon="basic/plus"
           size={16}
           tooltip={t("sidebar.setupRoomTooltip")}
-          onClick={() => createRoom(true)}
+          onClick={() => setEditingRoomId(true)}
         />
       </div>
     </div>

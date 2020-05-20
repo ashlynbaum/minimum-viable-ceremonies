@@ -9,7 +9,7 @@ const Controls = ({ step: { next, nextText, back, backText, canProceed, submitti
   const { t } = useTranslation()
 
   return (
-    <div className="controls">
+    <div className="controls absolute inset-x-0 bottom-0">
       {index > 0 && <button onClick={back} className="mvc-btn">{t(backText)}</button>}
       <div className="controls-divider">
         {index > 0 && <Progress step={index-1} max={max} />}

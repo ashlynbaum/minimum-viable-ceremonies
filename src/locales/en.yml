@@ -396,9 +396,10 @@ setup:
     createUser: Enter room
   room:
     title: Welcome to Minimum Viable Ceremonies!
-    helptext: Here is some help to get you started
-    name: What would you like to call your room?
-    namePlaceholder: e.g. Fun Zone
+    helptext: First, set up a video chat with your team.
+    name: What do you want to call your room?
+    nameLabel: Team Name
+    namePlaceholder: Type team name here
     weekCount: How long are your sprints?
     weeksSingular: "{{weekCount}} week"
     weeksPlural: "{{weekCount}} weeks"

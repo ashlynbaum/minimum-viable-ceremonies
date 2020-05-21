@@ -41,24 +41,29 @@ const SetupUser = ({ onSubmit }) => {
     <div className="setup-user setup">
       <div className="setup-user-slidessetup-slide setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
         <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-help`}>
-          <h1>{t("setup.user.title", { name })}</h1>
+          <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.title", { name })}</h1>
           <p>{t("setup.user.helptext")}</p>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-name`}>
-          <h1>{t("setup.user.username")}</h1>
-          <input
-            name="username"
-            placeholder={t("setup.user.usernamePlaceholder")}
-            value={username}
-            onChange={({ target: { value } }) => setUser(user => ({ ...user, username: value }))}
-            onKeyPress={({ which }) => ( // next on enter
-              steps[1].canProceed() && which === 13 && setStep(step => step + 1)
-            )}
-          />
+          <div>
+            <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.user.username")}</h1>
+            <input
+              className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
+              name="username"
+              placeholder={t("setup.user.usernamePlaceholder")}
+              value={username}
+              onChange={({ target: { value } }) => setUser(user => ({ ...user, username: value }))}
+              onKeyPress={({ which }) => ( // next on enter
+                steps[1].canProceed() && which === 13 && setStep(step => step + 1)
+              )}
+            />
+          </div>
+        
         </div>
         <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-cadence`}>
           <div className="setup-panel">
-            <h1>{t("setup.user.role")}</h1>
+            <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.role")}</h1>
+            <p>{t("setup.user.roleHelpText")}</p>
             <div className="mvc-radio-options justify-center">
               {roleData.map(role => (
                 <label key={role} className="mvc-radio-option">
@@ -93,7 +98,7 @@ const SetupUser = ({ onSubmit }) => {
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 3 ? 'active' : ''} setup-user-link`}>
-          <h1>{t("setup.user.ready")}</h1>
+          <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.ready")}</h1>
           <p>{t("setup.user.summary", { name, username })}</p>
         </div>
       </div>

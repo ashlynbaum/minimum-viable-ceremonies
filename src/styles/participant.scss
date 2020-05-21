@@ -16,9 +16,9 @@
   border-radius: 100%;
   background: #abcabc;
   margin: 0 4px;
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
+  width: 22px;
+  height: 22px;
+  margin: 0 10px 0 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,6 +47,7 @@
 
 .participant-name {
   flex-grow: 1;
+  font-size: 16px;
 }
 
 .participant-actions {

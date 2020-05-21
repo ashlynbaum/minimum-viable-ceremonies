@@ -19,7 +19,7 @@ const Participant = ({ id, username, roles }) => {
             klass="dark"
             theme="dark"
             icon="basic/more-horizontal"
-            size={16}
+            size={24}
             tooltip={t("participant.edit")}
             onClick={() => setEditingUserId(id)}
           />}

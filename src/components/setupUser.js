@@ -44,67 +44,75 @@ const SetupUser = ({ onSubmit }) => {
       <div className="setup-user-slides setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
         <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-help`}>
           <div className="setup-panel">
-            <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.title", { name })}</h1>
-            <p>{t("setup.user.helptext")}</p>
+            <div className="setup-subpanel">
+              <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.title", { name })}</h1>
+              <p>{t("setup.user.helptext")}</p>
+            </div>
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-name`}>
           <div className="setup-panel">
-            <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.user.username")}</h1>
-            <input
-              ref={usernameRef}
-              className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
-              name="username"
-              placeholder={t("setup.user.usernamePlaceholder")}
-              value={username}
-              onChange={({ target: { value } }) => setUser(user => ({ ...user, username: value }))}
-              onKeyPress={({ which }) => ( // next on enter
-                steps[1].canProceed() && which === 13 && setStep(step => step + 1)
-              )}
-            />
+            <div className="setup-subpanel">
+              <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.user.username")}</h1>
+              <input
+                ref={usernameRef}
+                className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
+                name="username"
+                placeholder={t("setup.user.usernamePlaceholder")}
+                value={username}
+                onChange={({ target: { value } }) => setUser(user => ({ ...user, username: value }))}
+                onKeyPress={({ which }) => ( // next on enter
+                  steps[1].canProceed() && which === 13 && setStep(step => step + 1)
+                )}
+              />
+            </div>
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-cadence`}>
           <div className="setup-panel">
-            <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.role")}</h1>
-            <p>{t("setup.user.roleHelpText")}</p>
-            <div className="mvc-radio-options justify-center">
-              {roleData.map(role => (
-                <label key={role} className="mvc-radio-option">
-                  <input
-                    type="checkbox"
-                    name="role"
-                    value={role}
-                    onChange={({ target: { checked, value } }) => (
-                      setUser(current => ({
-                        ...current,
-                        roles: checked ? roles.concat(value) : roles.filter(r => r !== value)
-                      }))
-                    )}
-                    className="setup-user-role"
-                  />
-                  <div className="mvc-radio-option-label">
-                    <Dropdown
-                      theme="light"
-                      position="bottom"
-                      text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
-                      tooltip={<div className="participant-role-tooltip">
-                        <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
-                        <p>{t(`roles.${role}.description`)}</p>
-                      </div>}
-                      width={600}
-                      delay={1000}
+            <div className="setup-subpanel">
+              <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.role")}</h1>
+              <p>{t("setup.user.roleHelpText")}</p>
+              <div className="mvc-radio-options justify-center">
+                {roleData.map(role => (
+                  <label key={role} className="mvc-radio-option">
+                    <input
+                      type="checkbox"
+                      name="role"
+                      value={role}
+                      onChange={({ target: { checked, value } }) => (
+                        setUser(current => ({
+                          ...current,
+                          roles: checked ? roles.concat(value) : roles.filter(r => r !== value)
+                        }))
+                      )}
+                      className="setup-user-role"
                     />
-                  </div>
-                </label>
-              ))}
+                    <div className="mvc-radio-option-label">
+                      <Dropdown
+                        theme="light"
+                        position="bottom"
+                        text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
+                        tooltip={<div className="participant-role-tooltip">
+                          <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
+                          <p>{t(`roles.${role}.description`)}</p>
+                        </div>}
+                        width={600}
+                        delay={1000}
+                      />
+                    </div>
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 3 ? 'active' : ''} setup-user-link`}>
           <div className="setup-panel">
-            <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.ready")}</h1>
-            <p>{t("setup.user.summary", { name, username })}</p>
+            <div className="setup-subpanel">
+              <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.ready")}</h1>
+              <p>{t("setup.user.summary", { name, username })}</p>
+            </div>
           </div>
         </div>
       </div>

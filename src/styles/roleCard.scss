@@ -1,12 +1,12 @@
 @import 'colors';
 
-.role {
+.role-card {
   box-shadow: 0 0 6px $grey-darker;
   border-radius: 8px;
   padding: 16px;
   margin: 0 20px;
   width: 300px;
-  height: 270px;
+  height: 100%;
   font-size: 14px;
   color: $grey-darkest;
 
@@ -20,7 +20,7 @@
 
 }
 
-.role-placeholder {
+.role-card-placeholder {
   color: $grey;
   align-items: center;
 }

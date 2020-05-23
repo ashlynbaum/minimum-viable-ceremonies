@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { useTranslation } from "react-i18next"
 
 import Dropdown from "./dropdown"
-import Role from "./role"
+import RoleCard from "./roleCard"
 import Context from "../contexts/room"
 import "../styles/participant.scss"
 
@@ -36,7 +36,7 @@ const Participant = ({ id, username, roles }) => {
             position="right-start"
             width={300}
             text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
-            tooltip={<Role role={role} />}
+            tooltip={<RoleCard role={role} />}
           />
         ))}
       </div>

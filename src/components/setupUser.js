@@ -4,7 +4,8 @@ import phrase from "random-words"
 
 import Controls from "./controls"
 import Dropdown from "./dropdown"
-import Role from "./role"
+import RoleCard from "./roleCard"
+import RoleBadge from "./roleBadge"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
 
@@ -73,35 +74,13 @@ const SetupUser = ({ onSubmit }) => {
         <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-cadence`}>
           <div className="setup-panel split">
             <div className="flex flex-col items-center" style={{height:'100%'}}>
-              <Role role={currentRole} placeholder={t("setup.user.showRole")} />
+              <RoleCard role={currentRole} placeholder={t("setup.user.showRole")} />
             </div>
             <div>
               <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.role")}</h1>
               <p>{t("setup.user.roleHelpText")}</p>
               <div className="setup-roles mvc-radio-options justify-start">
-                {roleData.map(role => (
-                  <label key={role} className="mvc-radio-option">
-                    <input
-                      type="checkbox"
-                      name="role"
-                      value={role}
-                      onChange={({ target: { checked, value } }) => (
-                        setUser(current => ({
-                          ...current,
-                          roles: checked ? roles.concat(value) : roles.filter(r => r !== value)
-                        }))
-                      )}
-                      className="setup-user-role"
-                    />
-                    <div
-                      className="mvc-radio-option-label"
-                      onMouseEnter={() => setCurrentRole(role)}
-                      onMouseLeave={() => setCurrentRole(null)}
-                    >
-                      {[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
-                    </div>
-                  </label>
-                ))}
+                {roleData.map(role => <RoleBadge key={role} role={role} onClick={setUser} onHover={setCurrentRole} />)}
               </div>
             </div>
           </div>

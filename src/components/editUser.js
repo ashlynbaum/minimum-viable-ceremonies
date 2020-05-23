@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next"
 
 import Controls from "./controls"
 import Dropdown from "./dropdown"
+import RoleCard from "./roleCard"
+import RoleBadge from "./roleBadge"
 import Context from "../contexts/room"
 import "../styles/editUser.scss"
 
@@ -10,50 +12,37 @@ const EditUser = ({ onSubmit }) => {
   const { editingUser, roleData, login, setEditingUserId } = useContext(Context)
   const { t } = useTranslation()
   const [user, setUser] = useState(editingUser)
+  const [currentRole, setCurrentRole] = useState()
   const [submitting, setSubmitting] = useState(false)
 
   return (
-    <div className="edit-user">
-      <h3 className="mvc-subtitle">{t("participant.name")}</h3>
-      <input
-        className="edit-user-field"
-        name="username"
-        placeholder={t("setup.user.usernamePlaceholder")}
-        value={user.username}
-        onChange={({ target: { value } }) => setUser(current => ({ ...current, username: value }))}
-      />
-      <h3 className="mvc-subtitle">{t("participant.roles")}</h3>
-      <div className="justify-start mvc-radio-options edit-user-field">
-        {roleData.map(role => (
-          <label key={role} className="mvc-radio-option">
-            <input
-              type="checkbox"
-              name="role"
-              value={role}
-              checked={user.roles.includes(role)}
-              onChange={({ target: { value, checked } }) => (
-                setUser(current => ({
-                  ...current,
-                  roles: checked ? user.roles.concat(value) : user.roles.filter(r => r !== value)
-                }))
-              )}
-              className="setup-user-role"
-            />
-            <div className="mvc-radio-option-label">
-              <Dropdown
-                theme="light"
-                position="bottom"
-                text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
-                tooltip={<div className="participant-role-tooltip">
-                  <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
-                  <p>{t(`roles.${role}.description`)}</p>
-                </div>}
-                width={600}
-                delay={1000}
+    <div className="edit-user flex flex-col">
+      <div className="setup-panel split">
+        <div>
+          <RoleCard role={currentRole} />
+        </div>
+        <div>
+          <h3 className="mvc-subtitle">{t("participant.name")}</h3>
+          <input
+            className="edit-user-field"
+            name="username"
+            placeholder={t("setup.user.usernamePlaceholder")}
+            value={user.username}
+            onChange={({ target: { value } }) => setUser(current => ({ ...current, username: value }))}
+          />
+          <h3 className="mvc-subtitle">{t("participant.roles")}</h3>
+          <div className="justify-start mvc-radio-options edit-user-field">
+            {roleData.map(role => (
+              <RoleBadge
+                key={role}
+                role={role}
+                checked={user.roles.includes(role)}
+                onHover={setCurrentRole}
+                onClick={setUser}
               />
-            </div>
-          </label>
-        ))}
+            ))}
+          </div>
+        </div>
       </div>
       <Controls step={{
         next: () => {

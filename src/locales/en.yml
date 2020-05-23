@@ -396,7 +396,7 @@ setup:
     createUser: Enter room
   room:
     title: Welcome to Minimum Viable Ceremonies!
-    helptext: Bring your team together. Either in person or on a video call. Once you set up your room we'll give you a sharable link so everyone can join.
+    helptext: Bring your team together. Either in person or on a video call. Once you set up your room we'll give you a shareable link so everyone can join.
     name: What do you want to call your room?
     nameLabel: Team Name
     namePlaceholder: Type team name here
@@ -404,7 +404,7 @@ setup:
     weekCountHelper: How long are your sprints? Do you usually track your work in increments of one week or two weeks?
     weeksSingular: "{{weekCount}} week"
     weeksPlural: "{{weekCount}} weeks"
-    ready: Here's your sharable link. 
+    ready: Here's your shareable link.
     linkHelptext: Share the this link with your team to get invite them to join your room.
   user:
     title: Welcome to {{name}}'s room!

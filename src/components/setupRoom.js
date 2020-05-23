@@ -44,20 +44,17 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
         <div className={`setup-room-slide ${step === 1 ? 'active' : ''} setup-slide setup-room-name`}>
           <div className="">
             <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.room.name")}</h1>
-            {/* <label className="setup-room-input-label"> */}
-              {/* {t("setup.room.nameLabel")} */}
-              <input
-                className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
-                name="name"
-                placeholder={t("setup.room.namePlaceholder")}
-                value={room.name}
-                onChange={({ target: { value } }) => room.setName(value)}
-                onKeyPress={({ which }) => ( // next on enter
-                  steps[1].canProceed() && which === 13 && setStep(step => step + 1)
-                )}
-              />
+            <input
+              className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
+              name="name"
+              placeholder={t("setup.room.namePlaceholder")}
+              value={room.name}
+              onChange={({ target: { value } }) => room.setName(value)}
+              onKeyPress={({ which }) => ( // next on enter
+                steps[1].canProceed() && which === 13 && setStep(step => step + 1)
+              )}
+            />
           </div>
-          {/* </label> */}
         </div>
         <div className={`setup-room-slide ${step === 2 ? 'active' : ''} setup-slide setup-room-week-count`}>
           <div className="setup-panel">

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { navigate } from "gatsby"
 import phrase from "random-words"

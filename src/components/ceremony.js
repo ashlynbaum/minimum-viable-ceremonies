@@ -1,8 +1,6 @@
 import React from "react"
-import Markdown from "react-markdown"
 import { useTranslation } from "react-i18next"
 
-import Dropdown from "./dropdown"
 import "../styles/ceremony.scss"
 
 const Ceremony = ({ id }) => {

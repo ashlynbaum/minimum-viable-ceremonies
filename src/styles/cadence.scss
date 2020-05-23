@@ -19,6 +19,7 @@
     font-weight: 600;
     overflow-y: auto;
     overflow-x: hidden;
+    max-height: 400px;
 
     .ceremony {
       background: $grey-darker;

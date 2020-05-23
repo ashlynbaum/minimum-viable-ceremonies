@@ -14,6 +14,7 @@ const SetupUser = ({ onSubmit }) => {
 
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
+  const [currentRole, setCurrentRole] = useState()
   const [{ id, username, roles }, setUser] = useState({
     id: phrase({ exactly: 3, join: '-' }),
     username: '',
@@ -65,39 +66,53 @@ const SetupUser = ({ onSubmit }) => {
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-cadence`}>
-          <div className="setup-panel">
-            <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.role")}</h1>
-            <p>{t("setup.user.roleHelpText")}</p>
-            <div className="mvc-radio-options justify-center">
-              {roleData.map(role => (
-                <label key={role} className="mvc-radio-option">
-                  <input
-                    type="checkbox"
-                    name="role"
-                    value={role}
-                    onChange={({ target: { checked, value } }) => (
-                      setUser(current => ({
-                        ...current,
-                        roles: checked ? roles.concat(value) : roles.filter(r => r !== value)
-                      }))
-                    )}
-                    className="setup-user-role"
-                  />
-                  <div className="mvc-radio-option-label">
-                    <Dropdown
-                      theme="light"
-                      position="bottom"
-                      text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
-                      tooltip={<div className="participant-role-tooltip">
-                        <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
-                        <p>{t(`roles.${role}.description`)}</p>
-                      </div>}
-                      width={600}
-                      delay={1000}
-                    />
+          <div className="setup-panel split">
+            <div className="flex flex-col items-center" style={{height:'100%'}}>
+              <div className="setup-preview-card flex-grow">
+                {currentRole ? (
+                  <div className="participant-role-tooltip">
+                    <h3>{[t(`roles.${currentRole}.icon`), t(`roles.${currentRole}.name`)].join(' ')}</h3>
+                    <p>{t(`roles.${currentRole}.description`)}</p>
                   </div>
-                </label>
-              ))}
+                ) : (
+                  t("setup.user.showRole")
+                )}
+              </div>
+            </div>
+            <div>
+              <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.role")}</h1>
+              <p>{t("setup.user.roleHelpText")}</p>
+              <div className="mvc-radio-options justify-center">
+                {roleData.map(role => (
+                  <label key={role} className="mvc-radio-option">
+                    <input
+                      type="checkbox"
+                      name="role"
+                      value={role}
+                      onChange={({ target: { checked, value } }) => (
+                        setUser(current => ({
+                          ...current,
+                          roles: checked ? roles.concat(value) : roles.filter(r => r !== value)
+                        }))
+                      )}
+                      className="setup-user-role"
+                    />
+                    <div
+                      className="mvc-radio-option-label"
+                      onMouseEnter={() => setCurrentRole(role)}
+                      onMouseLeave={() => setCurrentRole(null)}
+                    >
+                      <Dropdown
+                        theme="light"
+                        position="bottom"
+                        text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
+                        width={600}
+                        delay={1000}
+                      />
+                    </div>
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
         </div>

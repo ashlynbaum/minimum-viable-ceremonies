@@ -15,7 +15,7 @@ const Room = ({ uuid }) => {
   const context = useRoomContext(uuid)
 
   Modal.setAppElement("#___gatsby")
-  const buildModal = (Content, open, close = function() {}, props = {}) => (
+  const buildModal = (Content, open, close = function() {}, props = {}, styles = {}) => (
     <Modal isOpen={!!open} onRequestClose={close ? () => close(null) : undefined} style={{
       content: {
         height: "70vh",
@@ -25,6 +25,7 @@ const Room = ({ uuid }) => {
         borderRadius: "3px",
         backgroundColor: "#F6F8FA",
         overflow: "visible",
+        ...styles
       },
       overlay: {
         display: "flex",
@@ -43,7 +44,10 @@ const Room = ({ uuid }) => {
         {buildModal(SetupRoom, context.editingRoom, context.setEditingRoomId, {
           onSubmit: uuid => context.setUuid(uuid) || context.setEditingRoomId(null)
         })}
-        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId)}
+        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId, {}, {
+          width: "400px",
+          borderRadius: "8px",
+        })}
         {buildModal(EditUser, context.editingUser, context.setEditingUserId)}
       </> : <Loading />}
     </Context.Provider>

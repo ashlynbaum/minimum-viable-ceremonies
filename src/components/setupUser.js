@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useRef, useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
 import phrase from "random-words"
 
@@ -10,6 +10,7 @@ import "../styles/setup.scss"
 const SetupUser = ({ onSubmit }) => {
   const { name, login, roleData } = useContext(Context)
   const { t } = useTranslation()
+  const usernameRef = useRef()
 
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
@@ -25,7 +26,8 @@ const SetupUser = ({ onSubmit }) => {
   }, {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
-    canProceed: () => !!username
+    canProceed: () => !!username,
+    afterRender: () => usernameRef.current.focus()
   }, {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
@@ -48,6 +50,7 @@ const SetupUser = ({ onSubmit }) => {
           <div>
             <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.user.username")}</h1>
             <input
+              ref={usernameRef}
               className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
               name="username"
               placeholder={t("setup.user.usernamePlaceholder")}
@@ -58,7 +61,7 @@ const SetupUser = ({ onSubmit }) => {
               )}
             />
           </div>
-        
+
         </div>
         <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-cadence`}>
           <div className="setup-panel">

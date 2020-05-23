@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { navigate } from "gatsby"
 import phrase from "random-words"
@@ -11,6 +11,7 @@ import "../styles/setup.scss"
 
 const SetupRoom = ({ onSubmit = function() {} }) => {
   const { t } = useTranslation()
+  const nameRef = useRef()
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const room = useRoomContext(phrase({ exactly: 3, join: '-' }), true)
@@ -21,7 +22,8 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
   }, {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
-    canProceed: () => room.nameValid
+    canProceed: () => room.nameValid,
+    afterRender: () => nameRef.current.focus()
   }, {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
@@ -45,6 +47,7 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
           <div className="">
             <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.room.name")}</h1>
             <input
+              ref={nameRef}
               className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
               name="name"
               placeholder={t("setup.room.namePlaceholder")}

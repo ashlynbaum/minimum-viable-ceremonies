@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 
 import Progress from "./progress"
 import Loading from "./loading"
 import "../styles/controls.scss"
 
-const Controls = ({ step: { next, nextText, back, backText, canProceed, submitting }, index, max }) => {
+const Controls = ({ step: { next, nextText, back, backText, canProceed, submitting, afterRender }, index, max }) => {
   const { t } = useTranslation()
+
+  useEffect(() => { setTimeout(afterRender, 500) }, [afterRender])
 
   return (
     <div className="controls absolute inset-x-0 bottom-0">

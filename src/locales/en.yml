@@ -3,7 +3,8 @@ board:
   subtitle: Go through all ceremonies with the team and either add them to a cadence, a sprint, or the void.
   ceremonies: Ceremonies
   cadences: Cadences
-  void: The Void
+  void: Discard
+  voidPlaceholder: Nothing to see here! Except the void of course.
   sprint: Sprint week {{index}}
   addSprint: Add sprint week
   addSprintHelptext: Add another week to your sprint
@@ -415,6 +416,7 @@ setup:
     usernamePlaceholder: Type your name here
     role: Pick a role
     roleHelpText: What do you bring to the table? Select one or many.
+    showRole: Hover over roles to preview
     ready: Ready to go!
     summary: You'll be entering room {{name}} as {{username}}
 shareableLink:

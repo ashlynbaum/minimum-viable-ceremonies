@@ -41,6 +41,8 @@
 }
 
 .dropdown-tooltip {
+  transition: 0.2s ease-in-out;
+
   position: absolute;
   padding: 4px 8px;
   text-align: left;

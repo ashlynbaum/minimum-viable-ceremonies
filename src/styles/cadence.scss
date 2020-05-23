@@ -14,11 +14,35 @@
   }
 
   &.void {
-    background: $grey-darkest;
+    background: $void-background;
+    color: $warm-grey-100;
+    font-weight: 600;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 400px;
 
     .ceremony {
-      background: $grey-dark;
+      background: $grey-darker;
       color: $grey-light;
+      :hover {
+        background: $warm-grey-400;
+      }
+      span {
+        color: $warm-grey-100;
+        font-weight: 600;
+      }
     }
+  }
+  .void-placeholder {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: center;
+    padding: 16px 6px;
+    margin: 0 auto;
+  }
+  .void-svg {
+    margin: 0 auto;
+    width: 65%;
   }
 }

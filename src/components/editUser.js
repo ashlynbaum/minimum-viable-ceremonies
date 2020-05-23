@@ -18,7 +18,7 @@ const EditUser = ({ onSubmit }) => {
     <div className="edit-user flex flex-col">
       <div className="setup-panel split">
         <div>
-          <RoleCard role={currentRole} />
+          <RoleCard role={currentRole || user.roles[0]} />
         </div>
         <div>
           <h3 className="mvc-subtitle">{t("participant.name")}</h3>

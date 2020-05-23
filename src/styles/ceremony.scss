@@ -4,16 +4,21 @@
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   margin: 8px 0;
   width: 100%;
-
-  .mvc-hover-state {
-    padding: 4px 8px;
+  background-color: #f6f6f6;
+  border-radius: 3px;
+  :hover {
+    background-color: $grey-light;
+    cursor: pointer;
+    border-radius: 3px;
   }
-
-  .dropdown-tooltip {
-    padding: 20px 30px;
-    box-shadow: 1px 8px 14px rgba(0, 0, 0, 0.2), 0px 0px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    min-height: 480px;
+  :active {
+    cursor: grab;
+  }
+  .ceremony-content {
+    padding: 4px 8px 2px 8px;
+    .title {
+      margin-top: 1px;
+    }
   }
 }
 

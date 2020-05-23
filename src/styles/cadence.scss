@@ -14,8 +14,8 @@
   }
 
   &.void {
-    background: #484848;
-    color: #E0E0E0;
+    background: $void-background;
+    color: $warm-grey-100;
     font-weight: 600;
     overflow-y: auto;
     overflow-x: hidden;

@@ -17,10 +17,10 @@ const Cadence = ({ id, basis, klass }) => {
         <div
           ref={innerRef}
           style={{flexBasis: `${100 / basis}%`}}
-          className={`cadence flex-grow ${id} ${isDraggingOver ? 'highlight' : ''}`}
+          className={`cadence flex flex-col flex-grow ${id} ${isDraggingOver ? 'highlight' : ''}`}
           {...droppableProps}
         >
-          {!['undecided'].includes(id) && 
+          {!['undecided'].includes(id) &&
             <div className="leading-tight">
               {t(`cadences.${id}.name`)}
             </div>
@@ -40,13 +40,13 @@ const Cadence = ({ id, basis, klass }) => {
             </Draggable>
           ))}
           {placeholder}
-          {['void'].includes(id) && 
-            <>
-            <div className='void-placeholder'>  
-              {t(`board.voidPlaceholder`)}
+          {['void'].includes(id) &&
+            <div className="void-content mb-4 flex flex-col flex-grow justify-center">
+              <div className='void-placeholder'>
+                {t(`board.voidPlaceholder`)}
+              </div>
+              <Void className='void-svg'/>
             </div>
-            <Void className='void-svg'/>
-            </>
           }
         </div>
       )}

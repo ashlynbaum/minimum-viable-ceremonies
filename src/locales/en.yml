@@ -4,7 +4,7 @@ board:
   ceremonies: Ceremonies
   cadences: Cadences
   void: Discard
-  voidPlaceholder: Nothing to see here! Except the void of coarse
+  voidPlaceholder: Nothing to see here! Except the void of course.
   sprint: Sprint week {{index}}
   addSprint: Add sprint week
   addSprintHelptext: Add another week to your sprint

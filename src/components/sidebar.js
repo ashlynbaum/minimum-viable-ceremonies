@@ -60,7 +60,7 @@ const Sidebar = () => {
         />
       </div>
       <div className="sidebar-collapsed-item mvc-hover-state">
-        <ShareableLink value={shareableLink} direction="right" />
+        <ShareableLink hideInput={true} value={shareableLink} direction="right" />
       </div>
       <div className="sidebar-collapsed-participants">
         {Object.values(participants).map(({ id, username, roles }) => (

@@ -69,9 +69,9 @@ const Board = () => {
                     position="bottom"
                     text={t(`board.${weekCount === 1 ? 'addSprint' : 'removeSprint'}`)}
                     tooltip={t(`board.${weekCount === 1 ? 'addSprint' : 'removeSprint'}Helptext`)}
-                    onClick={() => modifyRoom({
-                      weekCount: weekCount === 1 ? weekCount + 1 : weekCount - 1
-                    })}
+                    onClick={() => (
+                      modifyRoom({ weekCount: weekCount + (weekCount === 1 ? 1 : -1) })
+                    )}
                   />
                 </div>
               </div>

@@ -33,28 +33,33 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
     submitting
   }]
 
+
   return (
     <div className="setup-room setup">
-      <div className="setup-room-slides setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
+      <div className="setup-room-slides setup-slides" style={{ height: '100%', marginLeft: `-${100 * step}%`}}>
         <div className={`setup-room-slide ${step === 0 ? 'active' : ''} setup-slide setup-room-help`}>
           <h1>{t("setup.room.title", { name: room.name })}</h1>
           <p>{t("setup.room.helptext")}</p>
         </div>
         <div className={`setup-room-slide ${step === 1 ? 'active' : ''} setup-slide setup-room-name`}>
-          <h1>{t("setup.room.name")}</h1>
-          <input
-            name="name"
-            placeholder={t("setup.room.namePlaceholder")}
-            value={room.name}
-            onChange={({ target: { value } }) => room.setName(value)}
-            onKeyPress={({ which }) => ( // next on enter
-              steps[1].canProceed() && which === 13 && setStep(step => step + 1)
-            )}
-          />
+          <div className="">
+            <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.room.name")}</h1>
+            <input
+              className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
+              name="name"
+              placeholder={t("setup.room.namePlaceholder")}
+              value={room.name}
+              onChange={({ target: { value } }) => room.setName(value)}
+              onKeyPress={({ which }) => ( // next on enter
+                steps[1].canProceed() && which === 13 && setStep(step => step + 1)
+              )}
+            />
+          </div>
         </div>
         <div className={`setup-room-slide ${step === 2 ? 'active' : ''} setup-slide setup-room-week-count`}>
           <div className="setup-panel">
             <h1>{t("setup.room.weekCount")}</h1>
+            <p>{t("setup.room.weekCountHelper")}</p>
             <div className="mvc-radio-options justify-center">
               {[1,2].map(weekCount => (
                 <label className="mvc-radio-option" key={weekCount}>

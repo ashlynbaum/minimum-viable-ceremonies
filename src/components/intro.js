@@ -32,14 +32,18 @@ const Intro = () => {
         onRequestClose={() => setupRoom(false)}
         style={{
           content: {
-            height: "auto",
+            height: "70vh",
+            width: "75vw",
             bottom: "auto",
             margin: "auto",
+            borderRadius: "3px",
+            backgroundColor: "#F6F8FA",
           },
           overlay: {
             display: "flex",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            backgroundColor: "white",
           }
         }}
       >

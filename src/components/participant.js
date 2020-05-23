@@ -19,7 +19,7 @@ const Participant = ({ id, username, roles }) => {
             klass="dark"
             theme="dark"
             icon="basic/more-horizontal"
-            size={16}
+            size={24}
             tooltip={t("participant.edit")}
             onClick={() => setEditingUserId(id)}
           />}
@@ -36,7 +36,9 @@ const Participant = ({ id, username, roles }) => {
             width={400}
             text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
             tooltip={<div className="participant-role-tooltip">
-              <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
+              <div className="text-4xl mb-6 mt-1">{t(`roles.${role}.icon`)} </div>
+              <div className="text-2xl mb-2 mt-1">{t(`roles.${role}.name`)}</div>
+              <p className="mb-2">{t(`roles.${role}.sub-heading`)}</p>
               <p>{t(`roles.${role}.description`)}</p>
             </div>}
           />

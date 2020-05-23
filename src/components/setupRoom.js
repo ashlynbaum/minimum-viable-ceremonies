@@ -34,7 +34,7 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
 
   return (
     <div className="setup-room setup">
-      <div className="setup-room-slides setup-slides" style={{ height: '100%', marginLeft: `-${100 * step}%`}}>
+      <div className="setup-room-slides setup-slides" style={{marginLeft: `-${100 * step}%`}}>
         <div className={`setup-room-slide ${step === 0 ? 'active' : ''} setup-slide setup-room-help`}>
           <div className="setup-panel text-center">
             <h1>{t("setup.room.title", { name: room.name })}</h1>

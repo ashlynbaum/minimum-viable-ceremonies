@@ -400,10 +400,6 @@ setup:
     name: What do you want to call your room?
     nameLabel: Team Name
     namePlaceholder: Type team name here
-    weekCount: Sprint Cadence
-    weekCountHelper: How long are your sprints? Do you usually track your work in increments of one week or two weeks?
-    weeksSingular: "{{weekCount}} week"
-    weeksPlural: "{{weekCount}} weeks"
     ready: "We're about to create your room"
     copyLink: Copy this link to share it with your team
     copyLinkHelptext: Here's your shareable link

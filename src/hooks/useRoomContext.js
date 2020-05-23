@@ -11,7 +11,7 @@ const useRoomContext = (id, draft) => {
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
-  const [weekCount, setWeekCount] = useState()
+  const [weekCount, setWeekCount] = useState(1)
   const [participants, setParticipants] = useState({})
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
     (result, id) => ({ ...result, [id]: { id, placement: 'undecided' } })
@@ -56,10 +56,6 @@ const useRoomContext = (id, draft) => {
     name && name.length >= 3
   ), [name])
 
-  const weekCountValid = useMemo(() => (
-    !!weekCount
-  ), [weekCount])
-
   const shareableLink = useMemo(() => (
     `${document.location.origin}/room/${uuid}`
   ), [uuid])
@@ -69,7 +65,7 @@ const useRoomContext = (id, draft) => {
     roleData,
     ceremonies,
     name, nameValid, setName,
-    weekCount, weekCountValid, setWeekCount,
+    weekCount, setWeekCount,
     shareableLink,
     currentUser,
     participants,

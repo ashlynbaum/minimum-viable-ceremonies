@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next"
 // import moment from "moment"
 // import TimePicker from "rc-time-picker"
 
-import Icon from "./icon"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
 import "../styles/setupCeremony.scss"
@@ -12,7 +11,7 @@ import "../styles/setupCeremony.scss"
 
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
-  const { place, editingCeremony } = useContext(Context)
+  const { editingCeremony } = useContext(Context)
 
   if (!editingCeremony) { return null }
 

@@ -1,49 +1,29 @@
-import React, { useState } from "react"
+import React from "react"
 import Modal from "react-modal"
-import { useTranslation } from "react-i18next"
 
 import SetupRoom from "./setupRoom"
-import BoardSvg from "../images/board.svg"
 import "../styles/intro.scss"
 
 const Intro = () => {
-  const { t } = useTranslation()
-  const [creatingRoom, setupRoom] = useState()
-
   Modal.setAppElement("#___gatsby")
 
   return (
     <div className="intro flex flex-col justify-center align-center">
-      <div className="intro-content flex flex-row justify-center align-center">
-        <div className="intro-left flex flex-col justify-center text-center align-center">
-          <h1 className="intro-title">{t("intro.welcome")}</h1>
-          <div className="intro-new">
-            <button className="mvc-btn" onClick={() => setupRoom(true)}>
-              {t("intro.setupRoom")}
-            </button>
-          </div>
-        </div>
-        <div className="intro-right">
-          <BoardSvg />
-        </div>
-      </div>
       <Modal
-        isOpen={creatingRoom}
-        onRequestClose={() => setupRoom(false)}
+        isOpen={true}
         style={{
           content: {
             height: "70vh",
             width: "75vw",
             bottom: "auto",
             margin: "auto",
-            borderRadius: "3px",
-            backgroundColor: "#F6F8FA",
+            backgroundColor: "rgba(255,255,255,0.6)",
           },
           overlay: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "white",
+            backgroundColor: "transparent",
           }
         }}
       >

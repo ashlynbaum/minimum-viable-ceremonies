@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next"
 import phrase from "random-words"
 
 import Controls from "./controls"
-import Dropdown from "./dropdown"
 import RoleCard from "./roleCard"
 import RoleBadge from "./roleBadge"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
+import CeremonyHelp from "../images/help/ceremony.svg"
+import VoidHelp from "../images/help/void.svg"
 
 const SetupUser = ({ onSubmit }) => {
   const { name, login, roleData } = useContext(Context)
@@ -76,8 +77,10 @@ const SetupUser = ({ onSubmit }) => {
             <div className="flex flex-col items-center" style={{height:'100%'}}>
               <RoleCard role={currentRole} placeholder={t("setup.user.showRole")} />
             </div>
-            <div>
-              <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.role")}</h1>
+            <div style={{margin: "16px"}}>
+              <h1 className="text-gray-900 font-bold text-2-xl">
+                {t("setup.user.role")}
+              </h1>
               <p>{t("setup.user.roleHelpText")}</p>
               <div className="setup-roles mvc-radio-options justify-start">
                 {roleData.map(role => <RoleBadge key={role} role={role} onClick={setUser} onHover={setCurrentRole} />)}
@@ -86,10 +89,21 @@ const SetupUser = ({ onSubmit }) => {
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 3 ? 'active' : ''} setup-user-link`}>
-          <div className="setup-panel">
+          <div className="setup-panel split">
             <div className="setup-subpanel">
-              <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.ready")}</h1>
-              <p>{t("setup.user.summary", { name, username })}</p>
+              <h1 className="text-gray-900 font-bold text-2-xl">
+                {t("setup.user.ready")}
+              </h1>
+              <div className="flex flex-row">
+                <div className="mr-6 setup-panel-card">
+                  {t("setup.user.ceremonyHelptext")}
+                  <CeremonyHelp />
+                </div>
+                <div className="setup-panel-card">
+                  {t("setup.user.voidHelptext")}
+                  <VoidHelp />
+                </div>
+              </div>
             </div>
           </div>
         </div>

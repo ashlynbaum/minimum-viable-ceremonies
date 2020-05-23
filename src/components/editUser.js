@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
 
 import Controls from "./controls"
-import Dropdown from "./dropdown"
 import RoleCard from "./roleCard"
 import RoleBadge from "./roleBadge"
 import Context from "../contexts/room"

@@ -12,7 +12,7 @@
 }
 
 .setup-slides {
-  padding: 24px;
+  padding: 0 24px;
   transition: all ease-out 0.3s;
   width: 100%;
   height: 100%;
@@ -96,5 +96,21 @@
         fill: $blue;
       }
     }
+  }
+}
+
+.setup-user-link {
+  .setup-subpanel {
+    max-width: 680px;
+  }
+
+  .setup-panel-card {
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  svg {
+    height: 180px;
   }
 }

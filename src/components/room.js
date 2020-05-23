@@ -18,12 +18,10 @@ const Room = ({ uuid }) => {
   const buildModal = (Content, open, close = function() {}, props = {}, styles = {}) => (
     <Modal isOpen={!!open} onRequestClose={close ? () => close(null) : undefined} style={{
       content: {
-        height: "70vh",
-        width: "75vw",
+        width: "80vw",
         bottom: "auto",
         margin: "auto",
-        borderRadius: "3px",
-        backgroundColor: "#F6F8FA",
+        boxShadow: "0px 15px 35px rgba(0, 0, 0, 0.2), 0px 3px 11px rgba(0, 0, 0, 0.15)",
         overflow: "visible",
         ...styles
       },

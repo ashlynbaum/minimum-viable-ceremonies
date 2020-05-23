@@ -5,6 +5,7 @@ import phrase from "random-words"
 
 import Controls from "./controls"
 import ShareableLink from "./shareableLink"
+import BoardSvg from "../images/board.svg"
 import { createRoom } from "../db/firebase"
 import useRoomContext from "../hooks/useRoomContext"
 import "../styles/setup.scss"
@@ -36,10 +37,13 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
     <div className="setup-room setup">
       <div className="setup-room-slides setup-slides" style={{marginLeft: `-${100 * step}%`}}>
         <div className={`setup-room-slide ${step === 0 ? 'active' : ''} setup-slide setup-room-help`}>
-          <div className="setup-panel text-center">
-            <div className="setup-subpanel">
+          <div className="setup-panel text-center split">
+            <div className="flex flex-col justify-center align-center">
               <h1>{t("setup.room.title", { name: room.name })}</h1>
               <p>{t("setup.room.helptext")}</p>
+            </div>
+            <div className="flex align-center justify-center">
+              <BoardSvg style={{width: "80%"}} />
             </div>
           </div>
         </div>

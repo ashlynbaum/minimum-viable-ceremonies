@@ -422,8 +422,9 @@ setup:
     role: Pick a role
     roleHelpText: What do you bring to the table? Select one or many.
     showRole: Hover over roles to preview
-    ready: Ready to go!
-    summary: You'll be entering room {{name}} as {{username}}
+    ready: What you need to know
+    ceremonyHelptext: Move ceremonies to a cadence
+    voidHelptext: Move unwanted ceremonies into the void
 shareableLink:
   copy: Click to copy shareable link
   copied: Copied to clipboard!

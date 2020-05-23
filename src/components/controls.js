@@ -11,7 +11,7 @@ const Controls = ({ step: { next, nextText, back, backText, canProceed, submitti
   useEffect(() => { setTimeout(afterRender, 500) }, [afterRender])
 
   return (
-    <div className="controls absolute inset-x-0 bottom-0">
+    <div className="controls">
       {index > 0 && <button onClick={back} className="mvc-btn">{t(backText)}</button>}
       <div className="controls-divider">
         {index > 0 && <Progress step={index-1} max={max} />}

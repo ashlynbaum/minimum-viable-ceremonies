@@ -404,8 +404,10 @@ setup:
     weekCountHelper: How long are your sprints? Do you usually track your work in increments of one week or two weeks?
     weeksSingular: "{{weekCount}} week"
     weeksPlural: "{{weekCount}} weeks"
-    ready: Here's your shareable link.
-    linkHelptext: Share the this link with your team to get invite them to join your room.
+    ready: "We're about to create your room"
+    copyLink: Copy this link to share it with your team
+    copyLinkHelptext: Here's your shareable link
+    copyLinkButton: Copy shareable link
   user:
     title: Welcome to {{name}}'s room!
     helptext: Talk through the ceremonies, and add them to a cadence. Ceremonies you don't want go into The Void. First we need to set you pick your role in the team.

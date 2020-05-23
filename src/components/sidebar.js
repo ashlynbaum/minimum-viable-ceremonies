@@ -27,7 +27,7 @@ const Sidebar = () => {
       <div className="sidebar-actions">
         <h3 className="mvc-subtitle">{t("sidebar.shareableLink")}</h3>
         <div className="sidebar-option mvc-hover-state">
-          <ShareableLink text={uuid} value={shareableLink} position="right" />
+          <ShareableLink hideInput={true} text={uuid} value={shareableLink} position="right" />
         </div>
       </div>
       <div className="sidebar-participants">

@@ -5,6 +5,7 @@ import { Draggable, Droppable } from "react-beautiful-dnd"
 import Ceremony from "./ceremony"
 import Context from "../contexts/room"
 import "../styles/cadence.scss"
+import Void from "../images/void.svg"
 
 const Cadence = ({ id, basis, klass }) => {
   const { placedOn } = useContext(Context)
@@ -16,10 +17,14 @@ const Cadence = ({ id, basis, klass }) => {
         <div
           ref={innerRef}
           style={{flexBasis: `${100 / basis}%`}}
-          className={`cadence flex-grow ${id} ${isDraggingOver ? 'highlight' : ''}`}
+          className={`cadence flex flex-col flex-grow ${id} ${isDraggingOver ? 'highlight' : ''}`}
           {...droppableProps}
         >
-          {!['void', 'undecided'].includes(id) && <div>{t(`cadences.${id}.name`)}</div>}
+          {!['undecided'].includes(id) &&
+            <div className="leading-tight">
+              {t(`cadences.${id}.name`)}
+            </div>
+          }
           {placedOn(id).map(({ id }, index) => (
             <Draggable draggableId={id} index={index} key={id}>
               {({ innerRef, draggableProps, dragHandleProps }) => (
@@ -35,6 +40,14 @@ const Cadence = ({ id, basis, klass }) => {
             </Draggable>
           ))}
           {placeholder}
+          {['void'].includes(id) &&
+            <div className="void-content mb-4 flex flex-col flex-grow justify-center">
+              <div className='void-placeholder'>
+                {t(`board.voidPlaceholder`)}
+              </div>
+              <Void className='void-svg'/>
+            </div>
+          }
         </div>
       )}
     </Droppable>

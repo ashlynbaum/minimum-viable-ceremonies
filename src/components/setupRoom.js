@@ -25,10 +25,6 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
     canProceed: () => room.nameValid,
     afterRender: () => nameRef.current.focus()
   }, {
-    nextText: "setup.controls.next",
-    backText: "setup.controls.back",
-    canProceed: () => room.weekCountValid
-  }, {
     nextText: "setup.controls.createRoom",
     backText: "setup.controls.back",
     canProceed: () => true,
@@ -38,17 +34,19 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
 
   return (
     <div className="setup-room setup">
-      <div className="setup-room-slides setup-slides" style={{ height: '100%', marginLeft: `-${100 * step}%`}}>
+      <div className="setup-room-slides setup-slides" style={{marginLeft: `-${100 * step}%`}}>
         <div className={`setup-room-slide ${step === 0 ? 'active' : ''} setup-slide setup-room-help`}>
-          <h1>{t("setup.room.title", { name: room.name })}</h1>
-          <p>{t("setup.room.helptext")}</p>
+          <div className="setup-panel text-center">
+            <h1>{t("setup.room.title", { name: room.name })}</h1>
+            <p>{t("setup.room.helptext")}</p>
+          </div>
         </div>
         <div className={`setup-room-slide ${step === 1 ? 'active' : ''} setup-slide setup-room-name`}>
-          <div className="">
-            <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.room.name")}</h1>
+          <div className="setup-panel">
+            <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.room.name")}</h1>
             <input
               ref={nameRef}
-              className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
+              className="ml-10 bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl leading-tight focus:outline-none"
               name="name"
               placeholder={t("setup.room.namePlaceholder")}
               value={room.name}
@@ -59,31 +57,17 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
             />
           </div>
         </div>
-        <div className={`setup-room-slide ${step === 2 ? 'active' : ''} setup-slide setup-room-week-count`}>
+        <div className={`setup-room-slide ${step === 2 ? 'active' : ''} setup-slide setup-room-link`}>
           <div className="setup-panel">
-            <h1>{t("setup.room.weekCount")}</h1>
-            <p>{t("setup.room.weekCountHelper")}</p>
-            <div className="mvc-radio-options justify-center">
-              {[1,2].map(weekCount => (
-                <label className="mvc-radio-option" key={weekCount}>
-                  <input
-                    type="radio"
-                    name="weekCount"
-                    value={weekCount}
-                    onChange={({ target: { value } }) => room.setWeekCount(value)}
-                  />
-                  <div className="mvc-radio-option-label" style={{padding: '8px'}}>
-                    {t(weekCount === 1 ? "setup.room.weeksSingular" : "setup.room.weeksPlural", { weekCount })}
-                  </div>
-                </label>
-            ))}
+            <div className="text-left">
+              <h1>{t("setup.room.ready")}</h1>
+              <p>{t("setup.room.copyLink")}</p>
+              <div className="setup-shareable-link">
+              <div className="font-bold">{t("setup.room.copyLinkHelptext")}</div>
+              <ShareableLink value={room.shareableLink} text={t("setup.room.copyLinkButton")} position="bottom" size={24} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className={`setup-room-slide ${step === 3 ? 'active' : ''} setup-slide setup-room-link`}>
-          <h1>{t("setup.room.ready")}</h1>
-          <p>{t("setup.room.linkHelptext")}</p>
-          <ShareableLink text={room.uuid} value={room.shareableLink} position="bottom" inline={true} />
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{

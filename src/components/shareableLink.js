@@ -5,19 +5,20 @@ import { useTranslation } from "react-i18next"
 import Dropdown from "./dropdown"
 import "../styles/shareableLink.scss"
 
-const ShareableLink = ({ text, value, position, inline }) => {
+const ShareableLink = ({ text, value, position, hideInput, size = 16 }) => {
   const { t } = useTranslation()
   const [copied, setCopied] = useState(false)
   const linkRef = useRef()
 
   return (
-    <div className={`shareable-link ${inline ? 'inline' : ''}`}>
+    <div className="shareable-link">
+      <input className={hideInput ? "hidden" : ""} readOnly={true} ref={linkRef} value={value} />
       <Dropdown
         icon="basic/link"
         position={position}
         klass="light"
         text={text}
-        size={16}
+        size={size}
         tooltip={t(`shareableLink.${copied ? 'copied' : 'copy'}`)}
         onClick={() => {
           setCopied(true)
@@ -26,7 +27,6 @@ const ShareableLink = ({ text, value, position, inline }) => {
           setTimeout(() => setCopied(false), 1000)
         }}
       />
-      <textarea readOnly={true} ref={linkRef} value={value} />
     </div>
   )
 }

@@ -5,6 +5,7 @@
   flex-direction: column;
   border-radius: 16px;
   display: flex;
+  height: 100%;
   h1 {
     font-size: 30px;
   }
@@ -14,6 +15,7 @@
   padding: 24px;
   transition: all ease-out 0.3s;
   width: 100%;
+  height: 100%;
   white-space: nowrap;
 }
 
@@ -34,5 +36,52 @@
   .setup-panel {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+.setup-shareable-link {
+  font-size: 18px;
+  line-height: 22px;
+
+  padding: 20px;
+  background: $grey-lightest;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  min-width: 500px;
+
+  input {
+    width: 100%;
+    background: transparent;
+    outline: none;
+    padding: 12px 0;
+    color: $grey;
+  }
+
+  .dropdown {
+    margin-top: 12px;
+    padding: 8px;
+    border: 2px solid $grey;
+    color: $grey;
+    font-size: 16px;
+    display: inline-block;
+
+    svg {
+      fill: $grey;
+    }
+
+    &:hover {
+      border: 2px solid $blue;
+      color: $blue;
+      background: $grey-lightest;
+
+      svg {
+        fill: $blue;
+      }
+    }
   }
 }

@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next'
 import { DragDropContext } from "react-beautiful-dnd"
 
 import Cadence from "./cadence"
+import Dropdown from "./dropdown"
 import Sidebar from "./sidebar"
 import Context from "../contexts/room"
 import "../styles/board.scss"
 
 const Board = () => {
   const { t } = useTranslation()
-  const { place, weekCount } = useContext(Context)
+  const { place, weekCount, modifyRoom } = useContext(Context)
 
   return (
     <div className="board flex flex-row">
@@ -60,6 +61,19 @@ const Board = () => {
                     <Cadence basis={5} id={`friday-${index+1}`} />
                   </div>
                 </div>)}
+                <div>
+                  <Dropdown
+                    klass="ml-1 mt-2 board-add-sprint"
+                    icon={`basic/${weekCount === 1 ? 'plus': 'trash'}`}
+                    size={14}
+                    position="bottom"
+                    text={t(`board.${weekCount === 1 ? 'addSprint' : 'removeSprint'}`)}
+                    tooltip={t(`board.${weekCount === 1 ? 'addSprint' : 'removeSprint'}Helptext`)}
+                    onClick={() => (
+                      modifyRoom({ weekCount: weekCount + (weekCount === 1 ? 1 : -1) })
+                    )}
+                  />
+                </div>
               </div>
             </div>
           </div>

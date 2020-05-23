@@ -41,13 +41,15 @@ const SetupUser = ({ onSubmit }) => {
 
   return (
     <div className="setup-user setup">
-      <div className="setup-user-slidessetup-slide setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
+      <div className="setup-user-slides setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
         <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-help`}>
-          <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.title", { name })}</h1>
-          <p>{t("setup.user.helptext")}</p>
+          <div className="setup-panel">
+            <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.title", { name })}</h1>
+            <p>{t("setup.user.helptext")}</p>
+          </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-name`}>
-          <div>
+          <div className="setup-panel">
             <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.user.username")}</h1>
             <input
               ref={usernameRef}
@@ -61,7 +63,6 @@ const SetupUser = ({ onSubmit }) => {
               )}
             />
           </div>
-
         </div>
         <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-cadence`}>
           <div className="setup-panel">
@@ -101,8 +102,10 @@ const SetupUser = ({ onSubmit }) => {
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 3 ? 'active' : ''} setup-user-link`}>
-          <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.ready")}</h1>
-          <p>{t("setup.user.summary", { name, username })}</p>
+          <div className="setup-panel">
+            <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.ready")}</h1>
+            <p>{t("setup.user.summary", { name, username })}</p>
+          </div>
         </div>
       </div>
       <Controls index={step} max={steps.length-1} step={{

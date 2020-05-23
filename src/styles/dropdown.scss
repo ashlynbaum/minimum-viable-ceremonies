@@ -1,6 +1,11 @@
 @import 'colors';
 
 .dropdown {
+  transition: 0.2s ease-in-out;
+  svg {
+    transition: 0.2s ease-in-out;
+  }
+
   &.open .dropdown-tooltip {
     opacity: 1;
 
@@ -36,7 +41,6 @@
 }
 
 .dropdown-tooltip {
-  transition: 0.2s ease-in-out;
   position: absolute;
   padding: 4px 8px;
   text-align: left;

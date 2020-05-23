@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react"
 import { useCookies } from "react-cookie"
-import { setupRoom, setCeremony, setParticipant } from "../db/firebase"
+import { setupRoom, setRoom, setCeremony, setParticipant } from "../db/firebase"
 import { document } from "browser-monads"
 import roleData from "../data/roles"
 import ceremonyData from "../data/ceremonies"
@@ -28,6 +28,7 @@ const useRoomContext = (id, draft) => {
       setCeremonies,
       participants,
       setParticipants,
+      setWeekCount,
     }).then(state => {
       setUuid(state.uuid)
       setName(state.name)
@@ -65,7 +66,7 @@ const useRoomContext = (id, draft) => {
     roleData,
     ceremonies,
     name, nameValid, setName,
-    weekCount, setWeekCount,
+    weekCount,
     shareableLink,
     currentUser,
     participants,
@@ -86,6 +87,10 @@ const useRoomContext = (id, draft) => {
       const updated = { ...ceremonies[id], placement }
       setCeremony({ uuid }, updated)
       setCeremonies(current => ({ ...current, [id]: updated }))
+    },
+    modifyRoom: ({ weekCount }) => {
+      setRoom({ uuid }, { weekCount })
+      setWeekCount(weekCount)
     }
   }
 }

@@ -6,8 +6,12 @@ export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) 
   rooms().child(uuid).set({ uuid, name, weekCount, ceremonies, participants })
 )
 
-export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, setCeremonies }) => {
+export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, setCeremonies, setWeekCount }) => {
   const room = rooms().child(uuid)
+
+  room.child('weekCount').on('value', snapshot => (
+    setWeekCount(snapshot.toJSON())
+  ))
 
   room.child('participants').on('value', snapshot => (
     Object.values(snapshot.toJSON() || [])
@@ -43,4 +47,8 @@ export const setParticipant = ({ uuid }, participant) => (
 
 export const setCeremony = ({ uuid }, ceremony) => (
   rooms().child(`${uuid}/ceremonies/${ceremony.id}`).set(ceremony)
+)
+
+export const setRoom = ({ uuid }, { weekCount }) => (
+  rooms().child(`${uuid}/weekCount`).set(weekCount)
 )

@@ -5,6 +5,10 @@ board:
   cadences: Cadences
   void: The Void
   sprint: Sprint week {{index}}
+  addSprint: Add sprint week
+  addSprintHelptext: Add another week to your sprint
+  removeSprint: Remove sprint week
+  removeSprintHelptext: Remove the second week from your sprint
 cadences:
   undecided:
     name: Ceremonies

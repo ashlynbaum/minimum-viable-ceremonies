@@ -27,7 +27,7 @@ const SetupUser = ({ onSubmit }) => {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
     canProceed: () => !!username,
-    afterRender: () => usernameRef.current.focus()
+    afterRender: () => usernameRef.current && usernameRef.current.focus()
   }, {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",

@@ -23,7 +23,7 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
     canProceed: () => room.nameValid,
-    afterRender: () => nameRef.current.focus()
+    afterRender: () => nameRef.current && nameRef.current.focus()
   }, {
     nextText: "setup.controls.createRoom",
     backText: "setup.controls.back",

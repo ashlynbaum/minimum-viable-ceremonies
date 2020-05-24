@@ -12,7 +12,7 @@ const ShareableLink = ({ text, value, position, hideInput, size = 16 }) => {
 
   return (
     <div className="shareable-link">
-      <input className={hideInput ? "hidden" : ""} readOnly={true} ref={linkRef} value={value} />
+      <input className={hideInput ? "hidden copy-link" : "copy-link"} readOnly={true} ref={linkRef} value={value} />
       <Dropdown
         icon="basic/link"
         position={position}

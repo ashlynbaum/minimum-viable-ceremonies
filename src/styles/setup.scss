@@ -27,7 +27,8 @@
   p {
     font-size: 14;
     line-height: initial;
-    color: $void-background;
+    color: $grey-dark;
+    font-weight: 500;
   }
 }
 
@@ -83,43 +84,49 @@
 }
 
 .setup-panel-card {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
   width: 500px;
-  margin: auto;
-
+  margin: 2rem auto 2rem auto;
   padding: 20px;
-  background: $grey-lightest;
+  background: white;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  color: $grey-dark;
+  font-weight: 500;
 
   input {
     width: 100%;
     background: transparent;
     outline: none;
-    padding: 12px 0;
+    padding: 8px 0 24px 0;
     color: $grey;
+  }
+  .copy-link {
+    font-size: 16px;
   }
 
   .dropdown {
-    margin-top: 12px;
-    padding: 8px;
-    border: 2px solid $grey;
-    color: $grey;
-    font-size: 16px;
+    background: $warm-grey-000; 
+    color: $grey-darker;
+    border: 1px solid #B7C0CC;
+    padding: 8px 20px 8px 14px;
     display: inline-block;
-
     svg {
       fill: $grey;
+      margin-right: 8px;
     }
-
     &:hover {
-      border: 2px solid $blue;
       color: $blue;
-      background: $grey-lightest;
-
+      border: 1px solid $blue;
       svg {
         fill: $blue;
       }
+    }
+    &:active {
+      background: $warm-grey-000;    
+      border: 1px solid #0067F2; 
+      color: $blue;
+      box-shadow: inset 1px 2px 6px rgba(76, 83, 91, 0.5);
     }
   }
 }

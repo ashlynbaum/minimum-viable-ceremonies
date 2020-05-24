@@ -410,7 +410,7 @@ setup:
     name: What do you want to call your room?
     nameLabel: Team Name
     namePlaceholder: Type team name here...
-    ready: "We're about to create your room"
+    ready: We're about to create your room  🎉
     copyLink: Copy this link to share it with your team
     copyLinkHelptext: Here's your shareable link
     copyLinkButton: Copy shareable link

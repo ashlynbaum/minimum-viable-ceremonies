@@ -73,11 +73,11 @@ const SetupRoom = ({
         <div className={`setup-room-slide ${step === 2 ? 'active' : ''} setup-slide setup-room-link`}>
           <div className="setup-panel">
             <div className="setup-subpanel">
-              <h1>{t("setup.room.ready")}</h1>
-              <p>{t("setup.room.copyLink")}</p>
+              <h1 className="ml-1">{t("setup.room.ready")}</h1>
+              <p className="ml-1">{t("setup.room.copyLink")}</p>
               <div className="setup-panel-card">
-                <div className="font-bold">{t("setup.room.copyLinkHelptext")}</div>
-                <ShareableLink value={room.shareableLink} text={t("setup.room.copyLinkButton")} position="bottom" size={24} />
+                <div className="">{t("setup.room.copyLinkHelptext")}</div>
+                <ShareableLink value={room.shareableLink} text={t("setup.room.copyLinkButton")} position="bottom" size={14} />
               </div>
             </div>
           </div>

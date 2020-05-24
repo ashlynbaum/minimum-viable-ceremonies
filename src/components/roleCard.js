@@ -10,8 +10,16 @@ const RoleCard = ({ role }) => {
     <div className={`role-card flex-grow flex justify-center ${role ? 'items-start' : 'items-center'}`}>
       {role ? (
         <div className="role-card-content">
-          <h3>{[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}</h3>
-          <p>{t(`roles.${role}.description`)}</p>
+          <div className="card-icon">
+            {t(`roles.${role}.icon`)}
+          </div>
+          <div className="card-title">
+            {t(`roles.${role}.name`)}
+          </div>
+          <div className="card-subheading">
+            {t(`roles.${role}.sub-heading`)}
+          </div>
+          <div className="card-description">{t(`roles.${role}.description`)}</div>
         </div>
       ) : (
         <div className="role-card-placeholder">{t("setup.user.showRole")}</div>

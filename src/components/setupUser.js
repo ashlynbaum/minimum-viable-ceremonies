@@ -46,15 +46,15 @@ const SetupUser = ({ onSubmit }) => {
   return (
     <div className="setup-user setup">
       <div className="setup-user-slides setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
-        <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-help`}>
+        {/* <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-help`}>
           <div className="setup-panel">
             <div className="setup-subpanel">
               <h1 className="">{t("setup.user.title", { name })}</h1>
               <p>{t("setup.user.helptext")}</p>
             </div>
           </div>
-        </div>
-        <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-name`}>
+        </div> */}
+        <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-name`}>
           <div className="setup-panel">
             <div className="setup-input-subpanel">
               <h1 className="input-label">{t("setup.user.username")}</h1>
@@ -72,7 +72,7 @@ const SetupUser = ({ onSubmit }) => {
             </div>
           </div>
         </div>
-        <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-cadence`}>
+        <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-cadence`}>
           <div className="setup-panel split">
             <div className="flex flex-col items-center" style={{height:'100%'}}>
               <RoleCard role={currentRole} placeholder={t("setup.user.showRole")} />
@@ -88,7 +88,7 @@ const SetupUser = ({ onSubmit }) => {
             </div>
           </div>
         </div>
-        <div className={`setup-user-slide setup-slide ${step === 3 ? 'active' : ''} setup-user-link`}>
+        <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-link`}>
           <div className="setup-panel split">
             <div className="setup-subpanel">
               <h1 className="text-gray-900 font-bold text-2-xl">

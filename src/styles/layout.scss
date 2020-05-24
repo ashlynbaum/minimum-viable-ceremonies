@@ -636,6 +636,7 @@ pre tt:after {
     }
   }
 }
+
 .btn-primary {
   background-color: $blue;
   color: white;
@@ -662,7 +663,7 @@ pre tt:after {
   color: $grey-darker;
   border: 1px solid #B7C0CC;
   &:hover {
-    color: blue;
+    color: $blue;
     border: 1px solid $blue;
   }
   &:active {

@@ -10,10 +10,10 @@ import "../styles/board.scss"
 
 const Board = () => {
   const { t } = useTranslation()
-  const { place, weekCount, modifyRoom } = useContext(Context)
+  const { draft, place, weekCount, modifyRoom } = useContext(Context)
 
   return (
-    <div className="board flex flex-row">
+    <div className={`board flex flex-row ${draft ? "draft" : ""}`}>
       <Sidebar />
       <DragDropContext onDragEnd={({ draggableId, destination }) => (
         destination ? place(draggableId, destination.droppableId) : null

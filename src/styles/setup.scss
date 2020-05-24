@@ -22,7 +22,7 @@
   input {
     font-size: 30px;
     font-weight: 600;
-
+    color: $warm-grey-700;
   }
   p {
     font-size: 14;
@@ -79,7 +79,7 @@
 
 .setup-input-subpanel {
   max-width: 600px;
-  margin: 0 200px
+  margin: 0 15%;
 }
 
 .setup-panel-card {

@@ -54,7 +54,7 @@ const SetupRoom = ({
         </div>
         <div className={`setup-room-slide ${step === 1 ? 'active' : ''} setup-slide setup-room-name`}>
           <div className="setup-panel">
-            <div className="setup-input-subpanel">
+            <div className="setup-input-subpanel sm:mx-auto">
               <div className="input-label">{t("setup.room.name")}</div>
               <input
                 ref={nameRef}

@@ -615,17 +615,31 @@ pre tt:after {
   }
 }
 
-.mvc-btn {
+.mvc-btn-primary {
   position: relative;
-  @apply font-bold py-2 px-4 rounded bg-blue-500 text-white;
+  background-color: $blue;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 3px;
+  color: white;
+  padding: 8px 20px;
+  @apply flex outline-none;
   &:hover {
-    @apply bg-blue-700;
+    background-color: #0054C1;
+    @apply outline-none;
+  }
+  &:active {
+    background: $warm-grey-000;    
+    border: 1px solid #0067F2; 
+    color: $blue;
+    box-shadow: inset 1px 2px 6px rgba(76, 83, 91, 0.5);
+    @apply outline-none;
   }
   &[disabled] {
-    @apply opacity-50;
+    @apply opacity-50 outline-none;
     &:hover {
       cursor: not-allowed;
-      @apply bg-blue-500;
+      @apply bg-blue-500 outline-none;
     }
   }
 }

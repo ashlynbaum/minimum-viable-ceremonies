@@ -399,7 +399,7 @@ setup:
     scheduled: This ceremony is scheduled
     notes: Notes
   controls:
-    okGotIt: Get started -> 
+    okGotIt: Get started
     next: Next →
     back: ← Back
     createRoom: Create room

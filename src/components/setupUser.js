@@ -75,16 +75,16 @@ const SetupUser = ({ onSubmit }) => {
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-cadence`}>
-          <div className="setup-panel split">
-            <div className="flex flex-col items-center" style={{height:'100%'}}>
+          <div className="flex flex-row">
+            <div className="flex-none flex flex-col items-center" style={{height:'100%'}}>
               <RoleCard role={currentRole} placeholder={t("setup.user.showRole")} />
             </div>
-            <div style={{margin: "16px"}}>
+            <div className="role-select-card flex-shrink">
               <h1 className="">
                 {t("setup.user.role")}
               </h1>
               <p>{t("setup.user.roleHelpText")}</p>
-              <div className="setup-roles mvc-radio-options justify-start">
+              <div className="setup-roles mvc-radio-options flex">
                 {roleData.map(role => <RoleBadge key={role} role={role} onClick={setUser} onHover={setCurrentRole} />)}
               </div>
             </div>

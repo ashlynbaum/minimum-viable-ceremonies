@@ -709,22 +709,59 @@ pre tt:after {
   flex-wrap: wrap;
 }
 
+.setup-roles {
+  margin-top: 1rem;
+  // background: #ebf5fc;
+  // box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+  // 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.role-select-card {
+  background: #ebf5fc;
+  padding: 32px 25px;
+  border-radius: 10px;
+  margin: 16px 0 16px 2rem;
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+  3px 3px 5px rgba(0, 0, 0, 0.1);
+  // box-shadow: 1px 8px 14px rgba(0, 0, 0, 0.2), 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
 .mvc-radio-option {
+
   .mvc-radio-option-label {
+    display: flex;
     cursor: pointer;
-    margin: 4px 8px;
-    box-shadow: 0 0 4px rgba(0,0,0,0.2);
-    font-size: 14px;
-    border-radius: 4px;
+    margin: 8px 16px 8px 0;
+    padding: 8px 6px 8px 16px;
+    font-size: 16px;
+    border-radius: 10px;
+    color: $grey-dark;
+    background: #ebf5fc;
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+          3px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    &:hover {
+      color: $grey-darkest;
+      SVG {
+        opacity: 0.1;
+        margin: 1px 8px 0 8px;
+      }
+    }
+    SVG {
+      opacity: 0;
+      margin: 1px 8px 0 8px;
+    }
+  }
+  & :checked  ~ .mvc-radio-option-label {
+    box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
+    inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    SVG {
+      opacity: 1;
+      fill: $grey-dark;
+    }
   }
 
   > input {
     display: none;
-
-    &:checked + .mvc-radio-option-label {
-      box-shadow: 0 0 6px rgba(0,0,200,0.75);
-      background: rgba(0,0,200, 0.05);
-    }
   }
 }
 
@@ -745,9 +782,8 @@ pre tt:after {
   &__Content {
     top: 8vh !important;
     height: 80vh !important;
-
     transition: 0.2s ease-in-out;
-    background-color: $grey-lightest;
+    background:  $warm-grey-000 !important;
     border-radius: 4px;
 
     &--after-open {

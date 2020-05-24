@@ -10,12 +10,15 @@ import { createRoom } from "../db/firebase"
 import useRoomContext from "../hooks/useRoomContext"
 import "../styles/setup.scss"
 
-const SetupRoom = ({ onSubmit = function() {} }) => {
+const SetupRoom = ({
+  uuid = phrase({ exactly: 3, join: '-' }),
+  onSubmit = function() {}
+}) => {
   const { t } = useTranslation()
   const nameRef = useRef()
   const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
-  const room = useRoomContext(phrase({ exactly: 3, join: '-' }), true)
+  const room = useRoomContext(uuid, true)
   const steps = [{
     nextText: "setup.controls.okGotIt",
     backText: null,

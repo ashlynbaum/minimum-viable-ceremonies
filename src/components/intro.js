@@ -31,7 +31,7 @@ const Intro = () => {
           }
         }}
       >
-        <SetupRoom />
+        <SetupRoom uuid={draft.uuid} />
       </Modal>
       <Board />
     </Context.Provider>

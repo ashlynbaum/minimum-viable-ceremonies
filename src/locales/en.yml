@@ -422,7 +422,7 @@ setup:
     role: Pick a role
     roleHelpText: What do you bring to the table? Select one or many.
     showRole: Hover over roles to preview
-    ready: What you need to know
+    ready: Your all set up! Here's what you need to know  🥳
     ceremonyHelptext: Move ceremonies to a cadence
     voidHelptext: Move unwanted ceremonies into the void
 shareableLink:

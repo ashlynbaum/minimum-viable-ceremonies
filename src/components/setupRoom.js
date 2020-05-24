@@ -40,23 +40,25 @@ const SetupRoom = ({
     <div className="setup-room setup">
       <div className="setup-room-slides setup-slides" style={{marginLeft: `-${100 * step}%`}}>
         <div className={`setup-room-slide ${step === 0 ? 'active' : ''} setup-slide setup-room-help`}>
-          <div className="setup-panel text-center split">
-            <div className="flex flex-col items-center justify-center">
-              <div className="">
-                <BoardSvg style={{width: "50%", height: "auto", margin: "0 auto"}} />
+          <div className="setup-panel text-center mx-auto">
+            <div className="setup-subpanel">
+              <div className="flex flex-col items-center justify-center">
+                <div className="">
+                  <BoardSvg style={{width: "50%", height: "auto", margin: "2rem auto"}} />
+                </div>
+                <h1>{t("setup.room.title", { name: room.name })}</h1>
+                <p>{t("setup.room.helptext")}</p>
               </div>
-              <h1>{t("setup.room.title", { name: room.name })}</h1>
-              <p>{t("setup.room.helptext")}</p>
             </div>
           </div>
         </div>
         <div className={`setup-room-slide ${step === 1 ? 'active' : ''} setup-slide setup-room-name`}>
           <div className="setup-panel">
-            <div className="setup-subpanel">
-              <h1 className="font-bold text-2-xl">{t("setup.room.name")}</h1>
+            <div className="setup-input-subpanel">
+              <div className="input-label">{t("setup.room.name")}</div>
               <input
                 ref={nameRef}
-                className="bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl leading-tight focus:outline-none"
+                className="bg-transparent border-none w-full placeholder-gray-600 focus:placeholder-gray-500 leading-tight focus:outline-none"
                 name="name"
                 placeholder={t("setup.room.namePlaceholder")}
                 value={room.name}

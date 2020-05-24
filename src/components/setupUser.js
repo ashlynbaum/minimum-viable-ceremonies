@@ -49,15 +49,15 @@ const SetupUser = ({ onSubmit }) => {
         <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-help`}>
           <div className="setup-panel">
             <div className="setup-subpanel">
-              <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.user.title", { name })}</h1>
+              <h1 className="">{t("setup.user.title", { name })}</h1>
               <p>{t("setup.user.helptext")}</p>
             </div>
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-name`}>
           <div className="setup-panel">
-            <div className="setup-subpanel">
-              <h1 className="text-gray-900 font-bold text-2-xl mb-2">{t("setup.user.username")}</h1>
+            <div className="setup-input-subpanel">
+              <h1 className="input-label">{t("setup.user.username")}</h1>
               <input
                 ref={usernameRef}
                 className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
@@ -78,7 +78,7 @@ const SetupUser = ({ onSubmit }) => {
               <RoleCard role={currentRole} placeholder={t("setup.user.showRole")} />
             </div>
             <div style={{margin: "16px"}}>
-              <h1 className="text-gray-900 font-bold text-2-xl">
+              <h1 className="">
                 {t("setup.user.role")}
               </h1>
               <p>{t("setup.user.roleHelpText")}</p>

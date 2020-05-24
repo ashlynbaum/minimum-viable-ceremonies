@@ -7,9 +7,22 @@
   display: flex;
   height: 100%;
   overflow: hidden;
+  color: $warm-grey-700;
   h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .input-label {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  input {
     font-size: 30px;
-    color: $void-background;
+    font-weight: 600;
+
   }
   p {
     font-size: 14;
@@ -62,6 +75,11 @@
 .setup-subpanel {
   max-width: 600px;
   margin: auto;
+}
+
+.setup-input-subpanel {
+  max-width: 600px;
+  margin: 0 200px
 }
 
 .setup-panel-card {

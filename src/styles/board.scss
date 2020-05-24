@@ -4,6 +4,10 @@
   color: $grey-darkest;
   min-height: 100%;
 
+  &.draft {
+    filter: blur(2px);
+  }
+
   .undecided { margin-right: 20px; }
 }
 

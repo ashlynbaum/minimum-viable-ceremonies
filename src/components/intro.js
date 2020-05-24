@@ -1,14 +1,18 @@
 import React from "react"
 import Modal from "react-modal"
+import phrase from "random-words"
 
 import SetupRoom from "./setupRoom"
-import "../styles/intro.scss"
+import Board from "./board"
+import useRoomContext from "../hooks/useRoomContext"
+import Context from "../contexts/room"
 
 const Intro = () => {
   Modal.setAppElement("#___gatsby")
+  const draft = useRoomContext(phrase({exactly: 3, join: '-'}), true)
 
   return (
-    <div className="intro flex flex-col justify-center align-center">
+    <Context.Provider value={draft}>
       <Modal
         isOpen={true}
         style={{
@@ -17,19 +21,19 @@ const Intro = () => {
             width: "75vw",
             bottom: "auto",
             margin: "auto",
-            backgroundColor: "rgba(255,255,255,0.6)",
           },
           overlay: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "transparent",
+            backgroundColor: "rgba(0,0,0,0.5)",
           }
         }}
       >
         <SetupRoom />
       </Modal>
-    </div>
+      <Board />
+    </Context.Provider>
   )
 }
 

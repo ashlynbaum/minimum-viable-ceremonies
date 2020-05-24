@@ -69,6 +69,7 @@ const useRoomContext = (id, draft) => {
 
   return {
     uuid, setUuid,
+    draft,
     roleData,
     ceremonies,
     name, nameValid, setName,

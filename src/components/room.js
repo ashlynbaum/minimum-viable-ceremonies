@@ -28,7 +28,8 @@ const Room = ({ uuid }) => {
       overlay: {
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: "rgba(0,0,0,0.5)",
       }
     }}><Content onSubmit={close} {...props} /></Modal>
   )

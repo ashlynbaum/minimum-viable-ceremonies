@@ -23,11 +23,13 @@ const SetupUser = ({ onSubmit }) => {
     username: '',
     roles: [],
   })
-  const steps = [{
-    nextText: "setup.controls.okGotIt",
-    backText: null,
-    canProceed: () => true
-  }, {
+  const steps = [
+  //   {
+  //   nextText: "setup.controls.okGotIt",
+  //   backText: null,
+  //   canProceed: () => true
+  // }, 
+  {
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
     canProceed: () => !!username,

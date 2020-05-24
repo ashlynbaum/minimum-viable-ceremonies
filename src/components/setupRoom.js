@@ -38,19 +38,19 @@ const SetupRoom = ({ onSubmit = function() {} }) => {
       <div className="setup-room-slides setup-slides" style={{marginLeft: `-${100 * step}%`}}>
         <div className={`setup-room-slide ${step === 0 ? 'active' : ''} setup-slide setup-room-help`}>
           <div className="setup-panel text-center split">
-            <div className="flex flex-col justify-center align-center">
+            <div className="flex flex-col items-center justify-center">
+              <div className="">
+                <BoardSvg style={{width: "50%", height: "auto", margin: "0 auto"}} />
+              </div>
               <h1>{t("setup.room.title", { name: room.name })}</h1>
               <p>{t("setup.room.helptext")}</p>
-            </div>
-            <div className="flex align-center justify-center">
-              <BoardSvg style={{width: "80%"}} />
             </div>
           </div>
         </div>
         <div className={`setup-room-slide ${step === 1 ? 'active' : ''} setup-slide setup-room-name`}>
           <div className="setup-panel">
             <div className="setup-subpanel">
-              <h1 className="text-gray-900 font-bold text-2-xl">{t("setup.room.name")}</h1>
+              <h1 className="font-bold text-2-xl">{t("setup.room.name")}</h1>
               <input
                 ref={nameRef}
                 className="bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl leading-tight focus:outline-none"

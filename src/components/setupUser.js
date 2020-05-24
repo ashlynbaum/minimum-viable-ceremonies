@@ -91,23 +91,24 @@ const SetupUser = ({ onSubmit }) => {
           </div>
         </div>
         <div className={`setup-user-slide setup-slide ${step === 2 ? 'active' : ''} setup-user-link`}>
-          <div className="setup-panel split">
-            <div className="setup-subpanel">
-              <h1 className="">
+          <div className="setup-panel">
+            <div className="flex flex-col justify-center">
+              <h1 className="text-center mt-3">
                 {t("setup.user.ready")}
               </h1>
-              <div className="flex flex-row">
-                <div className="justify-center mr-6 setup-panel-card">
-                  <div className="text-center mb-3">
-                    {t("setup.user.ceremonyHelptext")}
-                  </div>
-                  <CeremonyHelp />
+            </div>
+            <div className="flex justify-center mt-8">
+              <div className="flex flex-col mr-6 instruction">
+                <CeremonyHelp />
+                <div className="text-center mx-auto mb-3">
+                  {t("setup.user.ceremonyHelptext")}
                 </div>
-                <div className="justify-center setup-panel-card">
-                  <div className="text-center mb-3">
-                    {t("setup.user.voidHelptext")}
-                  </div>
-                  <VoidHelp />
+
+              </div>
+              <div className="flexflex-col instruction">
+                <VoidHelp />
+                <div className="text-center mx-auto mb-3">
+                  {t("setup.user.voidHelptext")}
                 </div>
               </div>
             </div>

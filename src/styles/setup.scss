@@ -9,6 +9,12 @@
   overflow: hidden;
   h1 {
     font-size: 30px;
+    color: $void-background;
+  }
+  p {
+    font-size: 14;
+    line-height: initial;
+    color: $void-background;
   }
 }
 

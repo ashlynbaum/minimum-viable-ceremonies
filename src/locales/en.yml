@@ -405,8 +405,8 @@ setup:
     createRoom: Create room
     createUser: Enter room
   room:
-    title: Welcome to Minimum Viable Ceremonies!
-    helptext: Bring your team together. Either in person or on a video call. Once you set up your room we'll give you a shareable link so everyone can join.
+    title: Let's get started! Bring your team together.
+    helptext: Play Minimal Viable Ceremonies with your team, either in person or on a video call.  Once you set up your room, we'll give you a sharable link for you to invite others to join the room.
     name: What do you want to call your room?
     nameLabel: Team Name
     namePlaceholder: Type team name here

@@ -17,7 +17,8 @@ const Intro = () => {
             width: "75vw",
             bottom: "auto",
             margin: "auto",
-            backgroundColor: "rgba(255,255,255,0.6)",
+            backgroundColor: "$warm-grey-000",
+            boxShadow: "0px 15px 35px rgba(0, 0, 0, 0.2), 0px 3px 11px rgba(0, 0, 0, 0.15)",
           },
           overlay: {
             display: "flex",

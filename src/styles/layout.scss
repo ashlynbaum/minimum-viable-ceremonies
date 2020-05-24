@@ -615,33 +615,69 @@ pre tt:after {
   }
 }
 
-.mvc-btn-primary {
+.mvc-btn {
   position: relative;
-  background-color: $blue;
   font-size: 16px;
   font-weight: 500;
   border-radius: 3px;
-  color: white;
   padding: 8px 20px;
-  @apply flex outline-none;
+  @apply outline-none;
+  &:hover {
+    @apply outline-none;
+  }
+  &:active {
+    @apply outline-none;
+  }
+  &[disabled] {
+    @apply outline-none;
+    &:hover {
+      cursor: not-allowed;
+      @apply outline-none;
+    }
+  }
+}
+.btn-primary {
+  background-color: $blue;
+  color: white;
   &:hover {
     background-color: #0054C1;
-    @apply outline-none;
   }
   &:active {
     background: $warm-grey-000;    
     border: 1px solid #0067F2; 
     color: $blue;
     box-shadow: inset 1px 2px 6px rgba(76, 83, 91, 0.5);
-    @apply outline-none;
   }
   &[disabled] {
-    @apply opacity-50 outline-none;
+    @apply opacity-50;
     &:hover {
       cursor: not-allowed;
-      @apply bg-blue-500 outline-none;
+      @apply bg-blue-500;
     }
+  } 
+}
+
+.btn-secondary {
+  background: $warm-grey-000; 
+  color: $grey-darker;
+  border: 1px solid #B7C0CC;
+  &:hover {
+    color: blue;
+    border: 1px solid $blue;
   }
+  &:active {
+    background: $warm-grey-000;    
+    border: 1px solid #0067F2; 
+    color: $blue;
+    box-shadow: inset 1px 2px 6px rgba(76, 83, 91, 0.5);
+  }
+  &[disabled] {
+    @apply opacity-50;
+    &:hover {
+      cursor: not-allowed;
+      @apply bg-blue-500;
+    }
+  } 
 }
 
 .mvc-hover-state {

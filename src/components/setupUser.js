@@ -23,13 +23,7 @@ const SetupUser = ({ onSubmit }) => {
     username: '',
     roles: [],
   })
-  const steps = [
-  //   {
-  //   nextText: "setup.controls.okGotIt",
-  //   backText: null,
-  //   canProceed: () => true
-  // }, 
-  {
+  const steps = [{
     nextText: "setup.controls.next",
     backText: "setup.controls.back",
     canProceed: () => !!username,
@@ -48,14 +42,6 @@ const SetupUser = ({ onSubmit }) => {
   return (
     <div className="setup-user setup">
       <div className="setup-user-slides setup-slides" style={{ marginLeft: `-${100 * step}%`}}>
-        {/* <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-help`}>
-          <div className="setup-panel">
-            <div className="setup-subpanel">
-              <h1 className="">{t("setup.user.title", { name })}</h1>
-              <p>{t("setup.user.helptext")}</p>
-            </div>
-          </div>
-        </div> */}
         <div className={`setup-user-slide setup-slide ${step === 0 ? 'active' : ''} setup-user-name`}>
           <div className="setup-panel">
             <div className="setup-input-subpanel">
@@ -68,7 +54,7 @@ const SetupUser = ({ onSubmit }) => {
                 value={username}
                 onChange={({ target: { value } }) => setUser(user => ({ ...user, username: value }))}
                 onKeyPress={({ which }) => ( // next on enter
-                  steps[1].canProceed() && which === 13 && setStep(step => step + 1)
+                  steps[0].canProceed() && which === 13 && setStep(step => step + 1)
                 )}
               />
             </div>

@@ -644,8 +644,8 @@ pre tt:after {
     background-color: #0054C1;
   }
   &:active {
-    background: $warm-grey-000;    
-    border: 1px solid #0067F2; 
+    background: $warm-grey-000;
+    border: 1px solid #0067F2;
     color: $blue;
     box-shadow: inset 1px 2px 6px rgba(76, 83, 91, 0.5);
   }
@@ -655,11 +655,11 @@ pre tt:after {
       cursor: not-allowed;
       @apply bg-blue-500;
     }
-  } 
+  }
 }
 
 .btn-secondary {
-  background: $warm-grey-000; 
+  background: $warm-grey-000;
   color: $grey-darker;
   border: 1px solid #B7C0CC;
   &:hover {
@@ -667,8 +667,8 @@ pre tt:after {
     border: 1px solid $blue;
   }
   &:active {
-    background: $warm-grey-000;    
-    border: 1px solid #0067F2; 
+    background: $warm-grey-000;
+    border: 1px solid #0067F2;
     color: $blue;
     box-shadow: inset 1px 2px 6px rgba(76, 83, 91, 0.5);
   }
@@ -678,7 +678,7 @@ pre tt:after {
       cursor: not-allowed;
       @apply bg-blue-500;
     }
-  } 
+  }
 }
 
 .mvc-hover-state {
@@ -711,9 +711,6 @@ pre tt:after {
 
 .setup-roles {
   margin-top: 1rem;
-  // background: #ebf5fc;
-  // box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
-  // 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .role-select-card {
@@ -770,6 +767,10 @@ pre tt:after {
   &__Overlay {
     opacity: 0;
     transition: 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.7);
 
     &--after-open {
       opacity: 1;

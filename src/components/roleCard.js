@@ -19,10 +19,14 @@ const RoleCard = ({ role }) => {
           <div className="card-subheading">
             {t(`roles.${role}.sub-heading`)}
           </div>
-          <div className="card-description">{t(`roles.${role}.description`)}</div>
+          <div className="card-description">
+            {t(`roles.${role}.description`)}
+          </div>
         </div>
       ) : (
-        <div className="role-card-placeholder">{t("setup.user.showRole")}</div>
+        <div className="role-card-placeholder">
+          {t("setup.user.showRole")}
+        </div>
       )}
     </div>
   )

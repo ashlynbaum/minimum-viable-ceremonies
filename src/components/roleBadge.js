@@ -21,13 +21,12 @@ const RoleBadge = ({ role, checked, onHover, onClick }) => {
           }))
         )}
       />
-
       <div
         className="mvc-radio-option-label"
         onMouseEnter={() => onHover(role)}
         onMouseLeave={() => onHover(null)}
       >
-        <Check /> 
+        <Check />
         {[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
       </div>
     </label>

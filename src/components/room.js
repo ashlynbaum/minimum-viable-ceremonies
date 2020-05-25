@@ -24,12 +24,6 @@ const Room = ({ uuid }) => {
         boxShadow: "0px 15px 35px rgba(0, 0, 0, 0.2), 0px 3px 11px rgba(0, 0, 0, 0.15)",
         overflow: "visible",
         ...styles
-      },
-      overlay: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "rgba(0,0,0,0.5)",
       }
     }}><Content onSubmit={close} {...props} /></Modal>
   )

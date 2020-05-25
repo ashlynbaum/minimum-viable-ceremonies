@@ -17,18 +17,11 @@ const Intro = () => {
         isOpen={true}
         style={{
           content: {
-            // height: "70vh",
-            // width: "75vw",
-            // bottom: "auto",
-            // margin: "auto",
-            // backgroundColor: "$blue !important",
-            // boxShadow: "0px 15px 35px rgba(0, 0, 0, 0.2), 0px 3px 11px rgba(0, 0, 0, 0.15)",
-          },
-          overlay: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "rgba(0,0,0,0.7)",
+            width: "80vw",
+            bottom: "auto",
+            margin: "auto",
+            boxShadow: "0px 15px 35px rgba(0, 0, 0, 0.2), 0px 3px 11px rgba(0, 0, 0, 0.15)",
+            overflow: "visible",
           }
         }}
       >

@@ -13,11 +13,15 @@ jobs:
       with:
         node-version: 10.x
     - run: npm install
+    - uses: DamianReeves/write-file-action
+      with:
+        path: ${{ github.workspace }}/.env
+        contents: |
+          MVC_FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}
+          MVC_FIREBASE_DOMAIN=${{ secrets.FIREBASE_DOMAIN }}
     - run: npm run build
     - uses: w9jds/firebase-action@master
       with:
         args: deploy --only hosting --project ${{ secrets.FIREBASE_DOMAIN }}
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        MVC_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-        MVC_FIREBASE_DOMAIN: ${{ secrets.FIREBASE_DOMAIN }}

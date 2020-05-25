@@ -7,8 +7,8 @@ import RoleCard from "./roleCard"
 import RoleBadge from "./roleBadge"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
-import CeremonyHelp from "../images/help/ceremony.svg"
-import VoidHelp from "../images/help/void.svg"
+import ceremonyHelp from "../images/help/ceremony.gif"
+import voidHelp from "../images/help/void.gif"
 
 const SetupUser = ({ onSubmit }) => {
   const { name, login, roleData } = useContext(Context)
@@ -85,14 +85,14 @@ const SetupUser = ({ onSubmit }) => {
             </div>
             <div className="flex justify-center mt-8">
               <div className="flex flex-col mr-6 instruction">
-                <CeremonyHelp />
+                <img src={ceremonyHelp} alt={t("setup.user.ceremonyHelptext")} />
                 <div className="text-center mx-auto mb-3">
                   {t("setup.user.ceremonyHelptext")}
                 </div>
 
               </div>
               <div className="flexflex-col instruction">
-                <VoidHelp />
+                <img src={voidHelp} alt={t("setup.user.voidHelptext")} />
                 <div className="text-center mx-auto mb-3">
                   {t("setup.user.voidHelptext")}
                 </div>

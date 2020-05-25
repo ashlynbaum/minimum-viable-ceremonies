@@ -20,5 +20,10 @@
   }
   input {
     font-size: 16px;
+
+    &.offscreen {
+      position: absolute;
+      opacity: 0;
+    }
   }
 }

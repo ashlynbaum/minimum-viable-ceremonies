@@ -25,9 +25,10 @@ export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, set
 
   room.child('ceremonies').on('value', snapshot => (
     Object.values(snapshot.toJSON())
-      .filter(({ id, placement }) => placement !== ceremonies[id].placement)
-      .map(({ id, placement }) => setCeremonies(current => ({
-        ...current, [id]: { ...current[id], placement }
+      .filter(({ id, placement, async }) => (
+        placement !== ceremonies[id].placement || async !== ceremonies[id].async
+      )).map(({ id, placement, async }) => setCeremonies(current => ({
+        ...current, [id]: { ...current[id], placement, async }
       })))
   ))
 

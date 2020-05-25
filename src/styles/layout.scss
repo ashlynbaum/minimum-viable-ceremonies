@@ -764,6 +764,7 @@ pre tt:after {
   & :checked  ~ .mvc-radio-option-label {
     background: $grey-lighter;
     color: $grey-darkest;
+    box-shadow: 0 0 1px 1px $box-shadow;
 
     svg {
       stroke: #4285F4;

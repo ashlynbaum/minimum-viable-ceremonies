@@ -8,6 +8,7 @@ const Dropdown = ({
   klass,
   position = 'right',
   theme = 'dark',
+  styles = {},
   delay = 0,
   icon,
   size,
@@ -22,7 +23,7 @@ const Dropdown = ({
   const tooltipRef = useScreenEnforcedRef()
 
   return (
-    <div className={`dropdown ${klass} ${open ? 'open' : 'closed'} mvc-hover-state`}>
+    <div style={styles} className={`dropdown ${klass} ${open ? 'open' : 'closed'} mvc-hover-state`}>
       <div
         className="dropdown-button"
         onClick={onClick}

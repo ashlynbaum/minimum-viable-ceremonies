@@ -16,54 +16,71 @@ cadences:
     description: Ceremonies which haven't been processed yet
   daily:
     name: Daily
+    miniName: Daily
     description: Erry dang day
   weekly:
     name: Weekly
+    miniName: Weekly
     description: Once per week
   monthly:
     name: Monthly
+    miniName: Monthly
     description: Once per month
   quarterly:
     name: Quarterly
+    miniName: Quarterly
     description: Once every three months
   halfyearly:
     name: Half-yearly
+    miniName: Half-yearly
     description: Once every six months
   yearly:
     name: Yearly
+    miniName: Yearly
     description: Once per year
   void:
     name: The Void
-    description: Never
+    miniName: Never
+    description: Put it in the void!
   monday-1:
     name: Monday
+    miniName: Monday
     description: First monday of the sprint
   tuesday-1:
     name: Tuesday
+    miniName: Tuesday
     description: First tuesday of the sprint
   wednesday-1:
     name: Wednesday
+    miniName: Wednesday
     description: First wednesday of the sprint
   thursday-1:
     name: Thursday
+    miniName: Thursday
     description: First thursday of the sprint
   friday-1:
     name: Friday
+    miniName: Friday
     description: First friday of the sprint
   monday-2:
     name: Monday
+    miniName: Monday
     description: First monday of the sprint
   tuesday-2:
     name: Tuesday
+    miniName: Tuesday
     description: First tuesday of the sprint
   wednesday-2:
     name: Wednesday
+    miniName: Wednesday
     description: First wednesday of the sprint
   thursday-2:
     name: Thursday
+    miniName: Thursday
     description: First thursday of the sprint
   friday-2:
     name: Friday
+    miniName: Friday
     description: First friday of the sprint
 ceremonies:
   checkin:
@@ -392,12 +409,13 @@ roles:
       This role gives you a free pass to be slightly confrontational or play Devil’s Advocate. But remember to always be diplomatic, because you’ll still have to work with these people later.
 setup:
   ceremony:
+    cadence: Cadence
+    cadenceHelptext: How often should this ceremony happen?
     schedule: Schedule
     scheduleHelptext: Is there an in-person meeting?
     sync: Yes (Synchronous)
     syncHelptext: This ceremony will be scheduled at a point in time.
     async: No (Asynchronous)
-    cadence: What is the cadence?
     asyncHelptext: This ceremony will be managed through an online process.
     time: What time?
     scheduled: This ceremony is scheduled

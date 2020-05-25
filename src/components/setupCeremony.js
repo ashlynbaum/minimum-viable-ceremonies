@@ -16,15 +16,22 @@ const SetupCeremony = ({ onSubmit }) => {
   if (!editingCeremony) { return null }
 
   return (
-    <div className="setup-ceremony">
-      <h3>
-        {[
-          t(`ceremonies.${editingCeremony.id}.icon`),
-          t(`ceremonies.${editingCeremony.id}.name`)
-        ].join(' ')}
-      </h3>
-      <div className="setup-ceremony-description">
-        <Markdown source={t(`ceremonies.${editingCeremony.id}.description`)} />
+    <div className="setup-ceremony flex flex-row">
+      <div className="flex flex-col" style={{flexBasis: "50%"}}>
+        <div className="mvc-card">
+          <h3>
+            {[
+              t(`ceremonies.${editingCeremony.id}.icon`),
+              t(`ceremonies.${editingCeremony.id}.name`)
+            ].join(' ')}
+          </h3>
+          <div className="setup-ceremony-description">
+            <Markdown source={t(`ceremonies.${editingCeremony.id}.description`)} />
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col" style={{flexBasis: "50%"}}>
+        WARK
       </div>
     </div>
   )

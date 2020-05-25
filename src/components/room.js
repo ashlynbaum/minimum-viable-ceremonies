@@ -37,10 +37,7 @@ const Room = ({ uuid }) => {
         {buildModal(SetupRoom, context.editingRoom, context.setEditingRoomId, {
           onSubmit: uuid => context.setUuid(uuid) || context.setEditingRoomId(null)
         })}
-        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId, {}, {
-          width: "400px",
-          borderRadius: "8px",
-        })}
+        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId)}
         {buildModal(EditUser, context.editingUser, context.setEditingUserId)}
       </> : <Loading />}
     </Context.Provider>

@@ -1,94 +1,50 @@
-import React, { useContext } from "react"
+import React, { useState, useContext } from "react"
 import Markdown from "react-markdown"
 import { useTranslation } from "react-i18next"
-// import moment from "moment"
-// import TimePicker from "rc-time-picker"
+import Check from "../images/check-mark.svg"
 
+import Card from "./card"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
-import "../styles/setupCeremony.scss"
-// import "rc-time-picker/assets/index.css"
 
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
   const { editingCeremony } = useContext(Context)
+  const [{ async }, setCeremony] = useState(editingCeremony)
 
   if (!editingCeremony) { return null }
 
   return (
     <div className="setup-ceremony flex flex-row">
-      <div className="flex flex-col" style={{flexBasis: "50%"}}>
-        <div className="mvc-card">
-          <h3>
-            {[
-              t(`ceremonies.${editingCeremony.id}.icon`),
-              t(`ceremonies.${editingCeremony.id}.name`)
-            ].join(' ')}
-          </h3>
-          <div className="setup-ceremony-description">
-            <Markdown source={t(`ceremonies.${editingCeremony.id}.description`)} />
-          </div>
-        </div>
+      <div className="flex flex-col items-center justify-center">
+        <Card id={editingCeremony.id} namespace="ceremonies" />
       </div>
-      <div className="flex flex-col" style={{flexBasis: "50%"}}>
-        WARK
+      <div className="flex flex-col">
+        <h3>{t("setup.ceremony.schedule")}</h3>
+        <p>{t("setup.ceremony.scheduleHelptext")}</p>
+        <div className="setup-ceremony-async">
+          {[true, false].map(value => (
+            <label key={value} className="mvc-radio-option flex content-center">
+              <input
+                type="checkbox"
+                name="async"
+                value={value}
+                checked={value === async}
+                onChange={({ target: { checked, value } }) => (
+                  setCeremony(current => ({ ...current, async: value === 'true' }))
+                )}
+              />
+              <div className="mvc-radio-option-label">
+                <Check />
+                <span>{t(`setup.ceremony.${value ? 'async' : 'sync'}`)}</span>
+              </div>
+            </label>
+          ))}
+          <p>{t(`setup.ceremony.${async ? 'async' : 'sync'}Helptext`)}</p>
+        </div>
       </div>
     </div>
   )
-  // return (
-  //   <div className="setup-ceremony flex flex-row">
-  //     <div className="setup-ceremony-left">
-  //       <div className="setup-ceremony-schedule">
-  //         <div className="mvc-subtitle">
-  //           {t("setup.ceremony.schedule")}
-  //         </div>
-  //         <div className="flex flex-row items-center setup-ceremony-placement">
-  //           {editingCeremony.placement ? <>
-  //             <Icon icon="time/calendar-checked" />
-  //           </> : <>
-  //             <Icon icon="time/calendar-checked" />
-  //             <span>{t("setup.ceremony.scheduled", { })}</span>
-  //           </>}
-  //         </div>
-  //         <div className="flex flex-col">
-  //           <div>{t("setup.ceremony.cadence")}</div>
-  //           <div>DROPDOWN</div>
-  //           <div>{t("setup.ceremony.sync")}</div>
-  //           <div className="mvc-radio-options justify-center">
-  //             {[1, 0].map(value => (
-  //               <label className="mvc-radio-option" key={value}>
-  //                 <input
-  //                   type="radio"
-  //                   name="sync"
-  //                   value={value}
-  //                   checked={editingCeremony.sync === !!value}
-  //                   onChange={({ target: { value } }) => place(editingCeremony.id, {
-  //                     ...editingCeremony,
-  //                     sync: !!parseInt(value)
-  //                   })}
-  //                 />
-  //                 <div className="mvc-radio-option-label">
-  //                   {value ? "YES" : "NO"}
-  //                 </div>
-  //               </label>
-  //             ))}
-  //           </div>
-  //           <div>{t("setup.ceremony.time")}</div>
-  //           <div>
-  //             TIME PICKER
-  //           </div>
-  //         </div>
-  //         <div className="flex flex-col setup-ceremony-notes">
-  //           <div className="mvc-subtitle">{t("setup.ceremony.notes")}</div>
-  //           <textarea />
-  //         </div>
-  //       </div>
-  //     </div>
-  //     <div className="setup-ceremony-right">
-  //       CARD
-  //     </div>
-  //   </div>
-  // )
 }
 
 export default SetupCeremony

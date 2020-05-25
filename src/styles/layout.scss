@@ -718,8 +718,8 @@ pre tt:after {
   border-radius: 10px;
   margin: 16px 0 16px 2rem;
 }
-.mvc-radio-option {
 
+.mvc-radio-option {
   .mvc-radio-option-label {
     display: flex;
     cursor: pointer;
@@ -755,7 +755,7 @@ pre tt:after {
       color: $grey-darkest;
 
       transition: opacity .2s ease;
-      SVG {
+      svg {
         stroke: #4285F4;
       }
 

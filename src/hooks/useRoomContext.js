@@ -14,7 +14,7 @@ const useRoomContext = (id, draft) => {
   const [weekCount, setWeekCount] = useState(1)
   const [participants, setParticipants] = useState({})
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
-    (result, id) => ({ ...result, [id]: { id, placement: 'undecided' } })
+    (result, id) => ({ ...result, [id]: { id, placement: 'undecided', async: true } })
   , {}))
 
   useEffect(() => {

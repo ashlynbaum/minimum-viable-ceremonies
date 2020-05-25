@@ -2,8 +2,8 @@ import React, { useRef, useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
 import phrase from "random-words"
 
+import Card from "./card"
 import Controls from "./controls"
-import RoleCard from "./roleCard"
 import RoleBadge from "./roleBadge"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
@@ -64,7 +64,7 @@ const SetupUser = ({ onSubmit }) => {
         <div className={`setup-user-slide setup-slide ${step === 1 ? 'active' : ''} setup-user-cadence`}>
           <div className="flex flex-row">
             <div className="flex-none flex flex-col items-center" style={{height:'100%'}}>
-              <RoleCard role={currentRole} placeholder={t("setup.user.showRole")} />
+              <Card namespace="roles" id={currentRole} placeholder={t("setup.user.showRole")} />
             </div>
             <div className="role-select-card flex-shrink">
               <h1 className="">

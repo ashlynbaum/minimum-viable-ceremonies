@@ -393,8 +393,12 @@ roles:
 setup:
   ceremony:
     schedule: Schedule
+    scheduleHelptext: Is there an in-person meeting?
+    sync: Yes (Synchronous)
+    syncHelptext: This ceremony will be scheduled at a point in time.
+    async: No (Asynchronous)
     cadence: What is the cadence?
-    sync: Is there an in-person meeting?
+    asyncHelptext: This ceremony will be managed through an online process.
     time: What time?
     scheduled: This ceremony is scheduled
     notes: Notes

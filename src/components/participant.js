@@ -1,8 +1,8 @@
 import React, { useContext } from "react"
 import { useTranslation } from "react-i18next"
 
+import Card from "./Card"
 import Dropdown from "./dropdown"
-import RoleCard from "./roleCard"
 import Context from "../contexts/room"
 import "../styles/participant.scss"
 
@@ -36,7 +36,7 @@ const Participant = ({ id, username, roles }) => {
             position="right-start"
             width={300}
             text={[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
-            tooltip={<RoleCard role={role} />}
+            tooltip={<Card namespace="roles" id={role} />}
           />
         ))}
       </div>

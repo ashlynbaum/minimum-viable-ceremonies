@@ -1,7 +1,7 @@
 @import 'colors';
 
 .ceremony {
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: 0 0 4px $box-shadow;
   margin: 4px 0;
   width: 100%;
   background-color: #f6f6f6;

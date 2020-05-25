@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
 
 import Controls from "./controls"
-import RoleCard from "./roleCard"
+import Card from "./card"
 import RoleBadge from "./roleBadge"
 import Context from "../contexts/room"
 import "../styles/editUser.scss"
@@ -18,7 +18,7 @@ const EditUser = ({ onSubmit }) => {
     <div className="edit-user flex flex-col">
       <div className="setup-panel split">
         <div>
-          <RoleCard role={currentRole || user.roles[0]} />
+          <Card namespace="roles" id={currentRole || user.roles[0]} />
         </div>
         <div>
           <h3 className="mvc-subtitle">{t("participant.name")}</h3>

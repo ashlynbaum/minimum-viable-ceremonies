@@ -58,6 +58,7 @@ const SetupRoom = ({
               <div className="input-label">{t("setup.room.name")}</div>
               <input
                 ref={nameRef}
+                autocomplete="off"
                 className="bg-transparent border-none w-full placeholder-gray-600 focus:placeholder-gray-500 leading-tight focus:outline-none"
                 name="name"
                 placeholder={t("setup.room.namePlaceholder")}

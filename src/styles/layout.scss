@@ -714,12 +714,9 @@ pre tt:after {
 }
 
 .role-select-card {
-  background: #ebf5fc;
-  padding: 32px 25px;
+  padding: 32px 24px;
   border-radius: 10px;
   margin: 16px 0 16px 2rem;
-  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
-  3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 .mvc-radio-option {
 
@@ -727,32 +724,59 @@ pre tt:after {
     display: flex;
     cursor: pointer;
     margin: 8px 16px 8px 0;
-    padding: 8px 6px 8px 16px;
+    padding: 8px 6px 8px 12px;
     font-size: 16px;
     border-radius: 10px;
     color: $grey-dark;
-    background: #ebf5fc;
-    box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
-          3px 3px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    &:hover {
-      color: $grey-darkest;
-      SVG {
-        opacity: 0.1;
-        margin: 1px 8px 0 8px;
+
+    svg {
+      position: relative;
+      z-index: 1;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: #C8CCD4;
+      stroke-width: 1.5;
+      transform: translate3d(0,0,0);
+      transition: all .2s ease;
+      margin: 4px 16px 4px 4px;
+      path {
+        stroke-dasharray: 60;
+        stroke-dashoffset: 0;
+      }
+
+      polyline {
+        stroke-dasharray: 22;
+        stroke-dashoffset: 66;
       }
     }
-    SVG {
-      opacity: 0;
-      margin: 1px 8px 0 8px;
+    &:hover {
+      color: $grey-darkest;
+
+      transition: opacity .2s ease;
+      SVG {
+        stroke: #4285F4;
+      }
+
     }
   }
   & :checked  ~ .mvc-radio-option-label {
-    box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
-    inset 3px 3px 5px rgba(0, 0, 0, 0.1);
-    SVG {
-      opacity: 1;
-      fill: $grey-dark;
+    background: $grey-lighter;
+    color: $grey-darkest;
+
+    svg {
+      stroke: #4285F4;
+      path {
+        stroke-dashoffset: 60;
+        transition: all .3s linear;
+      }
+
+      polyline {
+        stroke-dashoffset: 42;
+        transition: all .2s linear;
+        transition-delay: .15s;
+      }
     }
   }
 

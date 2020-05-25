@@ -2,7 +2,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 
 import "../styles/roleBadge.scss"
-import Check from "../images/icons/basic/check-mark.svg"
+import Check from "../images/check-mark.svg"
 
 const RoleBadge = ({ role, checked, onHover, onClick }) => {
   const { t } = useTranslation()
@@ -22,7 +22,7 @@ const RoleBadge = ({ role, checked, onHover, onClick }) => {
         )}
       />
       <div
-        className="mvc-radio-option-label"
+        className="mvc-radio-option-label flex content-center"
         onMouseEnter={() => onHover(role)}
         onMouseLeave={() => onHover(null)}
       >

@@ -2,6 +2,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 
 import "../styles/roleBadge.scss"
+import Check from "../images/icons/basic/check-mark.svg"
 
 const RoleBadge = ({ role, checked, onHover, onClick }) => {
   const { t } = useTranslation()
@@ -25,6 +26,7 @@ const RoleBadge = ({ role, checked, onHover, onClick }) => {
         onMouseEnter={() => onHover(role)}
         onMouseLeave={() => onHover(null)}
       >
+        <Check />
         {[t(`roles.${role}.icon`), t(`roles.${role}.name`)].join(' ')}
       </div>
     </label>

@@ -409,8 +409,8 @@ setup:
     helptext: Play Minimal Viable Ceremonies with your team, either in person or on a video call.  Once you set up your room, we'll give you a sharable link for you to invite others to join the room.
     name: What do you want to call your room?
     nameLabel: Team Name
-    namePlaceholder: Type team name here
-    ready: "We're about to create your room"
+    namePlaceholder: Type team name here...
+    ready: We're about to create your room  🎉
     copyLink: Copy this link to share it with your team
     copyLinkHelptext: Here's your shareable link
     copyLinkButton: Copy shareable link
@@ -418,11 +418,11 @@ setup:
     title: Welcome to {{name}}'s room!
     helptext: Talk through the ceremonies, and add them to a cadence. Ceremonies you don't want go into The Void. First we need to set you pick your role in the team.
     username: What's your name?
-    usernamePlaceholder: Type your name here
+    usernamePlaceholder: Type your name here...
     role: Pick a role
     roleHelpText: What do you bring to the table? Select one or many.
     showRole: Hover over roles to preview
-    ready: What you need to know
+    ready: Your all set up! Here's what you need to know  🥳
     ceremonyHelptext: Move ceremonies to a cadence
     voidHelptext: Move unwanted ceremonies into the void
 shareableLink:

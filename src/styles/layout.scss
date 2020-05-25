@@ -617,9 +617,60 @@ pre tt:after {
 
 .mvc-btn {
   position: relative;
-  @apply font-bold py-2 px-4 rounded bg-blue-500 text-white;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 8px 20px;
+  @apply outline-none;
   &:hover {
-    @apply bg-blue-700;
+    @apply outline-none;
+  }
+  &:active {
+    @apply outline-none;
+  }
+  &[disabled] {
+    @apply outline-none;
+    &:hover {
+      cursor: not-allowed;
+      @apply outline-none;
+    }
+  }
+}
+
+.btn-primary {
+  background-color: $blue;
+  color: white;
+  &:hover {
+    background-color: #0054C1;
+  }
+  &:active {
+    background: $warm-grey-000;
+    border: 1px solid #0067F2;
+    color: $blue;
+    box-shadow: inset 1px 2px 6px rgba(76, 83, 91, 0.5);
+  }
+  &[disabled] {
+    @apply opacity-50;
+    &:hover {
+      cursor: not-allowed;
+      @apply bg-blue-500;
+    }
+  }
+}
+
+.btn-secondary {
+  background: $warm-grey-000;
+  color: $grey-darker;
+  border: 1px solid #B7C0CC;
+  &:hover {
+    color: $blue;
+    border: 1px solid $blue;
+  }
+  &:active {
+    background: $warm-grey-000;
+    border: 1px solid #0067F2;
+    color: $blue;
+    box-shadow: inset 1px 2px 6px rgba(76, 83, 91, 0.5);
   }
   &[disabled] {
     @apply opacity-50;
@@ -658,22 +709,55 @@ pre tt:after {
   flex-wrap: wrap;
 }
 
+.setup-roles {
+  margin-top: 1rem;
+}
+
+.role-select-card {
+  background: #ebf5fc;
+  padding: 32px 25px;
+  border-radius: 10px;
+  margin: 16px 0 16px 2rem;
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+  3px 3px 5px rgba(0, 0, 0, 0.1);
+}
 .mvc-radio-option {
+
   .mvc-radio-option-label {
+    display: flex;
     cursor: pointer;
-    margin: 4px 8px;
-    box-shadow: 0 0 4px rgba(0,0,0,0.2);
-    font-size: 14px;
-    border-radius: 4px;
+    margin: 8px 16px 8px 0;
+    padding: 8px 6px 8px 16px;
+    font-size: 16px;
+    border-radius: 10px;
+    color: $grey-dark;
+    background: #ebf5fc;
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+          3px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    &:hover {
+      color: $grey-darkest;
+      SVG {
+        opacity: 0.1;
+        margin: 1px 8px 0 8px;
+      }
+    }
+    SVG {
+      opacity: 0;
+      margin: 1px 8px 0 8px;
+    }
+  }
+  & :checked  ~ .mvc-radio-option-label {
+    box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
+    inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    SVG {
+      opacity: 1;
+      fill: $grey-dark;
+    }
   }
 
   > input {
     display: none;
-
-    &:checked + .mvc-radio-option-label {
-      box-shadow: 0 0 6px rgba(0,0,200,0.75);
-      background: rgba(0,0,200, 0.05);
-    }
   }
 }
 
@@ -682,6 +766,10 @@ pre tt:after {
   &__Overlay {
     opacity: 0;
     transition: 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.7) !important;
 
     &--after-open {
       opacity: 1;
@@ -694,9 +782,8 @@ pre tt:after {
   &__Content {
     top: 8vh !important;
     height: 80vh !important;
-
     transition: 0.2s ease-in-out;
-    background-color: $grey-lightest;
+    background:  $warm-grey-000 !important;
     border-radius: 4px;
 
     &--after-open {

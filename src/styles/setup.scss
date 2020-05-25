@@ -93,7 +93,7 @@
   margin: 2rem auto 2rem auto;
   padding: 20px;
   background: white;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px $box-shadow;
   color: $grey-dark;
   font-weight: 500;
 
@@ -141,7 +141,7 @@
   img {
     max-width: 250px;
     margin: 0 2rem 1rem 2rem;
-    box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.2), 0px 2px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 14px $box-shadow, 0px 2px 6px $box-shadow;
   }
 }
 

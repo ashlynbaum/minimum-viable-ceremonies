@@ -85,14 +85,14 @@ const SetupUser = ({ onSubmit }) => {
             </div>
             <div className="flex justify-center mt-8">
               <div className="flex flex-col mr-6 instruction">
-                <img src={ceremonyHelp} alt="Move ceremonies to a cadence" />
+                <img src={ceremonyHelp} alt={t("setup.user.ceremonyHelptext")} />
                 <div className="text-center mx-auto mb-3">
                   {t("setup.user.ceremonyHelptext")}
                 </div>
 
               </div>
               <div className="flexflex-col instruction">
-                <img src={voidHelp} alt="Move ceremonies to the void" />
+                <img src={voidHelp} alt={t("setup.user.voidHelptext")} />
                 <div className="text-center mx-auto mb-3">
                   {t("setup.user.voidHelptext")}
                 </div>

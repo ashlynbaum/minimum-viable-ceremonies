@@ -619,7 +619,7 @@ pre tt:after {
   position: relative;
   font-size: 16px;
   font-weight: 500;
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 8px 20px;
   @apply outline-none;
   &:hover {
@@ -720,7 +720,6 @@ pre tt:after {
   margin: 16px 0 16px 2rem;
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
   3px 3px 5px rgba(0, 0, 0, 0.1);
-  // box-shadow: 1px 8px 14px rgba(0, 0, 0, 0.2), 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 .mvc-radio-option {
 
@@ -770,7 +769,7 @@ pre tt:after {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.7) !important;
 
     &--after-open {
       opacity: 1;

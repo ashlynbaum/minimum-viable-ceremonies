@@ -714,12 +714,9 @@ pre tt:after {
 }
 
 .role-select-card {
-  // background: #ebf5fc;
-  padding: 32px 25px;
+  padding: 32px 24px;
   border-radius: 10px;
   margin: 16px 0 16px 2rem;
-  // box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
-  // 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 .mvc-radio-option {
 
@@ -731,11 +728,9 @@ pre tt:after {
     font-size: 16px;
     border-radius: 10px;
     color: $grey-dark;
-    // background: #ebf5fc;
-    // box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
-    //       3px 3px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    SVG {
+
+    svg {
       position: relative;
       z-index: 1;
       fill: none;
@@ -767,17 +762,16 @@ pre tt:after {
     }
   }
   & :checked  ~ .mvc-radio-option-label {
-    // box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
-    // inset 3px 3px 5px rgba(0, 0, 0, 0.1);
     background: $grey-lighter;
     color: $grey-darkest;
-    SVG {
+
+    svg {
       stroke: #4285F4;
       path {
         stroke-dashoffset: 60;
         transition: all .3s linear;
       }
-        
+
       polyline {
         stroke-dashoffset: 42;
         transition: all .2s linear;

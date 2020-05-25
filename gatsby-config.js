@@ -1,5 +1,5 @@
-console.log(process.env.MVC_FIREBASE_DOMAIN)
-console.log(process.env.MVC_FIREBASE_API_KEY)
+console.log('Domain', process.env.MVC_FIREBASE_DOMAIN)
+console.log('Api key', process.env.MVC_FIREBASE_API_KEY)
 
 module.exports = {
   siteMetadata: {

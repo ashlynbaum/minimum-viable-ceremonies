@@ -93,6 +93,11 @@ const useRoomContext = (id, draft) => {
         )).map(({ id }) => place(id, 'undecided'))
       }
     },
+    modifyCeremony: (id, { async }) => {
+      const updated = { ...ceremonies[id], async }
+      setCeremony({ uuid }, updated)
+      setCeremonies(current => ({ ...current, [id]: updated }))
+    },
     login: ({ id, username, roles }, cookie = true) => {
       const user = { id, username, roles, host: !participants }
       return setParticipant({ uuid }, user).then(() => {

@@ -47,7 +47,7 @@ const SetupUser = ({ onSubmit }) => {
             <div className="setup-input-subpanel">
               <h1 className="input-label">{t("setup.user.username")}</h1>
               <input
-                autocomplete="off"
+                autoComplete="off"
                 ref={usernameRef}
                 className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
                 name="username"

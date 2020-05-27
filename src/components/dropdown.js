@@ -43,9 +43,9 @@ const Dropdown = ({
         {icon && <Icon icon={icon} size={size} />}
         {text && <span>{text}</span>}
       </div>
-      <div ref={tooltipRef} style={width ? {width} : {whiteSpace: 'nowrap'}} className={`dropdown-tooltip ${position} ${theme}`}>
+      {tooltip && <div ref={tooltipRef} style={width ? {width} : {whiteSpace: 'nowrap'}} className={`dropdown-tooltip ${position} ${theme}`}>
         {tooltip}
-      </div>
+      </div>}
     </div>
   )
 }

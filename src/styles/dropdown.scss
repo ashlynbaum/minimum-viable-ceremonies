@@ -6,7 +6,7 @@
     transition: 0.2s ease-in-out;
   }
 
-  &.open .dropdown-tooltip {
+  &.open > .dropdown-tooltip {
     opacity: 1;
 
     &.top {

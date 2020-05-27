@@ -1,9 +1,9 @@
-import React, { useContext } from "react"
-import Markdown from "react-markdown"
+import React, { useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
 import Check from "../images/check-mark.svg"
 
 import Card from "./card"
+import Dropdown from "./dropdown"
 import MiniBoard from "./miniBoard"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
@@ -11,9 +11,10 @@ import "../styles/setup.scss"
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
   const { editingCeremony, modifyCeremony } = useContext(Context)
+  const [cadenceOpen, setCadenceOpen] = useState(false)
 
   if (!editingCeremony) { return null }
-  const { id, async } = editingCeremony
+  const { id, placement, async } = editingCeremony
 
   return (
     <div className="setup-ceremony">
@@ -24,7 +25,18 @@ const SetupCeremony = ({ onSubmit }) => {
         <div>
           <h3>{t("setup.ceremony.cadence")}</h3>
           <p>{t("setup.ceremony.cadenceHelptext")}</p>
-          <MiniBoard id={id} />
+          <div className={`setup-ceremony-cadence ${placement}`}>
+            <Dropdown
+              theme="light"
+              position="bottom"
+              onClick={() => setCadenceOpen(current => !current)}
+              tooltip={cadenceOpen ? null : t("common.clickEdit")}
+              text={t(`cadences.${placement}.miniName`)}
+            />
+            <div className={`setup-ceremony-board ${cadenceOpen ? 'visible' : ''}`}>
+              <MiniBoard id={id} onClick={() => setCadenceOpen(false)} />
+            </div>
+          </div>
           <h3>{t("setup.ceremony.schedule")}</h3>
           <p>{t("setup.ceremony.scheduleHelptext")}</p>
           <div className="setup-ceremony-async flex flex-row">

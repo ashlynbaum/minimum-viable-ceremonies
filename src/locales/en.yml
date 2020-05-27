@@ -13,6 +13,7 @@ board:
 cadences:
   undecided:
     name: Ceremonies
+    miniName: Undecided
     description: Ceremonies which haven't been processed yet
   daily:
     name: Daily
@@ -351,6 +352,7 @@ ceremonies:
 common:
   copy: Copy
   save: Save
+  clickEdit: Click to edit
 intro:
   welcome: Welcome to Minimum Viable Ceremonies!
   setupRoom: Start a new room

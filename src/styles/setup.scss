@@ -164,3 +164,45 @@
     height: 180px;
   }
 }
+
+.setup-ceremony-cadence {
+  margin-bottom: 24px;
+  display: inline-block;
+  position: relative;
+  padding: 8px 6px 8px 12px !important;
+  border-radius: 10px;
+  background: $grey-lighter;
+  color: $grey-darkest;
+  box-shadow: 0 0 1px 1px $box-shadow;
+
+  &.undecided {
+    box-shadow: none;
+    background: $grey-lightest;
+    border: 1px dashed $grey;
+    > .mvc-hover-state {
+      color: $grey;
+      background: transparent;
+    }
+  }
+}
+
+.setup-ceremony-board {
+  z-index: 2;
+  transition: all 0.2s ease-in-out;
+  min-width: 24px;
+  opacity: 0;
+  pointer-events: none;
+  background: $grey-lightest;
+  position: absolute;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 4px $box-shadow;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

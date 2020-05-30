@@ -6,6 +6,7 @@ import Ceremony from "./ceremony"
 import Context from "../contexts/room"
 import "../styles/cadence.scss"
 import Void from "../images/void.svg"
+import Confetti from "./confetti"
 
 const Cadence = ({ id, basis, klass }) => {
   const { placedOn } = useContext(Context)
@@ -39,6 +40,15 @@ const Cadence = ({ id, basis, klass }) => {
               )}
             </Draggable>
           ))}
+          
+          { (['undecided'].includes(id) && (placedOn(id).length < 1)) && 
+            <div>
+              {/* {console.log("placeOn(id)=", (placedOn(id).length == 22))} */}
+              <Confetti />
+            </div>
+          }
+          
+
           {placeholder}
           {['void'].includes(id) &&
             <div className="void-content mb-4 flex flex-col flex-grow justify-center">

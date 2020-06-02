@@ -101,7 +101,7 @@ const useRoomContext = (id, draft) => {
         )).map(({ id }) => place(id, 'undecided'))
       }
     },
-    modifyCeremony: (id, { async }) => {
+    modifyCeremony: (id, { async = true, notes = "" }) => {
       const updated = { ...ceremonies[id], async, notes }
       setCeremony({ uuid }, updated)
       setCeremonies(current => ({ ...current, [id]: updated }))

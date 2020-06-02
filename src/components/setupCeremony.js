@@ -62,7 +62,7 @@ const SetupCeremony = ({ onSubmit }) => {
             <input
               name="notes"
               value={notes}
-              onChange={({ target: { value } }) => modifyCeremony(id, { notes })}
+              onChange={({ target: { value } }) => modifyCeremony(id, { notes: value })}
             />
           </div>
         </div>

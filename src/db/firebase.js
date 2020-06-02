@@ -1,4 +1,5 @@
 import firebase from "gatsby-plugin-firebase"
+import { debounce } from "throttle-debounce"
 
 const rooms = () => firebase.database().ref('rooms')
 
@@ -42,14 +43,14 @@ export const teardownRoom = ({ uuid }) => {
   room.child('placements').off('value')
 }
 
-export const setParticipant = ({ uuid }, participant) => (
+export const setParticipant = debounce(300, ({ uuid }, participant) => (
   rooms().child(`${uuid}/participants/${participant.id}`).set(participant)
-)
+))
 
-export const setCeremony = ({ uuid }, ceremony) => (
+export const setCeremony = debounce(300, ({ uuid }, ceremony) => (
   rooms().child(`${uuid}/ceremonies/${ceremony.id}`).set(ceremony)
-)
+))
 
-export const setRoom = ({ uuid }, { weekCount }) => (
+export const setRoom = debounce(300, ({ uuid }, { weekCount }) => (
   rooms().child(`${uuid}/weekCount`).set(weekCount)
-)
+))

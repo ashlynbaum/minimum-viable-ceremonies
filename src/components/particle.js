@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from "react"
+import React, { useMemo } from "react"
 import { window } from "browser-monads"
 
 const TYPES = ['circle', 'circle', 'squiggle']
@@ -8,11 +8,11 @@ const generateNumber = (min, max) => (
 )
 
 export default ({ id }) => {
-  const type     = useMemo(() => TYPES[generateNumber(0, TYPES.length)], [id])
-  const size     = useMemo(() => generateNumber(...(type === 'circle' ? [5,10] : [30,70])), [id])
-  const color    = useMemo(() => COLORS[generateNumber(0, COLORS.length)], [id])
+  const type     = useMemo(() => TYPES[generateNumber(0, TYPES.length)], [])
+  const size     = useMemo(() => generateNumber(...(type === 'circle' ? [5,10] : [30,70])), [type])
+  const color    = useMemo(() => COLORS[generateNumber(0, COLORS.length)], [])
   const rotation = useMemo(() => type === 'circle' ? [15,45] : [-45,45], [type])
-  const speed    = useMemo(() => type === 'circle' ? 0 : generateNumber(5,20) / 10.0)
+  const speed    = useMemo(() => type === 'circle' ? 0 : generateNumber(5,20) / 10.0, [type])
 
   const style = useMemo(() => ({
     position: "absolute",
@@ -24,7 +24,7 @@ export default ({ id }) => {
     transform: `rotateZ(${generateNumber(...rotation)}deg)`,
     left: generateNumber(0, window.innerWidth),
     top: generateNumber((window.innerHeight/2) - window.innerHeight, (window.innerHeight/10)),
-  }), [id])
+  }), [size, type, color, rotation, speed])
 
   return (
     <div className={`particle particle-${type}`} style={style}>

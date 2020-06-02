@@ -11,7 +11,7 @@ import ceremonyHelp from "../images/help/ceremony.gif"
 import voidHelp from "../images/help/void.gif"
 
 const SetupUser = ({ onSubmit }) => {
-  const { name, login, roleData } = useContext(Context)
+  const { login, roleData } = useContext(Context)
   const { t } = useTranslation()
   const usernameRef = useRef()
 

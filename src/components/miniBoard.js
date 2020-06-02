@@ -1,9 +1,6 @@
 import React, { useContext } from "react"
-import { DragDropContext } from "react-beautiful-dnd"
 
 import MiniCadence from "./miniCadence"
-import Dropdown from "./dropdown"
-import Sidebar from "./sidebar"
 import Context from "../contexts/room"
 import "../styles/miniBoard.scss"
 

@@ -24,10 +24,10 @@ gatsby build
 
 ### 💫 **Deploying.**
 
-Pushing to the master branch of this repo will automatically publish to netlify:
+Pushing to the master branch of this repo will automatically publish to firebase:
 
 ```
-https://sleepy-bartik-fc7859.netlify.app/
+https://mvc.minimal.cards/
 ```
 
 ### 📖 **Translating**

@@ -1,0 +1,28 @@
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  visibility: hidden;
+
+  &.running {
+    visibility: visible;
+
+    .particle {
+      transition: all 4s ease-out;
+      top: 200% !important;
+    }
+  }
+
+  .particle {
+    transform-origin: 80% 40%;
+    position: relative;
+  }
+}
+
+@keyframes spin {
+  from { transform:rotate(0deg); }
+  to   { transform:rotate(360deg); }
+}

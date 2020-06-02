@@ -11,6 +11,7 @@
     "firebase": "^7.14.3",
     "gatsby": "^2.20.25",
     "gatsby-image": "^2.3.4",
+    "gatsby-plugin-create-client-paths": "^2.3.3",
     "gatsby-plugin-firebase": "^0.2.0-beta.4",
     "gatsby-plugin-manifest": "^2.3.5",
     "gatsby-plugin-offline": "^3.1.4",

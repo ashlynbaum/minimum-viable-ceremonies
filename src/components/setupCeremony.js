@@ -14,7 +14,7 @@ const SetupCeremony = ({ onSubmit }) => {
   const [cadenceOpen, setCadenceOpen] = useState(false)
 
   if (!editingCeremony) { return null }
-  const { id, placement, async } = editingCeremony
+  const { id, placement, async, notes } = editingCeremony
 
   return (
     <div className="setup-ceremony">
@@ -57,6 +57,14 @@ const SetupCeremony = ({ onSubmit }) => {
             ))}
           </div>
           <p>{t(`setup.ceremony.${async ? 'async' : 'sync'}Helptext`)}</p>
+          <div className="mvc-subtitle">
+            {t(`setup.ceremony.${async ? 'syncNotes' : 'asyncNotes'}`)}
+            <input
+              name="notes"
+              value={notes}
+              onChange={({ target: { value } }) => modifyCeremony(id, { notes })}
+            />
+          </div>
         </div>
       </div>
     </div>

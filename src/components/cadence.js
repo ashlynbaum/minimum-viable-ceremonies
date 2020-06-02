@@ -40,14 +40,6 @@ const Cadence = ({ id, basis, klass }) => {
               )}
             </Draggable>
           ))}
-          
-          { (['undecided'].includes(id) && (placedOn(id).length < 1)) && 
-            <div>
-              {/* {console.log("placeOn(id)=", (placedOn(id).length == 22))} */}
-              <Confetti />
-            </div>
-          }
-          
 
           {placeholder}
           {['void'].includes(id) &&

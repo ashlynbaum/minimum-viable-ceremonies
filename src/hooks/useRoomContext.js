@@ -10,6 +10,7 @@ const useRoomContext = (id, draft) => {
   const [name, setName] = useState("")
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [complete, setComplete] = useState(false)
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
   const [weekCount, setWeekCount] = useState(1)
   const [participants, setParticipants] = useState({})
@@ -65,11 +66,18 @@ const useRoomContext = (id, draft) => {
     const updated = { ...ceremonies[id], placement }
     setCeremony({ uuid }, updated)
     setCeremonies(current => ({ ...current, [id]: updated }))
+
+    const remaining = Object.values(ceremonies).filter(c => c.placement === 'undecided')
+    if (
+      placement !== 'undecided' &&
+      remaining.length === 1 &&
+      remaining[0].id === id
+    ) { setComplete(true) }
   }
 
   return {
     uuid, setUuid,
-    draft,
+    draft, complete,
     roleData,
     ceremonies,
     name, nameValid, setName,

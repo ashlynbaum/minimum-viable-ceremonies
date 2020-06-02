@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { DragDropContext } from "react-beautiful-dnd"
 
 import Cadence from "./cadence"
+import Confetti from "./confetti"
 import Dropdown from "./dropdown"
 import Sidebar from "./sidebar"
 import Context from "../contexts/room"
@@ -15,6 +16,7 @@ const Board = () => {
   return (
     <div className={`board flex flex-row ${draft ? "draft" : ""}`}>
       <Sidebar />
+      <Confetti />
       <DragDropContext onDragEnd={({ draggableId, destination }) => (
         destination ? place(draggableId, destination.droppableId) : null
       )}>

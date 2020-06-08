@@ -12,7 +12,7 @@ const Picker = ({ time, onSelect }) => {
 
     setFace('hour')
     onSelect(value)
-  }, [face, value])
+  }, [face, value, onSelect])
 
   return (
     <div className="picker">

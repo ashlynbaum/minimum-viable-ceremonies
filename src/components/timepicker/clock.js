@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext } from "react"
+import React, { useMemo, useContext } from "react"
 import { useTranslation } from 'react-i18next'
 
 import Context from "../../contexts/room"

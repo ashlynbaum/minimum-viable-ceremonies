@@ -6,7 +6,7 @@ import Dropdown from "./dropdown"
 import Context from "../contexts/room"
 import "../styles/participant.scss"
 
-const Participant = ({ id, username, roles }) => {
+const Participant = ({ id, username, roles = [] }) => {
   const { t } = useTranslation()
   const { currentUser, setEditingUserId } = useContext(Context)
 

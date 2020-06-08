@@ -53,7 +53,7 @@ const useRoomContext = (id, draft) => {
   const editingRoom = editingRoomId
 
   const [editingUserId, setEditingUserId] = useState()
-  const editingUser = participants[editingUserId]
+  const editingUser = { roles: [], ...participants[editingUserId] }
 
   const [editingCeremonyId, setEditingCeremonyId] = useState()
   const editingCeremony = ceremonies[editingCeremonyId]

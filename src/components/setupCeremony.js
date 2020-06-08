@@ -20,7 +20,7 @@ const SetupCeremony = ({ onSubmit }) => {
     <div className="setup-ceremony">
       <div className="setup-panel split">
         <div>
-          <Card id={id} namespace="ceremonies" />
+          <Card id={id} namespace="ceremonies" theme={true} />
         </div>
         <div>
           <h3>{t("setup.ceremony.cadence")}</h3>

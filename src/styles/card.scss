@@ -11,6 +11,9 @@
   color: $grey-dark !important;
   background-color: white;
 
+  &-theme {
+    text-align: right;
+  }
 
   &-icon {
     font-size: 36px;

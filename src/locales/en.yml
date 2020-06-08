@@ -350,6 +350,7 @@ ceremonies:
 
       Some teams dedicate a certain amount of time in their cadence to completing tasks that make existing code more maintainable. How does your team plan to minimize or reduce technical debt?
 common:
+  to: to
   copy: Copy
   save: Save
   clickEdit: Click to edit
@@ -411,17 +412,17 @@ roles:
       This role gives you a free pass to be slightly confrontational or play Devil’s Advocate. But remember to always be diplomatic, because you’ll still have to work with these people later.
 setup:
   ceremony:
-    cadence: Cadence
-    cadenceHelptext: How often should this ceremony happen?
-    schedule: Schedule
-    scheduleHelptext: Is there an in-person meeting?
+    cadence: How often should this ceremony happen?
+    schedule: Is there an in-person meeting?
+    time: What time of day?
     sync: Yes (Synchronous)
     syncHelptext: This ceremony will be scheduled at a point in time.
+    syncNotes: Notes
+    syncNotesPlaceholder: E.g. meeting agenda, organizer name, etc.
     async: No (Asynchronous)
     asyncHelptext: This ceremony will be managed through an online process.
-    time: What time?
-    scheduled: This ceremony is scheduled
-    notes: Notes
+    asyncNotes: How will this ceremony be managed?
+    asyncNotesPlaceholder: E.g. leave a message in Slack by 10:00am
   controls:
     okGotIt: Get started
     next: Next →
@@ -459,3 +460,6 @@ sidebar:
   teamsAndRoles: Team and roles
   setupRoom: New room
   setupRoomTooltip: Create a new room
+timepicker:
+  am: AM
+  pm: PM

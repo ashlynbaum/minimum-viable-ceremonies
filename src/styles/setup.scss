@@ -165,8 +165,7 @@
   }
 }
 
-.setup-ceremony-cadence {
-  margin-bottom: 24px;
+.setup-ceremony-selector {
   display: inline-block;
   position: relative;
   padding: 8px 6px 8px 12px !important;
@@ -186,10 +185,9 @@
   }
 }
 
-.setup-ceremony-board {
+.setup-ceremony-popup {
   z-index: 2;
   transition: all 0.2s ease-in-out;
-  min-width: 440px;
   opacity: 0;
   pointer-events: none;
   background: $grey-lightest;

@@ -9,6 +9,8 @@ const MiniCadence = ({ id, basis, klass, onClick }) => {
   const { place, editingCeremony } = useContext(Context)
   const { t } = useTranslation()
 
+  if (!editingCeremony) { return null }
+
   return (
     <Dropdown
       styles={{flexBasis: `${100 / basis}%`}}

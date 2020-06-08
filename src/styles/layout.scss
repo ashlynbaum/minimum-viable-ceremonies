@@ -637,6 +637,11 @@ pre tt:after {
   }
 }
 
+.mvc-note {
+  font-size: 12px;
+  color: $grey-dark;
+}
+
 .btn-primary {
   background-color: $blue;
   color: white;
@@ -698,9 +703,16 @@ pre tt:after {
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 16px 16px 4px 16px;
+  padding: 16px 0 4px 0;
   color: $grey;
   margin: 0;
+}
+
+.mvc-textarea {
+  padding: 4px;
+  font-size: 14px;
+  min-width: 300px;
+  min-height: 100px;
 }
 
 .mvc-radio-options {

@@ -46,7 +46,8 @@ const EditUser = ({ onSubmit }) => {
       <Controls step={{
         next: () => {
           setSubmitting(true)
-          login(user, false).then(() => setEditingUserId(null))
+          login(user, false)
+          setEditingUserId(null)
         },
         nextText: t("common.save"),
         canProceed: () => true,

@@ -15,7 +15,11 @@ const useRoomContext = (id, draft) => {
   const [weekCount, setWeekCount] = useState(1)
   const [participants, setParticipants] = useState({})
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
-    (result, id) => ({ ...result, [id]: { id, placement: 'undecided', async: true } })
+    (result, id) => ({ ...result, [id]: {
+      id,
+      placement: 'undecided',
+      async: true,
+    } })
   , {}))
 
   useEffect(() => {
@@ -101,19 +105,30 @@ const useRoomContext = (id, draft) => {
         )).map(({ id }) => place(id, 'undecided'))
       }
     },
-    modifyCeremony: (id, { async = true, notes = "" }) => {
-      const updated = { ...ceremonies[id], async, notes }
+    modifyCeremony: (id, attrs) => {
+      const updated = { ...ceremonies[id], ...attrs }
       setCeremony({ uuid }, updated)
       setCeremonies(current => ({ ...current, [id]: updated }))
     },
     login: ({ id, username, roles }, cookie = true) => {
       const user = { id, username, roles, host: !participants }
-      return setParticipant({ uuid }, user).then(() => {
-        if (cookie) { setCookie(uuid, id) }
-        setParticipants(current => ({ ...current, [user.id]: user }))
-      })
+      setParticipant({ uuid }, user)
+      setParticipants(current => ({ ...current, [user.id]: user }))
+      if (cookie) { setCookie(uuid, id) }
     },
     logout: () => removeCookie(uuid),
+    timeFor: (time, am = true) => {
+      const { hour, minute } = time || {}
+      if (typeof hour === 'undefined' || typeof minute === 'undefined') { return }
+
+      return `${
+        hour > 12 ? hour - 12 : hour
+      }:${
+        minute.toString().padStart(2, '0')
+      } ${
+        am ? (hour >= 12 ? 'pm' : 'am') : ''
+      }`
+    }
   }
 }
 

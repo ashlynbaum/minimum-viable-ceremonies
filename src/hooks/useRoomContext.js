@@ -4,6 +4,8 @@ import { setupRoom, setRoom, setCeremony, setParticipant } from "../db/firebase"
 import { document } from "browser-monads"
 import roleData from "../data/roles"
 import ceremonyData from "../data/ceremonies"
+import cadenceData from "../data/cadences"
+import hourData from "../data/hours"
 
 const useRoomContext = (id, draft) => {
   const [uuid, setUuid] = useState(id)
@@ -53,7 +55,7 @@ const useRoomContext = (id, draft) => {
   const editingRoom = editingRoomId
 
   const [editingUserId, setEditingUserId] = useState()
-  const editingUser = { roles: [], ...participants[editingUserId] }
+  const editingUser = participants[editingUserId]
 
   const [editingCeremonyId, setEditingCeremonyId] = useState()
   const editingCeremony = ceremonies[editingCeremonyId]
@@ -82,7 +84,7 @@ const useRoomContext = (id, draft) => {
   return {
     uuid, setUuid,
     draft, complete,
-    roleData,
+    roleData, cadenceData, hourData,
     ceremonies,
     name, nameValid, setName,
     weekCount,

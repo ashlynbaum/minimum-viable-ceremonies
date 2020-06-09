@@ -1,11 +1,11 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useMemo, useContext } from "react"
+import Select from "react-select"
 import { useTranslation } from "react-i18next"
 import Check from "../images/check-mark.svg"
 
 import Card from "./card"
 import Dropdown from "./dropdown"
-import MiniBoard from "./miniBoard"
-import Timepicker from "./timepicker/picker"
+import Icon from "./icon"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
 
@@ -20,14 +20,19 @@ const cadencesWithTime = [
 
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
-  const { editingCeremony, modifyCeremony, timeFor } = useContext(Context)
-  const [cadenceOpen, setCadenceOpen] = useState(false)
-  const [startTimeOpen, setStartTimeOpen] = useState(false)
-  const [endTimeOpen, setEndTimeOpen] = useState(false)
+  const { editingCeremony, modifyCeremony, timeFor, cadenceData, hourData } = useContext(Context)
   const { id, placement, async, notes, startTime, endTime } = editingCeremony || {}
+  const cadences = useMemo(() => (
+    cadenceData.map(value => ({ value, label: t(`cadences.${value}.miniName`) }))
+  ), [cadenceData])
+  const hours = useMemo(() => (
+    hourData.map(value => ({ value, label: t(`hours.${value}`) }))
+  ), [hourData])
+  const hoursWithTime = useMemo(() => (
+    hours.filter(({ value }) => value > startTime).slice(0, 8)
+  ), [hours, startTime])
 
-  useEffect(() => { setStartTimeOpen(false) }, [startTime])
-  useEffect(() => { setEndTimeOpen(false) }, [endTime])
+  console.log(hoursWithTime)
 
   return (
     <div className="setup-ceremony">
@@ -35,9 +40,12 @@ const SetupCeremony = ({ onSubmit }) => {
         <div>
           <Card id={id} namespace="ceremonies" theme={true} />
         </div>
-        <div>
-          <div className="mvc-subtitle">{t("setup.ceremony.schedule")}</div>
-          <div className="setup-ceremony-async flex flex-row">
+        <div className="mvc-input">
+          <div className="mvc-label flex flex-row items-center">
+            <Icon icon="basic/globe" className="mr-2" size={14} />
+            <span>{t("setup.ceremony.schedule")}</span>
+          </div>
+          <div className="ml-5 flex flex-row items-center">
             {[true, false].map(value => (
               <label key={value} className="mvc-radio-option flex content-center">
                 <input
@@ -54,71 +62,67 @@ const SetupCeremony = ({ onSubmit }) => {
               </label>
             ))}
           </div>
-          <div className="mvc-note">{t(`setup.ceremony.${async ? 'async' : 'sync'}Helptext`)}</div>
-          <div className="mvc-subtitle">{t("setup.ceremony.cadence")}</div>
-          <div className={`setup-ceremony-selector ${placement}`}>
-            <Dropdown
-              theme="light"
-              position="bottom"
-              onClick={() => {
-                setCadenceOpen(current => !current)
-                setStartTimeOpen(false)
-                setEndTimeOpen(false)
-              }}
-              tooltip={cadenceOpen ? null : t("common.clickEdit")}
-              text={t(`cadences.${placement}.miniName`)}
-            />
-            <div className={`setup-ceremony-popup ${cadenceOpen ? 'visible' : ''}`}>
-              <MiniBoard id={id} onClick={() => setCadenceOpen(false)} />
+          <div className="mvc-note ml-5">{t(`setup.ceremony.${async ? 'async' : 'sync'}Helptext`)}</div>
+          <div className="mvc-input">
+            <div className="mvc-label flex flex-row items-center">
+              <Icon icon="time/calendar" className="mr-2" size={14} />
+              <span>{t("setup.ceremony.cadence")}</span>
+            </div>
+            <div className="ml-5 flex flex-row items-center">
+              <Select
+                options={cadences}
+                defaultValue={cadences[0]}
+                onChange={({ value }) => modifyCeremony(id, { placement: value })}
+                styles={{ container: existing => ({
+                  ...existing,
+                  width: "100%",
+                  margin: "8px 0"
+                }) }}
+              />
             </div>
           </div>
-          {!async && cadencesWithTime.includes(placement) && <>
-            <div className="mvc-subtitle">{t("setup.ceremony.time")}</div>
-            <div className="flex flex-row items-center">
-              <div className={`setup-ceremony-selector ${startTime ? '' : 'undecided'}`}>
-                <Dropdown
-                  theme="light"
-                  position="bottom"
-                  onClick={() => {
-                    setStartTimeOpen(current => !current)
-                    setEndTimeOpen(false)
-                    setCadenceOpen(false)
-                  }}
-                  tooltip={startTimeOpen ? null : t("common.clickEdit")}
-                  text={timeFor(startTime) || t("cadences.undecided.miniName")}
-                />
-                <div className={`setup-ceremony-popup ${startTimeOpen ? 'visible' : ''}`}>
-                  <Timepicker time={startTime || {}} onSelect={startTime => modifyCeremony(id, { startTime })} />
-                </div>
-              </div>
+          {!async && cadencesWithTime.includes(placement) && <div className="mvc-input">
+            <div className="mvc-label flex flex-row items-center">
+              <Icon icon="time/time" className="mr-2" size={14} />
+              <span>{t("setup.ceremony.time")}</span>
+            </div>
+            <div className="flex flex-row items-center ml-5">
+              <Select
+                options={hours}
+                value={hours.find(({ value }) => value === startTime)}
+                onChange={({ value }) => modifyCeremony(id, { startTime: value })}
+                styles={{ container: existing => ({
+                  ...existing, minWidth: "150px", margin: "8px 0"
+                }) }}
+              />
               <div className="mvc-note" style={{margin: "0 12px"}}>{t("common.to")}</div>
-              <div className={`setup-ceremony-selector ${endTime ? '' : 'undecided'}`}>
-                <Dropdown
-                  theme="light"
-                  position="bottom"
-                  onClick={() => {
-                    setEndTimeOpen(current => !current)
-                    setStartTimeOpen(false)
-                    setCadenceOpen(false)
-                  }}
-                  tooltip={endTimeOpen ? null : t("common.clickEdit")}
-                  text={timeFor(endTime) || t("cadences.undecided.miniName")}
-                />
-                <div className={`setup-ceremony-popup ${endTimeOpen ? 'visible' : ''}`}>
-                  <Timepicker time={endTime || {}} onSelect={endTime => modifyCeremony(id, { endTime })} />
-                </div>
+              <Select
+                options={hoursWithTime}
+                value={hours.find(({ value }) => value === endTime)}
+                onChange={({ value }) => modifyCeremony(id, { endTime: value })}
+                styles={{ container: existing => ({
+                  ...existing, minWidth: "150px", margin: "8px 0"
+                }) }}
+              />
+              <div className="ml-2 mvc-note">
+                {(startTime && endTime) ? t(`hours.diff-${endTime - startTime}`) : '-'}
               </div>
             </div>
-          </>}
-          <div className="mvc-subtitle">{t(`setup.ceremony.${async ? 'syncNotes' : 'asyncNotes'}`)}</div>
-          <div>
-            <textarea
-              className="mvc-textarea"
-              name="notes"
-              placeholder={t(`setup.ceremony.${async ? 'syncNotesPlaceholder' : 'asyncNotesPlaceholder'}`)}
-              value={notes}
-              onChange={({ target: { value } }) => modifyCeremony(id, { notes: value })}
-            />
+          </div>}
+          <div className="mvc-input">
+            <div className="mvc-label flex flex-row items-center">
+              <Icon icon="basic/text-align-left" className="mr-2" size={14} />
+              <span>{t(`setup.ceremony.${async ? 'syncNotes' : 'asyncNotes'}`)}</span>
+            </div>
+            <div className="ml-5">
+              <textarea
+                className="mvc-textarea w-full"
+                name="notes"
+                placeholder={t(`setup.ceremony.${async ? 'syncNotesPlaceholder' : 'asyncNotesPlaceholder'}`)}
+                value={notes}
+                onChange={({ target: { value } }) => modifyCeremony(id, { notes: value })}
+              />
+            </div>
           </div>
         </div>
       </div>

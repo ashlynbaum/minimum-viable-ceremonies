@@ -1,5 +1,6 @@
 import React from "react"
 import Modal from "react-modal"
+import { useTranslation } from "react-i18next"
 
 import Loading from "./loading"
 import SEO from "./seo"
@@ -12,6 +13,7 @@ import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
 
 const Room = ({ uuid }) => {
+  const { t } = useTranslation()
   const context = useRoomContext(uuid)
 
   Modal.setAppElement("#___gatsby")
@@ -25,7 +27,11 @@ const Room = ({ uuid }) => {
         overflow: "visible",
         ...styles
       }
-    }}><Content onSubmit={close} {...props} /></Modal>
+    }}><>
+      {props.closeButton && <button className="close-modal" onClick={close}>{t("setup.controls.back")}</button>}
+      <Content onSubmit={close} {...props} />
+    </>
+    </Modal>
   )
 
   return (
@@ -37,8 +43,8 @@ const Room = ({ uuid }) => {
         {buildModal(SetupRoom, context.editingRoom, context.setEditingRoomId, {
           onSubmit: uuid => context.setUuid(uuid) || context.setEditingRoomId(null)
         })}
-        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId, {}, { overflow: "auto" })}
-        {buildModal(EditUser, context.editingUser, context.setEditingUserId)}
+        {buildModal(SetupCeremony, context.editingCeremony, context.setEditingCeremonyId, {closeButton: true}, {overflow:"auto"})}
+        {buildModal(EditUser, context.editingUser, context.setEditingUserId, {closeButton: true})}
       </> : <Loading />}
     </Context.Provider>
   )

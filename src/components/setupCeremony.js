@@ -33,7 +33,7 @@ const SetupCeremony = ({ onSubmit }) => {
     <div className="setup-ceremony">
       <div className="setup-panel split">
         <div>
-          <Card id={id} namespace="ceremonies" />
+          <Card id={id} namespace="ceremonies" theme={true} />
         </div>
         <div>
           <div className="mvc-subtitle">{t("setup.ceremony.schedule")}</div>

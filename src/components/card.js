@@ -2,15 +2,19 @@ import React from "react"
 import Markdown from "react-markdown"
 import { useTranslation } from "react-i18next"
 
+import ThemeBadge from "./themeBadge"
 import "../styles/card.scss"
 
-const Card = ({ namespace, id, placeholder }) => {
+const Card = ({ namespace, id, placeholder, theme }) => {
   const { t } = useTranslation()
 
   return (
     <div className={`card flex-grow flex justify-center ${id ? 'items-start' : 'items-center'}`}>
       {id ? (
         <div className="card-content">
+          {theme && <div className="card-theme">
+            <ThemeBadge theme={t(`${namespace}.${id}.theme`)} />
+          </div>}
           <div className="card-icon">
             {t(`${namespace}.${id}.icon`)}
           </div>

@@ -87,7 +87,7 @@ ceremonies:
   checkin:
     name: Personal Check-in
     icon: 🔗
-    theme: Culture
+    theme: culture
     sub-heading: What's up with you right now?
     description: |
       Often used to begin another ceremony, Personal Check-ins are a way to increase empathy and understanding between team members.
@@ -97,7 +97,7 @@ ceremonies:
   cleanup:
     name: Clean-up
     icon: 🛁
-    theme: Delivery
+    theme: delivery
     sub-heading: Get rid of those stale tickets
     description: |
       A backlog should be representative of work that a team is going to get done in the near to medium term.
@@ -106,7 +106,7 @@ ceremonies:
   demo:
     name: Demo
     icon: 🎉
-    theme: Coordination
+    theme: coordination
     sub-heading: Celebrate how awesome your team is
     description: |
       A Demo is an opportunity for people to share what they have accomplished recently with the team. It gives people a chance to receive acknowledgement for their work and to share learnings.
@@ -115,7 +115,7 @@ ceremonies:
   designReview:
     name: Design review
     icon: 🖍
-    theme: Delivery
+    theme: delivery
     sub-heading: Get designs ready for dev
     description: |
       Design Reviews bring developers, managers, and other team members together have to review the in-progress designs before they go into the build pipeline. Designs are often checked for technical considerations like component libraries, technical debt, completeness of design, or application architecture.
@@ -124,7 +124,7 @@ ceremonies:
   documentation:
     name: Documentation
     icon: 📒
-    theme: Delivery
+    theme: delivery
     sub-heading: Keeping the wiki, documentation, and designs up to date and accessible to all
     description: |
       Documentation has a reputation for being difficult and manual to maintain. It may require an extra effort to make sure it stays current. How does your team check the current state of the documentation and take steps to keep it up-to-date?
@@ -138,7 +138,7 @@ ceremonies:
   estimation:
     name: Estimation
     icon: 🤑
-    theme: Delivery
+    theme: delivery
     sub-heading: How long will this take?
     description: |
       Estimation is a ceremony where team members put timeframes or a sizing on backlog tickets. Some teams like to use estimates to help project how much work a team can do in a given period of time and to assist in prioritization.
@@ -147,7 +147,7 @@ ceremonies:
   growth:
     name: Professional Growth
     icon: 💪
-    theme: Innovation
+    theme: innovation
     sub-heading: Always be learning
     description: |
       In order for team members to improve their skills, they need dedicated learning time.
@@ -166,7 +166,7 @@ ceremonies:
   hackathon:
     name: Hackathon
     icon: 🍕
-    theme: Innovation
+    theme: innovation
     sub-heading: It's work. With pizza!
     description: |
       The people who build the product have excellent ideas for ways to improve it.  Giving team members time to explore those ideas can result in:
@@ -181,7 +181,7 @@ ceremonies:
   horizon:
     name: Horizon Planning
     icon: 🔮
-    theme: Coordination
+    theme: coordination
     sub-heading: What does the future look like?
     description: |
       Horizon Planning is a ceremony to discuss and agree upon the long-term section of your roadmap. Horizon Planning includes defining the overarching strategy and long-term goals of the organization.
@@ -190,7 +190,7 @@ ceremonies:
   insight:
     name: Insight Sharing
     icon: 💡
-    theme: Coordination
+    theme: coordination
     sub-heading: Expose people to customer insights
     description: |
       If your organization does user research, it's important to have a mechanism to share the research with the team so that people have a clear understanding of the customer.
@@ -204,7 +204,7 @@ ceremonies:
   planning:
     name: Sprint Planning
     icon: 👓
-    theme: Coordination
+    theme: coordination
     sub-heading: Figure out what to do next
     description: |
       Retrospectives are a facilitated conversation between the members of your team to reflect on the past sprint's work and identify risks. Everyone should have the chance to name what's gone well, what's been hard, and what changes could be made to optimize delivery, communication, or happiness going forward. Typical agenda items may include:
@@ -215,14 +215,14 @@ ceremonies:
   process:
     name: Process definition
     icon: 🙃
-    theme: Coordination
+    theme: coordination
     sub-heading: This! Do this again. Also, tell your friends
     description: |
       It's worth revisiting the ceremonies and cadences that have been agreed upon to make sure that they are truly the minimum viable set of ceremonies for your team. Regularly re-assessing your processes is the best way to become a high performing team.
   retreat:
     name: Team retreat
     icon: 🏝
-    theme: Culture
+    theme: culture
     sub-heading: Bond as a team away from the office
     description: |
       A Team Retreat is an all-day or multi-day, off-site activity which creates the space for the team to connect and strategize.
@@ -237,7 +237,7 @@ ceremonies:
   retrospective:
     name: Retrospective
     icon: 🤔
-    theme: Coordination
+    theme: coordination
     sub-heading: Get better at being a team
     description: |
       Retrospectives are a facilitated conversation between the members of your team to reflect on the past sprint's work and identify risks. Everyone should have the chance to name what's gone well, what's been hard, and what changes could be made to optimize delivery, communication, or happiness going forward.
@@ -250,7 +250,7 @@ ceremonies:
   review:
     name: Code review
     icon: 🤖
-    theme: Delivery
+    theme: delivery
     sub-heading: Review other peoples code
     description: |
       Code Review is a great way to share knowledge across the team about code that's going into the repo, as well as reducing technical debt and defects.
@@ -259,7 +259,7 @@ ceremonies:
   roadmap:
     name: Roadmap Update
     icon: ⏳
-    theme: Delivery
+    theme: delivery
     sub-heading: Review and update the roadmap
     description: |
       Product roadmaps should reflect the near to long-term strategy and should be updated regularly to reflect present work-streams. A roadmap is a prioritised list of problems that need to be solved or outcomes expected to be achieved.
@@ -273,7 +273,7 @@ ceremonies:
   social:
     name: Social Activity
     icon: 🥑
-    theme: Culture
+    theme: culture
     sub-heading: The 'play hard' part of 'work hard, play hard'
     description: |
       To be happy at work, you need to like the people you work with, and the best way to like people is to spend time with them socially.
@@ -290,28 +290,28 @@ ceremonies:
   solution:
     name: Solution Design
     icon: 🎨
-    theme: Delivery
+    theme: delivery
     sub-heading: Pick the best solution for a problem
     description: |
       Features generally go through a process of prioritisation, solution design, and then implementation. Teams use this ceremony to suggest and refine solutions to problems defined on the roadmap to come up with the highest impact and lowest effort ways to solve the problem.
   spec:
     name: Specification Writing
     icon: 👾
-    theme: Delivery
+    theme: delivery
     sub-heading: Turning features into tickets
     description: |
       Specification Writing is how you communicate functionality to transition it into code. Specs can be written as automated tests, business rules, user stories, or tasks. Specs should be written in a way that can explain to all parties what's being built and what work needs to be done.
   standdown:
     name: Stand-down
     icon: 🌙
-    theme: Coordination
+    theme: coordination
     sub-heading: What did you work on?
     description: |
       The opposite of stand-up, a Stand-down is for reporting on the goals at the end of a work period, while everything is still fresh in your mind.
   standup:
     name: Stand-up
     icon: 👋
-    theme: Coordination
+    theme: coordination
     sub-heading: What are you going to work on?
     description: |
       Stand-ups are used to give status updates about current work-in-progress.
@@ -326,7 +326,7 @@ ceremonies:
   sync:
     name: Cross-Team Sync
     icon: 🎡
-    theme: Coordination
+    theme: coordination
     sub-heading: Collaborate with other teams in your organization
     description: |
       For organizations that have more than one team, inter-team communication reduces the risk of conflicting priorities.
@@ -343,7 +343,7 @@ ceremonies:
   techdebt:
     name: Tech Debt Removal
     icon: 🚧
-    theme: Delivery
+    theme: delivery
     sub-heading: Make existing code better
     description: |
       Improving old code can be a difficult thing to prioritize, but if not handled correctly, it can bring the entire organization to a halt.
@@ -460,6 +460,11 @@ sidebar:
   teamsAndRoles: Team and roles
   setupRoom: New room
   setupRoomTooltip: Create a new room
+themes:
+  coordination: Coordination
+  culture: Culture
+  delivery: Delivery
+  innovation: Innovation
 timepicker:
   am: AM
   pm: PM

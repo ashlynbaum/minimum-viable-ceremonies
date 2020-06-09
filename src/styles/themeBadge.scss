@@ -1,0 +1,25 @@
+@import 'colors';
+
+.theme-badge {
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 12px;
+
+  &.culture {
+    color: $culture;
+    background-color: scale-color($culture, $lightness: 90%);
+  }
+  &.coordination {
+    color: $coordination;
+    background-color: scale-color($coordination, $lightness: 90%);
+  }
+  &.delivery {
+    color: $delivery;
+    background-color: scale-color($delivery, $lightness: 90%);
+  }
+  &.innovation {
+    color: $innovation;
+    background-color: scale-color($innovation, $lightness: 90%);
+  }
+}

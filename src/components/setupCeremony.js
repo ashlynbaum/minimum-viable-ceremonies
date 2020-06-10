@@ -20,7 +20,7 @@ const cadencesWithTime = [
 
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
-  const { editingCeremony, modifyCeremony, timeFor, cadenceData, hourData } = useContext(Context)
+  const { editingCeremony, modifyCeremony, cadenceData, hourData } = useContext(Context)
   const { id, placement, async, notes, startTime, endTime } = editingCeremony || {}
   const cadences = useMemo(() => (
     cadenceData.map(value => ({ value, label: t(`cadences.${value}.miniName`) }))

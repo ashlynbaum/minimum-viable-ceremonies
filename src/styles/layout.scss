@@ -637,6 +637,21 @@ pre tt:after {
   }
 }
 
+.mvc-note {
+  font-size: 12px;
+  color: $grey-dark;
+}
+
+.mvc-input {
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.mvc-label {
+  font-weight: 500;
+  font-size: 16px;
+}
+
 .btn-primary {
   background-color: $blue;
   color: white;
@@ -698,9 +713,18 @@ pre tt:after {
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 16px 16px 4px 16px;
+  padding: 16px 0 4px 0;
   color: $grey;
   margin: 0;
+}
+
+.mvc-textarea {
+  padding: 4px;
+  margin: 8px 0;
+  font-size: 14px;
+  min-height: 100px;
+  border: 1px solid $box-shadow;
+  border-radius: 4px;
 }
 
 .mvc-radio-options {
@@ -724,11 +748,10 @@ pre tt:after {
     display: flex;
     cursor: pointer;
     margin: 8px 16px 8px 0;
-    padding: 8px 6px 8px 12px;
     font-size: 16px;
-    border-radius: 10px;
+    padding: 4px;
+    border-radius: 4px;
     color: $grey-dark;
-    border-radius: 10px;
 
     svg {
       position: relative;

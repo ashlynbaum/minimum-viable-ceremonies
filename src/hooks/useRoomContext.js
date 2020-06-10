@@ -4,6 +4,8 @@ import { setupRoom, setRoom, setCeremony, setParticipant } from "../db/firebase"
 import { document } from "browser-monads"
 import roleData from "../data/roles"
 import ceremonyData from "../data/ceremonies"
+import cadenceData from "../data/cadences"
+import hourData from "../data/hours"
 
 const useRoomContext = (id, draft) => {
   const [uuid, setUuid] = useState(id)
@@ -78,7 +80,7 @@ const useRoomContext = (id, draft) => {
   return {
     uuid, setUuid,
     draft, complete,
-    roleData,
+    roleData, cadenceData, hourData,
     ceremonies,
     name, nameValid, setName,
     weekCount,
@@ -101,17 +103,16 @@ const useRoomContext = (id, draft) => {
         )).map(({ id }) => place(id, 'undecided'))
       }
     },
-    modifyCeremony: (id, { async }) => {
-      const updated = { ...ceremonies[id], async }
+    modifyCeremony: (id, attrs) => {
+      const updated = { ...ceremonies[id], ...attrs }
       setCeremony({ uuid }, updated)
       setCeremonies(current => ({ ...current, [id]: updated }))
     },
     login: ({ id, username, roles }, cookie = true) => {
       const user = { id, username, roles, host: !participants }
-      return setParticipant({ uuid }, user).then(() => {
-        if (cookie) { setCookie(uuid, id) }
-        setParticipants(current => ({ ...current, [user.id]: user }))
-      })
+      setParticipant({ uuid }, user)
+      setParticipants(current => ({ ...current, [user.id]: user }))
+      if (cookie) { setCookie(uuid, id) }
     },
     logout: () => removeCookie(uuid),
   }

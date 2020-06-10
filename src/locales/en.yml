@@ -350,6 +350,7 @@ ceremonies:
 
       Some teams dedicate a certain amount of time in their cadence to completing tasks that make existing code more maintainable. How does your team plan to minimize or reduce technical debt?
 common:
+  to: to
   copy: Copy
   save: Save
   clickEdit: Click to edit
@@ -411,17 +412,17 @@ roles:
       This role gives you a free pass to be slightly confrontational or play Devil’s Advocate. But remember to always be diplomatic, because you’ll still have to work with these people later.
 setup:
   ceremony:
-    cadence: Cadence
-    cadenceHelptext: How often should this ceremony happen?
-    schedule: Schedule
-    scheduleHelptext: Is there an in-person meeting?
+    cadence: How often should this ceremony happen?
+    schedule: Is there an in-person meeting?
+    time: What time of day?
     sync: Yes (Synchronous)
     syncHelptext: This ceremony will be scheduled at a point in time.
+    syncNotes: Notes
+    syncNotesPlaceholder: E.g. meeting agenda, organizer name, etc.
     async: No (Asynchronous)
     asyncHelptext: This ceremony will be managed through an online process.
-    time: What time?
-    scheduled: This ceremony is scheduled
-    notes: Notes
+    asyncNotes: How will this ceremony be managed?
+    asyncNotesPlaceholder: E.g. leave a message in Slack by 10:00am
   controls:
     okGotIt: Get started
     next: Next →
@@ -464,3 +465,111 @@ themes:
   culture: Culture
   delivery: Delivery
   innovation: Innovation
+timepicker:
+  am: AM
+  pm: PM
+hours:
+  diff-15: 15 minutes
+  diff-30: 30 minutes
+  diff-45: 45 minutes
+  diff-60: 1 hour
+  diff-75: 1 hour, 15 minutes
+  diff-90: 1 hour, 30 minutes
+  diff-105: 1 hour, 45 minutes
+  diff-120: 2 hours
+  0: 12:00 AM
+  15: 12:15 AM
+  30: 12:30 AM
+  45: 12:45 AM
+  60: 1:00 AM
+  75: 1:15 AM
+  90: 1:30 AM
+  105: 1:45 AM
+  120: 2:00 AM
+  135: 2:15 AM
+  150: 2:30 AM
+  165: 2:45 AM
+  180: 3:00 AM
+  195: 3:15 AM
+  210: 3:30 AM
+  225: 3:45 AM
+  240: 4:00 AM
+  255: 4:15 AM
+  270: 4:30 AM
+  285: 4:45 AM
+  300: 5:00 AM
+  315: 5:15 AM
+  330: 5:30 AM
+  345: 5:45 AM
+  360: 6:00 AM
+  375: 6:15 AM
+  390: 6:30 AM
+  405: 6:45 AM
+  420: 7:00 AM
+  435: 7:15 AM
+  450: 7:30 AM
+  465: 7:45 AM
+  480: 8:00 AM
+  495: 8:15 AM
+  510: 8:30 AM
+  525: 8:45 AM
+  540: 9:00 AM
+  555: 9:15 AM
+  570: 9:30 AM
+  585: 9:45 AM
+  600: 10:00 AM
+  615: 10:15 AM
+  630: 10:30 AM
+  645: 10:45 AM
+  660: 11:00 AM
+  675: 11:15 AM
+  690: 11:30 AM
+  705: 11:45 AM
+  720: 12:00 PM
+  735: 12:15 PM
+  750: 12:30 PM
+  765: 12:45 PM
+  780: 1:00 PM
+  795: 1:15 PM
+  810: 1:30 PM
+  825: 1:45 PM
+  840: 2:00 PM
+  855: 2:15 PM
+  870: 2:30 PM
+  885: 2:45 PM
+  900: 3:00 PM
+  915: 3:15 PM
+  930: 3:30 PM
+  945: 3:45 PM
+  960: 4:00 PM
+  975: 4:15 PM
+  990: 4:30 PM
+  1005: 4:45 PM
+  1020: 5:00 PM
+  1035: 5:15 PM
+  1050: 5:30 PM
+  1065: 5:45 PM
+  1080: 6:00 PM
+  1095: 6:15 PM
+  1110: 6:30 PM
+  1125: 6:45 PM
+  1140: 7:00 PM
+  1155: 7:15 PM
+  1170: 7:30 PM
+  1185: 7:45 PM
+  1200: 8:00 PM
+  1215: 8:15 PM
+  1230: 8:30 PM
+  1245: 8:45 PM
+  1260: 9:00 PM
+  1275: 9:15 PM
+  1290: 9:30 PM
+  1305: 9:45 PM
+  1320: 10:00 PM
+  1335: 10:15 PM
+  1350: 10:30 PM
+  1365: 10:45 PM
+  1380: 11:00 PM
+  1395: 11:15 PM
+  1410: 11:30 PM
+  1425: 11:45 PM

@@ -32,8 +32,6 @@ const SetupCeremony = ({ onSubmit }) => {
     hours.filter(({ value }) => value > startTime).slice(0, 8)
   ), [hours, startTime])
 
-  console.log(hoursWithTime)
-
   return (
     <div className="setup-ceremony">
       <div className="setup-panel split">
@@ -71,6 +69,7 @@ const SetupCeremony = ({ onSubmit }) => {
             <div className="ml-5 flex flex-row items-center">
               <Select
                 options={cadences}
+                value={cadences.find(({ value }) => value === placement)}
                 defaultValue={cadences[0]}
                 onChange={({ value }) => modifyCeremony(id, { placement: value })}
                 styles={{ container: existing => ({
@@ -90,13 +89,20 @@ const SetupCeremony = ({ onSubmit }) => {
               <Select
                 options={hours}
                 value={hours.find(({ value }) => value === startTime)}
-                onChange={({ value }) => modifyCeremony(id, { startTime: value })}
+                onChange={({ value }) => (
+                  console.log(startTime, endTime, value) ||
+                  modifyCeremony(id, {
+                    startTime: value,
+                    endTime: value + (endTime ? (endTime - startTime) : 60)
+                  })
+                )}
                 styles={{ container: existing => ({
                   ...existing, minWidth: "150px", margin: "8px 0"
                 }) }}
               />
               <div className="mvc-note" style={{margin: "0 12px"}}>{t("common.to")}</div>
               <Select
+                isDisabled={!(startTime >= 0)}
                 options={hoursWithTime}
                 value={hours.find(({ value }) => value === endTime)}
                 onChange={({ value }) => modifyCeremony(id, { endTime: value })}
@@ -105,7 +111,7 @@ const SetupCeremony = ({ onSubmit }) => {
                 }) }}
               />
               <div className="ml-2 mvc-note">
-                {(startTime && endTime) ? t(`hours.diff-${endTime - startTime}`) : '-'}
+                {(startTime >= 0 && endTime >= 0) ? t(`hours.diff-${endTime - startTime}`) : '-'}
               </div>
             </div>
           </div>}

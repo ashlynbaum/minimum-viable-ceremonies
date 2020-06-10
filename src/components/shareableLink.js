@@ -22,7 +22,7 @@ const ShareableLink = ({ text, value, position, hideInput, size = 16 }) => {
         icon="basic/link"
         position={position}
         klass="light"
-        text={text}
+        text={text || t(`shareableLink.share`)}
         size={size}
         tooltip={t(`shareableLink.${copied ? 'copied' : 'copy'}`)}
         onClick={() => {

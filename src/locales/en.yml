@@ -451,6 +451,7 @@ setup:
     ceremonyHelptext: Move ceremonies to a cadence or sprint
     voidHelptext: Move unwanted ceremonies into the void
 shareableLink:
+  share: Share room
   copy: Click to copy shareable link
   copied: Copied to clipboard!
 sidebar:

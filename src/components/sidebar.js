@@ -9,7 +9,7 @@ import Context from "../contexts/room"
 import "../styles/sidebar.scss"
 
 const Sidebar = () => {
-  const { uuid, shareableLink, name, participants, setEditingRoomId } = useContext(Context)
+  const { shareableLink, name, participants, setEditingRoomId } = useContext(Context)
   const [expanded, setExpanded] = useState(true)
   const { t } = useTranslation()
 
@@ -27,7 +27,7 @@ const Sidebar = () => {
       <div className="sidebar-actions">
         <h3 className="mvc-subtitle">{t("sidebar.shareableLink")}</h3>
         <div className="sidebar-option mvc-hover-state">
-          <ShareableLink hideInput={true} text={uuid} value={shareableLink} position="right" />
+          <ShareableLink hideInput={true} value={shareableLink} position="right" />
         </div>
       </div>
       <div className="sidebar-participants">

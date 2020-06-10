@@ -87,7 +87,7 @@ const SetupCeremony = ({ onSubmit }) => {
             </div>
             <div className="flex flex-row items-center ml-5">
               <Select
-                options={hours}
+                options={startTimes}
                 value={startTimes.find(({ value }) => value === startTime)}
                 onChange={({ value }) => (
                   console.log(startTime, endTime, value) ||

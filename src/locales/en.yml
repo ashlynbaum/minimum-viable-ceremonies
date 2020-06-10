@@ -45,43 +45,43 @@ cadences:
     description: Put it in the void!
   monday-1:
     name: Monday
-    miniName: Monday
+    miniName: Sprint 1 - Monday
     description: First monday of the sprint
   tuesday-1:
     name: Tuesday
-    miniName: Tuesday
+    miniName: Sprint 1 - Tuesday
     description: First tuesday of the sprint
   wednesday-1:
     name: Wednesday
-    miniName: Wednesday
+    miniName: Sprint 1 - Wednesday
     description: First wednesday of the sprint
   thursday-1:
     name: Thursday
-    miniName: Thursday
+    miniName: Sprint 1 - Thursday
     description: First thursday of the sprint
   friday-1:
     name: Friday
-    miniName: Friday
+    miniName: Sprint 1 - Friday
     description: First friday of the sprint
   monday-2:
     name: Monday
-    miniName: Monday
+    miniName: Sprint 2 - Monday
     description: First monday of the sprint
   tuesday-2:
     name: Tuesday
-    miniName: Tuesday
+    miniName: Sprint 2 - Tuesday
     description: First tuesday of the sprint
   wednesday-2:
     name: Wednesday
-    miniName: Wednesday
+    miniName: Sprint 2 - Wednesday
     description: First wednesday of the sprint
   thursday-2:
     name: Thursday
-    miniName: Thursday
+    miniName: Sprint 2 - Thursday
     description: First thursday of the sprint
   friday-2:
     name: Friday
-    miniName: Friday
+    miniName: Sprint 2 - Friday
     description: First friday of the sprint
 ceremonies:
   checkin:

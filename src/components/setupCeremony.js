@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next"
 import Check from "../images/check-mark.svg"
 
 import Card from "./card"
-import Dropdown from "./dropdown"
 import Icon from "./icon"
 import Context from "../contexts/room"
 import "../styles/setup.scss"

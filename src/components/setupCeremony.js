@@ -25,12 +25,12 @@ const SetupCeremony = ({ onSubmit }) => {
   const cadences = useMemo(() => (
     cadenceData.map(value => ({ value, label: t(`cadences.${value}.miniName`) }))
   ), [cadenceData])
-  const hours = useMemo(() => (
+  const startTimes = useMemo(() => (
     hourData.map(value => ({ value, label: t(`hours.${value}`) }))
   ), [hourData])
-  const hoursWithTime = useMemo(() => (
-    hours.filter(({ value }) => value > startTime).slice(0, 8)
-  ), [hours, startTime])
+  const endTimes = useMemo(() => (
+    startTimes.filter(({ value }) => value > startTime).slice(0, 8)
+  ), [startTimes, startTime])
 
   return (
     <div className="setup-ceremony">
@@ -88,7 +88,7 @@ const SetupCeremony = ({ onSubmit }) => {
             <div className="flex flex-row items-center ml-5">
               <Select
                 options={hours}
-                value={hours.find(({ value }) => value === startTime)}
+                value={startTimes.find(({ value }) => value === startTime)}
                 onChange={({ value }) => (
                   console.log(startTime, endTime, value) ||
                   modifyCeremony(id, {
@@ -103,8 +103,8 @@ const SetupCeremony = ({ onSubmit }) => {
               <div className="mvc-note" style={{margin: "0 12px"}}>{t("common.to")}</div>
               <Select
                 isDisabled={!(startTime >= 0)}
-                options={hoursWithTime}
-                value={hours.find(({ value }) => value === endTime)}
+                options={endTimes}
+                value={startTimes.find(({ value }) => value === endTime)}
                 onChange={({ value }) => modifyCeremony(id, { endTime: value })}
                 styles={{ container: existing => ({
                   ...existing, minWidth: "150px", margin: "8px 0"

@@ -1,32 +1,36 @@
 import React from "react"
-import Modal from "react-modal"
+import { navigate } from "gatsby"
 import phrase from "random-words"
 
 import SetupRoom from "./setupRoom"
 import Board from "./board"
+import Modal from "./modal"
 import useRoomContext from "../hooks/useRoomContext"
 import Context from "../contexts/room"
+import { createRoom } from "../db/firebase"
 
 const Intro = () => {
-  Modal.setAppElement("#___gatsby")
   const draft = useRoomContext(phrase({exactly: 3, join: '-'}), true)
 
   return (
     <Context.Provider value={draft}>
       <Modal
-        isOpen={true}
-        style={{
-          content: {
-            width: "80vw",
-            bottom: "auto",
-            margin: "auto",
-            boxShadow: "0px 15px 35px rgba(0, 0, 0, 0.2), 0px 3px 11px rgba(0, 0, 0, 0.15)",
-            overflow: "visible",
-          }
-        }}
-      >
-        <SetupRoom uuid={draft.uuid} />
-      </Modal>
+        Content={SetupRoom}
+        open={true}
+        initialModel={draft}
+        submit={createRoom}
+        steps={[{
+          next: "setup.controls.okGotIt",
+          back: null,
+        }, {
+          next: "setup.controls.next",
+          back: "setup.controls.back",
+          canProceed: ({ name }) => name.length > 3,
+        }, {
+          next: "setup.controls.createRoom",
+          back: "setup.controls.back",
+        }]}
+      />
       <Board />
     </Context.Provider>
   )

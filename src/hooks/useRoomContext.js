@@ -28,9 +28,9 @@ const useRoomContext = (id, draft) => {
     setupRoom({
       uuid,
       ceremonies,
-      setCeremonies,
+      modifyCeremony,
       participants,
-      setParticipants,
+      modifyParticipant,
       setWeekCount,
     }).then(state => {
       setUuid(state.uuid)
@@ -56,10 +56,6 @@ const useRoomContext = (id, draft) => {
   const [editingCeremonyId, setEditingCeremonyId] = useState()
   const editingCeremony = ceremonies[editingCeremonyId]
 
-  const nameValid = useMemo(() => (
-    name && name.length >= 3
-  ), [name])
-
   const shareableLink = useMemo(() => (
     `${document.location.origin}/room/${uuid}`
   ), [uuid])
@@ -77,12 +73,37 @@ const useRoomContext = (id, draft) => {
     ) { setComplete(true) }
   }
 
+  const modifyRoom = ({ weekCount }) => {
+    setRoom({ uuid }, { weekCount })
+    setWeekCount(weekCount)
+
+    if (weekCount === 1) {
+      Object.values(ceremonies).filter(({ placement }) => (
+        ['monday-2', 'tuesday-2', 'wednesday-2', 'thursday-2', 'friday-2'].includes(placement)
+      )).map(({ id }) => place(id, 'undecided'))
+    }
+  }
+
+  const modifyCeremony = (id, attrs, syncDb = true) => {
+    const updated = { ...ceremonies[id], ...attrs }
+    setCeremonies(current => ({ ...current, [id]: updated }))
+    return syncDb && setCeremony({ uuid }, updated)
+  }
+
+  const modifyParticipant = (id, attrs, cookie = true, syncDb = true) => {
+    const updated = { ...participants[id], ...attrs }
+    setParticipants(current => ({ ...current, [id]: updated }))
+    return syncDb && setParticipant({ uuid }, updated).then(() => {
+      if (cookie) { setCookie(uuid, id) }
+    })
+  }
+
   return {
     uuid, setUuid,
     draft, complete,
     roleData, cadenceData, hourData,
     ceremonies,
-    name, nameValid, setName,
+    name, setName,
     weekCount,
     shareableLink,
     currentUser,
@@ -93,27 +114,7 @@ const useRoomContext = (id, draft) => {
     editingCeremony, setEditingCeremonyId,
     place,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
-    modifyRoom: ({ weekCount }) => {
-      setRoom({ uuid }, { weekCount })
-      setWeekCount(weekCount)
-
-      if (weekCount === 1) {
-        Object.values(ceremonies).filter(({ placement }) => (
-          ['monday-2', 'tuesday-2', 'wednesday-2', 'thursday-2', 'friday-2'].includes(placement)
-        )).map(({ id }) => place(id, 'undecided'))
-      }
-    },
-    modifyCeremony: (id, attrs) => {
-      const updated = { ...ceremonies[id], ...attrs }
-      setCeremony({ uuid }, updated)
-      setCeremonies(current => ({ ...current, [id]: updated }))
-    },
-    login: ({ id, username, roles }, cookie = true) => {
-      const user = { id, username, roles, host: !participants }
-      setParticipant({ uuid }, user)
-      setParticipants(current => ({ ...current, [user.id]: user }))
-      if (cookie) { setCookie(uuid, id) }
-    },
+    modifyRoom, modifyCeremony, modifyParticipant,
     logout: () => removeCookie(uuid),
   }
 }

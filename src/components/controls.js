@@ -1,22 +1,22 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { useTranslation } from "react-i18next"
 
 import Loading from "./loading"
+import Context from "../contexts/modal"
 import "../styles/controls.scss"
 
-const Controls = ({ step: { next, nextText, back, backText, canProceed, submitting, afterRender }, index, max }) => {
+const Controls = () => {
   const { t } = useTranslation()
-
-  useEffect(() => { setTimeout(afterRender, 500) }, [afterRender])
+  const { model, currentStep, nextStep, prevStep, submitting } = useContext(Context)
+  const { next, back, canProceed } = currentStep
 
   return (
     <div className="controls">
-      {index > 0 && <button onClick={back} className="mvc-btn btn-secondary">{t(backText)}</button>}
-      <div className="controls-divider">
-      </div>
-      <button disabled={!canProceed()} onClick={next} className="mvc-btn btn-primary">
+      {back && <button onClick={prevStep} className="mvc-btn btn-secondary">{t(back)}</button>}
+      <div className="controls-divider" />
+      <button disabled={!canProceed(model)} className="mvc-btn btn-primary" onClick={nextStep}>
         {submitting && <Loading size={25} />}
-        <span style={{ visibility: submitting ? 'hidden' : 'auto' }}>{t(nextText)}</span>
+        <span style={{ visibility: submitting ? 'hidden' : 'auto' }}>{t(next)}</span>
       </button>
     </div>
   )

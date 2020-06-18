@@ -12,11 +12,12 @@ export default ({ id }) => {
   const size     = useMemo(() => generateNumber(...(type === 'circle' ? [5,10] : [30,70])), [type])
   const color    = useMemo(() => COLORS[generateNumber(0, COLORS.length)], [])
   const rotation = useMemo(() => type === 'circle' ? [15,45] : [-45,45], [type])
-  const speed    = useMemo(() => type === 'circle' ? 0 : generateNumber(5,20) / 10.0, [type])
+  const speed    = useMemo(() => generateNumber(5,20) / 10.0, [type])
+  const drift    = useMemo(() => generateNumber(1,4), [])
 
   const style = useMemo(() => ({
     position: "absolute",
-    animation: `spin ${speed}s infinite linear`,
+    animation: `drift-${drift} ${speed*3}s infinite ease-in-out`,
     width: size,
     height: size,
     backgroundColor: type === "circle" && color,

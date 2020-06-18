@@ -14,12 +14,7 @@ const RoleBadge = ({ role, checked, onHover, onClick }) => {
         name="role"
         value={role}
         checked={checked}
-        onChange={({ target: { checked, value } }) => (
-          onClick(current => ({
-            ...current,
-            roles: checked ? current.roles.concat(value) : current.roles.filter(r => r !== value)
-          }))
-        )}
+        onChange={({ target: { checked, value } }) => onClick(value, checked)}
       />
       <div
         className="mvc-radio-option-label flex content-center"

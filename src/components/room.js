@@ -1,5 +1,4 @@
 import React from "react"
-import { useTranslation } from "react-i18next"
 import phrase from "random-words"
 
 import Loading from "./loading"
@@ -14,7 +13,6 @@ import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
 
 const Room = ({ uuid }) => {
-  const { t } = useTranslation()
   const context = useRoomContext(uuid)
 
   return (

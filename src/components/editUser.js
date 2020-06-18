@@ -1,16 +1,14 @@
 import React, { useState, useContext, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 
-import Controls from "./controls"
 import Card from "./card"
 import RoleBadge from "./roleBadge"
 import Context from "../contexts/room"
 import "../styles/editUser.scss"
 
 const EditUser = ({ onSubmit }) => {
-  const { editingUser, roleData, modifyParticipant, setEditingUserId } = useContext(Context)
+  const { editingUser, roleData, modifyParticipant } = useContext(Context)
   const { t } = useTranslation()
-  const [user, setUser] = useState(editingUser)
   const [currentRole, setCurrentRole] = useState()
 
   const roles = useMemo(() => (

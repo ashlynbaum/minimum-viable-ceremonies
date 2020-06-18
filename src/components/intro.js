@@ -1,5 +1,4 @@
 import React from "react"
-import { navigate } from "gatsby"
 import phrase from "random-words"
 
 import SetupRoom from "./setupRoom"

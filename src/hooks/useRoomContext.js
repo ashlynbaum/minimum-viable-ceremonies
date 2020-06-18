@@ -48,7 +48,7 @@ const useRoomContext = (id, draft) => {
       !complete &&
       Object.values(ceremonies).filter(c => c.placement === 'undecided').length === 0
     ) { setComplete(true) }
-  }, [ceremonies])
+  }, [ceremonies, complete])
 
   const currentUser = useMemo(() => (
     Object.values(participants).find(p => p.id === cookie[uuid])

@@ -23,10 +23,10 @@ const SetupCeremony = ({ onSubmit }) => {
   const { id, placement, async, notes, startTime, endTime } = editingCeremony || {}
   const cadences = useMemo(() => (
     cadenceData.map(value => ({ value, label: t(`cadences.${value}.miniName`) }))
-  ), [cadenceData])
+  ), [cadenceData, t])
   const startTimes = useMemo(() => (
     hourData.map(value => ({ value, label: t(`hours.${value}`) }))
-  ), [hourData])
+  ), [hourData, t])
   const endTimes = useMemo(() => (
     startTimes.filter(({ value }) => value > startTime).slice(0, 8)
   ), [startTimes, startTime])

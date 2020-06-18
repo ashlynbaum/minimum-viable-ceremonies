@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import ReactModal from "react-modal"
 import { useTranslation } from "react-i18next"
 import useModalContext from "../hooks/useModalContext"

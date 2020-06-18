@@ -12,7 +12,7 @@ export default ({ id }) => {
   const size     = useMemo(() => generateNumber(...(type === 'circle' ? [5,10] : [30,70])), [type])
   const color    = useMemo(() => COLORS[generateNumber(0, COLORS.length)], [])
   const rotation = useMemo(() => type === 'circle' ? [15,45] : [-45,45], [type])
-  const speed    = useMemo(() => generateNumber(5,20) / 10.0, [type])
+  const speed    = useMemo(() => generateNumber(5,20) / 10.0, [])
   const drift    = useMemo(() => generateNumber(1,4), [])
 
   const style = useMemo(() => ({
@@ -25,7 +25,7 @@ export default ({ id }) => {
     transform: `rotateZ(${generateNumber(...rotation)}deg)`,
     left: generateNumber(0, window.innerWidth),
     top: generateNumber((window.innerHeight/2) - window.innerHeight, (window.innerHeight/10)),
-  }), [size, type, color, rotation, speed])
+  }), [size, type, color, rotation, speed, drift])
 
   return (
     <div className={`particle particle-${type}`} style={style}>

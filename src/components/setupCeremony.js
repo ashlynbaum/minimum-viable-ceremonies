@@ -37,7 +37,7 @@ const SetupCeremony = ({ onSubmit }) => {
         <div>
           <Card id={id} namespace="ceremonies" theme={true} />
         </div>
-        <div className="overflow-auto">
+        <div className="overflow-auto pr-4">
           <div className="mvc-input">
             <div className="mvc-label flex flex-row items-center">
               <Icon icon="basic/globe" className="mr-2" size={14} />

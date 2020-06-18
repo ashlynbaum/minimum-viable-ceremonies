@@ -11,9 +11,11 @@ import SetupRoom from "./setupRoom"
 import SetupCeremony from "./setupCeremony"
 import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
+import { createRoom } from "../db/firebase"
 
 const Room = ({ uuid }) => {
   const context = useRoomContext(uuid)
+  const draft = useRoomContext(phrase({exactly: 3, join: '-'}), true)
 
   return (
     <Context.Provider value={context}>
@@ -44,14 +46,15 @@ const Room = ({ uuid }) => {
         <Modal
           Content={SetupRoom}
           open={context.editingRoom}
+          initialModel={draft}
           close={context.setEditingRoomId}
-          submit={context.setUuid}
+          submit={createRoom}
           steps={[{
             next: "setup.controls.okGotIt",
           }, {
             next: "setup.controls.next",
             back: "setup.controls.back",
-            canProceed: ({ name }) => name.length > 3,
+            canProceed: ({ name = "" }) => name.length > 3,
           }, {
             next: "setup.controls.createRoom",
             back: "setup.controls.back",

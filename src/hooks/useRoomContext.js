@@ -43,6 +43,13 @@ const useRoomContext = (id, draft) => {
     })
   }, [uuid])
 
+  useEffect(() => {
+    if (
+      !complete &&
+      Object.values(ceremonies).filter(c => c.placement === 'undecided').length === 0
+    ) { setComplete(true) }
+  }, [ceremonies])
+
   const currentUser = useMemo(() => (
     Object.values(participants).find(p => p.id === cookie[uuid])
   ), [participants, cookie, uuid])
@@ -64,13 +71,6 @@ const useRoomContext = (id, draft) => {
     const updated = { ...ceremonies[id], placement }
     setCeremony({ uuid }, updated)
     setCeremonies(current => ({ ...current, [id]: updated }))
-
-    const remaining = Object.values(ceremonies).filter(c => c.placement === 'undecided')
-    if (
-      placement !== 'undecided' &&
-      remaining.length === 1 &&
-      remaining[0].id === id
-    ) { setComplete(true) }
   }
 
   const modifyRoom = ({ weekCount }) => {

@@ -1,13 +1,17 @@
 import firebase from "gatsby-plugin-firebase"
-import { debounce } from "throttle-debounce"
+import debounce from "debounce-promise"
+import { navigate } from "gatsby"
 
 const rooms = () => firebase.database().ref('rooms')
 
 export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) => (
-  rooms().child(uuid).set({ uuid, name, weekCount, ceremonies, participants })
+  rooms()
+    .child(uuid)
+    .set({ uuid, name, weekCount, ceremonies, participants })
+    .then(() => navigate(`room/${uuid}`))
 )
 
-export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, setCeremonies, setWeekCount }) => {
+export const setupRoom = ({ uuid, participants, ceremonies, modifyParticipant, modifyCeremony, setWeekCount }) => {
   const room = rooms().child(uuid)
 
   room.child('weekCount').on('value', snapshot => (
@@ -19,18 +23,14 @@ export const setupRoom = ({ uuid, participants, ceremonies, setParticipants, set
       .filter(({ id, username, roles }) => {
         const participant = participants[id] || {}
         return username !== participant.username || roles !== participant.roles
-      }).map(({ id, username, roles }) => setParticipants(current => ({
-        ...current, [id]: { ...current[id], id, username, roles }
-      })))
+      }).map(participant => modifyParticipant(participant.id, participant, false, false))
   ))
 
   room.child('ceremonies').on('value', snapshot => (
     Object.values(snapshot.toJSON())
       .filter(({ id, placement, async }) => (
         placement !== ceremonies[id].placement || async !== ceremonies[id].async
-      )).map(({ id, placement, async }) => setCeremonies(current => ({
-        ...current, [id]: { ...current[id], placement, async }
-      })))
+      )).map(ceremony => modifyCeremony(ceremony.id, ceremony, false))
   ))
 
   return room.once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))
@@ -43,14 +43,14 @@ export const teardownRoom = ({ uuid }) => {
   room.child('placements').off('value')
 }
 
-export const setParticipant = debounce(300, ({ uuid }, participant) => (
+export const setParticipant = debounce(({ uuid }, participant) => (
   rooms().child(`${uuid}/participants/${participant.id}`).set(participant)
-))
+), 300)
 
-export const setCeremony = debounce(300, ({ uuid }, ceremony) => (
+export const setCeremony = debounce(({ uuid }, ceremony) => (
   rooms().child(`${uuid}/ceremonies/${ceremony.id}`).set(ceremony)
-))
+), 300)
 
-export const setRoom = debounce(300, ({ uuid }, { weekCount }) => (
+export const setRoom = debounce(({ uuid }, { weekCount }) => (
   rooms().child(`${uuid}/weekCount`).set(weekCount)
-))
+), 300)

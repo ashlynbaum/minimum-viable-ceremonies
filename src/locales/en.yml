@@ -410,6 +410,12 @@ roles:
     description: |
       As the wildcard, your role is to say the thing that needs saying, particularly if you think others are too polite to say it.
       This role gives you a free pass to be slightly confrontational or play Devil’s Advocate. But remember to always be diplomatic, because you’ll still have to work with these people later.
+  participant:
+    name: Participant
+    icon: 🧠
+    sub-heading: Contribute your ideas
+    description: |
+      As a participant, you don't have any special facilitation role to play. So simply show up, and ensure that you're engaged and willing to share your opinions with the team.
 setup:
   ceremony:
     cadence: How often should this ceremony happen?

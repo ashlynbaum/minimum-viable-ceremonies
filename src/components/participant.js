@@ -6,7 +6,7 @@ import Dropdown from "./dropdown"
 import Context from "../contexts/room"
 import "../styles/participant.scss"
 
-const Participant = ({ id, username, roles = [] }) => {
+const Participant = ({ id, username, roles }) => {
   const { t } = useTranslation()
   const { currentUser, setEditingUserId } = useContext(Context)
 
@@ -27,7 +27,7 @@ const Participant = ({ id, username, roles = [] }) => {
         </div>
       </div>
       <div className="participant-roles">
-        {Object.values(roles).map(role => (
+        {Object.values(roles || {0: 'participant'}).map(role => (
           <Dropdown
             key={role}
             klass="dark"

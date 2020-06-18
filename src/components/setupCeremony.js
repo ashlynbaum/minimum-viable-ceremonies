@@ -32,34 +32,36 @@ const SetupCeremony = ({ onSubmit }) => {
   ), [startTimes, startTime])
 
   return (
-    <div className="setup-ceremony">
+    <div className="setup-ceremony max-h-full flex-grow">
       <div className="setup-panel split">
         <div>
           <Card id={id} namespace="ceremonies" theme={true} />
         </div>
-        <div className="mvc-input">
-          <div className="mvc-label flex flex-row items-center">
-            <Icon icon="basic/globe" className="mr-2" size={14} />
-            <span>{t("setup.ceremony.schedule")}</span>
+        <div className="overflow-auto">
+          <div className="mvc-input">
+            <div className="mvc-label flex flex-row items-center">
+              <Icon icon="basic/globe" className="mr-2" size={14} />
+              <span>{t("setup.ceremony.schedule")}</span>
+            </div>
+            <div className="ml-5 flex flex-row items-center">
+              {[true, false].map(value => (
+                <label key={value} className="mvc-radio-option flex content-center">
+                  <input
+                    type="checkbox"
+                    name="async"
+                    value={value}
+                    checked={value === async}
+                    onChange={({ target: { checked, value } }) => modifyCeremony(id, { async: value === 'true' })}
+                  />
+                  <div className="mvc-radio-option-label">
+                    <Check />
+                    <span>{t(`setup.ceremony.${value ? 'async' : 'sync'}`)}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+            <div className="mvc-note ml-5">{t(`setup.ceremony.${async ? 'async' : 'sync'}Helptext`)}</div>
           </div>
-          <div className="ml-5 flex flex-row items-center">
-            {[true, false].map(value => (
-              <label key={value} className="mvc-radio-option flex content-center">
-                <input
-                  type="checkbox"
-                  name="async"
-                  value={value}
-                  checked={value === async}
-                  onChange={({ target: { checked, value } }) => modifyCeremony(id, { async: value === 'true' })}
-                />
-                <div className="mvc-radio-option-label">
-                  <Check />
-                  <span>{t(`setup.ceremony.${value ? 'async' : 'sync'}`)}</span>
-                </div>
-              </label>
-            ))}
-          </div>
-          <div className="mvc-note ml-5">{t(`setup.ceremony.${async ? 'async' : 'sync'}Helptext`)}</div>
           <div className="mvc-input">
             <div className="mvc-label flex flex-row items-center">
               <Icon icon="time/calendar" className="mr-2" size={14} />
@@ -89,7 +91,6 @@ const SetupCeremony = ({ onSubmit }) => {
                 options={startTimes}
                 value={startTimes.find(({ value }) => value === startTime)}
                 onChange={({ value }) => (
-                  console.log(startTime, endTime, value) ||
                   modifyCeremony(id, {
                     startTime: value,
                     endTime: value + (endTime ? (endTime - startTime) : 60)

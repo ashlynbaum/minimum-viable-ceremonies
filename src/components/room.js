@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useMemo } from "react"
 import phrase from "random-words"
 
 import Loading from "./loading"
@@ -48,7 +48,7 @@ const Room = ({ uuid }) => {
           open={context.editingRoom}
           initialModel={draft}
           close={context.setEditingRoomId}
-          submit={createRoom}
+          submit={room => createRoom(room).then(() => context.setUuid(room.uuid))}
           steps={[{
             next: "setup.controls.okGotIt",
           }, {

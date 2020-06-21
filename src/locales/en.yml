@@ -46,22 +46,27 @@ cadences:
   monday-1:
     name: Monday
     miniName: Sprint 1 - Monday
+    oneWeekMiniName: Mondays
     description: First monday of the sprint
   tuesday-1:
     name: Tuesday
     miniName: Sprint 1 - Tuesday
+    oneWeekMiniName: Tuesdays
     description: First tuesday of the sprint
   wednesday-1:
     name: Wednesday
     miniName: Sprint 1 - Wednesday
+    oneWeekMiniName: Wednesdays
     description: First wednesday of the sprint
   thursday-1:
     name: Thursday
     miniName: Sprint 1 - Thursday
+    oneWeekMiniName: Thursdays
     description: First thursday of the sprint
   friday-1:
     name: Friday
     miniName: Sprint 1 - Friday
+    oneWeekMiniName: Fridays
     description: First friday of the sprint
   monday-2:
     name: Monday

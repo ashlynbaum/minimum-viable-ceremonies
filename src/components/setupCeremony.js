@@ -8,21 +8,34 @@ import Icon from "./icon"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
 
-const cadencesWithTime = [
-  'monday-1', 'monday-2',
-  'tuesday-1', 'tuesday-2',
-  'wednesday-1', 'wednesday-2',
-  'thursday-1', 'thursday-2',
-  'friday-1', 'friday-2',
-  'daily'
-]
+const withOption = (value, option) => {
+  switch (option) {
+    case 'withTime': return [
+      'monday-1', 'tuesday-1', 'wednesday-1', 'thursday-1', 'friday-1',
+      'monday-2', 'tuesday-2', 'wednesday-2', 'thursday-2', 'friday-2',
+      'daily',
+    ].includes(value)
+    case 'withOneWeekName': return [
+      'monday-1', 'tuesday-1', 'wednesday-1', 'thursday-1', 'friday-1',
+    ].includes(value)
+    case 'hideOnOneWeek': return [
+      'monday-2', 'tuesday-2', 'wednesday-2', 'thursday-2', 'friday-2',
+    ].includes(value)
+  }
+}
 
 const SetupCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
-  const { editingCeremony, modifyCeremony, cadenceData, hourData } = useContext(Context)
+  const { weekCount, editingCeremony, modifyCeremony, cadenceData, hourData } = useContext(Context)
   const { id, placement, async, notes, startTime, endTime } = editingCeremony || {}
   const cadences = useMemo(() => (
-    cadenceData.map(value => ({ value, label: t(`cadences.${value}.miniName`) }))
+    cadenceData
+      .filter(value => !(weekCount === 1 && withOption(value, 'hideOnOneWeek')))
+      .map(value => ({ value, label: (weekCount === 1 && withOption(value, 'withOneWeekName'))
+        ? t(`cadences.${value}.oneWeekMiniName`)
+        : t(`cadences.${value}.miniName`)
+      })
+    )
   ), [cadenceData, t])
   const startTimes = useMemo(() => (
     hourData.map(value => ({ value, label: t(`hours.${value}`) }))
@@ -81,7 +94,7 @@ const SetupCeremony = ({ onSubmit }) => {
               />
             </div>
           </div>
-          {!async && cadencesWithTime.includes(placement) && <div className="mvc-input">
+          {!async && withOption(placement, 'withTime') && <div className="mvc-input">
             <div className="mvc-label flex flex-row items-center">
               <Icon icon="time/time" className="mr-2" size={14} />
               <span>{t("setup.ceremony.time")}</span>

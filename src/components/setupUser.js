@@ -33,7 +33,7 @@ const SetupUser = ({ onSubmit }) => {
               <input
                 autoComplete="off"
                 ref={usernameRef}
-                className="appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
+                className="mvc-inline-edit appearance-none bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl mr-3 py-2 leading-tight focus:outline-none"
                 name="username"
                 placeholder={t("setup.user.usernamePlaceholder")}
                 value={model.username}

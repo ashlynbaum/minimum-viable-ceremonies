@@ -40,7 +40,7 @@ const SetupRoom = () => {
               <input
                 ref={nameRef}
                 autoComplete="off"
-                className="bg-transparent border-none w-full placeholder-gray-600 focus:placeholder-gray-500 leading-tight focus:outline-none"
+                className="mvc-inline-edit bg-transparent border-none w-full placeholder-gray-600 focus:placeholder-gray-500 leading-tight focus:outline-none"
                 name="name"
                 placeholder={t("setup.room.namePlaceholder")}
                 value={model.name}

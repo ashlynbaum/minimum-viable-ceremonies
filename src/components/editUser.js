@@ -26,7 +26,7 @@ const EditUser = ({ onSubmit }) => {
         <div>
           <h3 className="mvc-subtitle">{t("participant.name")}</h3>
           <input
-            className="edit-user-field bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl leading-tight focus:outline-none"
+            className="mvc-inline-edit edit-user-field bg-transparent border-none w-full text-gray-700 placeholder-gray-600 focus:placeholder-gray-500 font-bold text-2xl leading-tight focus:outline-none"
             name="username"
             placeholder={t("setup.user.usernamePlaceholder")}
             value={editingUser.username}

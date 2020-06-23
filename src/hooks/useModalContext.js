@@ -12,7 +12,8 @@ const useRoomContext = (initialModel, steps = [], close, submit) => {
   const nextStep = () => index < steps.length - 1
     ? currentStep.canProceed(model) && setIndex(i => i + 1)
     : setSubmitting(true) || submit(model).then(
-      () => close(null),
+      () => close(null) || setModel(initialModel)
+    ).finally(
       () => setSubmitting(false)
     )
 

@@ -10,9 +10,8 @@ import ThemeBadge from "./themeBadge"
 import "../styles/customCard.scss"
 import "emoji-mart/css/emoji-mart.css"
 
-const CustomCard = () => {
+const CustomCard = ({ model, setModel }) => {
   const { themeData } = useContext(Context)
-  const { model, setModel } = useContext(ModalContext)
   const { t } = useTranslation()
   const [picker, setPicker] = useState(false)
 
@@ -36,13 +35,13 @@ const CustomCard = () => {
               className="mvc-inline-edit"
               style={{height: "48px"}}
               onClick={() => setPicker(current => !current)}
-              onKeyPress={({ key }) => key === 'e nter' && setPicker(current => !current)}
+              onKeyPress={({ key }) => key === 'enter' && setPicker(current => !current)}
             >{model.emoji}</button>
             {picker && <Picker
               set="apple"
               data={data}
               onSelect={({ native }) => {
-                setModel(model => ({ ...model, emoji: native }))
+                setModel({ emoji: native })
                 setPicker(false)
               }} />}
           </div>
@@ -59,7 +58,7 @@ const CustomCard = () => {
               options={themes}
               value={themes.find(({ value }) => value === model.theme)}
               defaultValue={themes[0]}
-              onChange={({ value }) => setModel(model => ({ ...model, theme: value }))}
+              onChange={({ value }) => setModel({ theme: value })}
               styles={{ container: existing => ({
                 ...existing,
                 width: "100%",
@@ -75,7 +74,7 @@ const CustomCard = () => {
             name="title"
             placeholder={t("setup.ceremony.titlePlaceholder")}
             value={model.title}
-            onChange={({ target: { value } }) => setModel(model => ({ ...model, title: value }))}
+            onChange={({ target: { value } }) => setModel({ title: value })}
           />
         </div>
         <div className="card-subheading">
@@ -85,7 +84,7 @@ const CustomCard = () => {
             name="subheading"
             placeholder={t("setup.ceremony.subheadingPlaceholder")}
             value={model.subheading}
-            onChange={({ target: { value } }) => setModel(model => ({ ...model, subheading: value }))}
+            onChange={({ target: { value } }) => setModel({ subheading: value })}
           />
         </div>
         <div className="card-description">
@@ -95,7 +94,7 @@ const CustomCard = () => {
             name="description"
             placeholder={t("setup.ceremony.descriptionPlaceholder")}
             value={model.description}
-            onChange={({ target: { value } }) => setModel(model => ({ ...model, description: value }))}
+            onChange={({ target: { value } }) => setModel({ description: value })}
           />
         </div>
       </div>

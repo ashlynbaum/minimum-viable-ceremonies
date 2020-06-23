@@ -65,12 +65,13 @@ const Room = ({ uuid }) => {
           Content={SetupCeremony}
           open={context.creatingCeremony}
           initialModel={{
-            theme: 'coordination',
-            emoji: '🙂',
-            title: '',
-            subheading: '',
-            description: '',
-            placement: 'undecided',
+            id: phrase({exactly: 3, join: '-'}),
+            theme: "coordination",
+            emoji: "🙂",
+            title: "",
+            subheading: "",
+            description: "",
+            placement: "undecided",
             async: true,
             custom: true,
           }}

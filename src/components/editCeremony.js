@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"
 import Check from "../images/check-mark.svg"
 
 import Card from "./card"
+import CustomCard from "./customCard"
 import Icon from "./icon"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
@@ -49,7 +50,13 @@ const EditCeremony = ({ onSubmit }) => {
     <div className="setup-ceremony max-h-full flex-grow">
       <div className="setup-panel split">
         <div>
-          <Card id={id} namespace="ceremonies" theme={true} />
+          {editingCeremony && editingCeremony.custom ? (
+            <CustomCard model={editingCeremony} setModel={attrs => (
+              modifyCeremony(editingCeremony.id, attrs)
+            )} />
+          ) : (
+            <Card id={id} namespace="ceremonies" theme={true} />
+          )}
         </div>
         <div className="overflow-auto pr-4">
           <div className="mvc-input">

@@ -14,6 +14,7 @@ const Modal = ({
   steps,
   close = () => {},
   submit,
+  singleControl,
 }) => {
   const { t } = useTranslation()
   const context = useModalContext(initialModel, steps, close, submit)
@@ -36,7 +37,7 @@ const Modal = ({
             <button className="close-modal" onClick={close}>{t("setup.controls.back")}</button>
           </div>}
           <Content />
-          {steps && <Controls />}
+          {steps && <Controls single={singleControl} />}
         </div>
       </ReactModal>
     </Context.Provider>

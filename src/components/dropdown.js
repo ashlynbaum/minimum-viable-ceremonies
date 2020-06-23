@@ -40,7 +40,7 @@ const Dropdown = ({
           setOpen(false)
         }}
       >
-        {icon && <Icon icon={icon} size={size} />}
+        {icon && <Icon icon={icon} size={size} className="mr-2" />}
         {text && <span>{text}</span>}
       </div>
       {tooltip && <div ref={tooltipRef} style={width ? {width} : {whiteSpace: 'nowrap'}} className={`dropdown-tooltip ${position} ${theme}`}>

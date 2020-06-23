@@ -9,6 +9,7 @@ import SetupUser from "./setupUser"
 import EditUser from "./editUser"
 import SetupRoom from "./setupRoom"
 import SetupCeremony from "./setupCeremony"
+import EditCeremony from "./editCeremony"
 import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
 import { createRoom } from "../db/firebase"
@@ -62,6 +63,41 @@ const Room = ({ uuid }) => {
         />
         <Modal
           Content={SetupCeremony}
+          open={context.creatingCeremony}
+          initialModel={{
+            theme: 'coordination',
+            emoji: '🙂',
+            title: '',
+            subheading: '',
+            description: '',
+            placement: 'undecided',
+            async: true,
+            custom: true,
+          }}
+          close={context.setCreatingCeremonyId}
+          styles={{
+            top: "auto",
+            left: "auto",
+            right: "auto",
+            bottom: "auto",
+            width: "auto",
+            height: "auto"
+          }}
+          submit={ceremony => (
+            context.modifyCeremony(ceremony.id, ceremony).then(() => (
+              context.setEditingCeremonyId(ceremony.id)
+            ))
+          )}
+          singleControl={true}
+          steps={[{
+            next: "common.save",
+            canProceed: model => (
+              model.title && model.emoji && model.theme
+            )
+          }]}
+        />
+        <Modal
+          Content={EditCeremony}
           open={context.editingCeremony}
           close={context.setEditingCeremonyId}
         />

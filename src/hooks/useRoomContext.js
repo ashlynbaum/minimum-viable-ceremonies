@@ -5,6 +5,7 @@ import { document } from "browser-monads"
 import roleData from "../data/roles"
 import ceremonyData from "../data/ceremonies"
 import cadenceData from "../data/cadences"
+import themeData from "../data/themes"
 import hourData from "../data/hours"
 
 const useRoomContext = (id, draft) => {
@@ -57,6 +58,9 @@ const useRoomContext = (id, draft) => {
   const [editingRoomId, setEditingRoomId] = useState()
   const editingRoom = editingRoomId
 
+  const [creatingCeremonyId, setCreatingCeremonyId] = useState()
+  const creatingCeremony = creatingCeremonyId
+
   const [editingUserId, setEditingUserId] = useState()
   const editingUser = participants[editingUserId]
 
@@ -101,7 +105,7 @@ const useRoomContext = (id, draft) => {
   return {
     uuid, setUuid,
     draft, complete,
-    roleData, cadenceData, hourData,
+    roleData, cadenceData, hourData, themeData,
     ceremonies,
     name, setName,
     weekCount,
@@ -111,6 +115,7 @@ const useRoomContext = (id, draft) => {
     ready,
     editingRoom, setEditingRoomId,
     editingUser, setEditingUserId,
+    creatingCeremony, setCreatingCeremonyId,
     editingCeremony, setEditingCeremonyId,
     place,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),

@@ -35,7 +35,7 @@ export const setupRoom = ({ uuid, participants, ceremonies, modifyParticipant, m
       ))).map(ceremony => (
         modifyCeremony(ceremony.id, ceremony, false)
       ))
-  ))
+  )
 
   return room.once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))
 }

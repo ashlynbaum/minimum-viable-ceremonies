@@ -22,7 +22,7 @@ const Cadence = ({ id, basis, klass }) => {
           {...droppableProps}
         >
           {!['undecided'].includes(id) &&
-            <div className="leading-tight flex-grow">
+            <div className="leading-tight">
               {t(`cadences.${id}.name`)}
             </div>
           }
@@ -30,7 +30,7 @@ const Cadence = ({ id, basis, klass }) => {
             <Draggable draggableId={id} index={index} key={id}>
               {({ innerRef, draggableProps, dragHandleProps }) => (
                 <div
-                  className="ceremony-draggable flex-grow"
+                  className="ceremony-draggable"
                   ref={innerRef}
                   {...draggableProps}
                   {...dragHandleProps}

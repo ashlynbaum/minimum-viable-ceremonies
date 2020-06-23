@@ -1,6 +1,1 @@
-export default [
-  'coordination',
-  'culture',
-  'delivery',
-  'innovation',
-]
+export default ['coordination', 'culture', 'delivery', 'innovation']

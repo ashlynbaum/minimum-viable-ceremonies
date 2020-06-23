@@ -51,7 +51,7 @@ const Cadence = ({ id, basis, klass }) => {
           )}
           {['undecided'].includes(id) && (
             <Dropdown
-              klass="cadence-add"
+              klass="mt-1 cadence-add"
               size={14}
               position="bottom"
               icon="basic/plus"

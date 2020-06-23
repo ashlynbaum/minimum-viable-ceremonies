@@ -17,7 +17,6 @@ const useRoomContext = (id, draft) => {
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
   const [weekCount, setWeekCount] = useState(1)
   const [participants, setParticipants] = useState({})
-  const [customCount, setCustomCount] = useState(1)
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
     (result, id) => ({ ...result, [id]: { id, placement: 'undecided', async: true } })
   , {}))
@@ -90,11 +89,6 @@ const useRoomContext = (id, draft) => {
   }
 
   const modifyCeremony = (id, attrs, syncDb = true) => {
-    if (attrs.custom && !id) {
-      attrs.id = `custom-${customCount}`
-      setCustomCount(current => current + 1)
-    }
-
     const updated = { ...ceremonies[id], ...attrs }
     setCeremonies(current => ({ ...current, [id]: updated }))
     return syncDb && setCeremony({ uuid }, updated)

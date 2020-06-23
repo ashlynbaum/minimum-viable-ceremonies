@@ -10,7 +10,7 @@ import ThemeBadge from "./themeBadge"
 import "../styles/customCard.scss"
 import "emoji-mart/css/emoji-mart.css"
 
-const CustomCard = ({ initialModel }) => {
+const CustomCard = () => {
   const { themeData } = useContext(Context)
   const { model, setModel } = useContext(ModalContext)
   const { t } = useTranslation()

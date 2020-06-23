@@ -29,8 +29,12 @@ export const setupRoom = ({ uuid, participants, ceremonies, modifyParticipant, m
   room.child('ceremonies').on('value', snapshot => (
     Object.values(snapshot.toJSON())
       .filter(({ id, placement, async }) => (
-        placement !== ceremonies[id].placement || async !== ceremonies[id].async
-      )).map(ceremony => modifyCeremony(ceremony.id, ceremony, false))
+        !ceremonies[id] ||
+        placement !== ceremonies[id].placement ||
+        async !== ceremonies[id].async
+      ))).map(ceremony => (
+        modifyCeremony(ceremony.id, ceremony, false)
+      ))
   ))
 
   return room.once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))

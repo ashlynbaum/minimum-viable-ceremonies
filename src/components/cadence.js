@@ -4,11 +4,12 @@ import { Draggable, Droppable } from "react-beautiful-dnd"
 
 import Ceremony from "./ceremony"
 import Context from "../contexts/room"
+import Dropdown from "./dropdown"
 import "../styles/cadence.scss"
 import Void from "../images/void.svg"
 
 const Cadence = ({ id, basis, klass }) => {
-  const { placedOn } = useContext(Context)
+  const { placedOn, setCreatingCeremonyId } = useContext(Context)
   const { t } = useTranslation()
 
   return (
@@ -40,14 +41,25 @@ const Cadence = ({ id, basis, klass }) => {
             </Draggable>
           ))}
           {placeholder}
-          {['void'].includes(id) &&
+          {['void'].includes(id) && (
             <div className="void-content mb-4 flex flex-col flex-grow justify-center">
               <div className='void-placeholder'>
                 {t(`board.voidPlaceholder`)}
               </div>
               <Void className='void-svg'/>
             </div>
-          }
+          )}
+          {['undecided'].includes(id) && (
+            <Dropdown
+              klass="mt-1 cadence-add"
+              size={14}
+              position="right"
+              icon="basic/plus"
+              text={t("setup.ceremony.create")}
+              tooltip={t("setup.ceremony.createHelptext")}
+              onClick={() => setCreatingCeremonyId(true)}
+            />
+          )}
         </div>
       )}
     </Droppable>

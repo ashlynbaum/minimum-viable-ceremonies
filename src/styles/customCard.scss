@@ -1,0 +1,57 @@
+.custom-card {
+  .emoji-mart {
+    position: absolute;
+    z-index: 1;
+
+    &-preview {
+      display: none;
+    }
+
+    &-anchors svg {
+      margin: auto;
+    }
+  }
+}
+
+.custom-card-select {
+  display: inline-block;
+  width: auto !important;
+  margin: 0 !important;
+
+  &__control {
+    display: inline-block !important;
+    min-height: auto !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+
+    label {
+      cursor: pointer !important;
+    }
+  }
+
+  &__value-container {
+    padding: 0 !important;
+  }
+
+  &__menu {
+    width: auto !important;
+    right: 0;
+  }
+
+  &__menu-list {
+    flex-wrap: wrap;
+    width: auto;
+    padding: 8px;
+
+    > div { display: flex; }
+
+    label {
+      width: 100%;
+      margin: 4px 0;
+      line-height: 18px !important;
+      text-align: center;
+      cursor: pointer !important;
+    }
+  }
+}

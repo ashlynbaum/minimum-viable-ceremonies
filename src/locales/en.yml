@@ -423,6 +423,8 @@ roles:
       As a participant, you don't have any special facilitation role to play. So simply show up, and ensure that you're engaged and willing to share your opinions with the team.
 setup:
   ceremony:
+    create: Add custom
+    createHelptext: Create a custom ceremony
     cadence: How often should this ceremony happen?
     schedule: Is there an in-person meeting?
     time: What time of day?
@@ -434,6 +436,9 @@ setup:
     asyncHelptext: This ceremony will be managed through an online process.
     asyncNotes: How will this ceremony be managed?
     asyncNotesPlaceholder: E.g. leave a message in Slack by 10:00am
+    titlePlaceholder: (Enter title)
+    subheadingPlaceholder: (Enter subheading)
+    descriptionPlaceholder: (Enter description)
   controls:
     okGotIt: Get started
     next: Next →

@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react"
+import { useState, useMemo, useEffect, useRef } from "react"
 import { useCookies } from "react-cookie"
 import { setupRoom, setRoom, setCeremony, setParticipant } from "../db/firebase"
 import { document } from "browser-monads"
@@ -20,6 +20,8 @@ const useRoomContext = (id, draft) => {
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
     (result, id) => ({ ...result, [id]: { id, placement: 'undecided', async: true } })
   , {}))
+
+  const boardRef = useRef()
 
   useEffect(() => {
     if (draft || loading) { return }
@@ -117,6 +119,7 @@ const useRoomContext = (id, draft) => {
     editingUser, setEditingUserId,
     creatingCeremony, setCreatingCeremonyId,
     editingCeremony, setEditingCeremonyId,
+    boardRef,
     place,
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
     modifyRoom, modifyCeremony, modifyParticipant,

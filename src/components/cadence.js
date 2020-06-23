@@ -53,7 +53,7 @@ const Cadence = ({ id, basis, klass }) => {
             <Dropdown
               klass="mt-1 cadence-add"
               size={14}
-              position="bottom"
+              position="right"
               icon="basic/plus"
               text={t("setup.ceremony.create")}
               tooltip={t("setup.ceremony.createHelptext")}

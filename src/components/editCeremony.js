@@ -21,6 +21,7 @@ const withOption = (value, option) => {
     case 'hideOnOneWeek': return [
       'monday-2', 'tuesday-2', 'wednesday-2', 'thursday-2', 'friday-2',
     ].includes(value)
+    default: return false
   }
 }
 
@@ -36,7 +37,7 @@ const EditCeremony = ({ onSubmit }) => {
         : t(`cadences.${value}.miniName`)
       })
     )
-  ), [cadenceData, t])
+  ), [cadenceData, t, weekCount])
   const startTimes = useMemo(() => (
     hourData.map(value => ({ value, label: t(`hours.${value}`) }))
   ), [hourData, t])

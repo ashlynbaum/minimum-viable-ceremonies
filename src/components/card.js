@@ -12,11 +12,17 @@ const Card = ({ namespace, id, placeholder, theme }) => {
     <div className={`card flex-grow flex justify-center ${id ? 'items-start' : 'items-center'}`}>
       {id ? (
         <div className="card-content">
-          {theme && <div className="card-theme">
-            <ThemeBadge theme={t(`${namespace}.${id}.theme`)} />
-          </div>}
-          <div className="card-icon">
-            {t(`${namespace}.${id}.icon`)}
+          <div className="flex flex-row justify-between items-start">
+            <div className="card-icon">
+              {t(`${namespace}.${id}.icon`)}
+            </div>
+            {theme ? (
+              <div className="card-theme">
+                <ThemeBadge theme={t(`${namespace}.${id}.theme`)} />
+              </div>
+            ) : (
+              <div />
+            )}
           </div>
           <div className="card-title">
             {t(`${namespace}.${id}.name`)}

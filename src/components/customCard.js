@@ -17,7 +17,7 @@ const CustomCard = ({ model, setModel }) => {
 
   const themes = themeData.map(theme => ({
     value: theme,
-    label: t(`themes.${theme}`)
+    label: t(`themes.${theme}.name`)
   }))
 
   const ThemeBadgeComponent = ({ data, innerProps, innerRef }) => (

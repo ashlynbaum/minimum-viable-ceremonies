@@ -32,6 +32,7 @@
 
   &__value-container {
     padding: 0 !important;
+    overflow: visible !important;
   }
 
   &__menu {
@@ -40,16 +41,16 @@
   }
 
   &__menu-list {
+    overflow-y: visible !important;
     flex-wrap: wrap;
     width: auto;
     padding: 8px;
 
     > div { display: flex; }
 
-    label {
+    .theme-badge {
       width: 100%;
       margin: 4px 0;
-      line-height: 18px !important;
       text-align: center;
       cursor: pointer !important;
     }

@@ -41,7 +41,7 @@ cadences:
     description: Once per year
   void:
     name: The Void
-    miniName: Never
+    miniName: Only as needed
     description: Put it in the void!
   monday-1:
     name: Monday
@@ -478,10 +478,18 @@ sidebar:
   setupRoom: New room
   setupRoomTooltip: Create a new room
 themes:
-  coordination: Coordination
-  culture: Culture
-  delivery: Delivery
-  innovation: Innovation
+  coordination:
+    name: Coordination
+    description: This ceremony helps us work together as a team
+  culture:
+    name: Culture
+    description: This ceremony lets us get to know each other better
+  delivery:
+    name: Delivery
+    description: This ceremony helps us deliver our objectives
+  innovation:
+    name: Innovation
+    description: This ceremony helps us explore new ideas
 timepicker:
   am: AM
   pm: PM

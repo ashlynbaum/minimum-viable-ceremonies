@@ -14,6 +14,7 @@ const useRoomContext = (id, draft) => {
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
   const [complete, setComplete] = useState(false)
+  const [toast, setToast] = useState({ visible: false, message: '' })
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
   const [weekCount, setWeekCount] = useState(1)
   const [participants, setParticipants] = useState({})
@@ -124,6 +125,12 @@ const useRoomContext = (id, draft) => {
     placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
     modifyRoom, modifyCeremony, modifyParticipant,
     logout: () => removeCookie(uuid),
+    toast, showToast: (message, length = 2500) => {
+      clearTimeout(toast.timeout)
+      setToast({ message, visible: true, timeout: (
+        setTimeout(() => setToast(toast => ({ ...toast, visible: false })), length)
+      ) })
+    }
   }
 }
 

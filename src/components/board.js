@@ -6,6 +6,7 @@ import Cadence from "./cadence"
 import Confetti from "./confetti"
 import Dropdown from "./dropdown"
 import Sidebar from "./sidebar"
+import Toast from "./toast"
 import Context from "../contexts/room"
 import "../styles/board.scss"
 
@@ -17,6 +18,7 @@ const Board = () => {
     <div className={`board flex flex-row ${draft ? "draft" : ""}`}>
       <Sidebar />
       <Confetti />
+      <Toast />
       <DragDropContext onDragEnd={({ draggableId, destination }) => (
         destination ? place(draggableId, destination.droppableId) : null
       )}>

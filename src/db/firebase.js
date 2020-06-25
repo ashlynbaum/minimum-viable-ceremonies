@@ -3,6 +3,7 @@ import debounce from "debounce-promise"
 import { navigate } from "gatsby"
 
 const rooms = () => firebase.database().ref('rooms')
+firebase.auth().signInAnonymously()
 
 export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) => (
   rooms()
@@ -11,36 +12,34 @@ export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) 
     .then(() => navigate(`room/${uuid}`))
 )
 
-export const setupRoom = ({ uuid, participants, ceremonies, modifyParticipant, modifyCeremony, setWeekCount }) => (
-  firebase.auth().signInAnonymously().then(({ user }) => {
-    const room = rooms().child(uuid)
+export const setupRoom = ({ uuid, participants, ceremonies, modifyParticipant, modifyCeremony, setWeekCount }) => {
+  const room = rooms().child(uuid)
 
-    room.child('weekCount').on('value', snapshot => (
-      setWeekCount(snapshot.toJSON())
+  room.child('weekCount').on('value', snapshot => (
+    setWeekCount(snapshot.toJSON())
+  ))
+
+  room.child('participants').on('value', snapshot => (
+    Object.values(snapshot.toJSON() || [])
+    .filter(({ id, username, roles }) => {
+      const participant = participants[id] || {}
+      return username !== participant.username || roles !== participant.roles
+    }).map(participant => modifyParticipant(participant.id, participant, false, false))
+  ))
+
+  room.child('ceremonies').on('value', snapshot => (
+    Object.values(snapshot.toJSON())
+    .filter(({ id, placement, async }) => (
+      !ceremonies[id] ||
+      placement !== ceremonies[id].placement ||
+      async !== ceremonies[id].async
+    ))).map(ceremony => (
+      modifyCeremony(ceremony.id, ceremony, false)
     ))
+  )
 
-    room.child('participants').on('value', snapshot => (
-      Object.values(snapshot.toJSON() || [])
-      .filter(({ id, username, roles }) => {
-        const participant = participants[id] || {}
-        return username !== participant.username || roles !== participant.roles
-      }).map(participant => modifyParticipant(participant.id, participant, false, false))
-    ))
-
-    room.child('ceremonies').on('value', snapshot => (
-      Object.values(snapshot.toJSON())
-      .filter(({ id, placement, async }) => (
-        !ceremonies[id] ||
-        placement !== ceremonies[id].placement ||
-        async !== ceremonies[id].async
-      ))).map(ceremony => (
-        modifyCeremony(ceremony.id, ceremony, false)
-      ))
-    )
-
-    return room.once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))
-  })
-)
+  return room.once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))
+}
 
 export const teardownRoom = ({ uuid }) => {
   const room = rooms().child(uuid)

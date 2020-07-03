@@ -138,11 +138,7 @@ const useRoomContext = (id, draft) => {
     })
   }
 
-  const placedOn = cadence => (
-    Object.values(ceremonies)
-      .filter(c => c.placement === cadence)
-      .sort((a,b) => a.index > b.index ? 1 : -1)
-  )
+  const placedOn = cadence => Object.values(ceremonies).filter(c => c.placement === cadence)
 
   return {
     uuid, setUuid,

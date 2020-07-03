@@ -26,7 +26,7 @@ const Cadence = ({ id, basis, klass }) => {
               {t(`cadences.${id}.name`)}
             </div>
           }
-          {placedOn(id).map(({ id }, index) => (
+          {placedOn(id).map(({ id, index }) => (
             <Draggable draggableId={id} index={index} key={id}>
               {({ innerRef, draggableProps, dragHandleProps }) => (
                 <div

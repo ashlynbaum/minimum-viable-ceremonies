@@ -58,6 +58,10 @@ export const setParticipant = debounce(({ uuid }, participant) => (
   rooms().child(`${uuid}/participants/${participant.id}`).set(participant)
 ), 300)
 
+export const setCeremonyCollection = debounce(({ uuid }, ceremonies) => (
+  rooms().child(`${uuid}/ceremonies`).set(ceremonies)
+), 300)
+
 export const setCeremony = debounce(({ uuid }, ceremony) => (
   rooms().child(`${uuid}/ceremonies/${ceremony.id}`).set(ceremony)
 ), 300)

@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from "react"
 import { useCookies } from "react-cookie"
-import { setupRoom, setRoom, setCeremony, setParticipant } from "../db/firebase"
+import { setupRoom, setRoom, setCeremony, setCeremonyCollection, setParticipant } from "../db/firebase"
 import { document } from "browser-monads"
 import roleData from "../data/roles"
 import ceremonyData from "../data/ceremonies"
@@ -19,7 +19,7 @@ const useRoomContext = (id, draft) => {
   const [weekCount, setWeekCount] = useState(1)
   const [participants, setParticipants] = useState({})
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
-    (result, id) => ({ ...result, [id]: { id, placement: 'undecided', async: true } })
+    (result, id, index) => ({ ...result, [id]: { id, index, placement: 'undecided', async: true } })
   , {}))
 
   const boardRef = useRef()
@@ -74,10 +74,37 @@ const useRoomContext = (id, draft) => {
     `${document.location.origin}/room/${uuid}`
   ), [uuid])
 
-  const place = (id, placement) => {
-    const updated = { ...ceremonies[id], placement }
-    setCeremony({ uuid }, updated)
-    setCeremonies(current => ({ ...current, [id]: updated }))
+  const place = ({ draggableId, source, destination }) => {
+    if (
+      !destination ||
+      (source.droppableId === destination.droppableId && source.index === destination.index)
+    ) { return }
+
+    const filter = ceremony => ceremony.id !== draggableId
+    const sort   = (a,b) => b.index < a.index ? 1 : -1
+    const reduce = (result, ceremony) => ({ ...result, [ceremony.id]: ceremony })
+    const map    = (ceremony, index) => ({ ...ceremony, index })
+
+    const updated = source.droppableId === destination.droppableId
+      ? placedOn(source.droppableId)
+          .filter(filter)
+          .concat({ ...ceremonies[draggableId], index: destination.index + (destination.index > source.index ? 0.5 : -0.5) })
+          .sort(sort)
+          .map(map)
+          .reduce(reduce, {})
+      : [
+        ...placedOn(source.droppableId)
+          .filter(filter)
+          .sort(sort)
+          .map(map),
+        ...placedOn(destination.droppableId)
+          .concat({ ...ceremonies[draggableId], placement: destination.droppableId, index: destination.index })
+          .sort(sort)
+          .map(map),
+      ].reduce(reduce, {})
+
+    setCeremonyCollection({ uuid }, { ...ceremonies, ...updated })
+    setCeremonies(current => ({ ...current, ...updated }))
   }
 
   const modifyRoom = ({ weekCount }) => {
@@ -87,7 +114,13 @@ const useRoomContext = (id, draft) => {
     if (weekCount === 1) {
       Object.values(ceremonies).filter(({ placement }) => (
         ['monday-2', 'tuesday-2', 'wednesday-2', 'thursday-2', 'friday-2'].includes(placement)
-      )).map(({ id }) => place(id, 'undecided'))
+      )).map(({ id, placement, index }) => (
+        place({
+          draggableId: id,
+          source: { droppableId: placement, index },
+          destination: { droppableId: 'undecided', index: -0.5 }
+        })
+      ))
     }
   }
 
@@ -105,6 +138,12 @@ const useRoomContext = (id, draft) => {
     })
   }
 
+  const placedOn = cadence => (
+    Object.values(ceremonies)
+      .filter(c => c.placement === cadence)
+      .sort((a,b) => a.index > b.index ? 1 : -1)
+  )
+
   return {
     uuid, setUuid,
     draft, complete,
@@ -121,8 +160,7 @@ const useRoomContext = (id, draft) => {
     creatingCeremony, setCreatingCeremonyId,
     editingCeremony, setEditingCeremonyId,
     boardRef,
-    place,
-    placedOn: cadence => Object.values(ceremonies).filter(c => c.placement === cadence),
+    place, placedOn,
     modifyRoom, modifyCeremony, modifyParticipant,
     logout: () => removeCookie(uuid),
     toast, showToast: (message, length = 2500) => {

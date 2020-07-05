@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 import phrase from "random-words"
+import { useMatomo } from "@datapunt/matomo-tracker-react"
 
 import Loading from "./loading"
 import SEO from "./seo"
@@ -17,6 +18,10 @@ import { createRoom } from "../db/firebase"
 const Room = ({ uuid }) => {
   const context = useRoomContext(uuid)
   const draft = useRoomContext(phrase({exactly: 3, join: '-'}), true)
+
+  const { trackPageView } = useMatomo()
+
+  useEffect(() => { trackPageView() }, [])
 
   return (
     <Context.Provider value={context}>

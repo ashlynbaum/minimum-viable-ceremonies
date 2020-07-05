@@ -12,6 +12,13 @@ jobs:
     - uses: actions/setup-node@master
       with:
         node-version: 10.x
+    - uses: DamianReeves/write-file-action
+      with:
+        path: .env.production
+        contents: |
+          MATOMO_URL=${{ secrets.MATOMO_URL }}
+          MATOMO_SITE_ID=${{ secrets.MATOMO_SITE_ID }}
+        write-mode: overwrite
     - run: npm install
     - run: MVC_FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }} MVC_FIREBASE_DOMAIN=${{ secrets.FIREBASE_DOMAIN }} npm run build
     - uses: w9jds/firebase-action@master

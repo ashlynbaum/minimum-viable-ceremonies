@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "James Kiesel <james.kiesel@gmail.com>",
   "dependencies": {
+    "@datapunt/matomo-tracker-react": "^0.1.5",
     "@firebase/app": "^0.6.2",
     "@firebase/auth": "^0.14.7",
     "@firebase/database": "^0.6.1",

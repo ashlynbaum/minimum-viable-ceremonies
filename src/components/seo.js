@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useTranslation } from "react-i18next"
+import { document } from "browser-monads"
 
 const SEO = ({ page = 'home', params = {} }) => {
   const { t, i18n } = useTranslation()
@@ -11,7 +12,10 @@ const SEO = ({ page = 'home', params = {} }) => {
   ].join(' | ')
   const description = t(`metadata.${page}.description`, params)
   const url = t(`metadata.site.url`)
-  const image = require(`../images/${i18n.languages[0]}/meta.png`)
+  const image = [
+    document.location.origin,
+    require(`../images/${i18n.languages[0]}/meta.png`)
+  ].join('/')
 
   return (
     <Helmet

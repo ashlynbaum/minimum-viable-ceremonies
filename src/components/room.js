@@ -25,7 +25,7 @@ const Room = ({ uuid }) => {
 
   return (
     <Context.Provider value={context}>
-      <SEO title={`Minimum Viable Ceremonies | ${context.name}`} />
+      <SEO page="room" params={{room: context.name}} />
       {context.ready ? <>
         <Board />
         <Modal

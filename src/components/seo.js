@@ -1,81 +1,55 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { useTranslation } from "react-i18next"
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
-
-  const metaDescription = description || site.siteMetadata.description
+const SEO = ({ page = 'home', params = {} }) => {
+  const { t, i18n } = useTranslation()
+  const title = [
+    t(`metadata.site.title`),
+    t(`metadata.${page}.title`, params),
+  ].join(' | ')
+  const description = t(`metadata.${page}.description`, params)
+  const url = t(`metadata.site.url`)
+  const image = require(`../images/${i18n.languages[0]}/meta.png`)
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
+      htmlAttributes={{lang: i18n.languages[0]}}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+      meta={[{
+        name: `description`,
+        content: description,
+      }, {
+        property: `og:title`,
+        content: title,
+      }, {
+        property: `og:description`,
+        content: description,
+      }, {
+        property: `og:type`,
+        content: `website`,
+      }, {
+        property: `og:image`,
+        content: image,
+      }, {
+        name: `twitter:card`,
+        content: `summary`,
+      }, {
+        name: `twitter:creator`,
+        content: `@gdpelican`,
+      }, {
+        name: `twitter:title`,
+        content: title,
+      }, {
+        name: `twitter:url`,
+        content: url,
+      }, {
+        name: `twitter:description`,
+        content: description,
+      }]}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 }
 
 export default SEO

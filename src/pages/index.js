@@ -8,7 +8,7 @@ import "../data/locales"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Minimum Viable Ceremonies" />
+    <SEO page="home" />
     <Intro />
   </Layout>
 )

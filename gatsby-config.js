@@ -1,9 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: `Minimum Viable Ceremonies`,
-    description: `Meetings suck - let's have less of them.`,
-    author: `@gdpelican`,
-  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {

@@ -118,7 +118,7 @@ ceremonies:
 
       Each person can share a small presentation, a video clip of what they've been working on, or just give a status update.
   designReview:
-    name: Design review
+    name: Design Review
     icon: 🖍
     theme: delivery
     sub-heading: Get designs ready for dev
@@ -218,14 +218,14 @@ ceremonies:
 
       • Sailboat - What is moving us forward, the wind in our sails? What is holding us back, our anchors? What are our current risks, the rocks that we see ahead?
   process:
-    name: Process definition
+    name: Process Definition
     icon: 🙃
     theme: coordination
     sub-heading: This! Do this again. Also, tell your friends
     description: |
       It's worth revisiting the ceremonies and cadences that have been agreed upon to make sure that they are truly the minimum viable set of ceremonies for your team. Regularly re-assessing your processes is the best way to become a high performing team.
   retreat:
-    name: Team retreat
+    name: Team Retreat
     icon: 🏝
     theme: culture
     sub-heading: Bond as a team away from the office
@@ -253,7 +253,7 @@ ceremonies:
 
       • Sailboat - What is moving us forward, the wind in our sails? What is holding us back, our anchors? What are our current risks, the rocks that we see ahead?
   review:
-    name: Code review
+    name: Code Review
     icon: 🤖
     theme: delivery
     sub-heading: Review other peoples code
@@ -346,7 +346,7 @@ ceremonies:
 
       Have a conversation to think about what scenarios should trigger the need for a Cross-team Sync."
   techdebt:
-    name: Tech Debt Removal
+    name: Tech-debt Removal
     icon: 🚧
     theme: delivery
     sub-heading: Make existing code better

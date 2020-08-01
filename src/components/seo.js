@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useTranslation } from "react-i18next"
@@ -20,9 +20,6 @@ const SEO = ({ page = 'home', params = {} }) => {
       meta={[{
         name: `description`,
         content: description,
-      }, {
-        name: `image`,
-        content: image,
       }, {
         property: `og:title`,
         content: title,

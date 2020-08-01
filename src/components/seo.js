@@ -15,7 +15,7 @@ const SEO = ({ page = 'home', params = {} }) => {
   const image = [
     document.location.origin,
     require(`../images/${i18n.languages[0]}/meta.png`)
-  ].join('/')
+  ].join('')
 
   return (
     <Helmet

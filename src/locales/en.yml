@@ -605,7 +605,7 @@ metadata:
     url: https://minimal.cards/
   home:
     title: Free Process Planning Tool for Agile Teams
-    description: Build a Minimum Viable Ceremony to have more productive meetings.
+    description: Stop hating meetings. Build a lean, agile process that works perfectly for your team. It's free!
   room:
     title: {{room}}
     description: Build a Minimum Viable Ceremony for your team.

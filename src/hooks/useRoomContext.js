@@ -131,7 +131,7 @@ const useRoomContext = (id, draft) => {
   }
 
   const modifyParticipant = (id, attrs, cookie = true, syncDb = true) => {
-    const updated = { ...participants[id], ...attrs }
+    const updated = { ...participants[id], ...attrs, roles: Object.values(attrs.roles || []) }
     setParticipants(current => ({ ...current, [id]: updated }))
     return syncDb && setParticipant({ uuid }, updated).then(() => {
       if (cookie) { setCookie(uuid, id) }

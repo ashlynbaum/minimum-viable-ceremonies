@@ -36,8 +36,12 @@ const Room = ({ uuid }) => {
             username: '',
             roles: [],
           }}
+          initialStep={context.features.premium ? 0 : 1}
           submit={participant => context.modifyParticipant(participant.id, participant)}
           steps={[{
+            // auth provider step
+            canProceed: ({ uid }) => !!uid
+          }, {
             next: "setup.controls.next",
             canProceed: ({ username }) => !!username,
           }, {

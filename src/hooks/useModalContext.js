@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react"
 
-const useRoomContext = (initialModel, steps = [], close, submit) => {
+const useRoomContext = (initialModel, initialStep = 0, steps = [], close, submit) => {
   const [model, setModel] = useState(initialModel)
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(initialStep)
   const [submitting, setSubmitting] = useState(false)
   const currentStep = useMemo(() => (
     { canProceed: () => true, index, ...steps[index] }

@@ -620,10 +620,17 @@ pre tt:after {
   padding: 4px 8px;
   border-radius: 4px;
 
+  &:disabled {
+    color: $grey;
+    background: $grey-lightest;
+  }
+
   &:hover {
     &:not(:focus) {
-      cursor: pointer;
-      background: $grey-lighter;
+      &:not(:disabled) {
+        cursor: pointer;
+        background: $grey-lighter;
+      }
     }
   }
 }
@@ -693,6 +700,7 @@ pre tt:after {
   &:hover {
     color: $blue;
     border: 1px solid $blue;
+    .mvc-logo { fill: $blue; }
   }
   &:active {
     background: $warm-grey-000;
@@ -707,6 +715,7 @@ pre tt:after {
       @apply bg-blue-500;
     }
   }
+  .mvc-logo { fill: $grey-darker; }
 }
 
 .mvc-hover-state {

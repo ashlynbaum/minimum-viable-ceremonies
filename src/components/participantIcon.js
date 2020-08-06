@@ -2,12 +2,14 @@ import React from "react"
 
 import "../styles/participant.scss"
 
-const Participant = ({ id, username, roles }) => (
-  <div className="participant">
-    <div className="participant-content">
-      <div className="participant-icon" title={`${username} (${roles.join(', ')})`}>{username[0]}</div>
-    </div>
+const ParticipantIcon = ({ id, image, username, roles }) => (
+  <div className="participant-icon" title={`${username} (${roles.join(', ')})`}>
+    {image ? (
+      <img src={image} alt={`${username} (${roles.join(', ')})`} />
+    ) : (
+      <span>{username[0]}</span>
+    )}
   </div>
 )
 
-export default Participant
+export default ParticipantIcon

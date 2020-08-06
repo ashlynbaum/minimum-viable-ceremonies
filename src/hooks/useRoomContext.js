@@ -18,6 +18,7 @@ const useRoomContext = (id, draft) => {
   const [cookie, setCookie, removeCookie] = useCookies([uuid])
   const [weekCount, setWeekCount] = useState(1)
   const [participants, setParticipants] = useState({})
+  const [features, setFeatures] = useState({})
   const [ceremonies, setCeremonies] = useState(ceremonyData.reduce(
     (result, id, index) => ({ ...result, [id]: { id, index, placement: 'undecided', async: true } })
   , {}))
@@ -35,6 +36,7 @@ const useRoomContext = (id, draft) => {
       modifyCeremony,
       participants,
       modifyParticipant,
+      modifyFeatures,
       setWeekCount,
     }).then(state => {
       setUuid(state.uuid)
@@ -138,6 +140,10 @@ const useRoomContext = (id, draft) => {
     })
   }
 
+  const modifyFeatures = ({ premium }) => (
+    setFeatures({ premium })
+  )
+
   const placedOn = cadence => Object.values(ceremonies).filter(c => c.placement === cadence)
 
   return {
@@ -150,6 +156,7 @@ const useRoomContext = (id, draft) => {
     shareableLink,
     currentUser,
     participants,
+    features,
     ready,
     editingRoom, setEditingRoomId,
     editingUser, setEditingUserId,

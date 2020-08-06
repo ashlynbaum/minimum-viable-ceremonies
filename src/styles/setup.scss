@@ -84,9 +84,16 @@
   margin: auto;
 }
 
+.setup-input-avatar {
+  max-width: 100px;
+  border-radius: 100%;
+  margin: auto;
+}
+
 .setup-input-subpanel {
   max-width: 600px;
-  margin: 0 15%;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
 .setup-panel-card {

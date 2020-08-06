@@ -7,7 +7,7 @@ import Board from "./board"
 import Modal from "./modal"
 import useRoomContext from "../hooks/useRoomContext"
 import Context from "../contexts/room"
-import { createRoom } from "../db/firebase"
+import { createRoom } from "../firebase/db"
 
 const Intro = () => {
   const draft = useRoomContext(phrase({exactly: 3, join: '-'}), true)

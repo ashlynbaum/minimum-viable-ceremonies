@@ -141,7 +141,7 @@ const useRoomContext = (id, draft) => {
   }
 
   const modifyFeatures = ({ premium }) => (
-    setFeatures({ premium: true })
+    setFeatures({ premium })
   )
 
   const placedOn = cadence => Object.values(ceremonies).filter(c => c.placement === cadence)

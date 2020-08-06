@@ -1,24 +1,9 @@
 import firebase from "gatsby-plugin-firebase"
 import debounce from "debounce-promise"
 import { navigate } from "gatsby"
+import { signIn } from "./auth"
 
 const rooms = () => firebase.database().ref('rooms')
-const signIn = () => firebase.auth().currentUser
-  ? Promise.resolve({ user: firebase.auth().currentUser })
-  : firebase.auth().signInAnonymously()
-
-export const authWithGoogle = () => {
-  firebase.auth().useDeviceLanguage()
-
-  const provider = new firebase.auth.GoogleAuthProvider()
-
-  return firebase.auth().signInWithPopup(provider).then(({ user }) => ({
-    image: user.photoURL,
-    username: user.displayName,
-    email: user.email,
-    uid: user.uid,
-  })).catch(console.log)
-}
 
 export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) => (
   signIn().then(() => (

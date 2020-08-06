@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from "react"
 import { useCookies } from "react-cookie"
-import { setupRoom, setRoom, setCeremony, setCeremonyCollection, setParticipant } from "../db/firebase"
+import { setupRoom, setRoom, setCeremony, setCeremonyCollection, setParticipant } from "../firebase/db"
 import { document } from "browser-monads"
 import roleData from "../data/roles"
 import ceremonyData from "../data/ceremonies"

@@ -13,7 +13,7 @@ import SetupCeremony from "./setupCeremony"
 import EditCeremony from "./editCeremony"
 import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
-import { createRoom } from "../db/firebase"
+import { createRoom } from "../firebase/db"
 
 const Room = ({ uuid }) => {
   const context = useRoomContext(uuid)

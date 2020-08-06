@@ -9,6 +9,7 @@
     "@firebase/app": "^0.6.2",
     "@firebase/auth": "^0.14.7",
     "@firebase/database": "^0.6.1",
+    "@firebase/functions": "^0.4.49",
     "browser-monads": "^1.0.0",
     "debounce-promise": "^3.1.2",
     "emoji-mart": "^3.0.0",

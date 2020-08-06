@@ -11,13 +11,14 @@ const Modal = ({
   open = false,
   styles = {},
   initialModel = {},
+  initialStep = 0,
   steps,
   close = () => {},
   submit,
   singleControl,
 }) => {
   const { t } = useTranslation()
-  const context = useModalContext(initialModel, steps, close, submit)
+  const context = useModalContext(initialModel, initialStep, steps, close, submit)
   ReactModal.setAppElement("#___gatsby")
 
   return (

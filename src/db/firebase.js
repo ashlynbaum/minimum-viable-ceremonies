@@ -7,6 +7,19 @@ const signIn = () => firebase.auth().currentUser
   ? Promise.resolve({ user: firebase.auth().currentUser })
   : firebase.auth().signInAnonymously()
 
+export const authWithGoogle = () => {
+  firebase.auth().useDeviceLanguage()
+
+  const provider = new firebase.auth.GoogleAuthProvider()
+
+  return firebase.auth().signInWithPopup(provider).then(({ user }) => ({
+    image: user.photoURL,
+    username: user.displayName,
+    email: user.email,
+    uid: user.uid,
+  })).catch(console.log)
+}
+
 export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) => (
   signIn().then(() => (
     rooms()
@@ -16,7 +29,15 @@ export const createRoom = ({ uuid, name, weekCount, ceremonies, participants }) 
   ))
 )
 
-export const setupRoom = ({ uuid, participants, ceremonies, modifyParticipant, modifyCeremony, setWeekCount }) => (
+export const setupRoom = ({
+  uuid,
+  participants,
+  ceremonies,
+  modifyParticipant,
+  modifyCeremony,
+  modifyFeatures,
+  setWeekCount
+}) => (
   signIn().then(() => {
     const room = rooms().child(uuid)
 
@@ -30,6 +51,10 @@ export const setupRoom = ({ uuid, participants, ceremonies, modifyParticipant, m
         const participant = participants[id] || {}
         return username !== participant.username || roles !== participant.roles
       }).map(participant => modifyParticipant(participant.id, participant, false, false))
+    ))
+
+    room.child('features').on('value', snapshot => (
+      modifyFeatures(Object.values(snapshot.toJSON() || {}))
     ))
 
     room.child('ceremonies').on('value', snapshot => (
@@ -51,7 +76,8 @@ export const teardownRoom = ({ uuid }) => {
   const room = rooms().child(uuid)
 
   room.child('participants').off('value')
-  room.child('placements').off('value')
+  room.child('features').off('value')
+  room.child('ceremonies').off('value')
 }
 
 export const setParticipant = debounce(({ uuid }, participant) => (

@@ -4,16 +4,17 @@ import { useTranslation } from "react-i18next"
 import Card from "./card"
 import Dropdown from "./dropdown"
 import Context from "../contexts/room"
+import ParticipantIcon from "./participantIcon"
 import "../styles/participant.scss"
 
-const Participant = ({ id, username, roles }) => {
+const Participant = ({ id, image, username, roles }) => {
   const { t } = useTranslation()
   const { currentUser, setEditingUserId } = useContext(Context)
 
   return (
     <div className="participant">
       <div className="participant-content">
-        <div className="participant-icon">{username[0]}</div>
+        <ParticipantIcon id={id} image={image} username={username} roles={roles} />
         <div className="participant-name">{username}</div>
         <div className="participant-actions">
           {currentUser && currentUser.id === id && <Dropdown

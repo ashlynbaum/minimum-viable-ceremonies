@@ -14,10 +14,10 @@ const Controls = ({ single }) => {
     <div className="controls">
       {back && !single && <button onClick={prevStep} className="mvc-btn btn-secondary">{t(back)}</button>}
       {!single && <div className="controls-divider" />}
-      <button disabled={!canProceed(model)} className={`mvc-btn btn-primary ${single ? 'flex-grow' : ''}`} onClick={nextStep}>
+      {next && <button disabled={!canProceed(model)} className={`mvc-btn btn-primary ${single ? 'flex-grow' : ''}`} onClick={nextStep}>
         {submitting && <Loading size={25} />}
         <span style={{ visibility: submitting ? 'hidden' : 'auto' }}>{t(next)}</span>
-      </button>
+      </button>}
     </div>
   )
 }

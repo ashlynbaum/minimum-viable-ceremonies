@@ -17,5 +17,5 @@ jobs:
           command: npm run test:ci
           config: baseUrl=http://localhost:8000
         env:
-          FIREBASE_DOMAIN: ${{ secrets.FIREBASE_TEST_DOMAIN }}
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          MVC_FIREBASE_DOMAIN: ${{ secrets.FIREBASE_TEST_DOMAIN }}
+          MVC_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}

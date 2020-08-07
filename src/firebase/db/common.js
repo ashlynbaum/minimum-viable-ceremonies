@@ -4,6 +4,7 @@ import firebase from "gatsby-plugin-firebase"
 export const set = (path, data) => ref(path).set(data)
 export const sync = (path, callback) => ref(path).on('value', callback)
 export const unsync = path => ref(path).off('value')
+
 export const load = path => (
   ref(path).once('value').then(snapshot => ({ ...snapshot.val(), uuid: snapshot.key }))
 )

@@ -18,7 +18,7 @@ jobs:
           config: baseUrl=http://localhost:8000
         env:
           MVC_FIREBASE_DOMAIN: ${{ secrets.FIREBASE_TEST_DOMAIN }}
-          MVC_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          MVC_FIREBASE_API_KEY: ${{ secrets.FIREBASE_TEST_API_KEY }}
       - uses: actions/upload-artifact@v1
         if: failure()
         with:

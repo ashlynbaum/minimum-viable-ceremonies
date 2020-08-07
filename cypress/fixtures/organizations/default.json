@@ -1,4 +1,5 @@
 {
+  "uuid": "test-organization-uuid",
   "name": "Test organization",
   "features": {
     "example": true

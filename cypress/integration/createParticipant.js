@@ -2,7 +2,7 @@ describe('Create participant', () => {
   it('Can create a participant', () => {
     cy.seedRoom('default').then(() => {
       cy.visit('/room/test-room-uuid')
-      cy.contains('What\'s your name?')
+      cy.contains('What\'s your name?', {timeout: 10_000})
       cy.get('.controls .btn-primary').should('be.disabled')
       cy.get('input[name=username]').type('Barbara Smith')
       cy.get('.controls .btn-primary').should('not.be.disabled')
@@ -10,7 +10,6 @@ describe('Create participant', () => {
 
       cy.contains('Pick a role')
       cy.get('.controls .btn-primary').should('be.disabled')
-      cy.wait(1000)
       cy.get('.role-badge--actioner input').click({force: true})
       cy.get('.controls .btn-primary').should('not.be.disabled')
       cy.get('.controls .btn-primary').click()

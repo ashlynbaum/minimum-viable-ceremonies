@@ -8,7 +8,7 @@ const RoleBadge = ({ role, checked, onHover, onClick }) => {
   const { t } = useTranslation()
 
   return (
-    <label className="role-badge mvc-radio-option">
+    <label className={`role-badge role-badge--${role} mvc-radio-option`}>
       <input
         type="checkbox"
         name="role"

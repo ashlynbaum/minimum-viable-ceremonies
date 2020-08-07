@@ -13,10 +13,11 @@ firebase.initializeApp({
 
 attachCustomCommands({ Cypress, cy, firebase })
 
-Cypress.Commands.add('seedRoom', room => (
-  cy.callRtdb('set', `rooms/${room.uuid}`, room)
-))
+const seed = model => fixture => (
+  cy.fixture(`${model}/${fixture}.json`).then(json => (
+    cy.callRtdb('set', `${model}/${json.uuid}`, json)
+  ))
+)
 
-Cypress.Commands.add('seedOrganization', organization => (
-  cy.callRtdb('set', `organizations/${organization.uuid}`, organization)
-))
+Cypress.Commands.add('seedRoom', seed('rooms'))
+Cypress.Commands.add('seedOrganization', seed('organizations'))

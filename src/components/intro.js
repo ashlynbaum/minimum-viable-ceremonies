@@ -7,7 +7,7 @@ import Board from "./board"
 import Modal from "./modal"
 import useRoomContext from "../hooks/useRoomContext"
 import Context from "../contexts/room"
-import { createRoom } from "../firebase/db"
+import roomTable from "../firebase/db/room"
 
 const Intro = () => {
   const draft = useRoomContext(phrase({exactly: 3, join: '-'}), true)
@@ -21,7 +21,7 @@ const Intro = () => {
         Content={SetupRoom}
         open={true}
         initialModel={draft}
-        submit={createRoom}
+        submit={roomTable.create}
         steps={[{
           next: "setup.controls.okGotIt",
           back: null,

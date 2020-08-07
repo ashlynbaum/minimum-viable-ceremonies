@@ -13,7 +13,7 @@ import SetupCeremony from "./setupCeremony"
 import EditCeremony from "./editCeremony"
 import Context from "../contexts/room"
 import useRoomContext from "../hooks/useRoomContext"
-import { createRoom } from "../firebase/db"
+import roomTable from "../firebase/db/room"
 
 const Room = ({ uuid }) => {
   const context = useRoomContext(uuid)
@@ -58,7 +58,7 @@ const Room = ({ uuid }) => {
           open={context.editingRoom}
           initialModel={draft}
           close={context.setEditingRoomId}
-          submit={room => createRoom(room).then(() => context.setUuid(room.uuid))}
+          submit={room => roomTable.create(room).then(() => context.setUuid(room.uuid))}
           steps={[{
             next: "setup.controls.okGotIt",
           }, {

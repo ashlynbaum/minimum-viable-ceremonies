@@ -62,7 +62,7 @@ const SetupUser = ({ onSubmit }) => {
                 placeholder={t("setup.user.usernamePlaceholder")}
                 value={model.username}
                 onChange={({ target: { value } }) => setModel(user => ({ ...user, username: value }))}
-                onKeyPress={currentStep.index === 0 ? nextStepOnEnter : null}
+                onKeyPress={currentStep.index === 1 ? nextStepOnEnter : null}
               />
             </div>
             {model.uid && <div className="setup-input-subpanel mt-4">
@@ -74,7 +74,7 @@ const SetupUser = ({ onSubmit }) => {
                 placeholder={t("setup.user.usernamePlaceholder")}
                 value={model.email}
                 onChange={({ target: { value } }) => setModel(user => ({ ...user, username: value }))}
-                onKeyPress={currentStep.index === 0 ? nextStepOnEnter : null}
+                onKeyPress={currentStep.index === 1 ? nextStepOnEnter : null}
               />
             </div>}
           </div>

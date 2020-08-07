@@ -1,0 +1,23 @@
+name: Cypress
+
+on: pull_request
+
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: serviceAccount.json
+          contents: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          write-mode: overwrite
+      - uses: cypress-io/github-action@v2
+        with:
+          start: npm run start
+          command: npm run test:ci
+          browser: chrome
+          config: baseUrl=http://localhost:8000
+        env:
+          FIREBASE_DOMAIN: ${{ secrets.FIREBASE_TEST_DOMAIN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

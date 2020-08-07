@@ -10,7 +10,7 @@ describe('Create room', () => {
 
     cy.get('.copy-link').invoke('val').should('match', /http:\/\/localhost:8000\/room/)
     cy.contains('Create room').click()
-    cy.wait(4000)
+    cy.wait(6000)
 
     cy.get('.setup-user-name h1').invoke('text').should('match', /What\'s your name/)
     cy.url().should('include', 'http://localhost:8000/room')

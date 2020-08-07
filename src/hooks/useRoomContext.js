@@ -1,6 +1,9 @@
 import { useState, useMemo, useEffect, useRef } from "react"
 import { useCookies } from "react-cookie"
-import { setupRoom, setRoom, setCeremony, setCeremonyCollection, setParticipant } from "../firebase/db"
+
+import roomTable from "../firebase/db/room"
+import organizationTable from "../firebase/db/organization"
+
 import { document } from "browser-monads"
 import roleData from "../data/roles"
 import ceremonyData from "../data/ceremonies"
@@ -11,6 +14,7 @@ import hourData from "../data/hours"
 const useRoomContext = (id, draft) => {
   const [uuid, setUuid] = useState(id)
   const [name, setName] = useState("")
+  const [organization, setOrganization] = useState({})
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
   const [complete, setComplete] = useState(false)
@@ -30,13 +34,13 @@ const useRoomContext = (id, draft) => {
     setReady(false)
     setLoading(true)
 
-    setupRoom({
+    roomTable.setup({
       uuid,
       ceremonies,
-      modifyCeremony,
       participants,
+      modifyCeremony,
       modifyParticipant,
-      modifyFeatures,
+      modifyFeature,
       setWeekCount,
     }).then(state => {
       setUuid(state.uuid)
@@ -44,8 +48,17 @@ const useRoomContext = (id, draft) => {
       setWeekCount(state.weekCount)
       setCeremonies(state.ceremonies || {})
       setParticipants(state.participants || {})
-      setLoading(false)
-      setReady(true)
+      setFeatures(current => ({ ...current, ...state.features }))
+
+      organizationTable.setup({
+        uuid: state.organizationUuid,
+        modifyFeature,
+      }).then(({ uuid, name, image, features }) => {
+        setOrganization({ uuid, name, image })
+        setFeatures(current => ({ ...current, ...features }))
+        setLoading(false)
+        setReady(true)
+      })
     })
   }, [uuid])
 
@@ -55,6 +68,13 @@ const useRoomContext = (id, draft) => {
       Object.values(ceremonies).filter(c => c.placement === 'undecided').length === 0
     ) { setComplete(true) }
   }, [ceremonies, complete])
+
+  useEffect(() => (
+    () => {
+      roomTable.teardown(uuid)
+      organizationTable.teardown(organization.uuid)
+    }
+  ), [])
 
   const currentUser = useMemo(() => (
     Object.values(participants).find(p => p.id === cookie[uuid])
@@ -105,12 +125,12 @@ const useRoomContext = (id, draft) => {
           .map(map),
       ].reduce(reduce, {})
 
-    setCeremonyCollection({ uuid }, { ...ceremonies, ...updated })
+    roomTable.write(uuid, 'ceremonies', { ...ceremonies, ...updated })
     setCeremonies(current => ({ ...current, ...updated }))
   }
 
   const modifyRoom = ({ weekCount }) => {
-    setRoom({ uuid }, { weekCount })
+    roomTable.write(uuid, 'weekCount', weekCount)
     setWeekCount(weekCount)
 
     if (weekCount === 1) {
@@ -129,19 +149,19 @@ const useRoomContext = (id, draft) => {
   const modifyCeremony = (id, attrs, syncDb = true) => {
     const updated = { ...ceremonies[id], ...attrs }
     setCeremonies(current => ({ ...current, [id]: updated }))
-    return syncDb && setCeremony({ uuid }, updated)
+    return syncDb && roomTable.write(uuid, `ceremonies/${updated.id}`, updated)
   }
 
   const modifyParticipant = (id, attrs, cookie = true, syncDb = true) => {
     const updated = { ...participants[id], ...attrs, roles: Object.values(attrs.roles || []) }
     setParticipants(current => ({ ...current, [id]: updated }))
-    return syncDb && setParticipant({ uuid }, updated).then(() => {
+    return syncDb && roomTable.write(uuid, `participants/${updated.id}`, updated).then(() => {
       if (cookie) { setCookie(uuid, id) }
     })
   }
 
-  const modifyFeatures = ({ premium }) => (
-    setFeatures({ premium })
+  const modifyFeature = (key, value) => (
+    setFeatures(current => ({ ...current, [key]: value }))
   )
 
   const placedOn = cadence => Object.values(ceremonies).filter(c => c.placement === cadence)
@@ -152,6 +172,7 @@ const useRoomContext = (id, draft) => {
     roleData, cadenceData, hourData, themeData,
     ceremonies,
     name, setName,
+    organization,
     weekCount,
     shareableLink,
     currentUser,

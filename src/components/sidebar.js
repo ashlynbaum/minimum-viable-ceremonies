@@ -9,14 +9,17 @@ import Context from "../contexts/room"
 import "../styles/sidebar.scss"
 
 const Sidebar = () => {
-  const { shareableLink, name, participants, setEditingRoomId } = useContext(Context)
+  const { shareableLink, name, organization, participants, setEditingRoomId } = useContext(Context)
   const [expanded, setExpanded] = useState(true)
   const { t } = useTranslation()
 
   return expanded ? (
     <div className="sidebar expanded">
       <div className="sidebar-header mvc-hover-state">
-        <div className="sidebar-title">{name}</div>
+        <div className="sidebar-title">
+          {organization.name && <div>{organization.name}</div>}
+          <div>{name}</div>
+        </div>
         <Dropdown
           klass="sidebar-collapse dark"
           icon="arrows/chevrons-left"

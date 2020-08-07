@@ -16,6 +16,18 @@ export MVC_FIREBASE_API_KEY="<api_key>"
 export MVC_FIREBASE_DOMAIN="<domain>"
 ```
 
+###  🔬 **Testing.**
+
+We use [Cypress](https://www.cypress.io/) to run end to end tests on our code.
+
+```shell
+npm run test
+```
+or, to run inline in the terminal:
+```shell
+npm run test:ci
+```
+
 ###  🚀 **Building for production.**
 
 ```shell

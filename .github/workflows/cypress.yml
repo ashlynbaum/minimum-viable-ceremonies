@@ -14,7 +14,6 @@ jobs:
           write-mode: overwrite
       - uses: cypress-io/github-action@v2
         with:
-          start: npm run start
           command: npm run test:ci
           browser: chrome
           config: baseUrl=http://localhost:8000

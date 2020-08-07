@@ -76,6 +76,20 @@ const useRoomContext = (id, draft) => {
     }
   ), [])
 
+  useEffect(() => {
+    if (weekCount !== 1) { return }
+
+    Object.values(ceremonies).filter(({ placement }) => (
+      ['monday-2', 'tuesday-2', 'wednesday-2', 'thursday-2', 'friday-2'].includes(placement)
+    )).map(({ id, placement, index }) => (
+      place({
+        draggableId: id,
+        source: { droppableId: placement, index },
+        destination: { droppableId: 'undecided', index: -0.5 }
+      })
+    ))
+  }, [weekCount])
+
   const currentUser = useMemo(() => (
     Object.values(participants).find(p => p.id === cookie[uuid])
   ), [participants, cookie, uuid])
@@ -132,18 +146,6 @@ const useRoomContext = (id, draft) => {
   const modifyRoom = ({ weekCount }) => {
     roomTable.write(uuid, 'weekCount', weekCount)
     setWeekCount(weekCount)
-
-    if (weekCount === 1) {
-      Object.values(ceremonies).filter(({ placement }) => (
-        ['monday-2', 'tuesday-2', 'wednesday-2', 'thursday-2', 'friday-2'].includes(placement)
-      )).map(({ id, placement, index }) => (
-        place({
-          draggableId: id,
-          source: { droppableId: placement, index },
-          destination: { droppableId: 'undecided', index: -0.5 }
-        })
-      ))
-    }
   }
 
   const modifyCeremony = (id, attrs, syncDb = true) => {
@@ -160,9 +162,10 @@ const useRoomContext = (id, draft) => {
     })
   }
 
-  const modifyFeature = (key, value) => (
-    setFeatures(current => ({ ...current, [key]: value }))
-  )
+  const modifyFeature = (key, value) => {
+    const updated = { [key]: value }
+    setFeatures(current => ({ ...current, updated }))
+  }
 
   const placedOn = cadence => Object.values(ceremonies).filter(c => c.placement === cadence)
 

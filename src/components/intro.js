@@ -13,7 +13,7 @@ const Intro = () => {
   const draft = useRoomContext(phrase({exactly: 3, join: '-'}), true)
   const { trackPageView } = useMatomo()
 
-  useEffect(() => { trackPageView() }, [])
+  useEffect(() => { trackPageView() }, [trackPageView])
 
   return (
     <Context.Provider value={draft}>

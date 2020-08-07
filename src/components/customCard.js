@@ -5,7 +5,6 @@ import data from "emoji-mart/data/apple.json";
 import Picker from 'emoji-mart/dist-es/components/picker/nimble-picker'
 
 import Context from "../contexts/room"
-import ModalContext from "../contexts/modal"
 import ThemeBadge from "./themeBadge"
 import "../styles/customCard.scss"
 import "emoji-mart/css/emoji-mart.css"

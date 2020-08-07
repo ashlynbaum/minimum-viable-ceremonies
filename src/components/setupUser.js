@@ -28,7 +28,7 @@ const SetupUser = ({ onSubmit }) => {
     if (currentStep.index === 0 && model.uid) {
       nextStep()
     }
-  }, [currentStep.index, model.uid])
+  }, [currentStep.index, model.uid, nextStep])
 
   return (
     <div className="setup-user setup">

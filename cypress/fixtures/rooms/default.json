@@ -1,0 +1,13 @@
+{
+  "uuid": "test-room-uuid",
+  "name": "Example room",
+  "weekCount": 1,
+  "ceremonies": [{
+    "checkin": {
+      "async": true,
+      "id": "checkin",
+      "index": 0,
+      "placement": "undecided"
+    }
+  }]
+}

@@ -1,0 +1,26 @@
+name: Cypress
+
+on: pull_request
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: serviceAccount.json
+          contents: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          write-mode: overwrite
+      - uses: cypress-io/github-action@v2
+        with:
+          command: npm run test:ci
+          config: baseUrl=http://localhost:8000
+        env:
+          MVC_FIREBASE_DOMAIN: ${{ secrets.FIREBASE_TEST_DOMAIN }}
+          MVC_FIREBASE_API_KEY: ${{ secrets.FIREBASE_TEST_API_KEY }}
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots

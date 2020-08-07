@@ -9,6 +9,8 @@ yarn-error.log*
 .firebase
 .firebaserc
 
+cypress/screenshots
+
 # Runtime data
 pids
 *.pid
@@ -71,3 +73,5 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+serviceAccount*.json

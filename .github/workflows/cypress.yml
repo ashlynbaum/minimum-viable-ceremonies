@@ -15,7 +15,6 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           command: npm run test:ci
-          browser: chrome
           config: baseUrl=http://localhost:8000
         env:
           FIREBASE_DOMAIN: ${{ secrets.FIREBASE_TEST_DOMAIN }}

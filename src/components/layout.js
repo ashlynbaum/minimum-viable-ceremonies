@@ -12,7 +12,7 @@ const Layout = ({ children }) => (
     <FreshChat
       host={process.env.FRESHCHAT_HOST}
       token={process.env.FRESHCHAT_TOKEN}
-      siteId="minimum-viable-ceremonies"
+      siteId={process.env.FIREBASE_DOMAIN}
     />
     <main>{children}</main>
   </MatomoProvider>

@@ -35,6 +35,7 @@
     "react-beautiful-dnd": "^13.0.0",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.12.0",
+    "react-dom-confetti": "^0.2.0",
     "react-freshchat": "minimum-viable-ceremonies/react-freshchat#master",
     "react-helmet": "^6.0.0",
     "react-i18next": "^11.4.0",

@@ -6,6 +6,7 @@ import Check from "../images/check-mark.svg"
 import Card from "./card"
 import CustomCard from "./customCard"
 import Icon from "./icon"
+import ParticipantOption from "./participantOption"
 import Context from "../contexts/room"
 import "../styles/setup.scss"
 
@@ -28,7 +29,7 @@ const withOption = (value, option) => {
 
 const EditCeremony = ({ onSubmit }) => {
   const { t } = useTranslation()
-  const { weekCount, editingCeremony, modifyCeremony, cadenceData, hourData } = useContext(Context)
+  const { weekCount, editingCeremony, participants, modifyCeremony, cadenceData, hourData } = useContext(Context)
   const { id, placement, async, notes, startTime, endTime } = editingCeremony || {}
   const cadences = useMemo(() => (
     cadenceData
@@ -45,6 +46,12 @@ const EditCeremony = ({ onSubmit }) => {
   const endTimes = useMemo(() => (
     startTimes.filter(({ value }) => value > startTime).slice(0, 8)
   ), [startTimes, startTime])
+  const peopleOptions = useMemo(() => (
+    Object.values(participants).map(participant => ({
+      value: participant.id,
+      label: participant.username,
+    }))
+  ), [participants])
 
   return (
     <div className="setup-ceremony max-h-full flex-grow">
@@ -94,6 +101,31 @@ const EditCeremony = ({ onSubmit }) => {
                 value={cadences.find(({ value }) => value === placement)}
                 defaultValue={cadences[0]}
                 onChange={({ value }) => modifyCeremony(id, { placement: value })}
+                styles={{ container: existing => ({
+                  ...existing,
+                  width: "100%",
+                  margin: "8px 0"
+                }) }}
+              />
+            </div>
+          </div>
+          <div className="mvc-input">
+            <div className="mvc-label flex flex-row items-center">
+              <Icon icon="basic/user" className="mr-2" size={14} />
+              <span>{t("setup.ceremony.participants")}</span>
+            </div>
+            <div className="ml-5 flex flex-row items-center">
+              <Select
+                components={{
+                  MultiValueLabel: ParticipantOption,
+                  Option: ParticipantOption,
+                  IndicatorsContainer: () => null,
+                }}
+                classNamePrefix="mvc-multi-select"
+                options={peopleOptions}
+                isMulti={true}
+                value={(editingCeremony || {}).people}
+                onChange={people => modifyCeremony(id, { people: people || [] })}
                 styles={{ container: existing => ({
                   ...existing,
                   width: "100%",

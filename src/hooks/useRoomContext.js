@@ -149,7 +149,8 @@ const useRoomContext = (id, draft) => {
   }
 
   const modifyCeremony = (id, attrs, syncDb = true) => {
-    const updated = { ...ceremonies[id], ...attrs }
+    const people = Object.values(attrs.people || (ceremonies[id] || {}).people || [])
+    const updated = { ...ceremonies[id], ...attrs, people }
     setCeremonies(current => ({ ...current, [id]: updated }))
     return syncDb && roomTable.write(uuid, `ceremonies/${updated.id}`, updated)
   }

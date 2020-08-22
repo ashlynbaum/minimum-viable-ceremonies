@@ -426,6 +426,7 @@ setup:
     create: Add custom
     createHelptext: Create a custom ceremony
     cadence: How often should this ceremony happen?
+    participants: Who should attend?
     schedule: Is there an in-person meeting?
     time: What time of day?
     sync: Yes (Synchronous)

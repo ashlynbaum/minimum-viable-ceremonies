@@ -171,13 +171,13 @@ const EditCeremony = ({ onSubmit }) => {
           <div className="mvc-input">
             <div className="mvc-label flex flex-row items-center">
               <Icon icon="basic/text-align-left" className="mr-2" size={14} />
-              <span>{t(`setup.ceremony.${async ? 'syncNotes' : 'asyncNotes'}`)}</span>
+              <span>{t(`setup.ceremony.${async ? 'asyncNotes' : 'syncNotes'}`)}</span>
             </div>
             <div className="ml-5">
               <textarea
                 className="mvc-textarea w-full"
                 name="notes"
-                placeholder={t(`setup.ceremony.${async ? 'syncNotesPlaceholder' : 'asyncNotesPlaceholder'}`)}
+                placeholder={t(`setup.ceremony.${async ? 'asyncNotesPlaceholder' : 'syncNotesPlaceholder'}`)}
                 value={notes}
                 onChange={({ target: { value } }) => modifyCeremony(id, { notes: value })}
               />

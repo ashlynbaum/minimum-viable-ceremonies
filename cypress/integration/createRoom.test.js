@@ -1,4 +1,4 @@
-describe('Basics', () => {
+describe('Create room', () => {
   it('Can create a room', () => {
     cy.visit('/')
     cy.contains('Get started').click()
